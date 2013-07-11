@@ -16,13 +16,66 @@
           <li><a href="" class='nav_user_profile'>Илья Долинин</a></li>
           <li><a href="">выход</a></li>
         </ul>
+        <div class='nav_pointer'></div>
       </nav>
-      <div calss='nav_pointer'></div>
     </header>
-  </div>
-  <div id='bd'>
-    <div id='content'></div>
-      <%= yield %>
+    <div id='conteiner'>
+      <div id='left_group'>
+        <ul>
+          <li>
+            <a href="">Новое</a>
+          </li>
+          <li>
+            <a href="">Популярное</a>
+          </li>
+          <li>
+            <a href="">Женское</a>
+          </li>
+          <li>
+            <a href="">Мужское</a>
+          </li>
+          <li>
+            <a href="">Десткое</a>
+          </li>
+        </ul>
+        <div id='drug_box'>
+          Перетащите картинку товара сюда:
+        </div>
+        <ul>
+          <li>
+            <a href="">
+              @I AM
+            </a>
+          </li>
+          <li>
+            <a href="">
+              Подписчики
+            </a>
+          </li>
+          <li>
+            <a href="">
+              Подписки
+            </a>
+          </li>
+          <li>
+            <a href="">
+              Лента событий
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div id='bd'>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+        proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <div id='content'>
+          <%= yield %>
+        </div>        
+      </div>
+    </div>
   </div>
 </body>
 </html>
