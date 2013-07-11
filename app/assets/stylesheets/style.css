@@ -1,0 +1,134 @@
+@charset "utf-8";
+/* CSS Document */
+/* behavior: url(js/pie.htc); */
+
+
+/* base */
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+body {
+    background:#fff;
+    font-family: "Arial Narrow",Arial, sans-serif;
+    padding-top: 50px;
+}
+a {
+    color: #5d84a0;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration:underline;
+}
+.clear, .clr {
+    display:block;
+    clear: both;
+    line-height:0;
+}
+ul, ol, li {
+    list-style: none;
+}
+h1 {
+}
+h2 {
+}
+h3 {
+}
+input, textarea {
+    outline:none;
+    resize:none;
+}
+/* base end */
+
+/* header */
+header#hd {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  right: 0;
+  background: url(../images/header_bg.png) repeat-x #1a5eb7;
+  box-shadow: 0 0 6px #ccc;
+  box-shadow: 1px 0 4px rgba(0, 0, 0, 0.4);
+}
+
+header#hd div.nav_pointer {
+  height: 12px;
+  width: 30px;
+  background: #000;
+  position: absolute;
+  top 0;
+  display: block;
+}
+
+header#hd nav {
+  line-height: 50px;
+  height: 50px;
+  margin: 0 auto;
+  position: relative;
+}
+
+header#hd nav a.nav_logo {
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  text-decoration: none;
+}
+
+header#hd nav a.nav_logo:hover {text-decoration: underline;}
+header#hd nav a.nav_logo span.nav_end_word {color: #ffc23c;}
+
+header#hd nav div.nav_title {
+  position: absolute;
+  width: 75%;
+  text-align: center;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  text-decoration: none;
+  display: inline-block;
+}
+
+header#hd nav div.nav_title span.nav_end_word {color: #ffc23c;}
+
+header#hd nav ul {
+  position: absolute;
+  top: 0;
+  right: 0;
+  text-align: right;
+}
+header#hd nav ul li {
+  display: inline-block;
+  font-family: "Arial Narrow", sans-serif;
+  font-size: 14px;
+  height: 50px;
+  line-height: 46px;
+}
+header#hd nav ul li a {
+  color: #fefefe;
+  vertical-align: middle;
+  display: inline-block;
+  padding: 0 0 0 12px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+header#hd nav ul li a:hover {text-decoration: underline;}
+header#hd nav ul li a.nav_user_profile {background: url(../images/nav_user_profile.png) no-repeat 0 10px; padding: 0 0 0 30px;}
+/* header end */
+
+/* grid row */
+.gr {
+  width: 935px; 
+  margin: 0 auto; 
+  text-align: left; 
+  font-size: 0; 
+  line-height: 0;
+  /* grid unit */
+}
+
+#content {
+  height: 1500px;
+}
