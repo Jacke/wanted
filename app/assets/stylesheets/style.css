@@ -131,14 +131,20 @@ div#conteiner {
   display: table;
 }
 /* left group */
-div#left_group {
+  div#left_group {
   position: fixed;
-  z-index: 10;
   top: 85px;
   margin: 0 0 0 13px;
   width: 200px;
   height: 100%;
 }
+/*div#left_group {
+  position: absolute;
+  top: 0;
+  margin: 0 0 0 13px;
+  width: 200px;
+  height: 100%;
+}*/
 
 div#left_group a {
   text-decoration: underline;
