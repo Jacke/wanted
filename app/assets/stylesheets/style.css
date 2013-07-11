@@ -60,7 +60,7 @@ header#hd nav div.nav_pointer {
   background: url(../images/nav_pointer.png) no-repeat;
   position: absolute;
   top: 49px;
-  left: 452px;
+  left: 446px;
   display: block;
   z-index: -10;
 }
@@ -85,7 +85,7 @@ header#hd nav a.nav_logo span.nav_end_word {color: #ffc23c;}
 header#hd nav div.nav_title {
   position: absolute;
   width: 615px;
-  margin-left: 85px;
+  margin-left: 78px;
   text-align: center;
   font-size: 18px;
   font-family: Arial, sans-serif;
@@ -127,16 +127,16 @@ div#conteiner {
   margin: 0 auto;
   z-index: 5;
   top: 35px;
-  width: 980px;
+  width: 996px;
   right: 0;
   display: table;
 }
 /* left group */
   div#left_group {
-  position: fixed;
-  top: 85px;
+  position: absolute;
+  top: 0;
   margin: 0 0 0 8px;
-  width: 160px;
+  width: 155px;
   height: 100%;
 }
 /*div#left_group {
@@ -166,8 +166,18 @@ div#left_group ul li {
 div#left_group div#drug_box {
   color: #937e44;
   font-size: 12px;
-  height: 150px;
-  margin: 30px 0 20px 0;
+  line-height: 18px;
+  margin: 30px 0 40px 0;
+  padding: 0 30px 0 0;
+}
+
+div#left_group div#drug_box div#drug_hart {
+  width: 59px;
+  height: 48px;
+  margin: 10px 0 0 6px;
+  background: url(../images/drug_hart.png) #fff;
+  display: block;
+  position: relative;
 }
 /* left group end */
 
@@ -191,6 +201,17 @@ div#bd {
 }
 /* bd end*/
 
+/* right comments */
+#right_comments {
+  position: absolute;
+  right: 0;
+  width: 230px;
+  display: table;
+  float: left;
+
+}
+/* right comments end */
+
 /* grid row */
 .gr {
   width: 980px; 
@@ -200,6 +221,8 @@ div#bd {
   line-height: 0;
   /* grid unit */
 }
+
+.g2 { width: 550px; }
 
 #content {
   height: 1500px;
