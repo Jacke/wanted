@@ -60,7 +60,7 @@ header#hd nav div.nav_pointer {
   background: url(../images/nav_pointer.png) no-repeat;
   position: absolute;
   top: 49px;
-  left: 408px;
+  left: 452px;
   display: block;
   z-index: -10;
 }
@@ -84,7 +84,8 @@ header#hd nav a.nav_logo span.nav_end_word {color: #ffc23c;}
 
 header#hd nav div.nav_title {
   position: absolute;
-  width: 75%;
+  width: 615px;
+  margin-left: 85px;
   text-align: center;
   font-size: 18px;
   font-family: Arial, sans-serif;
@@ -104,7 +105,7 @@ header#hd nav ul {
 header#hd nav ul li {
   display: inline-block;
   font-family: "Arial Narrow", sans-serif;
-  font-size: 14px;
+  font-size: 12px;
   height: 50px;
   line-height: 46px;
 }
@@ -112,7 +113,7 @@ header#hd nav ul li a {
   color: #fefefe;
   vertical-align: middle;
   display: inline-block;
-  padding: 0 0 0 12px;
+  padding: 0 0 0 10px;
   text-decoration: none;
   cursor: pointer;
 }
@@ -126,7 +127,7 @@ div#conteiner {
   margin: 0 auto;
   z-index: 5;
   top: 35px;
-  width: 935px;
+  width: 980px;
   right: 0;
   display: table;
 }
@@ -134,8 +135,8 @@ div#conteiner {
   div#left_group {
   position: fixed;
   top: 85px;
-  margin: 0 0 0 13px;
-  width: 200px;
+  margin: 0 0 0 8px;
+  width: 160px;
   height: 100%;
 }
 /*div#left_group {
@@ -173,15 +174,26 @@ div#left_group div#drug_box {
 /* bd */
 div#bd {
   position: relative;
-  top: 0;
-  margin: 0 0 0 212px;
+  top: -35px;
+  margin: 0 0 0 170px;
+  padding: 35px 0 0 0;
   display: block;
+  border-left: 1px solid #bbb;
+}
+
+#grid_elemets section#element {
+  width: 230px;
+  height: 250px;
+  background: #bbb;
+  display: block;
+  float: left;
+  margin: 0 0 30px 45px;
 }
 /* bd end*/
 
 /* grid row */
 .gr {
-  width: 935px; 
+  width: 980px; 
   margin: 0 auto; 
   text-align: left; 
   font-size: 0; 
