@@ -148,21 +148,13 @@ div#conteiner {
   height: 100%;
 }*/
 
-a.big_nav_links {
-  text-decoration: underline;
-  padding: 3px 3px;
-}
+a.big_nav_links {text-decoration: underline;padding: 3px 3px;}
+a.big_nav_links:hover {text-decoration: underline;background: #1a5eb7;color: #fff;}
+a.small_nav_links {text-decoration: none;padding: 3px 3px; color: #174f9c;}
+a.small_nav_links:hover {text-decoration: underline;}
 
-a.big_nav_links:hover {
-  text-decoration: underline;
-  background: #1a5eb7;
-  color: #fff;
-}
-
-div#left_group ul li {
-  height: 36px;
-  font-size: 16px;
-}
+.big_nav li {height: 36px;font-size: 16px;}
+.small_nav li {height: 24px;font-size: 12px;}
 
 div#left_group div#drug_box {
   color: #937e44;

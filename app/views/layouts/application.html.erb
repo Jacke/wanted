@@ -21,7 +21,7 @@
     </header>
     <div id='conteiner'>
       <div id='left_group'>
-        <ul>
+        <ul class='big_nav'>
           <li>
             <a href="" class='big_nav_links'>Новое</a>
           </li>
@@ -42,7 +42,7 @@
           Перетащите картинку товара сюда:
           <div id='drug_hart'>&nbsp</div>
         </div>
-        <ul>
+        <ul class='big_nav'>
           <li>
             <a href="" class='big_nav_links'>
               @I AM
@@ -65,11 +65,17 @@
           </li>
         </ul>
         <div id='search'><a href="#">Сделать серч</a></div>
+        <ul class='small_nav'>
+          <li>Популярные хэш-тэги</li>
+          <li><a href="#" class="small_nav_links">#футболки</a></li>
+          <li><a href="#" class="small_nav_links">#носки</a></li>
+          <li><a href="#" class="small_nav_links">#лето</a></li>
+        </ul>
       </div>
       <div id='bd'>
         <div id='content'>
           <%= yield %>
-        </div>        
+        </div>       
       </div>
     </div>
   </div>

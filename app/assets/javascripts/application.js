@@ -14,6 +14,19 @@
 //= require jquery_ujs
 //= require_tree .
 
+$(function() {
+  var page_w = $("html").width();
+  var box = $('#left_group'); // float-fixed block
+
+  if(page_w < 996) {
+      box.css('position', 'absolute');
+      box.css('top', 0);
+  } else {
+      box.css('position', 'fixed');
+      box.css('top', 85);
+  }
+});
+
 $(window).resize(function window_resize(){
   var page_w = $("html").width();
   var box = $('#left_group'); // float-fixed block
