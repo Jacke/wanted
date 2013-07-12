@@ -13,7 +13,7 @@ body {
     background:#fff;
     font-family: "Arial Narrow", Arial, sans-serif;;
     padding-top: 50px;
-    font-size: 12px;
+    font-size: 14px;
 }
 a {
     color: #000;
@@ -106,7 +106,7 @@ header#hd nav ul {
 header#hd nav ul li {
   display: inline-block;
   font-family: "Arial Narrow", Arial, sans-serif;
-  font-size: 12px;
+  font-size: 14px;
   height: 50px;
   line-height: 46px;
 }
@@ -152,13 +152,12 @@ a.big_nav_links {text-decoration: underline;padding: 3px 3px;}
 a.big_nav_links:hover {text-decoration: underline;background: #1a5eb7;color: #fff;}
 a.small_nav_links {text-decoration: none;padding: 3px 3px; color: #174f9c;}
 a.small_nav_links:hover {text-decoration: underline;}
-
-.big_nav li {height: 36px;font-size: 16px;}
-.small_nav li {height: 24px;font-size: 12px;}
+.big_nav li {height: 36px;font-size: 18px;}
+.small_nav li {height: 24px;font-size: 14px;}
 
 div#left_group div#drug_box {
   color: #937e44;
-  font-size: 12px;
+  font-size: 14px;
   line-height: 18px;
   margin: 30px 0 40px 0;
   padding: 0 30px 0 0;
@@ -220,10 +219,10 @@ div#bd {
 #grid_elemets section#element #info #links #like a {height: 16px; width: 16px;display: inline-block;background: url(../images/hart.png) no-repeat;}
 #grid_elemets section#element #info #links #like a:hover {text-decoration: none;}
 #grid_elemets section#element #info #links #like span {line-height: 14px;margin: 0 0 0 2px;position: relative;}
-#grid_elemets section#element #info #links #comments {height: 20px;display: inline-block;}
+#grid_elemets section#element #info #links #comments {height: 20px;display: inline-block;margin-left: 4px;}
 #grid_elemets section#element #info #links #comments a {height: 16px; width: 16px;display: inline-block;background: url(../images/comments.png) no-repeat;}
 #grid_elemets section#element #info #links #comments a:hover {text-decoration: none;}
-#grid_elemets section#element #info #links #comments span {line-height: 14px;margin: 2px 0;position: relative;}
+#grid_elemets section#element #info #links #comments span {line-height: 14px;margin: 0 0 0 2px;position: relative;}
 /* bd end*/
 
 /* right comments */
@@ -235,7 +234,7 @@ div#bd {
   float: left;
 }
 
-#right_comments section#comment { font-size: 12px; line-height: 18px; padding-right: 15px; margin: -2px 0 20px 0;}
+#right_comments section#comment { font-size: 14px; line-height: 18px; padding-right: 15px; margin: -2px 0 20px 0;}
 #right_comments section#comment div#name {color: #9a781a;}
 #right_comments section#comment div#name a {color: #9a781a;text-decoration: underline;}
 #right_comments section#comment div#name a:hover {color: #ddd3b5;}
