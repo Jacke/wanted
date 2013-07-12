@@ -11,8 +11,9 @@
 }
 body {
     background:#fff;
-    font-family: "Arial Narrow", sans-serif;
+    font-family: "Arial Narrow", Arial, sans-serif;;
     padding-top: 50px;
+    font-size: 12px;
 }
 a {
     color: #000;
@@ -99,12 +100,12 @@ header#hd nav div.nav_title span.nav_end_word {color: #ffc23c;}
 header#hd nav ul {
   position: absolute;
   top: 0;
-  right: 0;
+  right: 42px;
   text-align: right;
 }
 header#hd nav ul li {
   display: inline-block;
-  font-family: "Arial Narrow", sans-serif;
+  font-family: "Arial Narrow", Arial, sans-serif;
   font-size: 12px;
   height: 50px;
   line-height: 46px;
@@ -133,8 +134,8 @@ div#conteiner {
 }
 /* left group */
   div#left_group {
-  position: absolute;
-  top: 0;
+  position: fixed;
+  top: 85px;
   margin: 0 0 0 8px;
   width: 155px;
   height: 100%;
@@ -191,14 +192,29 @@ div#bd {
   border-left: 1px solid #bbb;
 }
 
+#grid_elemets {display: block;}
 #grid_elemets section#element {
   width: 230px;
   height: 250px;
-  background: #bbb;
+  background: #fff;
   display: block;
   float: left;
   margin: 0 0 30px 45px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.4);
 }
+
+#grid_elemets section#element #preview {width: 100%;height: 180px;background: #ddd;}
+#grid_elemets section#element #preview a {width: 100%;height: 100%;display: block;}
+#grid_elemets section#element #info {background: #fff;padding: 5px 5px;line-height: 18px;}
+#grid_elemets section#element #info #user a {color: #9a781a;}
+#grid_elemets section#element #info #user a:hover {color: #ddd3b5;text-decoration: underline;}
+#grid_elemets section#element #info #links {margin-top: 3px; }
+#grid_elemets section#element #info #links #like {height: 20px;display: inline-block;}
+#grid_elemets section#element #info #links #like a {height: 20px; width: 20px;display: inline-block;background: #000;}
+#grid_elemets section#element #info #links #like span {line-height: 14px;margin: 0 0 0 2px;position: relative;}
+#grid_elemets section#element #info #links #comments {height: 20px;display: inline-block;}
+#grid_elemets section#element #info #links #comments a {height: 20px; width: 20px;display: inline-block;background: #000;}
+#grid_elemets section#element #info #links #comments span {line-height: 14px;margin: 2px 0;position: relative;}
 /* bd end*/
 
 /* right comments */
@@ -208,8 +224,13 @@ div#bd {
   width: 230px;
   display: table;
   float: left;
-
 }
+
+#right_comments section#comment { font-size: 12px; line-height: 18px; padding-right: 15px; margin: -2px 0 20px 0;}
+#right_comments section#comment div#name {color: #9a781a;}
+#right_comments section#comment div#name a {color: #9a781a;text-decoration: underline;}
+#right_comments section#comment div#name a:hover {color: #ddd3b5;}
+#right_comments section#comment div#info {color: #bcbcbc;}
 /* right comments end */
 
 /* grid row */
