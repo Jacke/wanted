@@ -148,12 +148,12 @@ div#conteiner {
   height: 100%;
 }*/
 
-div#left_group a {
+a.big_nav_links {
   text-decoration: underline;
   padding: 3px 3px;
 }
 
-div#left_group a:hover {
+a.big_nav_links:hover {
   text-decoration: underline;
   background: #1a5eb7;
   color: #fff;
@@ -180,6 +180,19 @@ div#left_group div#drug_box div#drug_hart {
   display: block;
   position: relative;
 }
+
+div#left_group #search {
+  position: relative;
+  background: url(../images/search_pointer.png) no-repeat right 0px;
+  height: 29px;
+  line-height: 29px;
+  font-size: 16px;
+  padding: 0 20px 0 6px;
+  margin: 30px 0 40px -6px;
+  display: inline-block;
+}
+div#left_group #search a { text-decoration: none; }
+div#left_group #search a:hover { color: #333;}
 /* left group end */
 
 /* bd */
@@ -202,18 +215,22 @@ div#bd {
   margin: 0 0 30px 45px;
   box-shadow: 0 0 8px rgba(0,0,0,0.4);
 }
+#grid_elemets section#element:hover {box-shadow: 0 0 15px rgba(0,0,0,0.5);}
 
 #grid_elemets section#element #preview {width: 100%;height: 180px;background: #ddd;}
 #grid_elemets section#element #preview a {width: 100%;height: 100%;display: block;}
+#grid_elemets section#element #preview #price {position: absolute; background: #e4b03a; padding: 4px 8px 4px 15px;}
 #grid_elemets section#element #info {background: #fff;padding: 5px 5px;line-height: 18px;}
 #grid_elemets section#element #info #user a {color: #9a781a;}
 #grid_elemets section#element #info #user a:hover {color: #ddd3b5;text-decoration: underline;}
 #grid_elemets section#element #info #links {margin-top: 3px; }
 #grid_elemets section#element #info #links #like {height: 20px;display: inline-block;}
-#grid_elemets section#element #info #links #like a {height: 20px; width: 20px;display: inline-block;background: #000;}
+#grid_elemets section#element #info #links #like a {height: 16px; width: 16px;display: inline-block;background: url(../images/hart.png) no-repeat;}
+#grid_elemets section#element #info #links #like a:hover {text-decoration: none;}
 #grid_elemets section#element #info #links #like span {line-height: 14px;margin: 0 0 0 2px;position: relative;}
 #grid_elemets section#element #info #links #comments {height: 20px;display: inline-block;}
-#grid_elemets section#element #info #links #comments a {height: 20px; width: 20px;display: inline-block;background: #000;}
+#grid_elemets section#element #info #links #comments a {height: 16px; width: 16px;display: inline-block;background: url(../images/comments.png) no-repeat;}
+#grid_elemets section#element #info #links #comments a:hover {text-decoration: none;}
 #grid_elemets section#element #info #links #comments span {line-height: 14px;margin: 2px 0;position: relative;}
 /* bd end*/
 
@@ -231,6 +248,8 @@ div#bd {
 #right_comments section#comment div#name a {color: #9a781a;text-decoration: underline;}
 #right_comments section#comment div#name a:hover {color: #ddd3b5;}
 #right_comments section#comment div#info {color: #bcbcbc;}
+#right_comments section#comment div#info a {color: #bcbcbc;}
+#right_comments section#comment div#info a:hover {text-decoration: underline;}
 /* right comments end */
 
 /* grid row */
