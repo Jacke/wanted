@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Хочули</title>
+  <title><%= title + ' - ' + Setting.site_name %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
@@ -10,11 +10,17 @@
   <div id='main'>
     <header id='hd'>
       <nav class='gr'>
-        <a href="" class='nav_logo'>ХОЧУ<span class='nav_end_word'>ЛИ</span></a>
-        <div class='nav_title'>НОВ<span class='nav_end_word'>ОЕ</span></div>
+        <%= link_to 'ХОЧУ<span class=\'nav_end_word\'>ЛИ</span>'.html_safe, root_path, class: :nav_logo %>
+        <div class='nav_title'><%= nav_title %></div>
         <ul class='nav_user'>
-          <li><a href="" class='nav_user_profile'>Илья Долинин</a></li>
-          <li><a href="">выход</a></li>
+          <li>
+          <% if user_signed_in? %>
+            <%= link_to current_user.name, edit_user_registration_path, class: :nav_user_profile %>
+            <%= link_to 'выход', destroy_user_session_path, method: :delete %>
+          <% else %>
+            <%= link_to 'Вход', user_omniauth_authorize_path(:vkontakte)%>
+          <% end %>
+          </li>
         </ul>
         <div class='nav_pointer'></div>
       </nav>
@@ -23,10 +29,10 @@
       <div id='left_group'>
         <ul class='big_nav'>
           <li>
-            <a href="" class='big_nav_links'>Новое</a>
+            <%= link_to 'Новое', root_path, class: :big_nav_links %>
           </li>
           <li>
-            <a href="" class='big_nav_links'>Популярное</a>
+            <%= link_to 'Популярное', popular_path, class: :big_nav_links %>
           </li>
           <li>
             <a href="" class='big_nav_links'>Женское</a>
@@ -38,45 +44,47 @@
             <a href="" class='big_nav_links'>Десткое</a>
           </li>
         </ul>
-        <div id='drug_box'>
-          Перетащите картинку товара сюда:
-          <div id='drug_hart'>&nbsp</div>
+        <% if user_signed_in? %>
+          <div id='drug_box'>
+            Перетащите картинку товара сюда:
+            <div id='drug_hart'>&nbsp</div>
+          </div>
+          <ul class='big_nav'>
+            <li>
+              <a href="" class='big_nav_links'>
+                <%= link_to '@I_AM', user_show_path(current_user) %>
+              </a>
+            </li>
+            <li>
+              <a href="" class='big_nav_links'>
+                Подписчики
+              </a>
+            </li>
+            <li>
+              <a href="" class='big_nav_links'>
+                Подписки
+              </a>
+            </li>
+            <li>
+              <a href="" class='big_nav_links'>
+                Лента событий
+              </a>
+            </li>
+          </ul>
+          <div id='search'><a href="#">Сделать серч</a></div>
+          <ul class='small_nav'>
+            <li>Популярные хэш-тэги</li>
+            <li><a href="#" class="small_nav_links">#футболки</a></li>
+            <li><a href="#" class="small_nav_links">#носки</a></li>
+            <li><a href="#" class="small_nav_links">#лето</a></li>
+          </ul>
         </div>
-        <ul class='big_nav'>
-          <li>
-            <a href="" class='big_nav_links'>
-              @I AM
-            </a>
-          </li>
-          <li>
-            <a href="" class='big_nav_links'>
-              Подписчики
-            </a>
-          </li>
-          <li>
-            <a href="" class='big_nav_links'>
-              Подписки
-            </a>
-          </li>
-          <li>
-            <a href="" class='big_nav_links'>
-              Лента событий
-            </a>
-          </li>
-        </ul>
-        <div id='search'><a href="#">Сделать серч</a></div>
-        <ul class='small_nav'>
-          <li>Популярные хэш-тэги</li>
-          <li><a href="#" class="small_nav_links">#футболки</a></li>
-          <li><a href="#" class="small_nav_links">#носки</a></li>
-          <li><a href="#" class="small_nav_links">#лето</a></li>
-        </ul>
-      </div>
-      <div id='bd'>
-        <div id='content'>
-          <%= yield %>
-        </div>       
-      </div>
+        <div id='bd'>
+          <div id='content'>
+            <%= yield %>
+          </div>       
+        </div>
+      <% end %>
     </div>
   </div>
 </body>

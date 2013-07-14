@@ -18,7 +18,7 @@ $(function() {
   var page_w = $("html").width();
   var box = $('#left_group'); // float-fixed block
 
-  if(page_w < 996) {
+  if(page_w < 981) {
       box.css('position', 'absolute');
       box.css('top', 0);
   } else {
@@ -31,7 +31,7 @@ $(window).resize(function window_resize(){
   var page_w = $("html").width();
   var box = $('#left_group'); // float-fixed block
 
-  if(page_w < 996) {
+  if(page_w < 981) {
       box.css('position', 'absolute');
       box.css('top', 0);
   } else {

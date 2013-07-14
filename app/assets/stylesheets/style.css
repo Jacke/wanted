@@ -61,7 +61,7 @@ header#hd nav div.nav_pointer {
   background: url(../images/nav_pointer.png) no-repeat;
   position: absolute;
   top: 49px;
-  left: 446px;
+  left: 442px;
   display: block;
   z-index: -10;
 }
@@ -78,6 +78,7 @@ header#hd nav a.nav_logo {
   font-family: Arial, sans-serif;
   color: #fff;
   text-decoration: none;
+  margin-left: 8px;
 }
 
 header#hd nav a.nav_logo:hover {text-decoration: underline;}
@@ -86,7 +87,7 @@ header#hd nav a.nav_logo span.nav_end_word {color: #ffc23c;}
 header#hd nav div.nav_title {
   position: absolute;
   width: 615px;
-  margin-left: 78px;
+  margin-left: 70px;
   text-align: center;
   font-size: 18px;
   font-family: Arial, sans-serif;
@@ -128,7 +129,7 @@ div#conteiner {
   margin: 0 auto;
   z-index: 5;
   top: 35px;
-  width: 996px;
+  width: 960px;
   right: 0;
   display: table;
 }
@@ -167,13 +168,11 @@ div#left_group div#drug_box div#drug_hart {
   width: 59px;
   height: 48px;
   margin: 10px 0 0 6px;
-  background: url(../images/drug_hart.png) #fff;
-  display: block;
-  position: relative;
+  background: url(../images/drug_hart.png);
+  display: block;  content: "";
 }
 
 div#left_group #search {
-  position: relative;
   background: url(../images/search_pointer.png) no-repeat right 0px;
   height: 29px;
   line-height: 29px;
@@ -203,7 +202,7 @@ div#bd {
   background: #fff;
   display: block;
   float: left;
-  margin: 0 0 30px 45px;
+  margin: 0 0 30px 30px;
   box-shadow: 0 0 8px rgba(0,0,0,0.4);
 }
 #grid_elemets section#element:hover {box-shadow: 0 0 15px rgba(0,0,0,0.5);}
