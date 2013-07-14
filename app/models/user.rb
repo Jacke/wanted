@@ -24,7 +24,9 @@ class User < ActiveRecord::Base
                         provider:auth.provider,
                         uid:auth.uid,
                         email:auth.extra.raw_info.uid.to_s+'@vk.com',
-                        password:Devise.friendly_token[0,20] }
+                        password:Devise.friendly_token[0,20],
+                        url:auth.info.urls.Vkontakte,
+                        sex:auth.extra.raw_info.sex }
           when :mailru
             params  = { name:auth.info.name,
                         nickname:auth.info.nickname,

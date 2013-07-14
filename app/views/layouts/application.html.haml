@@ -1,0 +1,70 @@
+!!!
+%html
+  %head
+    %title= title + ' - ' + Setting.site_name
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+  %body
+    #main
+      %header#hd
+        %nav.gr
+          = link_to 'ХОЧУ<span class=\'nav_end_word\'>ЛИ</span>'.html_safe, root_path, class: :nav_logo
+          .nav_title= nav_title
+          %ul.nav_user
+            %li
+              - if user_signed_in?
+                = link_to current_user.name, edit_user_registration_path, class: :nav_user_profile
+                = link_to 'выход', destroy_user_session_path, method: :delete
+              - else
+                = link_to 'Вход', user_omniauth_authorize_path(:vkontakte)
+                = link_to 'Вход', user_omniauth_authorize_path(:vkontakte), :onclick => '$(\'#exampleModal1\').arcticmodal()', :href => '#'
+          .nav_pointer
+      #conteiner
+        #left_group
+          %ul.big_nav
+            %li
+              = link_to 'Новое', root_path, class: :big_nav_links
+            %li
+              = link_to 'Популярное', popular_path, class: :big_nav_links
+            %li
+              %a.big_nav_links{:href => ""} Женское
+            %li
+              %a.big_nav_links{:href => ""} Мужское
+            %li
+              %a.big_nav_links{:href => ""} Десткое
+          - if user_signed_in?
+            #drug_box
+              Перетащите картинку товара сюда:
+              #drug_hart &nbsp
+            %ul.big_nav
+              %li
+                = link_to '@I_AM', user_show_path(current_user), class: :big_nav_links
+              %li
+                %a.big_nav_links{:href => ""}
+                  Подписчики
+              %li
+                %a.big_nav_links{:href => ""}
+                  Подписки
+              %li
+                %a.big_nav_links{:href => ""}
+                  Лента событий
+            #search
+              %a{:href => "#"} Сделать серч
+            %ul.small_nav
+              %li Популярные хэш-тэги
+              %li
+                %a.small_nav_links{:href => "#"} #футболки
+              %li
+                %a.small_nav_links{:href => "#"} #носки
+              %li
+                %a.small_nav_links{:href => "#"} #лето
+        #bd
+          #content
+            = yield
+            
+            .g-hidden{:style => 'display: none'}
+              .box-modal#exampleModal1
+                .box-modal_close.arcticmodal-close
+                  Закрыть
+                Пример простого модального окна

@@ -12,6 +12,7 @@ gem 'omniauth-mailru'
 gem 'omniauth-odnoklassniki'
 gem 'devise'
 gem 'rocket_tag'
+gem 'haml-rails'
 
 gem 'therubyracer', :platforms => :ruby
 gem 'jquery-rails'
