@@ -1,3 +1,4 @@
+#encoding: utf-8
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -9,6 +10,14 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :name, :nickname, :login, :sex, :sity, :about, :provider, :uid, :url
   # attr_accessible :title, :body
+  
+  # Relations
+  #===============================================================
+
+
+  # Validations
+  #===============================================================
+  validates_presence_of :name
 
   #== Class Methods ==============================================
   class << self

@@ -1,6 +1,6 @@
 .box-modal {
 	position: relative;
-	width: 500px;
+	width: 600px;
 	padding: 30px 20px;
 	background: #fff;
 	box-shadow: 0 0 0 6px rgba(153, 153, 153, .3);
@@ -21,21 +21,25 @@
 #loginModal ul#social {margin: 20px 0;}
 #loginModal ul#social li {
   display: inline-block;
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
-  background: #bbb;
+  width: 70px;
+  height: 70px;
+  line-height: 70px;
   margin: 0 30px;
+  content: "";
 }
 #loginModal ul#social li a {
   content: "";
   width: 100%;
   height: 100%;
   display: block;
+  text-decoration: none;
 }
+#loginModal ul#social li.vk {background: url('../images/vk_big.png') no-repeat;}
+#loginModal ul#social li.od {background: url('../images/od_big.png') no-repeat;}
+#loginModal ul#social li.ma {background: url('../images/ma_big.png') no-repeat;}
 
-#loginModal #sign_up_form {margin: 20px 0;}
-#loginModal #sign_up_form input  {
+#loginModal #sign_up_form,#loginModal #login_form {margin: 20px 0;}
+#loginModal #sign_up_form input,#loginModal #login_form input {
   height: 40px;
   width: 200px;
   background: #ccc;
@@ -47,10 +51,13 @@
   position: relative;
   margin: 0 auto 20px auto;
 }
-#loginModal #sign_up_form input.button {background: #F68735;color: #fff;}
-#loginModal #sign_up_form input.button:hover {background: #FFA665;color: #fff;cursor: pointer;}
+#loginModal #sign_up_form input.button,#loginModal #login_form input.button{background: #F68735;color: #fff;}
+#loginModal #sign_up_form input.button:hover,#loginModal #login_form input.button:hover {background: #FFA665;color: #fff;cursor: pointer;}
 #loginModal .notice-bar {
   margin-top: 10px;
   color: #F38352;
   font-size: 14px;
+}
+.pointer {
+  cursor: pointer;
 }

@@ -15,4 +15,5 @@ Devise.setup do |config|
   config.http_authenticatable_on_xhr = false
   config.navigational_formats = ["*/*", :html, :json]
   config.omniauth :vkontakte, OAUTH['vkontakte']['app_id'], OAUTH['vkontakte']['app_secret']
+  config.scoped_views = true
 end

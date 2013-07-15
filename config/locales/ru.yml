@@ -1,0 +1,18 @@
+ru:
+  will_paginate:
+    next_label: "Вперед »"
+    previous_label: "« Назад"
+    page_gap: "..."
+    pagegap: "..."
+    page_gap_label: "..."
+    pagegap_label: "..."
+
+  activerecord:
+    attributes:
+      user:
+        nickname: Никнэйм
+        email: Email
+        login: Логин
+        name: Имя
+        password: Пароль
+        remember_me: Запомнить?

@@ -20,6 +20,8 @@ module ApplicationHelper
       "Популярное"
     when "users/show"
       @user.name
+    when "registrations/edit"
+      "Настройки"
     else
       ""
     end
@@ -33,6 +35,8 @@ module ApplicationHelper
       html = "ПОПУЛЯРН<span class='nav_end_word'>ОЕ</span>".html_safe
     when "users/show"
       html = "#{@user.name}<span class='nav_end_word'></span>".html_safe
+    when "registrations/edit"
+      html = "НАСТРОЙКИ <span class='nav_end_word'>ПРОФИЛЯ</span>".html_safe
     else
       ""
     end

@@ -43,7 +43,7 @@ $(window).resize(function window_resize(){
 var showErrors = function(errors){
   var nb = $('.notice-bar');
   nb.removeClass('notice').addClass('error');
-  var a = nb.slideDown().delay(10000);
+  var a = nb.slideDown().delay(5000);
   nb.html('');
   $.each(errors, function(i,msg){
     nb.append('<li>'+msg+'</li>')
@@ -51,13 +51,3 @@ var showErrors = function(errors){
   a.slideUp();
 }
 
-$("#login_button").click(function(){
-  $('#login_form').slideUp();
-  $('#sign_up_form').slideDown();
-  alert('asdasd');
-})
-$('#clickme').click(function() {
-  $('#login_form').slideDown('slow', function() {
-    // Animation complete.
-  });
-});

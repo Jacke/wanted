@@ -11,7 +11,7 @@
 }
 body {
     background:#fff;
-    font-family: "Arial Narrow", Arial, sans-serif;;
+    font-family: "Arial Narrow", Arial, sans-serif;
     padding-top: 50px;
     font-size: 14px;
 }
@@ -253,7 +253,22 @@ div#bd {
 }
 
 .g2 { width: 550px; }
+.gi {padding: 0 30px;}
 
 #content {
   height: 1500px;
 }
+
+.user_form {}
+.user_form input {
+  height: 30px;
+  width: 200px;
+  background: #ccc;
+  font-size: 18px;
+  color: #000;
+  display: block;
+  margin: 0 0 10px 0;
+  font-family: "Arial Narrow", Arial, sans-serif;
+}
+.user_form input.button{background: #F68735;color: #fff;}
+.user_form input.button:hover {background: #FFA665;color: #fff;cursor: pointer;}
