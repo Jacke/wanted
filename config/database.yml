@@ -1,8 +1,0 @@
-
-development:
-  adapter: mysql2
-  encoding: utf8
-  database: hochuli
-  username: test_user
-  password: test_pass
-  host: 127.0.0.1
