@@ -1,9 +1,56 @@
 .box-modal {
 	position: relative;
 	width: 500px;
-	padding: 16px;
+	padding: 30px 20px;
 	background: #fff;
 	box-shadow: 0 0 0 6px rgba(153, 153, 153, .3);
+  text-align: center;
+  font-size: 18px;
+  font-weight: bold;
 }
 .box-modal_close { position: absolute; right: 10px; top: 6px; font-size: 11px; line-height: 15px; color: #999; cursor: pointer; }
 .box-modal_close:hover { color: #666; }
+
+/* Dialog window */
+#loginModal #title {
+  font-size: 18px;
+  color: #00458B;
+  font-weight: bold;
+}
+
+#loginModal ul#social {margin: 20px 0;}
+#loginModal ul#social li {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  line-height: 60px;
+  background: #bbb;
+  margin: 0 30px;
+}
+#loginModal ul#social li a {
+  content: "";
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#loginModal #sign_up_form {margin: 20px 0;}
+#loginModal #sign_up_form input  {
+  height: 40px;
+  width: 200px;
+  background: #ccc;
+  font-size: 24px;
+  color: #999;
+  font-weight: bold;
+  text-align: center;
+  display: block;
+  position: relative;
+  margin: 0 auto 20px auto;
+}
+#loginModal #sign_up_form input.button {background: #F68735;color: #fff;}
+#loginModal #sign_up_form input.button:hover {background: #FFA665;color: #fff;cursor: pointer;}
+#loginModal .notice-bar {
+  margin-top: 10px;
+  color: #F38352;
+  font-size: 14px;
+}

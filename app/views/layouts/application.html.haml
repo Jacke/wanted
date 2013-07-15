@@ -17,8 +17,7 @@
                 = link_to current_user.name, edit_user_registration_path, class: :nav_user_profile
                 = link_to 'выход', destroy_user_session_path, method: :delete
               - else
-                = link_to 'Вход', user_omniauth_authorize_path(:vkontakte)
-                = link_to 'Вход', user_omniauth_authorize_path(:vkontakte), :onclick => '$(\'#exampleModal1\').arcticmodal()', :href => '#'
+                = link_to 'Вход', '#', :onclick => '$(\'#loginModal\').arcticmodal()', :href => '#'
           .nav_pointer
       #conteiner
         #left_group
@@ -62,9 +61,5 @@
         #bd
           #content
             = yield
-            
-            .g-hidden{:style => 'display: none'}
-              .box-modal#exampleModal1
-                .box-modal_close.arcticmodal-close
-                  Закрыть
-                Пример простого модального окна
+      #footer
+      = render partial: "shared/login"

@@ -40,13 +40,24 @@ $(window).resize(function window_resize(){
   }
 });
 
-/*$(function() {
-    var box = $('#left_groupp'); // float-fixed block
+var showErrors = function(errors){
+  var nb = $('.notice-bar');
+  nb.removeClass('notice').addClass('error');
+  var a = nb.slideDown().delay(10000);
+  nb.html('');
+  $.each(errors, function(i,msg){
+    nb.append('<li>'+msg+'</li>')
+  })
+  a.slideUp();
+}
 
-    var top = box.offset().top - parseFloat(box.css('marginTop').replace(/auto/, 0));
-    $(window).scroll(function(){
-        var windowpos = $(window).scrollTop();
-            box.css('position', 'fixed');
-            box.css('top', '85px');
-    });
-});*/
+$("#login_button").click(function(){
+  $('#login_form').slideUp();
+  $('#sign_up_form').slideDown();
+  alert('asdasd');
+})
+$('#clickme').click(function() {
+  $('#login_form').slideDown('slow', function() {
+    // Animation complete.
+  });
+});

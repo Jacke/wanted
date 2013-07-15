@@ -1,0 +1,28 @@
+.g-hidden{:style => 'display: none'}
+  .box-modal#loginModal
+    .box-modal_close.arcticmodal-close
+      Закрыть
+    %span#title ХОЧУЛИ ? ДАВАЙТЕ ОПРЕДЕЛИМСЯ
+    %ul#social
+      %li
+        = link_to 'VK', user_omniauth_authorize_path(:vkontakte)
+      %li
+        %a{:href => '#'}
+          OD
+      %li
+        %a{:href => '#'}
+          MA
+    %span ИЛИ
+    %ul.notice-bar{class:"error"}
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => 'sign_up_form'}, :format => :json, :remote => true) do |f|
+      = devise_error_messages!
+      = f.email_field :email, :placeholder => 'почта'
+      = f.text_field :name, :placeholder => 'имя'
+      = f.password_field :password, :placeholder => 'пароль'
+      = f.submit "хочу", :class => 'button'
+    %a#clickme{:href => '#'} Вход
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:id => 'login_form'}, :format => :json, :remote => true) do |f|
+      = devise_error_messages!
+      = f.email_field :email, :placeholder => 'почта'
+      = f.password_field :password, :placeholder => 'пароль'
+      = f.submit "хочу", :class => 'button'
