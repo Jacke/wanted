@@ -12,8 +12,20 @@
       #block
         подписаться
   #nav_panel
-    #block Вещи
-    #block Коллекции
-    #block Упоминания
+    #block
+      %a{:href => '#'}
+        %span.big_arial
+          30
+        Вещей
+    #block.active
+      %a
+        %span.big_arial
+          5
+        Коллекций
+    #block
+      %a
+        %span.big_arial
+          10
+        Упоминаний
   #user_content
     Содержимое

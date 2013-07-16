@@ -189,12 +189,13 @@ div#left_group #search a:hover { color: #333;}
 
 /* bd */
 div#bd {
-  position: relative;
+  position: absolute;
   top: -35px;
-  margin: 0 0 0 170px;
+  right: 0;
   padding: 35px 0 0 0;
   display: block;
   border-left: 1px solid #bbb;
+  width: 790px;
 }
 
 #grid_elemets {display: block;}
@@ -276,8 +277,8 @@ div#bd {
 .user_form input.button:hover {background: #FFA665;color: #fff;cursor: pointer;}
 
 .avatar {
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   background: #bbb;
 }
 /* user page */
@@ -287,16 +288,36 @@ div#bd {
   width: 320px;
   float: left;
   margin-left: 10px;
+  font-size: 18px;
+  line-height: 24px;
 }
 #user #info #block_buttons {position: absolute;right: 0;width: 300px;}
-#user #info #block_buttons #block {width: 140px;height: 50px;background: #bbb;float: left;margin: 0 0 10px 10px;}
-#user #nav_panel {display: inline-block;margin-left: -30px;margin-right: -30px;}
+#user #info #block_buttons #block {width: 140px;height: 50px;background: #e2e2e2;float: left;margin: 0 0 10px 10px;}
+#user #nav_panel {display: inline-block;margin: 0 -30px 0 -30px;}
 #user #nav_panel #block {
   width: 263px;
-  height: 50px;
+  height: 60px;
   float: left;
-  background: #bbb;
+  background: url(../images/nav_user_block.png) #bbb repeat-y;
+  line-height: 60px;
+  font-size: 18px;
+}
+#user #nav_panel #block a {
+  width: 100%;
+  height: 100%;
+  display: block;
+  padding-left: 30px;
 }
 #user #nav_panel #block.active {
   background: #fff;
+  margin: -1px 0 0 -1px;
+  border-top: 1px solid #bbb;
+  border-left: 1px solid #bbb;
+  border-right: 1px solid #bbb;
+  z-index: 10;
+}
+.big_arial {
+  font-size: 24px;
+  font-family: Arial, sans-serif;
+  font-weight: bold;
 }
