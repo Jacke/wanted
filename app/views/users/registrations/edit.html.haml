@@ -1,9 +1,14 @@
 .gi
+  %h2 Ава
+  .avatar
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'user_form' }) do |f|
     = devise_error_messages!
     %ul
-      %li= f.email_field :email, :autofocus => true
+      %li= f.email_field :email
       %li= f.text_field :name, placeholder: 'Имя'
+      %li= f.text_field :nickname, placeholder: 'логин'
+      %li= f.text_field :city, placeholder: 'Город'
+      %li= f.text_area :about
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
         %li Currently waiting confirmation for: #{resource.unconfirmed_email}
       /%li= f.password_field :password, :autocomplete => "off"
