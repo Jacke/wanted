@@ -16,6 +16,7 @@ gem 'haml-rails'
 
 gem 'therubyracer', :platforms => :ruby
 gem 'jquery-rails'
+gem 'thin'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -26,7 +27,6 @@ end
 group :development do
   gem 'capistrano'
   gem 'letter_opener'
-  gem 'thin'
   gem 'rvm-capistrano'
   gem 'localtunnel'
   gem 'debugger'
