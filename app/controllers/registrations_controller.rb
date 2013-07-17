@@ -24,6 +24,10 @@ class RegistrationsController < Devise::RegistrationsController
   def update
     @user = User.find(current_user.id)
 
+    if change_surrogat_email?(@user, params)
+      params[:user][:email] = @user.email
+    end
+
     successfully_updated = if needs_password?(@user, params)
       @user.update_with_password(params[:user])
     else
@@ -58,6 +62,11 @@ class RegistrationsController < Devise::RegistrationsController
   def needs_password?(user, params)
     #user.email != params[:user][:email] ||
       params[:user][:password].present?
+  end
+
+  # если провайдер Вконтакте и контактный емайл не меняли
+  def change_surrogat_email?(user,params)
+    params[:user][:email].present? && user.provider == 'vkontakte'
   end
  
 end
