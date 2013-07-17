@@ -2,23 +2,26 @@
   %h2 Ава
   #user_avatar
     .avatar
+      =image_tag @current_user.avatar.url(:medium)
     %a#edit_avatar_button.blue_button{:href => '#'} Изменить
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'user_form' }) do |f|
+    = flash[:notice]
     = devise_error_messages!
     %ul
       %li Профиль
-      %li= f.email_field :email, class: :input
+      %li= f.email_field :email, placeholder: 'Email', class: :input
       %li= f.text_field :name, placeholder: 'Имя', class: :input
       %li.m_left
         #left_title @
         = f.text_field :nickname, placeholder: 'логин', class: :input
       %li= f.text_field :city, placeholder: 'Город', class: :input
-      = f.text_area :about, class: :input, rows: 5, maxlength: 140
-      %li.m_left
-        #left_title=f.radio_button :sex, 1, :checked => current_user.sex==1 || nil
-        Муж
+      = f.text_area :about, class: :input, rows: 5, maxlength: 140, placeholder: 'Немного о себе'
+      %li=f.file_field :avatar
       %li.m_left
         #left_title=f.radio_button :sex, 2, :checked => current_user.sex==2 || nil
+        Муж
+      %li.m_left
+        #left_title=f.radio_button :sex, 1, :checked => current_user.sex==1 || nil
         Жен
       %li.m_left
         #left_title=f.radio_button :sex, 0, :checked => current_user.sex==0 || nil
@@ -44,3 +47,4 @@
       %li= f.submit "Сохранить",:class => 'button'
   /%p
   /  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
+  = render partial: 'shared/image_upload'

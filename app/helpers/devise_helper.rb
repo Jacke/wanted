@@ -9,9 +9,7 @@ module DeviseHelper
                       :resource => resource.class.model_name.human.downcase)
 
     html = <<-HTML
-    <div class="alert alert-error fade in">
-      <a class="close" data-dismiss="alert" href="#">×</a>
-      <h4 class="alert-heading">#{sentence}</h4>
+    <div class="alert-error">
       <ul>#{messages}</ul>
     </div>
     HTML
@@ -23,8 +21,7 @@ module DeviseHelper
     messages = flash.each.map{|type,msg| msg if type == :alert}.join
     return if messages.empty?
     html = <<-HTML
-    <div class="alert alert-error fade in">
-      <a class="close" data-dismiss="alert" href="#">×</a>
+    <div class="">
       <ul>#{messages}</ul>
     </div>
     HTML

@@ -26,3 +26,6 @@ $(document).ready ->
 
   $("#edit_pass_button").click ->
     $("#pass_inputs").slideToggle();
+
+  $("#edit_avatar_button").click ->
+    $(".image_upload").arcticmodal();

@@ -9,6 +9,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :name, :nickname, :login, :sex, :city, :about, :provider, :uid, :url
+  #paperclip
+  attr_accessible :avatar
+  has_attached_file :avatar, :styles => { :medium => "120x120>" }, :default_url => "/images/avatars/:style/missing.png"
   # attr_accessible :title, :body
   
   # Relations
@@ -34,7 +37,7 @@ class User < ActiveRecord::Base
                         uid:auth.uid,
                         email:auth.extra.raw_info.uid.to_s+'@vk.com',
                         password:Devise.friendly_token[0,20],
-                        url:auth.info.urls.Vkontakte,
+                        url:auth.extra.raw_info.photo,
                         sex:auth.extra.raw_info.sex }
           when :mailru
             params  = { name:auth.info.name,

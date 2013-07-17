@@ -16,3 +16,4 @@ ru:
         name: Имя
         password: Пароль
         remember_me: Запомнить?
+        current_password: Текущий пароль
