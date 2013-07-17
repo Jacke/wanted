@@ -16,6 +16,7 @@ gem 'haml-rails'
 
 gem 'therubyracer', :platforms => :ruby
 gem 'jquery-rails'
+gem 'mysql2'
 gem 'thin'
 
 group :assets do
@@ -30,10 +31,4 @@ group :development do
   gem 'rvm-capistrano'
   gem 'localtunnel'
   gem 'debugger'
-  gem 'mysql2'
-end
-
-
-group :production do
-  gem 'pg'
 end
