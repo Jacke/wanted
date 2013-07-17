@@ -35,6 +35,7 @@ h1 {
 h2 {
   font-size: 18px;
   font-weight: normal;
+  margin-bottom: 10px;
 }
 h3 {
 }
@@ -255,32 +256,75 @@ div#bd {
   /* grid unit */
 }
 
+/* style classes */
+a.blue {color: #174f9c;}
 .g2 { width: 550px; }
 .gi {padding: 0 30px;}
+.gue {padding: 0 30px 0 80px;font-size: 18px;}
+.m_left {margin-left: -50px;}
 
 #content {
   height: 1500px;
 }
-
-.user_form ul {margin: 10px 0;}
-.user_form input {
-  height: 30px;
-  width: 200px;
-  background: #ccc;
-  font-size: 18px;
-  color: #000;
-  display: block;
-  margin: 0 0 10px 0;
-  font-family: "Arial Narrow", Arial, sans-serif;
-}
-.user_form input.button{background: #F68735;color: #fff;}
-.user_form input.button:hover {background: #FFA665;color: #fff;cursor: pointer;}
-
 .avatar {
   width: 120px;
   height: 120px;
-  background: #bbb;
+  background: #e2e2e2;
 }
+.input {
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: 18px;
+  background: #e2e2e2;
+  color: #000;
+  padding: 0 5px;
+}
+.button{
+  background: #F68735;
+  color: #fff;
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: 18px;
+  padding: 0 5px;
+}
+.button:hover {background: #FFA665;color: #fff;cursor: pointer;}
+.blue_button {
+  font-family: "Arial Narrow", Arial, sans-serif;
+  font-size: 18px;
+  background: #214f9d;
+  color: #fff;
+  padding: 0 5px;
+  text-decoration: none;
+}
+.blue_button:hover {background: #275bb0;text-decoration: none;}
+/* style classes end */
+/* edit user info page */
+#left_title {
+  width: 45px;
+  display: inline-block;
+  float: left;
+  line-height: 30px;
+  text-align: right;
+  font-size: 18px;
+  padding-right: 5px;
+}
+#left_title input {width: 45px;}
+.user_form {margin: 40px 0;}
+.user_form ul {margin: 10px 0;}
+.user_form ul li {margin-bottom: 10px; height: 30px;line-height: 30px;}
+.user_form input {
+  height: 30px;
+  width: 200px;
+  display: block;
+}
+#user_avatar .avatar {margin-bottom: 10px;}
+#user_avatar #edit_avatar_button {
+  height: 40px; 
+  width: 120px;
+  line-height: 40px;
+  display: inline-block;
+  padding: 0;
+  text-align: center;
+}
+/* edit user info page end */
 /* user page */
 #user #info {display: inline-block;margin-bottom: 20px;}
 #user #info #avatar {float: left;}
@@ -321,3 +365,4 @@ div#bd {
   font-family: Arial, sans-serif;
   font-weight: bold;
 }
+/* user page end */

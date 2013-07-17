@@ -1,19 +1,45 @@
-.gi
+.gue
   %h2 Ава
-  .avatar
+  #user_avatar
+    .avatar
+    %a#edit_avatar_button.blue_button{:href => '#'} Изменить
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'user_form' }) do |f|
     = devise_error_messages!
     %ul
-      %li= f.email_field :email
-      %li= f.text_field :name, placeholder: 'Имя'
-      %li= f.text_field :nickname, placeholder: 'логин'
-      %li= f.text_field :city, placeholder: 'Город'
-      %li= f.text_area :about
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        %li Currently waiting confirmation for: #{resource.unconfirmed_email}
+      %li Профиль
+      %li= f.email_field :email, class: :input
+      %li= f.text_field :name, placeholder: 'Имя', class: :input
+      %li.m_left
+        #left_title @
+        = f.text_field :nickname, placeholder: 'логин', class: :input
+      %li= f.text_field :city, placeholder: 'Город', class: :input
+      = f.text_area :about, class: :input, rows: 5, maxlength: 140
+      %li.m_left
+        #left_title=f.radio_button :sex, 1, :checked => current_user.sex==1 || nil
+        Муж
+      %li.m_left
+        #left_title=f.radio_button :sex, 2, :checked => current_user.sex==2 || nil
+        Жен
+      %li.m_left
+        #left_title=f.radio_button :sex, 0, :checked => current_user.sex==0 || nil
+        Не важно
+      %li Уведомления по почте
+      %li.m_left
+        #left_title= check_box_tag 'rock'
+        Подписчики
+      %li.m_left
+        #left_title= check_box_tag 'rock'
+        Упоминания
+      %li.m_left
+        #left_title= check_box_tag 'rock'
+        Новые товары у подписчиков
+      /- if devise_mapping.confirmable? && resource.pending_reconfirmation?
+      /  %li Currently waiting confirmation for: #{resource.unconfirmed_email}
       /%li= f.password_field :password, :autocomplete => "off"
       /%li= f.password_field :password_confirmation
       /%li= f.password_field :current_password
+      %li
+        %a.blue{:href => '#'} Изменить пароль
       %li= f.submit "Сохранить",:class => 'button'
   /%p
   /  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.
