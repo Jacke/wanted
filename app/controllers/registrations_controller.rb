@@ -66,7 +66,7 @@ class RegistrationsController < Devise::RegistrationsController
 
   # если провайдер Вконтакте и контактный емайл не меняли
   def change_surrogat_email?(user,params)
-    params[:user][:email] != '' && user.provider == 'vkontakte'
+    params[:user][:email].empty? && user.provider == 'vkontakte'
   end
  
 end
