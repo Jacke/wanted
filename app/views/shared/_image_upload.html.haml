@@ -2,4 +2,8 @@
   .image_upload.box-modal
     .box-modal_close.arcticmodal-close
       Закрыть
-    Выберите изображение для загрузки
+    %h2 Выберите изображение для загрузки
+    #user_avatar
+      .avatar
+        =image_tag @current_user.avatar.url(:medium)
+      %a#edit_avatar_button.blue_button{:href => ''} Выбрать
