@@ -35,11 +35,12 @@
         Новые товары у подписчиков
       /- if devise_mapping.confirmable? && resource.pending_reconfirmation?
       /  %li Currently waiting confirmation for: #{resource.unconfirmed_email}
-      /%li= f.password_field :password, :autocomplete => "off"
-      /%li= f.password_field :password_confirmation
-      /%li= f.password_field :current_password
       %li
-        %a.blue{:href => '#'} Изменить пароль
+        %a#edit_pass_button.blue Изменить пароль
+      #pass_inputs{:style => 'display: none'}
+        %li= f.password_field :password, :autocomplete => "off", class: :input, placeholder: 'новый пароль'
+        %li= f.password_field :password_confirmation, class: :input, placeholder: 'повторите пароль'
+        %li= f.password_field :current_password, class: :input, placeholder: 'текущий пароль'
       %li= f.submit "Сохранить",:class => 'button'
   /%p
   /  Unhappy? #{button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete}.

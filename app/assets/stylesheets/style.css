@@ -257,14 +257,14 @@ div#bd {
 }
 
 /* style classes */
-a.blue {color: #174f9c;}
+a.blue {color: #174f9c;cursor: pointer;}
 .g2 { width: 550px; }
 .gi {padding: 0 30px;}
 .gue {padding: 0 30px 0 80px;font-size: 18px;}
 .m_left {margin-left: -50px;}
 
 #content {
-  height: 1500px;
+  min-height: 500px;
 }
 .avatar {
   width: 120px;
@@ -315,6 +315,7 @@ a.blue {color: #174f9c;}
   width: 200px;
   display: block;
 }
+.user_form input.button {width: 210px;}
 #user_avatar .avatar {margin-bottom: 10px;}
 #user_avatar #edit_avatar_button {
   height: 40px; 

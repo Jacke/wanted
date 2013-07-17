@@ -23,3 +23,6 @@ $(document).ready ->
     sf = $('#sign_up_form');
     lf.slideUp();
     sf.slideDown();
+
+  $("#edit_pass_button").click ->
+    $("#pass_inputs").slideToggle();
