@@ -52,3 +52,10 @@ var showErrors = function(errors){
   a.slideUp();
 }
 
+$(document).ready(function() {
+  /* Checkboxes and radio */
+  $(".radio").dgStyle(15);
+  $(".checkbox").dgStyle(15);
+
+  $("input[checked='checked']").parent('div').attr("style","background-position: 50% -30px; ");
+});

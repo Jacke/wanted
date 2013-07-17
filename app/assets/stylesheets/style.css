@@ -295,15 +295,16 @@ a.blue {color: #174f9c;cursor: pointer;}
 /* style classes end */
 /* edit user info page */
 #left_title {
-  width: 45px;
+  width: 30px;
   display: inline-block;
   float: left;
   line-height: 30px;
   text-align: right;
   font-size: 18px;
-  padding-right: 5px;
+  margin-right: 15px;
+  margin-left: 5px;
 }
-#left_title input {width: 45px;}
+#left_title input {width: 30px;}
 .user_form {margin: 40px 0;}
 .user_form ul {margin: 10px 0;}
 .user_form ul li {margin-bottom: 10px; height: 30px;line-height: 30px;}
@@ -364,3 +365,16 @@ a.blue {color: #174f9c;cursor: pointer;}
   font-weight: bold;
 }
 /* user page end */
+/* checkbox */
+.checkbox, .radio {
+  height: 30px;
+  width: 30px;
+  clear: left;
+  float: left;
+  background: url("../images/checkbox1.png") no-repeat;
+  cursor: default;
+  text-align: left;
+}
+.checkbox input, .radio input {
+  display: none;
+}
