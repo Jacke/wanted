@@ -58,4 +58,15 @@ $(document).ready(function() {
   $(".checkbox").dgStyle(15);
 
   $("input[checked='checked']").parent('div').attr("style","background-position: 50% -30px; ");
+
+  $("#edit_avatar_button").click(function(){
+    $("#avatar_input").click();
+  })
+
+  //$("input#user_avatar").change(function (){
+  //    $("#edit_user").ajaxForm({ target: "#content" }).submit(); 
+      // This line will display the ajax response in "image_view" div.
+      //$("#modal_id").modal('hide'); if using modal uncomment this line to close current modal
+  //    return false;
+  // });
 });

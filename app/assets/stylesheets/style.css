@@ -1,4 +1,5 @@
 @charset "utf-8";
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow&subset=latin,cyrillic);
 /* CSS Document */
 /* behavior: url(js/pie.htc); */
 
@@ -11,7 +12,7 @@
 }
 body {
     background:#fff;
-    font-family: "Arial Narrow", Arial, sans-serif;
+    font-family: "Arial Narrow",'PT Sans Narrow', Arial, sans-serif;
     padding-top: 50px;
     font-size: 14px;
 }
@@ -109,7 +110,7 @@ header#hd nav ul {
 }
 header#hd nav ul li {
   display: inline-block;
-  font-family: "Arial Narrow", Arial, sans-serif;
+  /*font-family: "Arial Narrow", Arial, sans-serif;*/
   font-size: 14px;
   height: 50px;
   line-height: 46px;
@@ -270,7 +271,7 @@ a.blue {color: #174f9c;cursor: pointer;}
 #loginModal {text-align: center;}
 .avatar {width: 120px;height: 120px;background: #e2e2e2;}
 .input {
-  font-family: "Arial Narrow", Arial, sans-serif;
+  font-family: "Arial Narrow",'PT Sans Narrow', Arial, sans-serif;
   font-size: 18px;
   background: #e2e2e2;
   color: #000;
@@ -279,18 +280,19 @@ a.blue {color: #174f9c;cursor: pointer;}
 .button{
   background: #F68735;
   color: #fff;
-  font-family: "Arial Narrow", Arial, sans-serif;
+  font-family: "Arial Narrow",'PT Sans Narrow', Arial, sans-serif;
   font-size: 18px;
   padding: 0 5px;
 }
 .button:hover {background: #FFA665;color: #fff;cursor: pointer;}
 .blue_button {
-  font-family: "Arial Narrow", Arial, sans-serif;
+  font-family: "Arial Narrow",'PT Sans Narrow', Arial, sans-serif;
   font-size: 18px;
   background: #214f9d;
   color: #fff;
   padding: 0 5px;
   text-decoration: none;
+  cursor: pointer;
 }
 .blue_button:hover {background: #275bb0;text-decoration: none;}
 /* style classes end */
@@ -314,6 +316,7 @@ a.blue {color: #174f9c;cursor: pointer;}
   width: 200px;
   display: block;
 }
+.user_form ul textarea {margin-bottom: 10px;}
 .user_form input.button {width: 210px;}
 #user_avatar .avatar {margin-bottom: 10px;}
 #user_avatar #edit_avatar_button {
