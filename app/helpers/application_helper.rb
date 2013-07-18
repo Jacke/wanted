@@ -34,7 +34,7 @@ module ApplicationHelper
     when "items/popular"
       html = "ПОПУЛЯРН<span class='nav_end_word'>ОЕ</span>".html_safe
     when "users/show"
-      html = blur_end_word(@user.name).html_safe
+      html = blur_last_word(@user.name).html_safe
     when "registrations/edit"
       html = "НАСТРОЙКИ <span class='nav_end_word'>ПРОФИЛЯ</span>".html_safe
     else
@@ -44,7 +44,7 @@ module ApplicationHelper
 
   private
 
-  def blur_end_word(string)
+  def blur_last_word(string)
     words = string.split(' ')
     if words.length > 1
       last_word = words.last

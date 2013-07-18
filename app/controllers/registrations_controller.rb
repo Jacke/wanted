@@ -42,7 +42,12 @@ class RegistrationsController < Devise::RegistrationsController
       # Sign in the user bypassing validation in case his password changed
       sign_in @user, :bypass => true
 
-      redirect_to edit_user_registration_path
+      #redirect_to edit_user_registration_path
+      respond_to do |format|
+        format.html
+        format.js { render :pin_avatar }
+        format.json { render :pin_avatar }
+      end
       #redirect_to after_update_path_for(@user)
       #render "edit", :layout => false
     else
@@ -68,7 +73,9 @@ class RegistrationsController < Devise::RegistrationsController
 
   # если провайдер Вконтакте и контактный емайл не меняли
   def change_surrogat_email?(user,params)
-    params[:user][:email].empty? && user.provider == 'vkontakte'
+    if params[:user][:email]
+      params[:user][:email].empty? && user.provider == 'vkontakte'
+    end
   end
  
 end
