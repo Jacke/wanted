@@ -42,12 +42,7 @@ class RegistrationsController < Devise::RegistrationsController
       # Sign in the user bypassing validation in case his password changed
       sign_in @user, :bypass => true
 
-      #redirect_to edit_user_registration_path
-      respond_to do |format|
-        format.html
-        format.js { render :pin_avatar }
-        format.json { render :pin_avatar }
-      end
+      redirect_to edit_user_registration_path
       #redirect_to after_update_path_for(@user)
       #render "edit", :layout => false
     else
