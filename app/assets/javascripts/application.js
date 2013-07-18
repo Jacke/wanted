@@ -64,10 +64,7 @@ $(document).ready(function() {
   })
 
   $("input#avatar_input").change(function (){
-      //$("#update_user_avatar_form").ajaxForm({ target: "#content" }).submit(); 
       $("#update_user_avatar_form").ajaxForm({ target: ".avatar" }).submit();
-      // This line will display the ajax response in "image_view" div.
-      //$("#modal_id").modal('hide'); if using modal uncomment this line to close current modal
       return false;
   });
 });

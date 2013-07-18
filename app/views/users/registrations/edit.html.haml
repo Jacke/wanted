@@ -1,12 +1,12 @@
 .gue
   %h2 Ава
   #user_avatar
-    =render partial: "show_avatar"
+    .avatar
+      =render partial: "show_avatar"
     %span#edit_avatar_button.blue_button Изменить
-    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :id => 'update_user_avatar_form',:multipart => true, :style => 'display: none'},) do |f|
+    = form_for(resource, :as => resource_name, :url => update_avatar_path, :html => { :method => :put, :id => 'update_user_avatar_form',:multipart => true, :style => 'display: none'},) do |f|
       %li=f.file_field :avatar, :id => 'avatar_input'
       %li= f.submit "Сохранить",:class => 'button'
-    %li= link_to 'Update avatar', user_show_path(@user), :remote=> true
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'user_form',:multipart => true }) do |f|
     = flash[:notice]
     = devise_error_messages!

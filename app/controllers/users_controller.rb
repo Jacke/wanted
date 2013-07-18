@@ -9,11 +9,7 @@ class UsersController < ApplicationController
   end
 
   def avatar
-    @ava = Pin.find(params[:pin_id])
-    @comments = @pin.comments.all
-
-    respond_to do |format|
-      format.js { render :pin_comments }
-    end
+    @avatar = User.find(params[:id]).avatar.first
+    render partial: "shared/avatar"
   end
 end

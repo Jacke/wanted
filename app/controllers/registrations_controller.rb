@@ -54,6 +54,29 @@ class RegistrationsController < Devise::RegistrationsController
       render "edit"
     end
   end
+
+  def update_avatar
+    @user = User.find(current_user.id)
+
+    successfully_updated = if needs_password?(@user, params)
+      @user.update_with_password(params[:user])
+    else
+      # remove the virtual current_password attribute update_without_password
+      # doesn't know how to ignore it
+      params[:user].delete(:current_password)
+      @user.update_without_password(params[:user])
+    end
+
+    if successfully_updated
+      set_flash_message :notice, :updated
+      # Sign in the user bypassing validation in case his password changed
+      sign_in @user, :bypass => true
+
+      render "show_avatar", :layout => false
+    else
+      render "edit"
+    end
+  end
  
   # Signs in a user on sign up. You can overwrite this method in your own
   # RegistrationsController.
