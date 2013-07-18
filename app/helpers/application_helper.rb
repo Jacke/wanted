@@ -34,11 +34,23 @@ module ApplicationHelper
     when "items/popular"
       html = "ПОПУЛЯРН<span class='nav_end_word'>ОЕ</span>".html_safe
     when "users/show"
-      html = "#{@user.name}<span class='nav_end_word'></span>".html_safe
+      html = blur_end_word(@user.name).html_safe
     when "registrations/edit"
       html = "НАСТРОЙКИ <span class='nav_end_word'>ПРОФИЛЯ</span>".html_safe
     else
       ""
+    end
+  end
+
+  private
+
+  def blur_end_word(string)
+    words = string.split(' ')
+    if words.length > 1
+      last_word = words.last
+      string.sub last_word, "<span class='nav_end_word'>#{last_word}</span>"
+    else
+      string
     end
   end
 end
