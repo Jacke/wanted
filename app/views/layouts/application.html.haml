@@ -5,6 +5,7 @@
     = stylesheet_link_tag    "application", :media => "all"
     = javascript_include_tag "application"
     = csrf_meta_tags
+    %meta{:'http-equiv' => "X-Frame-Options", :content => "GOFORIT"}
   %body
     #main
       %header#hd
@@ -49,7 +50,7 @@
                 %a.big_nav_links{:href => ""}
                   Лента событий
             #search
-              %a{:href => "#"} Сделать серч
+              =link_to 'Сделать серч', search_path
             %ul.small_nav
               %li Популярные хэш-тэги
               %li

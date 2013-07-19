@@ -30,7 +30,10 @@ $(function() {
 
 $(window).resize(function window_resize(){
   var page_w = $("html").width();
+  var page_h = $(document).height();
+
   var box = $('#left_group'); // float-fixed block
+  var frame = $('iframe#framesite');
 
   if(page_w < 981) {
       box.css('position', 'absolute');
@@ -39,6 +42,9 @@ $(window).resize(function window_resize(){
       box.css('position', 'fixed');
       box.css('top', 85);
   }
+
+  frame.css('height',page_h-90);
+
 });
 
 var showErrors = function(errors){
@@ -56,6 +62,10 @@ $(document).ready(function() {
   /* Checkboxes and radio */
   $(".radio").dgStyle(15);
   $(".checkbox").dgStyle(15);
+
+  var page_h = $(document).height();
+  var frame = $('iframe#framesite');
+  frame.css('height',page_h-90);
 
   $("input[checked='checked']").parent('div').attr("style","background-position: 50% -30px; ");
 

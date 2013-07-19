@@ -1,0 +1,18 @@
+.gi
+  %ul#search_forms
+    %li
+      =form_tag({controller: "search", action: "site"}, method: "get", class: "search_form") do
+        =text_field :site, :url, placeholder: 'Вводим URL адрес Интернет-магазина'
+        =submit_tag("OK")
+    %li
+      %span Либо
+    %li
+      =form_tag({controller: "search", action: "site"}, method: "get", class: "search_form") do
+        =text_field :site, :url, placeholder: 'Ищем по названию товара, магазина или коллекции на сайте'
+        =submit_tag("OK")
+    %li
+      %span Либо
+    %li
+      =form_tag({controller: "search", action: "site"}, method: "get", class: "search_form") do
+        =text_field :site, :url, placeholder: 'Загружаем картинку товара с компа'
+        =submit_tag("выбрать")

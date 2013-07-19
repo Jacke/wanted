@@ -22,6 +22,10 @@ module ApplicationHelper
       @user.name
     when "registrations/edit"
       "Настройки"
+    when "search/index"
+      "Серч"
+    when "search/site"
+      "Серч"
     else
       ""
     end
@@ -37,6 +41,8 @@ module ApplicationHelper
       html = blur_last_word(@user.name).html_safe
     when "registrations/edit"
       html = "НАСТРОЙКИ <span class='nav_end_word'>ПРОФИЛЯ</span>".html_safe
+    when "search/index"
+      html = "Сделать <span class='nav_end_word'>серч</span>".html_safe
     else
       ""
     end

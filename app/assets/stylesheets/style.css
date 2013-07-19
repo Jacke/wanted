@@ -43,6 +43,7 @@ h3 {
 input, textarea {
     outline:none;
     resize:none;
+    font-family: "Arial Narrow",'PT Sans Narrow', Arial, sans-serif;
 }
 /* base end */
 
