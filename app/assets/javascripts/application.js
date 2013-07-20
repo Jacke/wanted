@@ -69,6 +69,7 @@ $(document).ready(function() {
 
   $("input[checked='checked']").parent('div').attr("style","background-position: 50% -30px; ");
 
+  // смена аватара
   $("#edit_avatar_button").click(function(){
     $("#avatar_input").click();
   })
@@ -77,4 +78,54 @@ $(document).ready(function() {
       $("#update_user_avatar_form").ajaxForm({ target: ".avatar" }).submit();
       return false;
   });
+
+  // AJAX запрос для регистрации и авторизации
+  $("#sign_up_form").bind("ajax:success", function(e, data, status, xhr) {
+    if (data.success) {
+      return window.location.replace("/users/edit");
+    } else {
+      return showErrors(data.errors);
+    }
+  });
+  $("#login_form").bind("ajax:success", function(e, data, status, xhr) {
+    if (data.success) {
+      return window.location.replace("/");
+    } else {
+      return showErrors(data.errors);
+    }
+  });
+
+  // смена форм регистрации и авторизации
+  $("#login_button").click(function (){
+    var lf = $('#login_form');
+    var sf = $('#sign_up_form');
+    lf.slideDown();
+    sf.slideUp();
+  });
+  $("#sign_up_button").click(function (){
+    var lf = $('#login_form');
+    var sf = $('#sign_up_form');
+    lf.slideUp();
+    sf.slideDown();
+  });
+
+  // форма для смены пароля
+  $("#edit_pass_button").click(function(){
+    $("#pass_inputs").slideToggle();
+  });
+
+  //dragg and drop
+  $('section.element').draggable({
+    helper: "clone",
+    opacity : 0.5,
+    zIndex: 100
+  });
+
+  $('#drug_box').droppable({
+        drop : function(event, ui) {
+                var x = ui.draggable.attr('id');
+                alert('id:='+x);
+        }
+  });
+
 });

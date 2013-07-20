@@ -202,7 +202,7 @@ div#bd {
 }
 
 #grid_elemets {display: block;}
-#grid_elemets section#element {
+section.element {
   width: 230px;
   height: 250px;
   background: #fff;
@@ -211,23 +211,24 @@ div#bd {
   margin: 0 0 30px 30px;
   box-shadow: 0 0 8px rgba(0,0,0,0.4);
 }
-#grid_elemets section#element:hover {box-shadow: 0 0 15px rgba(0,0,0,0.5);}
+/* элемент */
+section.element:hover {box-shadow: 0 0 15px rgba(0,0,0,0.5);}
 
-#grid_elemets section#element #preview {width: 100%;height: 180px;background: #ddd;}
-#grid_elemets section#element #preview a {width: 100%;height: 100%;display: block;}
-#grid_elemets section#element #preview #price {position: absolute; background: #e4b03a; padding: 4px 8px 4px 15px;}
-#grid_elemets section#element #info {background: #fff;padding: 5px 5px;line-height: 18px;}
-#grid_elemets section#element #info #user a {color: #9a781a;}
-#grid_elemets section#element #info #user a:hover {color: #ddd3b5;text-decoration: underline;}
-#grid_elemets section#element #info #links {margin-top: 3px; }
-#grid_elemets section#element #info #links #like {height: 20px;display: inline-block;}
-#grid_elemets section#element #info #links #like a {height: 16px; width: 16px;display: inline-block;background: url(../images/hart.png) no-repeat;}
-#grid_elemets section#element #info #links #like a:hover {text-decoration: none;}
-#grid_elemets section#element #info #links #like span {line-height: 14px;margin: 0 0 0 2px;position: relative;}
-#grid_elemets section#element #info #links #comments {height: 20px;display: inline-block;margin-left: 4px;}
-#grid_elemets section#element #info #links #comments a {height: 16px; width: 16px;display: inline-block;background: url(../images/comments.png) no-repeat;}
-#grid_elemets section#element #info #links #comments a:hover {text-decoration: none;}
-#grid_elemets section#element #info #links #comments span {line-height: 14px;margin: 0 0 0 2px;position: relative;}
+section.element #preview {width: 100%;height: 180px;background: #ddd;}
+section.element #preview a {width: 100%;height: 100%;display: block;}
+section.element #preview #price {position: absolute; background: #e4b03a; padding: 4px 8px 4px 15px;}
+section.element #info {background: #fff;padding: 5px 5px;line-height: 18px;}
+section.element #info #user a {color: #9a781a;}
+section.element #info #user a:hover {color: #ddd3b5;text-decoration: underline;}
+section.element #info #links {margin-top: 3px; }
+section.element #info #links #like {height: 20px;display: inline-block;}
+section.element #info #links #like a {height: 16px; width: 16px;display: inline-block;background: url(../images/hart.png) no-repeat;}
+section.element #info #links #like a:hover {text-decoration: none;}
+section.element #info #links #like span {line-height: 14px;margin: 0 0 0 2px;position: relative;}
+section.element #info #links #comments {height: 20px;display: inline-block;margin-left: 4px;}
+section.element #info #links #comments a {height: 16px; width: 16px;display: inline-block;background: url(../images/comments.png) no-repeat;}
+section.element #info #links #comments a:hover {text-decoration: none;}
+section.element #info #links #comments span {line-height: 14px;margin: 0 0 0 2px;position: relative;}
 /* bd end*/
 
 /* right comments */

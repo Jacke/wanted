@@ -29,102 +29,21 @@
           10
         Упоминаний
   #grid_elemets
-    %section#element
-      #preview
-        %a{:href => ""}/
-        #price 32145 Р
-      #info
-        #name Пылесос Tomson 2012
-        #user
-          %a{:href => ""} Анна Макарова
-        #links
-          #like
-            %a{:href => "#"} &nbsp
-            %span 146
-          #comments
-            %a{:href => "#"} &nbsp
-            %span 28
-    %section#element
-      #preview
-        %a{:href => ""}
-      #info
-        #name Пылесос Tomson 2012
-        #user
-          %a{:href => ""} Анна Макарова
-        #links
-          #like
-            %a{:href => "#"} &nbsp
-            %span 146
-          #comments
-            %a{:href => "#"} &nbsp
-            %span 28
-    %section#element
-      #preview
-        %a{:href => ""}
-      #info
-        #name Пылесос Tomson 2012
-        #user
-          %a{:href => ""} Анна Макарова
-        #links
-          #like
-            %a{:href => "#"} &nbsp
-            %span 146
-          #comments
-            %a{:href => "#"} &nbsp
-            %span 28
-    %section#element
-      #preview
-        %a{:href => ""}
-      #info
-        #name Пылесос Tomson 2012
-        #user
-          %a{:href => ""} Анна Макарова
-        #links
-          #like
-            %a{:href => "#"} &nbsp
-            %span 146
-          #comments
-            %a{:href => "#"} &nbsp
-            %span 28
-    %section#element
-      #preview
-        %a{:href => ""}
-      #info
-        #name Пылесос Tomson 2012
-        #user
-          %a{:href => ""} Анна Макарова
-        #links
-          #like
-            %a{:href => "#"} &nbsp
-            %span 146
-          #comments
-            %a{:href => "#"} &nbsp
-            %span 28
-    %section#element
-      #preview
-        %a{:href => ""}
-      #info
-        #name Пылесос Tomson 2012
-        #user
-          %a{:href => ""} Анна Макарова
-        #links
-          #like
-            %a{:href => "#"} &nbsp
-            %span 146
-          #comments
-            %a{:href => "#"} &nbsp
-            %span 28
-    %section#element
-      #preview
-        %a{:href => ""}
-      #info
-        #name Пылесос Tomson 2012
-        #user
-          %a{:href => ""} Анна Макарова
-        #links
-          #like
-            %a{:href => "#"} &nbsp
-            %span 146
-          #comments
-            %a{:href => "#"} &nbsp
-            %span 28
+    -i=0
+    -5.times do
+      -i += 1
+      %section.element{:id => "#{i}"}
+        #preview
+          %a{:href => ""}/
+          #price 32145 Р
+        #info
+          #name Пылесос Tomson 2012
+          #user
+            %a{:href => ""} Анна Макарова
+          #links
+            #like
+              %a{:href => "#"} &nbsp
+              %span 146
+            #comments
+              %a{:href => "#"} &nbsp
+              %span 28

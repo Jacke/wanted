@@ -13,7 +13,7 @@ Hochuli::Application.routes.draw do
   get '/user/:id' => 'users#show', as: :user_show
 
   #search
-  get "search/index" => 'search#index', as: :search
+  get "search" => 'search#index', as: :search
   get "search/site" => 'search#site', as: :site
 
 end
