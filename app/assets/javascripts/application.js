@@ -44,6 +44,8 @@ $(window).resize(function window_resize(){
   }
 
   frame.css('height',page_h-90);
+  var a = $('#framesite').contents().find('body').first.html;
+  alert(a);
 
 });
 
@@ -122,10 +124,15 @@ $(document).ready(function() {
   });
 
   $('#drug_box').droppable({
+        iframeFix: true,
         drop : function(event, ui) {
                 var x = ui.draggable.attr('id');
                 alert('id:='+x);
         }
+  });
+
+  $('#framesite').load( function(){
+    alert($(this.contentDocument).find('.b-head-logo').html())
   });
 
 });
