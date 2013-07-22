@@ -129,10 +129,3 @@ $(document).ready(function() {
   });
 
 });
-//$(document).on('dragover', function(e) {e.preventDefault();return false;});
-//$(document).on('drop', function(e) {
-//    e.preventDefault();
-//    e.originalEvent.dataTransfer.items[0].getAsString(function(url){
-//        alert(url);
-//    });
-//});

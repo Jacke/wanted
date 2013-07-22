@@ -1,1 +1,33 @@
-%iframe#framesite{:src => "http://www.#{@site}",width: 790,height: "500"}
+:javascript
+  $(document).on('dragover', function(e) {e.preventDefault();return false;});
+  $(document).on('drop', function(e) {
+      e.preventDefault();
+      e.originalEvent.dataTransfer.items[0].getAsString(function(url){
+          //alert(url);
+          $('#new_item_modal').arcticmodal();
+
+          a = url.substring(url.length-5).split('.');
+          ext = a[a.length-1];
+          if (ext == 'jpg') {
+            $('#image').html('');
+            $('#image').append('<img src='+url+'>');
+          }
+          else {
+            $('#full_url').html('');
+            $('#full_url').append(url);
+            $('#full_url').val(url);
+          }
+      });
+  });
+
+  $(document).ready(function() {
+  });
+.gi
+  %h1 Перетащите товар сюда
+  .g-hidden{:style => 'display: none'}
+    .box-modal#new_item_modal
+      .box-modal_close.arcticmodal-close
+        Закрыть
+      %span#title Добавить новый товар
+      #image
+      #full_url

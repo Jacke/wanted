@@ -15,5 +15,7 @@ Hochuli::Application.routes.draw do
   #search
   get "search" => 'search#index', as: :search
   get "search/site" => 'search#site', as: :site
+  get "go/site" => 'search#redirect', as: :redirect
+  get "frame/site" => 'search#frame', as: :frame
 
 end

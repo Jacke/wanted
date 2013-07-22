@@ -1,0 +1,11 @@
+:javascript
+  $(document).on('dragover', function(e) {e.preventDefault();return false;});
+  $('#framesite').find(document).on('dragover', function(e) {e.preventDefault();return false;});
+
+  $(document).on('drop', function(e) {
+      e.preventDefault();
+      e.originalEvent.dataTransfer.items[0].getAsString(function(url){
+          alert(url);
+      });
+  });
+%iframe#framesite{:src => 'http://'+@site, :width => 790, :sandbox => "allow-scripts allow-same-origin allow-top-navigation"}

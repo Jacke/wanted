@@ -1,13 +1,27 @@
+:javascript
+  $(document).ready(function() {
+    $('#site_button').click(function(){
+      var site_url = $('#site_url').val();
+      window.open('http://'+site_url, "_blank", "Toolbar=0, Scrollbars=1, Resizable=0, Width=640, resize=no, Height=480");
+      window.location.replace("/search/site");
+    });
+    $('#site_url').keypress(function (e) {
+      if (e.which == 13) {
+        $('#site_button').click();
+        e.preventDefault();
+      }
+    });
+  });
 .gi
   %ul#search_forms
     %li
-      =form_tag({controller: "search", action: "site"}, method: "get", class: "search_form") do
-        =text_field :site, :url, placeholder: 'Вводим URL адрес Интернет-магазина'
-        =submit_tag("OK")
+      %form{:'accept-charset'=>"UTF-8", :action=>"/search/site", :class=>"search_form"}
+        %input{placeholder: 'Вводим URL адрес Интернет-магазина', :id => 'site_url', :name => 'site_url'}
+        %input{:id => 'site_button',:type => 'submit', :value=>"OK"}
     %li
       %span Либо
     %li
-      =form_tag({controller: "search", action: "site"}, method: "get", class: "search_form") do
+      =form_tag({controller: "search", action: "frame"}, method: "get", class: "search_form") do
         =text_field :site, :url, placeholder: 'Ищем по названию товара, магазина или коллекции на сайте'
         =submit_tag("OK")
     %li
