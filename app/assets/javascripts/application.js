@@ -44,8 +44,6 @@ $(window).resize(function window_resize(){
   }
 
   frame.css('height',page_h-90);
-  var a = $('#framesite').contents().find('body').first.html;
-  alert(a);
 
 });
 
@@ -123,6 +121,8 @@ $(document).ready(function() {
     zIndex: 100
   });
 
+  $('.draggab').draggable();
+
   $('#drug_box').droppable({
         iframeFix: true,
         drop : function(event, ui) {
@@ -132,7 +132,38 @@ $(document).ready(function() {
   });
 
   $('#framesite').load( function(){
-    alert($(this.contentDocument).find('.b-head-logo').html())
+    var a = $(this.contentDocument).find('body');
+    a.find('a')
+      .bind( "dragstart", function( event, ui ) {
+        
+        $(this).draggable();
+        //$('.big_nav').append('');
+        //$('.draggab').append(clone);
+
+        var offset = $(this).offset();
+        var xPos = offset.left;
+        var yPos = offset.top;
+        
+        //alert($(this).position.left);
+      })
+      .bind( "drag", function( event, ui ) {
+        
+        var clone = $(this).clone();
+        $(document).mousemove(function(e){
+            $('.draggab').html(e.pageX +', '+ e.pageY);
+        }); 
+        //$('.draggab').append(clone);
+        //$('.draggab').mouseover(function(){
+        //  $('.draggab').append('hel ');
+        //});     
+        //var offset = $(this).offset();
+        //var xPos = offset.left;
+        //var yPos = offset.top;
+        //$('.draggab').append(xPos);
+        //$('.draggab').css({ 'left': newPosition.left, 'top': newPosition.top  });
+        //$('.big_nav').append(xPos);
+        //alert($(this).position.left);
+      })
   });
 
 });
