@@ -16,17 +16,17 @@
   %ul#search_forms
     %li
       %form{:'accept-charset'=>"UTF-8", :action=>"/search/site", :class=>"search_form"}
-        %input{placeholder: 'Вводим URL адрес Интернет-магазина', :id => 'site_url', :name => 'site_url'}
+        %input{placeholder: 'Открывается в отдельном окне', :id => 'site_url', :name => 'site_url'}
         %input{:id => 'site_button',:type => 'submit', :value=>"OK"}
     %li
       %span Либо
     %li
       =form_tag({controller: "search", action: "frame"}, method: "get", class: "search_form") do
-        =text_field :site, :url, placeholder: 'Ищем по названию товара, магазина или коллекции на сайте'
+        =text_field :site, :url, placeholder: 'Подгружаем в iframe, с другого домена'
         =submit_tag("OK")
     %li
       %span Либо
     %li
-      =form_tag({controller: "search", action: "site"}, method: "get", class: "search_form") do
-        =text_field :site, :url, placeholder: 'Загружаем картинку товара с компа'
+      =form_tag({controller: "search", action: "save_site"}, method: "get", class: "search_form") do
+        =text_field :site, :url, placeholder: 'Подгружаем в iframe, сохраненную копию страницы'
         =submit_tag("выбрать")
