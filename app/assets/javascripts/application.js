@@ -129,6 +129,12 @@ $(document).ready(function() {
         }
   });
 
+  $("#drug_box").hover(function() {
+        $(this).data("hovered", true);
+    }, function() {
+        $(this).data("hovered", false);
+    });
+
   $('#framesite').load( function() {
       var images = $(this.contentDocument).find("img")
       
@@ -159,9 +165,14 @@ $(document).ready(function() {
         }
       });
       
-      $(document).mouseup( function() {
+      $(document).mouseup( function(e) {
+        if ($('#drug_box').data("hovered")) {
+          alert(dragged.html);
+        }
+        else{
+          dragged.remove();
+        }
         is_dragged = false;
-        dragged.remove();
         $('#pololo').css('display','none');
       });
     });

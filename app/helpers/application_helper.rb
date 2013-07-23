@@ -43,7 +43,7 @@ module ApplicationHelper
       html = "НАСТРОЙКИ <span class='nav_end_word'>ПРОФИЛЯ</span>".html_safe
     when "search/index"
       html = "Сделать <span class='nav_end_word'>серч</span>".html_safe
-    when "search/site"
+    when "search/frame"
       html = "Сделать <span class='nav_end_word'>серч</span>".html_safe
     else
       ""
