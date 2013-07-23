@@ -3,64 +3,33 @@ class SearchController < ApplicationController
 
   end
 
-  def site
-    #@site = clean_url(params[:site][:url])
-    #full_url = 'href="http://www.'+@site+'/'
-    #require 'open-uri'
-    #@page = open('http://www.'+@site).read
-    #@page.gsub!('href="/',full_url)
-    #full_url = 'src="http://www.'+@site+'/'
-    #@page.gsub!('src="/',full_url)
-    #@page.gsub!('target="_blank"','')
-    #@page.gsub!('<a href="http://www.','<a href="/go/site?'+'site%5Burl%5D='+@site+'&site%5Bfull_url%5D=')
-    #@page = @page.dup.force_encoding('UTF-8')#sthash.JAbhtVv9.dpuf
-    #File.open(Rails.root+'public/fraim.html', 'w') do |file|
-     # file << @page
-    #end
-  end
-
-  def save_site
-    @site = clean_url(params[:site][:url])
-    full_url = 'href="http://www.'+@site+'/'
-    require 'open-uri'
-    @page = open('http://www.'+@site).read
-    @page.gsub!('href="/',full_url)
-    full_url = 'src="http://www.'+@site+'/'
-    @page.gsub!('src="/',full_url)
-    @page.gsub!('target="_blank"','')
-    @page.gsub!('<a href="http://www.','<a href="/go/site?'+'site%5Burl%5D='+@site+'&site%5Bfull_url%5D=')
-    @page = @page.dup.force_encoding('UTF-8')#sthash.JAbhtVv9.dpuf
-    File.open(Rails.root+'public/fraim.html', 'w') do |file|
-     file << @page
-    end
-  end
-
-  def redirect
-    @site = clean_url(params[:site][:url])
-    @full_site = clean_url(params[:site][:full_url])
-    full_url = 'href="http://www.'+@site+'/'
-    require 'open-uri'
-    @page = open('http://www.'+@full_site).read
-    @page.gsub!('href="/',full_url)
-    full_url = 'src="http://www.'+@site+'/'
-    @page.gsub!('src="/',full_url)
-    @page.gsub!('target="_blank"','')
-    @page.gsub!('<script type="text/javascript"','<script type="text/javascript" src="/jquery.js"></script><script type="text/javascript" src="/application.js"></script><script type="text/javascript" src="/jquery-ui-1.10.3.custom.js"></script><script type="text/javascript"')
-    @page.gsub!('<a href="http://www.','<a href="/go/site?'+'site%5Burl%5D='+@site+'&site%5Bfull_url%5D=')
-    @page = @page.dup.force_encoding('UTF-8')#sthash.JAbhtVv9.dpuf
-    File.open(Rails.root+'public/fraim.html', 'w') do |file|
-      file << @page
-    end
-    redirect_to '/fraim.html'
-  end
-
   def frame
     @site = clean_url(params[:site][:url])
+  end
+
+  def site
+    require 'open-uri'
+    # очищаем url
+    url = clean_url(params[:site][:url])
+    full_url = 'href="http://www.'+url+'/'
+
+    @page = open('http://www.'+url).read
+
+    @page.gsub!('href="/','href="http://www.'+url+'/')
+    @page.gsub!('src="/','src="http://www.'+url+'/')
+    @page.gsub!('target="_blank"','')
+    @page.gsub!('href="http://www.'+url,'href="/search/site?'+'site%5Burl%5D='+url+'&site%5Bfull_url%5D=')
+    @page = @page.html_safe
+    render :layout => false
   end
   
   private
 
   def clean_url(url)
     s = url.sub(/^https?\:\/\//, '').sub(/^www./,'')
+  end
+
+  def parse
+    
   end
 end

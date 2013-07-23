@@ -121,8 +121,6 @@ $(document).ready(function() {
     zIndex: 100
   });
 
-  $('.draggab').draggable();
-
   $('#drug_box').droppable({
         iframeFix: true,
         drop : function(event, ui) {
@@ -142,6 +140,7 @@ $(document).ready(function() {
         dragged.css({"left": -1000, "top": -1000});
         dragged.css("z-index","1000");
         $(dragged).appendTo($("body"));
+        $('#pololo').css('display','block');
         is_dragged = true;
         return false;
       });
@@ -153,7 +152,7 @@ $(document).ready(function() {
       });
 
       var ifr = $(this);
-      var ifr_content = $('#content');
+      var ifr_body = $(this).find('body');
       $(this.contentDocument).mousemove( function(e) {
         if(is_dragged){
           $(dragged).css({"left": e.pageX + $(ifr).offset().left, "top": e.pageY + $(ifr).offset().top});
@@ -163,6 +162,7 @@ $(document).ready(function() {
       $(document).mouseup( function() {
         is_dragged = false;
         dragged.remove();
+        $('#pololo').css('display','none');
       });
     });
 

@@ -1,11 +1,9 @@
-:javascript
-  $(document).on('dragover', function(e) {e.preventDefault();return false;});
-  $('#framesite').find(document).on('dragover', function(e) {e.preventDefault();return false;});
-
-  $(document).on('drop', function(e) {
-      e.preventDefault();
-      e.originalEvent.dataTransfer.items[0].getAsString(function(url){
-          alert(url);
-      });
-  });
-%iframe#framesite{:src => 'http://'+@site, :width => 790, :sandbox => "allow-scripts allow-same-origin"}
+#pololo
+%iframe#framesite{:src => "/search/site?site[url]=#{@site}", :width => 790, :sandbox => "allow-scripts allow-same-origin"}
+.g-hidden{:style => 'display: none'}
+  .box-modal#new_item_modal
+    .box-modal_close.arcticmodal-close
+      Закрыть
+    %span#title Добавить новый товар
+    #image
+    #full_url

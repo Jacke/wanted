@@ -27,6 +27,6 @@
     %li
       %span Либо
     %li
-      =form_tag({controller: "search", action: "save_site"}, method: "get", class: "search_form") do
+      =form_tag({controller: "search", action: "frame"}, method: "get", class: "search_form") do
         =text_field :site, :url, placeholder: 'Подгружаем в iframe, сохраненную копию страницы'
         =submit_tag("выбрать")
