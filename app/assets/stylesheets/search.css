@@ -29,3 +29,48 @@
 #search_forms li span {
   margin-left: 20px;
 }
+
+/* форма для добавления товара */
+#itemmodal .image_preview {height: 100px;}
+#itemmodal .center {text-align: center;}
+#itemmodal input[type="text"] {
+  font-size: 18px;
+  color: #000;
+  padding: 5px 15px;
+  height: 30px;
+  width: 400px;
+  background: #fff;
+  border: 1px #000 solid;
+  display: inline-block;
+  line-height: 30px;
+  text-align: center;
+}
+#itemmodal input.prise {width: 100px;text-align: left;}
+#itemmodal li {
+  margin-bottom: 15px;
+  display: block;
+}
+#itemmodal .button {
+  font-size: 18px;
+  color: #fff;
+  height: 50px;
+  line-height: 50px;
+  width: 200px;
+  display: inline-block;
+  font-weight: bold;
+}
+#itemmodal .sex {width: 145px; margin: 0 20px;}
+#itemmodal .image {
+  text-align: left;
+  margin: 0 0 15px 50px;
+  display: inline-block;
+  position: relative;
+}
+#itemmodal .second_step .image .right {float: left;max-width: 350px;}
+#itemmodal .second_step .image .right ul li{margin-bottom: 5px;}
+#itemmodal .second_step .image .right .name {color: #a47b1c;}
+#itemmodal .second_step img {
+  float: left;
+  padding-right: 15px;
+}
+/* конец. форма для добавления товара */

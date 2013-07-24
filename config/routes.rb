@@ -17,4 +17,7 @@ Hochuli::Application.routes.draw do
   get "search/site" => 'search#site', as: :site
   get "frame/site" => 'search#frame', as: :frame
 
+  #item
+  resources :items
+
 end

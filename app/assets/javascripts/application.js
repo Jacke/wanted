@@ -114,6 +114,24 @@ $(document).ready(function() {
     $("#pass_inputs").slideToggle();
   });
 
+  // форма для добавления товара
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $('.image_preview').attr('src', e.target.result);
+      }
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  }
+
+  $("#imgInp").change(function(){
+    readURL(this);
+  });
+  // конец формы для добавления товара
+
   //dragg and drop
   $('section.element').draggable({
     helper: "clone",
@@ -128,12 +146,6 @@ $(document).ready(function() {
                 alert('id:='+x);
         }
   });
-
-  $("#drug_box").hover(function() {
-        $(this).data("hovered", true);
-    }, function() {
-        $(this).data("hovered", false);
-    });
 
   $('#framesite').load( function() {
       var images = $(this.contentDocument).find("img")
@@ -166,12 +178,7 @@ $(document).ready(function() {
       });
       
       $(document).mouseup( function(e) {
-        if ($('#drug_box').data("hovered")) {
-          alert(dragged.html);
-        }
-        else{
-          dragged.remove();
-        }
+        dragged.remove();
         is_dragged = false;
         $('#pololo').css('display','none');
       });
