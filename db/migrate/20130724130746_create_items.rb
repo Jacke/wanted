@@ -4,7 +4,7 @@ class CreateItems < ActiveRecord::Migration
       t.string :name            ,:null => false, :default => ""
       t.integer :id_collection
       t.integer :sex            , :default => 0
-      t.integer :prise          , :default => 0
+      t.integer :prise
       t.text :comment
       t.boolean :clothes        , :default => false
 

@@ -31,7 +31,8 @@
 }
 
 /* форма для добавления товара */
-#itemmodal .image_preview {height: 100px;}
+#itemmodal .first_step .image_preview {height: 200px;}
+#itemmodal .second_step .image_preview {height: 100px;}
 #itemmodal .center {text-align: center;}
 #itemmodal input[type="text"] {
   font-size: 18px;
@@ -47,7 +48,7 @@
 }
 #itemmodal input.prise {width: 100px;text-align: left;}
 #itemmodal li {
-  margin-bottom: 15px;
+  margin-bottom: 20px;
   display: block;
 }
 #itemmodal .button {
@@ -59,16 +60,16 @@
   display: inline-block;
   font-weight: bold;
 }
-#itemmodal .sex {width: 145px; margin: 0 20px;}
+#itemmodal .sex {width: 145px; margin: 0 10px;}
 #itemmodal .image {
   text-align: left;
-  margin: 0 0 15px 50px;
+  margin: 10px 0 15px 45px;
   display: inline-block;
   position: relative;
 }
 #itemmodal .second_step .image .right {float: left;max-width: 350px;}
 #itemmodal .second_step .image .right ul li{margin-bottom: 5px;}
-#itemmodal .second_step .image .right .name {color: #a47b1c;}
+#itemmodal .second_step .image .right .name {color: #a47b1c;margin-bottom: 10px;}
 #itemmodal .second_step img {
   float: left;
   padding-right: 15px;

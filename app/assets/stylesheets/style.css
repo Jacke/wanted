@@ -387,10 +387,10 @@ a.blue {color: #174f9c;cursor: pointer;}
   height: 30px;
   width: 30px;
   clear: left;
-  float: left;
   background: url("../images/checkbox.png") no-repeat;
   cursor: default;
   text-align: left;
+  display: inline-block;
 }
 .checkbox input, .radio input {
   display: none;

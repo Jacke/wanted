@@ -20,7 +20,7 @@
         $('.first_step').css('display','none');
         $('.second_step').css('display','block');
       } else {
-        alert('введите название товара!');
+        showErrors('введите название товара!');
       }
     });
 
@@ -59,6 +59,7 @@
         %li.center_image.center
           %img{:class => "image_preview", :src => "#", :alt => "Изображение товара"}
           = f.file_field :image, :id => 'imgInp', :style => 'display: none;'
+        %li.notice-bar{class:"error"}
         %li.center=f.text_field :name, :placeholder => 'название товара'
         %li.center=f.text_field :name, :placeholder => 'коллекция'
         %li.center
@@ -80,6 +81,6 @@
           =f.text_field :sex, :style => 'display: none;'
         %li.center= f.text_field :comment, :placeholder => 'комент #тэг @человек'
         %li.center
-          %span= check_box_tag 'rock'
-          Кстати, это не товар
+          %span.checkbox{:style => 'margin: 0 5px -8px 0;'}= check_box_tag 'rock'
+          %span Кстати, это не одежда
         %li.center= f.submit "Закидываем", :class => 'button blue_button'
