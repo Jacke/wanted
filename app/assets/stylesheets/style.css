@@ -224,7 +224,7 @@ section.element:hover {box-shadow: 0 0 15px rgba(0,0,0,0.5);}
 
 section.element #preview {width: 100%;height: 180px;background: #ddd;}
 section.element #preview a {width: 100%;height: 100%;display: block;}
-section.element #preview #price {position: absolute; background: #e4b03a; padding: 4px 8px 4px 15px;}
+section.element #preview #price {position: absolute; background: url(../images/prise_litle.png) no-repeat left 5px top 9px #e4b03a; padding: 4px 8px 4px 17px;}
 section.element #info {background: #fff;padding: 5px 5px;line-height: 18px;}
 section.element #info #user a {color: #9a781a;}
 section.element #info #user a:hover {color: #ddd3b5;text-decoration: underline;}

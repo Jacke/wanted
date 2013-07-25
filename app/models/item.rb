@@ -3,8 +3,8 @@ class Item < ActiveRecord::Base
   #paperclip
   attr_accessible :image
   has_attached_file :image, :styles => { :medium => "230x180#" }, 
-                            :default_url => "/images/items/:style/missing.png",
-                            :url => "/images/items/:id/:style/:id.:extension"
+                            :default_url => "/images/system/items/:style/missing.png",
+                            :url => "/images/system/items/:id/:style/:id.:extension"
 
   # Relations
   #===============================================================

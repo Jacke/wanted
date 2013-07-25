@@ -15,4 +15,4 @@
 /tmp
 /config/database.yml
 /vendor/bundle
-/public/system
+/public/images/system

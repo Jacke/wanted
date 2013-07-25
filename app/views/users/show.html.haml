@@ -15,13 +15,11 @@
   #nav_panel
     #block.active
       %a{:href => '#'}
-        %span.big_arial
-          30
+        %span.big_arial=@items.length
         Вещей
     #block
       %a{:href => '#'}
-        %span.big_arial
-          5
+        %span.big_arial=@collections.length
         Коллекций
     #block
       %a{:href => '#'}
@@ -34,7 +32,8 @@
         %section.element{:id => "#{item.id}"}
           #preview
             %a{:href => "", :style => "background: url(#{item.image.url(:medium)})"}/
-            #price=item.prise ? item.prise.to_s+' Р' : '0 Р'
+            -if(item.prise && item.prise != 0)
+              #price=item.prise.to_s+' Р'
           #info
             #name=item.name
             #user
