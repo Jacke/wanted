@@ -63,6 +63,7 @@
         %ul.center.notice-bar{class:"error"}
         %li.center=f.text_field :name, :placeholder => 'название товара'
         %li.center=text_field_tag 'collection_name', nil, :placeholder => 'коллекция'
+        %li.center=f.select :collection_id, @collections.collect{|p| [ p.title, p.id ] }.insert(0,"Создать коллекцию"), :include_blank => "Коллекция"
         %li.center
           %span.button.blue_button#done Done!
       %ul.second_step{:style => 'display: none;'}

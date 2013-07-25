@@ -1,6 +1,7 @@
 class SearchController < ApplicationController
   def index
     @item = Item.new
+    @collections = current_user.collections
   end
 
   def frame

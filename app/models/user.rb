@@ -18,7 +18,8 @@ class User < ActiveRecord::Base
   
   # Relations
   #===============================================================
-  has_many :items
+  has_many  :items
+  has_many  :collections
 
   # Validations
   #===============================================================

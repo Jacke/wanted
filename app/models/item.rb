@@ -1,5 +1,5 @@
 class Item < ActiveRecord::Base
-  attr_accessible :clothes, :comment, :id_collection, :name, :prise, :sex
+  attr_accessible :clothes, :comment, :collection_id, :name, :prise, :sex
   #paperclip
   attr_accessible :image
   has_attached_file :image, :styles => { :medium => "230x180#" }, 
@@ -9,6 +9,7 @@ class Item < ActiveRecord::Base
   # Relations
   #===============================================================
   belongs_to :user
+  belongs_to :collection
 
   # Validations
   #===============================================================
