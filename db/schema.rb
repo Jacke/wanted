@@ -11,13 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130724131324) do
+ActiveRecord::Schema.define(:version => 20130725070609) do
+
+  create_table "collections", :force => true do |t|
+    t.string   "title"
+    t.integer  "user_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "items", :force => true do |t|
     t.string   "name",               :default => "",    :null => false
-    t.integer  "id_collection"
+    t.integer  "collection_id"
     t.integer  "sex",                :default => 0
-    t.integer  "prise",              :default => 0
+    t.integer  "prise"
     t.text     "comment"
     t.boolean  "clothes",            :default => false
     t.datetime "created_at",                            :null => false
@@ -26,6 +33,7 @@ ActiveRecord::Schema.define(:version => 20130724131324) do
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
+    t.integer  "user_id"
   end
 
   create_table "users", :force => true do |t|

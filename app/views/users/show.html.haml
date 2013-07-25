@@ -29,21 +29,22 @@
           10
         Упоминаний
   #grid_elemets
-    -i=0
-    -5.times do
-      -i += 1
-      %section.element{:id => "#{i}"}
-        #preview
-          %a{:href => ""}/
-          #price 32145 Р
-        #info
-          #name Пылесос Tomson 2012
-          #user
-            %a{:href => ""} Анна Макарова
-          #links
-            #like
-              %a{:href => "#"} &nbsp
-              %span 146
-            #comments
-              %a{:href => "#"} &nbsp
-              %span 28
+    -unless @items.empty?
+      -@items.each do |item|
+        %section.element{:id => "#{item.id}"}
+          #preview
+            %a{:href => "", :style => "background: url(#{item.image.url(:medium)})"}/
+            #price=item.prise ? item.prise.to_s+' Р' : '0 Р'
+          #info
+            #name=item.name
+            #user
+              =link_to item.user.name, user_show_path(item.user.id)
+            #links
+              #like
+                %a{:href => "#"} &nbsp
+                %span 146
+              #comments
+                %a{:href => "#"} &nbsp
+                %span 28
+    -else
+      Пока не добавоено ни одного товара

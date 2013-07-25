@@ -11,6 +11,7 @@ Hochuli::Application.routes.draw do
   root :to => 'items#new'
   get '/popular' => 'items#popular', as: :popular
   get '/user/:id' => 'users#show', as: :user_show
+  get '/user' => 'users#show'
 
   #search
   get "search" => 'search#index', as: :search

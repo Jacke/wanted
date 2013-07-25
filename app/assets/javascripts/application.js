@@ -94,6 +94,17 @@ $(document).ready(function() {
       return showErrors(data.errors);
     }
   });
+  // AJAX запрос для добавления товара
+  $("#add_item_submit").click(function(){
+    $("#new_item").ajaxForm(function(data){
+      if (data.success) {
+        return window.location.replace("/user");
+      } else {
+        return showErrors(data.errors);
+      }
+    }).submit();
+    return false;
+  })
 
   // смена форм регистрации и авторизации
   $("#login_button").click(function (){

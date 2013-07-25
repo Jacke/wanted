@@ -11,12 +11,14 @@ class User < ActiveRecord::Base
                   :name, :nickname, :login, :sex, :city, :about, :provider, :uid, :url
   #paperclip
   attr_accessible :avatar
-  has_attached_file :avatar, :styles => { :medium => "120x120#" }, :default_url => "/images/avatars/:style/missing.png"
+  has_attached_file :avatar,  :styles => { :medium => "120x120#" }, 
+                              :default_url => "/images/avatars/:style/missing.png",
+                              :url => "/images/avatars/:id/:style/:id.:extension"
   # attr_accessible :title, :body
   
   # Relations
   #===============================================================
-
+  has_many :items
 
   # Validations
   #===============================================================
