@@ -20,6 +20,8 @@ module ApplicationHelper
       "Популярное"
     when "users/show"
       @user.name
+    when "users/collections"
+      @user.name+' - Коллекци '
     when "registrations/edit"
       "Настройки"
     when "search/index"
@@ -39,6 +41,12 @@ module ApplicationHelper
       html = "ПОПУЛЯРН<span class='nav_end_word'>ОЕ</span>".html_safe
     when "users/show"
       html = blur_last_word(@user.name).html_safe
+    when "users/collections"
+      html = blur_last_word(@user.name).html_safe
+    when "users/collection"
+      html = blur_last_word(@user.name).html_safe+' - '+@collection.title
+    when "items/show"
+      html = blur_last_word(@item.name).html_safe
     when "registrations/edit"
       html = "НАСТРОЙКИ <span class='nav_end_word'>ПРОФИЛЯ</span>".html_safe
     when "search/index"

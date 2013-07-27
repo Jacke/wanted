@@ -222,9 +222,9 @@ section.element {
 /* элемент */
 section.element:hover {box-shadow: 0 0 15px rgba(0,0,0,0.5);}
 
-section.element #preview {width: 100%;height: 180px;background: #ddd;}
+section.element #preview {width: 100%;height: 180px;background: #ddd;position: relative;}
 section.element #preview a {width: 100%;height: 100%;display: block;}
-section.element #preview #price {position: absolute; background: url(../images/prise_litle.png) no-repeat left 5px top 9px #e4b03a; padding: 4px 8px 4px 17px;}
+section.element #preview #price {position: absolute; top:0; left: 0; background: url(../images/prise_litle.png) no-repeat #e4b03a; padding: 4px 8px 4px 17px;background-position: 5px 9px;}
 section.element #info {background: #fff;padding: 5px 5px;line-height: 18px;}
 section.element #info #user a {color: #9a781a;}
 section.element #info #user a:hover {color: #ddd3b5;text-decoration: underline;}
@@ -238,6 +238,16 @@ section.element #info #links #comments a {height: 16px; width: 16px;display: inl
 section.element #info #links #comments a:hover {text-decoration: none;}
 section.element #info #links #comments span {line-height: 14px;margin: 0 0 0 2px;position: relative;}
 /* bd end*/
+
+/* эллемент коллекции */
+section.collection_element {width: 230px;height: 250px;background: #fff;display: block;float: left;margin: 0 0 30px 30px;}
+section.collection_element #preview {width: 100%;height: 200px;background: #eee;box-shadow: 0 0 8px rgba(0,0,0,0.4);}
+section.collection_element #preview:hover {box-shadow: 0 0 15px rgba(0,0,0,0.5);}
+section.collection_element #preview a {width: 100%;height: 100%;display: block;}
+section.collection_element #preview a #item {width: 115px;height:100px;float: left;display: inline-block;}
+section.collection_element #info {width: 100%;padding-top: 10px;line-height: 18px;text-align: center;}
+section.collection_element #info a {color: #174f9c;text-decoration: underline;}
+/* конец эллемента коллекции */
 
 /* right comments */
 #right_comments {
@@ -306,6 +316,7 @@ a.blue {color: #174f9c;cursor: pointer;}
   cursor: pointer;
 }
 .blue_button:hover {background: #275bb0;text-decoration: none;}
+span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;display: inline-block;}
 /* style classes end */
 /* edit user info page */
 #left_title {
@@ -350,8 +361,13 @@ a.blue {color: #174f9c;cursor: pointer;}
   line-height: 24px;
 }
 #user #info #block_buttons {position: absolute;right: 0;width: 300px;}
-#user #info #block_buttons #block {width: 140px;height: 50px;background: #e2e2e2;float: left;margin: 0 0 10px 10px;}
-#user #nav_panel {display: inline-block;margin: 0 -30px 0 -30px;}
+#user #info #block_buttons #block {position: relative; width: 128px;height: 50px;background: #e2e2e2;float: left;margin: 0 0 10px 10px;padding: 5px 2px 0 10px;}
+#user #info #block_buttons #block:hover {background: #ededed;}
+#user #info #block_buttons #block #new {position: absolute; top: 5px; right: 8px;text-align: right;color: rgb(39,98,180); font-weight: bold;}
+#user #info #block_buttons #block.follow {font-weight: bold; text-align: center; font-size: 18px; padding: 5px 6px 0 6px;background: #e5b03c;line-height: 43px;}
+#user #info #block_buttons #block.follow:hover {background: #efc15c;}
+#user #info #block_buttons #block a{width: 100%;height: 100%;display: block;text-decoration: none;}
+#user #nav_panel {display: inline-block;margin: 0 -30px 0 -30px; }
 #user #nav_panel #block {
   width: 263px;
   height: 60px;
@@ -381,6 +397,45 @@ a.blue {color: #174f9c;cursor: pointer;}
   font-weight: bold;
 }
 /* user page end */
+
+/* item page */
+#item {font-size: 18px;}
+#item a{color: #376eba;text-decoration: underline;}
+#item a:hover{color: #6992ca;}
+#item a.ellow {color: #966c0f; text-decoration: none;}
+#item a.ellow:hover {text-decoration: underline;}
+#item #right {width: 390px;}
+#item #right #image {margin-bottom: 20px;}
+#item #right #comments #comment_form {position: relative; display: block;margin-bottom: 15px;}
+#item #right #comments #comment_form a{text-decoration: none;}
+#item #right #comments #comment_form input {height: 28px; width: 330px;font-size: 18px; border: 1px solid #000;padding: 0 10px;position: absolute;right: 0;top:0;line-height: 28px;}
+#item #right #comments ul {position: relative; display: block;}
+#item #right #comments ul li {position: relative; display: block;margin-bottom: 15px;}
+#item #right #comments ul li #avatar {display: block;float: left;margin-top: 4px;}
+#item #right #comments ul li #comment {width: 350px;display: inline-block; margin-left: 10px;}
+#item #right #comments ul li #comment #info {color: #aaa;}
+#item #right #comments ul li #comment #info a{color: #aaa;}
+#item #right #comments ul li #comment #info a:hover{color: #777;}
+
+#item #left {position: absolute;top: 35px;right: 0;width: 340px;}
+#item #left #user {display: inline-block;margin-bottom: 40px;}
+#item #left #user img {padding: 0 10px 5px 0;}
+#item #left #user a {display: inline-block;float: left;padding-right: 5px;}
+#item #left #store {margin-bottom: 50px;}
+#item #left #buttons {margin-bottom: 40px;}
+#item #left #buttons #li {display: inline-block;margin-bottom: 10px;}
+#item #left #buttons #li #button {display: inline-block;float:left;}
+#item #left #buttons .button {font-weight: normal; width: 130px;display: inline-block;height: 55px;text-align: center;color: #fff;font-size: 30px;text-decoration: none;line-height: 50px;}
+#item #left #buttons .ellow_button {background: #e5b03b;}
+#item #left #buttons .ellow_button:hover {background: #eebc4d;}
+#item #left #buttons #info {width: 160px;margin-left: 40px;display: inline-block;font-size: 30px;line-height: 50px;}
+#item #left #followers {padding: 3px 3px; background: #efefef;margin-bottom: 40px;display: inline-block;height: 28px;}
+#item #left #followers a {display: inline-block;}
+#item #left #collections {margin-bottom: 20px;}
+#item #left #tags {margin-bottom: 60px;}
+#item #left #follow a {height: 33px;background: url(../images/follow_pointer.png) no-repeat right 0; margin-bottom: 40px;display: inline-block;line-height: 33px;padding: 0 40px;color: #000;text-decoration: none;}
+#item #left #follow a:hover {text-decoration: underline;}
+/* end item page */
 
 /* checkbox */
 .checkbox, .radio {

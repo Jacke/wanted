@@ -2,13 +2,13 @@
   #info
     =render partial: "user_info"
   #nav_panel
-    #block.active
-      %a{:href => user_show_path(@user)}
-        %span.big_arial=@items.length
-        Вещей
     #block
-      %a{:href => user_collections_path(@user)}
-        %span.big_arial=@collections.length
+      %a{:href => user_show_path(@user)}
+        %span.big_arial=@user.items.length
+        Вещей
+    #block.active
+      %a{:href => user_collections_path}
+        %span.big_arial=@user.collections.length
         Коллекций
     #block
       %a{:href => '#'}
@@ -19,4 +19,4 @@
     -unless @items.empty?
       =render partial: "items_grid"
     -else
-      Пока не добавоено ни одного товара
+      Коллекция пуста

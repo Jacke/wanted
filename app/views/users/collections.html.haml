@@ -1,0 +1,30 @@
+#user.gi
+  #info
+    =render partial: "user_info"
+  #nav_panel
+    #block
+      %a{:href => user_show_path(@user)}
+        %span.big_arial=@items.length
+        Вещей
+    #block.active
+      %a{:href => user_collections_path(@user)}
+        %span.big_arial=@collections.length
+        Коллекций
+    #block
+      %a{:href => '#'}
+        %span.big_arial
+          10
+        Упоминаний
+  #grid_elemets
+    -unless @collections.empty?
+      -@collections.each do |collection|
+        %section.collection_element{:id => "#{collection.id}"}
+          #preview
+            %a{:href => user_collection_path(@user,collection)}
+              -unless collection.items.empty?
+                -collection.items(4).each do |item|
+                  #item{:style => "background: url(#{item.image.url(:small)})"}
+          #info
+            =link_to collection.title, '#'
+    -else
+      Пока нет ни одной коллекции

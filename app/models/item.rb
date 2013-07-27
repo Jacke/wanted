@@ -2,7 +2,7 @@ class Item < ActiveRecord::Base
   attr_accessible :clothes, :comment, :collection_id, :name, :prise, :sex
   #paperclip
   attr_accessible :image
-  has_attached_file :image, :styles => { :medium => "230x180#" }, 
+  has_attached_file :image, :styles => { :medium => "230x180#",:small => "115x100#",:big => "390x" }, 
                             :default_url => "/images/system/items/:style/missing.png",
                             :url => "/images/system/items/:id/:style/:id.:extension"
 

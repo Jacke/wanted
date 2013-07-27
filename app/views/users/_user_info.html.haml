@@ -1,0 +1,22 @@
+#avatar.avatar
+  =image_tag @current_user.avatar.url(:medium)
+#user_about= @user.about
+#block_buttons
+  #block
+    %a{href: '#'}
+      #col.big_arial 20
+      #new +12
+      подписчиков
+  #block
+    %a{href: '#'}
+      #col.big_arial 10
+      #new +8
+      подписок
+  #block
+    %a{href: '#'}
+      #col.big_arial 4
+      #new  
+      магазинов
+  #block.follow
+    %a{href: "#"}
+      подписаться

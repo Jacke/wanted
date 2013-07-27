@@ -1,0 +1,84 @@
+#item.gi
+  #right
+    #image
+      =image_tag(@item.image.url(:big))
+    #comments
+      #comment_form
+        %a{:href => "#"}
+          =image_tag @user.avatar.url(:esmall) 
+        %input{:placeholder => "комментарий, @упоминание, #хэштэг"}
+      %ul
+        %li
+          %a{:href => "#", :id => "avatar"}
+            =image_tag @user.avatar.url(:esmall)
+          #comment
+            #info
+              %a{:href => "#"} Сергкей Швецов
+              , 2 часа назад
+            #text
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+        %li
+          %a{:href => "#", :id => "avatar"}
+            =image_tag @user.avatar.url(:esmall)
+          #comment
+            #info
+              %a{:href => "#"} Сергкей Швецов
+              , 2 часа назад
+            #text
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+        %li
+          %a{:href => "#", :id => "avatar"}
+            =image_tag @user.avatar.url(:esmall)
+          #comment
+            #info
+              %a{:href => "#"} Сергкей Швецов
+              , 2 часа назад
+            #text
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+  #left
+    #user
+      %a{:href => user_show_path(@user)}
+        =image_tag @user.avatar.url(:small)
+      =link_to @user.name, user_show_path(@user)
+      добавил эту вещь несколько дней назад.
+    #store
+      Магазин: 
+      =link_to "www.sitesite.com", "#", class: "ellow"
+    #buttons
+      #li
+        #button
+          %a.button.blue_button{:href => "#"}Хочу
+        #info
+          12
+          %span.big_hart
+      #li
+        #button
+          %a.button.ellow_button{:href => "#"}Беру
+        #info=@item.prise.to_s+' руб'
+    #followers
+      %a{:href => "#"}=image_tag @user.avatar.url(:esmall)
+      %a{:href => "#"}=image_tag @user.avatar.url(:esmall)
+      %a{:href => "#"}=image_tag @user.avatar.url(:esmall)
+      %a{:href => "#"}=image_tag @user.avatar.url(:esmall)
+      %a{:href => "#"}=image_tag @user.avatar.url(:esmall)
+      %a{:href => "#"}=image_tag @user.avatar.url(:esmall)
+      %a{:href => "#"}=image_tag @user.avatar.url(:esmall)
+      %a{:href => "#"}=image_tag @user.avatar.url(:esmall)
+    #collections
+      Добавленно в коллекции:
+      %a{:href => "#"} Вещи на выхожные
+      ,
+      %a{:href => "#"} В отпуск
+      ,
+      %a{:href => "#"} Моему
+    #tags
+      Отмечено тэгами:
+      %a{:href => "#"} #мужское
+      %a{:href => "#"} #черное
+      %a{:href => "#"} #круто
+    #follow
+      %a{:href => "#"}
+        Подписаться

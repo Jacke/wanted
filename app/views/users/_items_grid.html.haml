@@ -1,0 +1,17 @@
+-@items.each do |item|
+  %section.element{:id => "#{item.id}"}
+    #preview
+      %a{:href => item_path(item), :style => "background: url(#{item.image.url(:medium)})"}
+      -if(item.prise && item.prise != 0)
+        #price=item.prise.to_s+' Р'
+    #info
+      #name=item.name
+      #user
+        =link_to item.user.name, user_show_path(item.user.id)
+      #links
+        #like
+          %a{:href => "#"} &nbsp
+          %span 146
+        #comments
+          %a{:href => "#"} &nbsp
+          %span 28

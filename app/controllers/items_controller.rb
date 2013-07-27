@@ -29,4 +29,9 @@ class ItemsController < ApplicationController
   def popular
     
   end
+
+  def show
+    @item = Item.find_by_id(params[:id])
+    @user = @item.user
+  end
 end

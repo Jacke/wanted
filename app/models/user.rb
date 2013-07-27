@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
                   :name, :nickname, :login, :sex, :city, :about, :provider, :uid, :url
   #paperclip
   attr_accessible :avatar
-  has_attached_file :avatar,  :styles => { :medium => "120x120#" }, 
+  has_attached_file :avatar,  :styles => { :medium => "120x120#",:small => "50x50#",:esmall => "28x28#"}, 
                               :default_url => "/images/system/avatars/:style/missing.png",
                               :url => "/images/system/avatars/:id/:style/:id.:extension"
   # attr_accessible :title, :body
