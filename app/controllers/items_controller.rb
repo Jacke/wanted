@@ -1,7 +1,7 @@
 #encoding: utf-8
 class ItemsController < ApplicationController
   def new
-    
+    @items = Item.all
   end
 
   def create
@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
   end
 
   def popular
-    
+    @items = Item.all
   end
 
   def show
