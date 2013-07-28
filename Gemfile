@@ -13,6 +13,8 @@ gem 'omniauth-odnoklassniki'
 gem 'devise'
 gem 'rocket_tag'
 gem 'haml-rails'
+gem 'acts_as_votable', '~> 0.5.0'
+gem "acts_as_follower"
 
 gem 'therubyracer', :platforms => :ruby
 gem 'jquery-rails'

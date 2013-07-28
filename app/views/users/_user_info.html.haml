@@ -1,15 +1,23 @@
 #avatar.avatar
   =image_tag @user.avatar.url(:medium)
-#user_about= @user.about
+#user_about
+  -unless @user.about.nil? || @user.about.empty?
+    =@user.about
+  -else
+    -if @user == current_user
+      Здесь отображается краткая информация о вас. Нипишите немного о себе в
+      =link_to "настройках профиля...", edit_user_registration_path, class: "blue"
+    -else
+      Пошльзователь не написал о себе ничего...
 #block_buttons
   #block
     %a{href: '#'}
-      #col.big_arial 20
+      #col.big_arial=@user.count_user_followers
       #new +12
       подписчиков
   #block
     %a{href: '#'}
-      #col.big_arial 10
+      #col.big_arial=@user.following_users_count
       #new +8
       подписок
   #block
@@ -17,6 +25,12 @@
       #col.big_arial 4
       #new  
       магазинов
-  #block.follow
-    %a{href: "#"}
-      подписаться
+  -unless current_user == @user
+    -unless current_user.following?(@user) 
+      #block.follow
+        =link_to "подписаться", follow_path(@user)
+    -else
+      #block.unfollow
+        =link_to "отписаться", unfollow_path(@user)
+  -else
+    #block

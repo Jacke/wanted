@@ -1,4 +1,6 @@
 class Item < ActiveRecord::Base
+  acts_as_votable
+  
   attr_accessible :clothes, :comment, :collection_id, :name, :prise, :sex
   #paperclip
   attr_accessible :image

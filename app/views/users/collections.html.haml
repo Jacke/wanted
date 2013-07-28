@@ -15,8 +15,8 @@
         %span.big_arial
           10
         Упоминаний
-  #grid_elemets
-    -unless @collections.empty?
+  -unless @collections.empty?
+    #grid_elements
       -@collections.each do |collection|
         %section.collection_element{:id => "#{collection.id}"}
           #preview
@@ -26,5 +26,7 @@
                   #item{:style => "background: url(#{item.image.url(:small)})"}
           #info
             =link_to collection.title, '#'
-    -else
-      Пока нет ни одной коллекции
+  -else
+    .con_h
+      %h2
+        Пока нет ни одной коллекции

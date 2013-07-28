@@ -15,8 +15,9 @@
         %span.big_arial
           10
         Упоминаний
-  #grid_elemets
-    -unless @items.empty?
-      =render partial: "items_grid"
-    -else
-      Коллекция пуста
+  -unless @items.empty?
+    #grid_elements
+      -unless @items.empty?
+        =render partial: "items_grid"
+  -else
+    Коллекция пуста

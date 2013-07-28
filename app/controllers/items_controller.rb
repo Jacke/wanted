@@ -1,7 +1,7 @@
 #encoding: utf-8
 class ItemsController < ApplicationController
   def new
-    @items = Item.all
+    @items = Item.order("created_at DESC")
   end
 
   def create
@@ -27,11 +27,23 @@ class ItemsController < ApplicationController
   end
 
   def popular
-    @items = Item.all
+    @items = Item.order('cached_votes_total DESC')
   end
 
   def show
     @item = Item.find_by_id(params[:id])
     @user = @item.user
   end
+
+  def up
+    @item = Item.find_by_id(params[:id])
+    @item.liked_by current_user
+    @respond = {item:{rating: @item.cached_votes_total}}
+
+    respond_to do |format|
+      format.json {render json:  @respond, status:  :ok}
+      format.any(:html,:xml) {render status:  404}
+    end
+  end
+
 end

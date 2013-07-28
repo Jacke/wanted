@@ -1,5 +1,7 @@
 #encoding: utf-8
 class User < ActiveRecord::Base
+  acts_as_followable
+  acts_as_follower
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -24,6 +26,8 @@ class User < ActiveRecord::Base
   # Validations
   #===============================================================
   validates_presence_of :name
+
+  #after_create :send_welcome_email
 
   #== Class Methods ==============================================
   class << self
@@ -55,6 +59,12 @@ class User < ActiveRecord::Base
       end
       user
     end
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.welcome_email(self).deliver
   end
 
 end

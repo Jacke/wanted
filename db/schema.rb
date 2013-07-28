@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130725070609) do
+ActiveRecord::Schema.define(:version => 20130728193709) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -19,6 +19,19 @@ ActiveRecord::Schema.define(:version => 20130725070609) do
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "follows", :force => true do |t|
+    t.integer  "followable_id",                      :null => false
+    t.string   "followable_type",                    :null => false
+    t.integer  "follower_id",                        :null => false
+    t.string   "follower_type",                      :null => false
+    t.boolean  "blocked",         :default => false, :null => false
+    t.datetime "created_at",                         :null => false
+    t.datetime "updated_at",                         :null => false
+  end
+
+  add_index "follows", ["followable_id", "followable_type"], :name => "fk_followables"
+  add_index "follows", ["follower_id", "follower_type"], :name => "fk_follows"
 
   create_table "items", :force => true do |t|
     t.string   "name",               :default => "",    :null => false
@@ -34,7 +47,16 @@ ActiveRecord::Schema.define(:version => 20130725070609) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id"
+    t.integer  "cached_votes_total", :default => 0
+    t.integer  "cached_votes_score", :default => 0
+    t.integer  "cached_votes_up",    :default => 0
+    t.integer  "cached_votes_down",  :default => 0
   end
+
+  add_index "items", ["cached_votes_down"], :name => "index_items_on_cached_votes_down"
+  add_index "items", ["cached_votes_score"], :name => "index_items_on_cached_votes_score"
+  add_index "items", ["cached_votes_total"], :name => "index_items_on_cached_votes_total"
+  add_index "items", ["cached_votes_up"], :name => "index_items_on_cached_votes_up"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "", :null => false
@@ -65,5 +87,21 @@ ActiveRecord::Schema.define(:version => 20130725070609) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "votes", :force => true do |t|
+    t.integer  "votable_id"
+    t.string   "votable_type"
+    t.integer  "voter_id"
+    t.string   "voter_type"
+    t.boolean  "vote_flag"
+    t.string   "vote_scope"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "votes", ["votable_id", "votable_type", "vote_scope"], :name => "index_votes_on_votable_id_and_votable_type_and_vote_scope"
+  add_index "votes", ["votable_id", "votable_type"], :name => "index_votes_on_votable_id_and_votable_type"
+  add_index "votes", ["voter_id", "voter_type", "vote_scope"], :name => "index_votes_on_voter_id_and_voter_type_and_vote_scope"
+  add_index "votes", ["voter_id", "voter_type"], :name => "index_votes_on_voter_id_and_voter_type"
 
 end

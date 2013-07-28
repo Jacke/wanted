@@ -284,9 +284,12 @@ section.collection_element #info a {color: #174f9c;text-decoration: underline;}
 
 /* style classes */
 a.blue {color: #174f9c;cursor: pointer;}
+a.ellow {color: #966c0f; text-decoration: none;}
+a.ellow:hover {text-decoration: underline;}
 .g2 { width: 550px; }
 .g3 {margin: 0 -20px 0 -20px;}
 .gi {padding: 0 30px;}
+.con_h {padding-top: 20px;}
 .gue {padding: 0 30px 0 80px;font-size: 18px;}
 .m_left {margin-left: -50px;}
 .f24 {font-size: 24px;}
@@ -371,6 +374,8 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 #user #info #block_buttons #block #new {position: absolute; top: 5px; right: 8px;text-align: right;color: rgb(39,98,180); font-weight: bold;}
 #user #info #block_buttons #block.follow {font-weight: bold; text-align: center; font-size: 18px; padding: 5px 6px 0 6px;background: #e5b03c;line-height: 43px;}
 #user #info #block_buttons #block.follow:hover {background: #efc15c;}
+#user #info #block_buttons #block.unfollow {font-weight: bold; text-align: center; font-size: 18px; padding: 5px 6px 0 6px;background: #e2e2e2;line-height: 43px;}
+#user #info #block_buttons #block.unfollow:hover {background: #ededed;}
 #user #info #block_buttons #block a{width: 100%;height: 100%;display: block;text-decoration: none;}
 #user #nav_panel {display: inline-block;margin: 0 -30px 0 -30px; }
 #user #nav_panel #block {
@@ -395,7 +400,8 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
   border-right: 1px solid #bbb;
   z-index: 10;
 }
-#user #grid_elemets {margin: 30px -30px 30px -30px;}
+#user #grid_elements {margin: 30px -30px 30px -30px;}
+
 .big_arial {
   font-size: 24px;
   font-family: Arial, sans-serif;
@@ -438,7 +444,7 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 #item #left #followers a {display: inline-block;}
 #item #left #collections {margin-bottom: 20px;}
 #item #left #tags {margin-bottom: 60px;}
-#item #left #follow a {height: 33px;background: url(../images/follow_pointer.png) no-repeat right 0; margin-bottom: 40px;display: inline-block;line-height: 33px;padding: 0 40px;color: #000;text-decoration: none;}
+#item #left #follow a {height: 33px;background: url(../images/follow_pointer.png) no-repeat right 0; margin-bottom: 40px;display: inline-block;line-height: 33px;padding: 0 40px 0 30px;color: #000;text-decoration: none;}
 #item #left #follow a:hover {text-decoration: underline;}
 /* end item page */
 

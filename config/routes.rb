@@ -14,6 +14,8 @@ Hochuli::Application.routes.draw do
   get '/collections/:id' => 'users#collections', as: :user_collections
   get '/collection/:id/:collection_id' => 'users#collection', as: :user_collection
   get '/user' => 'users#show'
+  get '/follow/:id' => 'users#follow', as: :follow
+  get '/unfollow/:id' => 'users#unfollow', as: :unfollow
 
   #search
   get "search" => 'search#index', as: :search
@@ -22,5 +24,6 @@ Hochuli::Application.routes.draw do
 
   #item
   resources :items
+  post 'item/:id/up' => 'items#up', as: :like_item
 
 end

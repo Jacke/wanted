@@ -142,6 +142,16 @@ $(document).ready(function() {
     readURL(this);
   });
   // конец формы для добавления товара
+  $('section.element #like a').click(function(e){
+    e.preventDefault();
+    var item = $(this).parent('#like').children('span');
+    var id = $(this).prop('id');
+    $.post('/item/'+id+'/up', function(data,status,xhr){
+      var rating = parseInt(data.item.rating)
+      $(item).text(rating);
+    })
+    return false;
+  });
 
   //dragg and drop
   $('section.element').draggable({

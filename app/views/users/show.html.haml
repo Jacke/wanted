@@ -15,8 +15,11 @@
         %span.big_arial
           10
         Упоминаний
-  #grid_elemets
-    -unless @items.empty?
+  -unless @items.empty?      
+    #grid_elements
       =render partial: "items_grid"
-    -else
-      Пока не добавоено ни одного товара
+  -else
+    .con_h
+      %h2
+        У вас нет ни одного товара. Для того чтобы добавить новый товар, сделай
+        =link_to "серч...", search_path, class: "ellow"

@@ -22,6 +22,10 @@ module ApplicationHelper
       @user.name
     when "users/collections"
       @user.name+' - Коллекци '
+    when "users/collection"
+      @user.name+' - '+@collection.title
+    when "items/show"
+      @item.name
     when "registrations/edit"
       "Настройки"
     when "search/index"
