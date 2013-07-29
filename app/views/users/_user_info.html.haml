@@ -25,7 +25,7 @@
       #col.big_arial 4
       #new  
       магазинов
-  -unless current_user == @user
+  -if user_signed_in? && current_user != @user
     -unless current_user.following?(@user) 
       #block.follow
         =link_to "подписаться", follow_path(@user)
