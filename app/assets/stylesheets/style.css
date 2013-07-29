@@ -58,6 +58,19 @@ input, textarea {
     resize:none;
     font-family: "Arial Narrow",'PT Sans Narrow', Arial, sans-serif;
 }
+input[type=text],input[type=email],input[type=password], textarea {
+  -webkit-transition: all 0.30s ease-in-out;
+  -moz-transition: all 0.30s ease-in-out;
+  -ms-transition: all 0.30s ease-in-out;
+  -o-transition: all 0.30s ease-in-out;
+  outline: none;
+  border: 1px solid #DDDDDD;
+}
+ 
+input[type=text]:focus,input[type=email]:focus,input[type=password]:focus, textarea:focus {
+  box-shadow: 0 0 6px rgba(39, 91, 176, 0.8);
+  border: 1px solid rgba(39, 91, 176, 1);
+}
 /* base end */
 
 /* header */
@@ -420,6 +433,7 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 #item #right #comments #comment_form {position: relative; display: block;margin-bottom: 15px;}
 #item #right #comments #comment_form a{text-decoration: none;}
 #item #right #comments #comment_form input {height: 28px; width: 330px;font-size: 18px; border: 1px solid #000;padding: 0 10px;position: absolute;right: 0;top:0;line-height: 28px;}
+#item #right #comments #comment_form input:focus {box-shadow: 0 0 6px rgba(39, 91, 176, 0.8);border: 1px solid rgba(39, 91, 176, 1);}
 #item #right #comments ul {position: relative; display: block;}
 #item #right #comments ul li {position: relative; display: block;margin-bottom: 15px;}
 #item #right #comments ul li #avatar {display: block;float: left;margin-top: 4px;}

@@ -6,7 +6,7 @@
       #comment_form
         %a{:href => "#"}
           =image_tag @user.avatar.url(:esmall) 
-        %input{:placeholder => "комментарий, @упоминание, #хэштэг"}
+        %input{:placeholder => "комментарий, @упоминание, #хэштэг", :type => "text"}
       %ul
         %li
           %a{:href => "#", :id => "avatar"}
