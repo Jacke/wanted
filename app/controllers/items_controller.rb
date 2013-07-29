@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
   end
 
   def popular
-    @items = Item.order('cached_votes_total DESC')
+    @items = Item.order('cached_votes_total DESC').order('cached_comments DESC')
   end
 
   def show

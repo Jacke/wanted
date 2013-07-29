@@ -9,10 +9,22 @@ class CommentsController < ApplicationController
       @comment.item_id = @item.id
 
       if @comment.save
+        update_cached_comments(@item)
         render partial: "shared/comments"
       else
         not_found
       end
     end
+  end
+
+  private
+
+  def update_cached_comments(item)
+    if item.cached_comments == 0
+      count = item.comments.count
+    else
+      count = item.cached_comments + 1
+    end
+    item.update_attribute(:cached_comments, count)
   end
 end
