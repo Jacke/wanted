@@ -33,6 +33,8 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find_by_id(params[:id])
     @user = @item.user
+    @comment = Comment.new
+    @comments = @item.comments.order("created_at DESC")
   end
 
   def up

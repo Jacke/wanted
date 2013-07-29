@@ -26,4 +26,7 @@ Hochuli::Application.routes.draw do
   resources :items
   post 'item/:id/up' => 'items#up', as: :like_item
 
+  #comments
+  post 'item/:id/comment' => 'comments#create', as: :comment
+
 end

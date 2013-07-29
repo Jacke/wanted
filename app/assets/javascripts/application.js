@@ -106,6 +106,18 @@ $(document).ready(function() {
     return false;
   })
 
+  // comment
+  $(document).on('ajax:success','#comment-form', function(s,data,x){
+    if(typeof data == 'object'){
+      showErrors(data.errors);
+    }else{
+      $('#comments .comnt_list').html(data);
+      $('#comments textarea').val('');
+      $('#comment-form #send_comment').fadeOut()
+
+      showNotices(["Комментарий успешно добавлен"]);
+    }
+  });
   // смена форм регистрации и авторизации
   $("#login_button").click(function (){
     var lf = $('#login_form');

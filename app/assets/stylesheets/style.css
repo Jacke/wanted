@@ -59,10 +59,10 @@ input, textarea {
     font-family: "Arial Narrow",'PT Sans Narrow', Arial, sans-serif;
 }
 input[type=text],input[type=email],input[type=password], textarea {
-  -webkit-transition: all 0.30s ease-in-out;
-  -moz-transition: all 0.30s ease-in-out;
-  -ms-transition: all 0.30s ease-in-out;
-  -o-transition: all 0.30s ease-in-out;
+  -webkit-transition: border 0.30s ease-in-out,box-shadow 0.30s ease-in-out;
+  -moz-transition: border 0.30s ease-in-out,box-shadow 0.30s ease-in-out;
+  -ms-transition: border 0.30s ease-in-out,box-shadow 0.30s ease-in-out;
+  -o-transition: border 0.30s ease-in-out,box-shadow 0.30s ease-in-out;
   outline: none;
   border: 1px solid #DDDDDD;
 }
@@ -432,16 +432,17 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 #item #right #image {margin-bottom: 20px;}
 #item #right #comments #comment_form {position: relative; display: block;margin-bottom: 15px;}
 #item #right #comments #comment_form a{text-decoration: none;display: block;float: left;}
-#item #right #comments #comment_form textarea {height: 28px; width: 330px;font-size: 18px; border: 1px solid #000;padding: 0 10px;position: relative;right: 0;top:0;line-height: 28px;display: inline-block;margin-left: 10px;}
-#item #right #comments #comment_form textarea:focus {height: 100px;box-shadow: 0 0 6px rgba(255, 176, 37, 0.5);border: 1px solid rgba(255, 176, 37, 0.5);display: inline-block;}
-#item #right #comments #comment_form input[type="submit"] {width: 45px; position: absolute;right: 0px;bottom: -21px;height: 25px;font-size: 14px;}
-#item #right #comments ul {position: relative; display: block;}
-#item #right #comments ul li {position: relative; display: block;margin-bottom: 15px;}
-#item #right #comments ul li #avatar {display: block;float: left;margin-top: 4px;}
-#item #right #comments ul li #comment {width: 350px;display: inline-block; margin-left: 10px;}
-#item #right #comments ul li #comment #info {color: #aaa;}
-#item #right #comments ul li #comment #info a{color: #aaa;}
-#item #right #comments ul li #comment #info a:hover{color: #777;}
+#item #right #comments #comment_form textarea {resize: vertical; height: 21px; width: 330px;font-size: 18px; border: 1px solid #000;padding: 5px 10px;position: relative;right: 0;top:0;display: inline-block;margin-left: 10px;}
+#item #right #comments #comment_form textarea:focus {box-shadow: 0 0 6px rgba(255, 176, 37, 0.5);border: 1px solid rgba(255, 176, 37, 0.5);display: inline-block;}
+#item #right #comments #comment_form input[type="submit"] {padding: 5px 10px; position: absolute;right: 0px;bottom: -22px;height: 26px;font-size: 14px;background: #e5b03b;}
+#item #right #comments #comment_form input[type="submit"]:hover {cursor: pointer; background: #eebc4d;}
+#item #right .comnt_list ul {position: relative; display: block;}
+#item #right .comnt_list ul li {position: relative; display: block;margin-bottom: 15px;}
+#item #right .comnt_list ul li #avatar {display: block;float: left;margin-top: 4px;width: 28px;height: 28px;}
+#item #right .comnt_list ul li #comment {width: 350px;display: inline-block; margin-left: 10px;}
+#item #right .comnt_list ul li #comment #info {color: #aaa;}
+#item #right .comnt_list ul li #comment #info a{color: #aaa;}
+#item #right .comnt_list ul li #comment #info a:hover{color: #777;}
 
 #item #left {position: absolute;top: 35px;right: 0;width: 340px;}
 #item #left #user {display: inline-block;margin-bottom: 40px;}

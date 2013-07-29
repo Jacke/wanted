@@ -1,0 +1,17 @@
+%ul
+  -unless @comments.empty?
+    -@comments.each do |comment|     
+      %li.comnt_list
+        %a{:href => "#{user_show_path(comment.user)}", :id => "avatar"}
+          =image_tag comment.user.avatar.url(:esmall)
+        #comment
+          #info
+            = link_to comment.user.name, user_show_path(comment.user)
+            = ', '+time_ago_in_words(comment.created_at)+' назад'
+          #text
+            =comment.content
+  -else
+    %li
+      #comment
+        %span#avatar
+        Комментариев нет

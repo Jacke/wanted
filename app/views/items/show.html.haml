@@ -1,10 +1,14 @@
 :javascript
   $(document).ready(function() {
-    $("#comment_form textarea").focus(function(){
-      $("#comment_form input").css('display','block')
-    })
-    $('#comment_form textarea').bind('blur', function(){
-       $("#comment_form input").css('display','none')
+    var submit = $('#comment-form #send_comment')
+    var input = $('#comment_content')
+
+    $(input).on('input', function(){
+      if ($(this).val() == ''){
+        $(submit).fadeOut()
+      } else {
+        $(submit).fadeIn()
+      }
     })
   })
 #item.gi
@@ -13,41 +17,13 @@
       =image_tag(@item.image.url(:big))
     #comments
       #comment_form
-        %a{:href => "#"}
-          =image_tag @user.avatar.url(:esmall) 
-        %textarea{:placeholder => "комментарий, @упоминание, #хэштэг"}
-        %input{:type => 'submit', :value => 'ok', :style => 'display: none'}
-      %ul
-        %li
-          %a{:href => "#", :id => "avatar"}
-            =image_tag @user.avatar.url(:esmall)
-          #comment
-            #info
-              %a{:href => "#"} Сергкей Швецов
-              , 2 часа назад
-            #text
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-        %li
-          %a{:href => "#", :id => "avatar"}
-            =image_tag @user.avatar.url(:esmall)
-          #comment
-            #info
-              %a{:href => "#"} Сергкей Швецов
-              , 2 часа назад
-            #text
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
-        %li
-          %a{:href => "#", :id => "avatar"}
-            =image_tag @user.avatar.url(:esmall)
-          #comment
-            #info
-              %a{:href => "#"} Сергкей Швецов
-              , 2 часа назад
-            #text
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam
+        %a{:href => "#{user_show_path(current_user)}"}
+          =image_tag current_user.avatar.url(:esmall) 
+        =form_for @comment,url: "/item/#{@item.id}/comment", html: {class: "answer_comnt", method: :post, id: "comment-form", remote: true} do |f|
+          =f.text_area :content, :placeholder => "комментарий, @упоминание, #хэштэг"
+          =f.submit "сказать", :id => 'send_comment', :style => 'display: none;'
+      .comnt_list
+        = render partial: 'shared/comments'
   #left
     #user
       %a{:href => user_show_path(@user)}

@@ -10,8 +10,9 @@ class Item < ActiveRecord::Base
 
   # Relations
   #===============================================================
-  belongs_to :user
-  belongs_to :collection
+  belongs_to  :user
+  belongs_to  :collection
+  has_many    :comments
 
   # Validations
   #===============================================================
