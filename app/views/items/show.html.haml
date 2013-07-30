@@ -1,5 +1,7 @@
 :javascript
   $(document).ready(function() {
+
+    // comment
     var submit = $('#comment-form #send_comment')
     var input = $('#comment_content')
 
@@ -9,6 +11,19 @@
       } else {
         $(submit).fadeIn()
       }
+    })
+
+    // select collection
+    var cur_col = $('#select_collecton .current')
+
+    $(cur_col).click(function(){
+      $('#select_collecton .collectins').slideToggle()
+    })
+
+    $('#select_collecton .collectins li').click(function(){
+      $(cur_col).text($(this).text())
+      $(cur_col).attr('id',$(this).val())
+      $(cur_col).click()
     })
   })
 #item.gi
@@ -68,3 +83,19 @@
     #follow
       %a{:href => "#"}
         Подписаться
+.g-hidden{:style => 'display: block'}
+  .box-modal#select_collecton
+    .box-modal_close.arcticmodal-close
+      Закрыть
+    #collection 
+      .current{:id => '', :item => @item.id} коллекция
+      .collectins{:style => 'display: none'}
+        .collections_list
+          %ul
+            -@collections.each do |collection|
+              %li{:id => collection.id}= collection.title
+        .new_collectin{:style => 'display: none'}
+          %form.new_collection
+            %input{:placeholder => 'новая коллекция', :class => 'new_collection'}
+            %input{:value => 'ок', :type => 'submit', :class => 'submit'}
+      %span.submit Добавить

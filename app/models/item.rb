@@ -1,7 +1,8 @@
 class Item < ActiveRecord::Base
   acts_as_votable
+  acts_as_taggable
   
-  attr_accessible :clothes, :comment, :collection_id, :name, :prise, :sex
+  attr_accessible :clothes, :comment, :collection_id, :name, :prise, :sex, :tag_list
   #paperclip
   attr_accessible :image
   has_attached_file :image, :styles => { :medium => "230x180#",:small => "115x100#",:big => "390x" }, 

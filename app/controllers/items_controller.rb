@@ -35,12 +35,25 @@ class ItemsController < ApplicationController
     @user = @item.user
     @comment = Comment.new
     @comments = @item.comments.order("created_at DESC")
+    @collections = current_user.collections
   end
 
   def up
     @item = Item.find_by_id(params[:id])
     @item.liked_by current_user
     @respond = {item:{rating: @item.cached_votes_total}}
+
+    respond_to do |format|
+      format.json {render json:  @respond, status:  :ok}
+      format.any(:html,:xml) {render status:  404}
+    end
+  end
+
+  def add
+    item_id = params[:id]
+    collection_id = params[:collection_id]
+
+    @respond = {ans: 'Товар успешно добавлен в коллекцию'}
 
     respond_to do |format|
       format.json {render json:  @respond, status:  :ok}

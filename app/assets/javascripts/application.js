@@ -118,6 +118,23 @@ $(document).ready(function() {
       showNotices(["Комментарий успешно добавлен"]);
     }
   });
+
+  // add item to collection
+  $('#select_collecton span.submit').click(function(e){
+    e.preventDefault();
+
+    var collection_id = $('#select_collecton .current').attr('id')
+    var id = $('#select_collecton .current').attr('item')
+    //var item = $(this).parent('#like').children('span');
+    //var id = $(this).prop('id');
+    $.post('/item/'+id+'/add/'+collection_id, function(data,status,xhr){
+      var ans = data.ans
+      //$(item).text(rating);
+      alert(ans)
+    })
+    return false;
+  });
+
   // смена форм регистрации и авторизации
   $("#login_button").click(function (){
     var lf = $('#login_form');
@@ -154,6 +171,7 @@ $(document).ready(function() {
     readURL(this);
   });
   // конец формы для добавления товара
+  // поставить лайк
   $('section.element #like a').click(function(e){
     e.preventDefault();
     var item = $(this).parent('#like').children('span');
