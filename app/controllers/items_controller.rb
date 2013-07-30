@@ -8,18 +8,24 @@ class ItemsController < ApplicationController
     @item = Item.new(params[:item])
     @collection_name = params[:collection_name]
 
+    # рефакторить
     unless @collection_name.empty?
       @collection = Collection.new
 
       @collection.user = current_user
       @collection.title = @collection_name
       if @collection.save
-        @item.collection = @collection
+        @collection
       end
+    else
+      @collection = Collection.find_by_id(params[:item][:collection_id])
     end
 
     @item.user = current_user
     if @item.save
+      current_user.follow(@item)
+      @collection.follow(@item)
+
       return render :json => {:success => true}
     else
       return render :json => {:success => false, :errors => @item.errors.full_messages}
@@ -52,8 +58,17 @@ class ItemsController < ApplicationController
   def add
     item_id = params[:id]
     collection_id = params[:collection_id]
+    @item = Item.find_by_id(item_id)
 
-    @respond = {ans: 'Товар успешно добавлен в коллекцию'}
+    current_user.follow(@item)
+
+    if collection_id.to_i != -1
+      @collection = Collection.find_by_id(collection_id)
+      @collection.follow(@item)
+      @respond = {ans: "Товар успешно добавлен в коллекцию #{@collection.title}"}
+    else
+      @respond = {ans: "Товар успешно добавлен"}
+    end
 
     respond_to do |format|
       format.json {render json:  @respond, status:  :ok}

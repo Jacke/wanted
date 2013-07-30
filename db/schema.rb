@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130730093204) do
+ActiveRecord::Schema.define(:version => 20130730145544) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -43,9 +43,8 @@ ActiveRecord::Schema.define(:version => 20130730093204) do
 
   create_table "items", :force => true do |t|
     t.string   "name",               :default => "",    :null => false
-    t.integer  "collection_id"
     t.integer  "sex",                :default => 0
-    t.integer  "prise"
+    t.integer  "prise",              :default => 0
     t.text     "comment"
     t.boolean  "clothes",            :default => false
     t.datetime "created_at",                            :null => false

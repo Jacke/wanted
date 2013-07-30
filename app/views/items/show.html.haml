@@ -22,7 +22,7 @@
 
     $('#select_collecton .collectins li').click(function(){
       $(cur_col).text($(this).text())
-      $(cur_col).attr('id',$(this).val())
+      $(cur_col).attr('id',$(this).attr('id'))
       $(cur_col).click()
     })
   })
@@ -51,7 +51,7 @@
     #buttons
       #li
         #button
-          %a.button.blue_button{:href => "#"}Хочу
+          %a.button.blue_button{:href => "#", :onclick => '$(\'#select_collecton\').arcticmodal()'}Хочу
         #info
           =@item.cached_votes_total
           %span.big_hart
@@ -83,12 +83,12 @@
     #follow
       %a{:href => "#"}
         Подписаться
-.g-hidden{:style => 'display: block'}
+.g-hidden{:style => 'display: none'}
   .box-modal#select_collecton
     .box-modal_close.arcticmodal-close
       Закрыть
     #collection 
-      .current{:id => '', :item => @item.id} коллекция
+      .current{:id => -1, :item => @item.id} коллекция
       .collectins{:style => 'display: none'}
         .collections_list
           %ul

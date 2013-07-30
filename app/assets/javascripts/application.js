@@ -119,7 +119,7 @@ $(document).ready(function() {
     }
   });
 
-  // add item to collection
+  // follow item
   $('#select_collecton span.submit').click(function(e){
     e.preventDefault();
 
@@ -131,6 +131,7 @@ $(document).ready(function() {
       var ans = data.ans
       //$(item).text(rating);
       alert(ans)
+      $.arcticmodal('close')
     })
     return false;
   });

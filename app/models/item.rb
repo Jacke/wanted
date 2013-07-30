@@ -1,6 +1,7 @@
 class Item < ActiveRecord::Base
   acts_as_votable
   acts_as_taggable
+  acts_as_followable
   
   attr_accessible :clothes, :comment, :collection_id, :name, :prise, :sex, :tag_list
   #paperclip
@@ -12,7 +13,6 @@ class Item < ActiveRecord::Base
   # Relations
   #===============================================================
   belongs_to  :user
-  belongs_to  :collection
   has_many    :comments
 
   # Validations
