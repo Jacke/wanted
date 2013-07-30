@@ -1,0 +1,48 @@
+.g-hidden{:style => 'display: none'}
+  .box-modal#itemmodal
+    .box-modal_close.arcticmodal-close
+      Закрыть
+    #select_collecton
+      #collection 
+        .current{:id => -1, :item => @item.id} коллекция
+        .collectins{:style => 'display: none'}
+          .collections_list
+            = render partial: 'collections/collections_list'
+          .new_collection{:style => 'display: block'}
+            =form_for @collection,url: "/collection/create", html: {method: :post, id: "new_collection", remote: true} do |f|
+              =f.text_field :title, :placeholder => 'новая коллекция', :class => 'new_collection'
+              =f.submit "ok", :class => 'submit'
+    = form_for @item,:url => items_path, :html => { :multipart => true} do |f|
+      %ul.first_step
+        %li.center_image.center
+          %img{:class => "image_preview", :src => "#", :alt => "Изображение товара"}
+          = f.file_field :image, :id => 'imgInp', :style => 'display: none;'
+          = text_field_tag 'collection_id', -1, id: "collection_id", :style => 'display: none;'
+        %ul.center.notice-bar{class:"error"}
+        %li.center=f.text_field :name, :placeholder => 'название товара'
+        //%li.center=f.select :collection_id, @collections.collect{|p| [ p.title, p.id ] }.insert(0,"новая коллекция"), :include_blank => "без коллекции", :html => {:dir => "rtl"}
+        
+        %li.center#name_new_collection{:style => 'display: none;'}=text_field_tag 'collection_name', nil, :placeholder => 'название новой коллекции'        
+        %li.center
+          %span.button.blue_button#done Done!
+      %ul.second_step{:style => 'display: none;'}
+        %li.image
+          %img{:class => "image_preview", :src => "#", :alt => "Изображение товара"}
+          .right
+            %ul
+              %li.f24 Товар у вас :) Почти
+              %li.name#item_name
+              %li
+                = f.text_field :prise, :placeholder => 'цена', :class => 'prise'
+                %span руб
+        %ul.center.notice-bar{class:"error"}
+        %li.center
+          %span.button.sex.blue_button{:value => 2} мужчинам
+          %span.button.sex.blue_button{:value => 1} женщинам
+          %span.button.sex.active{:value => 0} без разницы
+          =f.text_field :sex, :style => 'display: none;'
+        %li.center= f.text_field :comment, :placeholder => 'комент #тэг @человек'
+        %li.center
+          %span.checkbox{:style => 'margin: 0 5px -8px 0;'}= f.check_box :clothes,{},false,true
+          %span Кстати, это не одежда
+        %li.center= f.submit "Закидываем", :class => 'button blue_button', :id => 'add_item_submit'

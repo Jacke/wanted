@@ -129,8 +129,6 @@ $(document).ready(function() {
     //var id = $(this).prop('id');
     $.post('/item/'+id+'/add/'+collection_id, function(data,status,xhr){
       var ans = data.ans
-      //$(item).text(rating);
-      alert(ans)
       $.arcticmodal('close')
     })
     return false;

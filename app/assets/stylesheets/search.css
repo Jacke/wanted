@@ -92,6 +92,7 @@
   display: inline-block;
   font-weight: bold;
 }
+#itemmodal #done.button{margin-top: 60px;}
 #itemmodal .button.sex {width: 145px; margin: 0 10px;}
 #itemmodal .button.sex.active {background: #CEA120;}
 #itemmodal .button.sex.active:hover {background: #E1B025;}
@@ -108,4 +109,16 @@
   float: left;
   padding-right: 15px;
 }
+
+#itemmodal #select_collecton {position: absolute;bottom: 120px;width: 600px;}
+#itemmodal #select_collecton #collection {margin: 0 auto;position: relative;width: 430px;bottom: 0;}
+#itemmodal #select_collecton .current {background: #fff; height: 30px; line-height: 30px; font-size: 18px;color: #000;padding: 5px 15px;width: 400px;border: 1px #000 solid;display: inline-block;text-align: center;margin: 0;cursor: pointer;}
+#itemmodal #select_collecton .collectins {line-height: 30px;width: 430px;border: 1px #000 solid;border-top: 0; margin-top: 0px;position: absolute; top: 50;background: #fff;}
+#itemmodal #select_collecton .collectins li {margin: 0; height: 30px; line-height: 30px;text-align: center;padding: 5px 15px;cursor: pointer;background: #fff;}
+#itemmodal #select_collecton .collectins li:hover {text-align: center;background: #ddd;}
+#itemmodal #select_collecton .new_collection input.new_collection {font-size: 18px;float: left;width: 340px;padding: 5px 10px;background: #ddd; border: 0}
+#itemmodal #select_collecton .new_collection input.submit {height: 40px; line-height: 30px; width: 70px; background: #e5b03b;font-size: 18px;padding: 6px 20px;}
+#itemmodal #select_collecton .new_collection input.submit:hover {background: #eebc4d;cursor: pointer;}
+#itemmodal #select_collecton #collection span.submit {background: #ddd;width: 300px;padding: 5px 15px;text-align: center;display: block;margin-top: 10px;cursor: pointer;border: 1px #000 solid;}
+#itemmodal #select_collecton #collection span.submit:hover {background: #e2e2e2;}
 /* конец. форма для добавления товара */

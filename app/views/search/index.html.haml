@@ -9,25 +9,44 @@
     $("#imgInp").change(function (){
       $('.first_step').css('display','block');
       $('.second_step').css('display','none');
+      $('#itemmodal #select_collecton').css('display','block');
       $('#itemmodal').arcticmodal();
     });
 
     // добавление новой коллекции
-    $('#item_collection_id').change(function(){
-      var v = $('#item_collection_id').val();
-      if (v == 'новая коллекция') {
-        $('#name_new_collection').slideDown();
-      } else {
-        $('#name_new_collection').slideUp();
-        $('#name_new_collection').val('');
-      }
+    // select collection
+    var cur_col = $('#select_collecton .current')
+
+    $(cur_col).click(function(){
+      $('#select_collecton .collectins').slideToggle()
     })
+
+    $(document).on("click", "#select_collecton .collectins li", function(){
+      $('#itemmodal #new_item #collection_id').val($(this).attr('id'))
+      $(cur_col).text($(this).text())
+      $(cur_col).attr('id',$(this).attr('id'))
+      $(cur_col).click()
+    })
+
+    //add new collection
+    $(document).on('ajax:success','#new_collection', function(s,data,x){
+      if(typeof data == 'object'){
+        showErrors(data.errors);
+      }else{
+        $('#select_collecton .collections_list').html(data);
+        $('#select_collecton #new_collection input.new_collection').val('');
+
+        //showNotices(["Комментарий успешно добавлен"]);
+      }
+    }); 
+
     // Действия при переходе ко второму шагу добавления товара
     $('#done').click(function(){
       var item_name = $('input#item_name').val();
       if (item_name != ''){
         $('li#item_name').text(item_name);
         $('.first_step').css('display','none');
+        $('#itemmodal #select_collecton').css('display','none');
         $('.second_step').css('display','block');
       } else {
         showErrors(['Введите название товара!']);
@@ -61,39 +80,4 @@
     %li.search_form
       %input{placeholder: 'Загружаем картинку товара с компа', :id => 'site_url'}
       %input{:id => 'load_image',:type => 'submit', :value=>"Загрузить"}
-.g-hidden{:style => 'display: none'}
-  .box-modal#itemmodal
-    .box-modal_close.arcticmodal-close
-      Закрыть
-    = form_for @item,:url => items_path, :html => { :multipart => true} do |f|
-      %ul.first_step
-        %li.center_image.center
-          %img{:class => "image_preview", :src => "#", :alt => "Изображение товара"}
-          = f.file_field :image, :id => 'imgInp', :style => 'display: none;'
-        %ul.center.notice-bar{class:"error"}
-        %li.center=f.text_field :name, :placeholder => 'название товара'
-        %li.center=f.select :collection_id, @collections.collect{|p| [ p.title, p.id ] }.insert(0,"новая коллекция"), :include_blank => "без коллекции", :html => {:dir => "rtl"}
-        %li.center#name_new_collection{:style => 'display: none;'}=text_field_tag 'collection_name', nil, :placeholder => 'название новой коллекции'        
-        %li.center
-          %span.button.blue_button#done Done!
-      %ul.second_step{:style => 'display: none;'}
-        %li.image
-          %img{:class => "image_preview", :src => "#", :alt => "Изображение товара"}
-          .right
-            %ul
-              %li.f24 Товар у вас :) Почти
-              %li.name#item_name
-              %li
-                = f.text_field :prise, :placeholder => 'цена', :class => 'prise'
-                %span руб
-        %ul.center.notice-bar{class:"error"}
-        %li.center
-          %span.button.sex.blue_button{:value => 2} мужчинам
-          %span.button.sex.blue_button{:value => 1} женщинам
-          %span.button.sex.active{:value => 0} без разницы
-          =f.text_field :sex, :style => 'display: none;'
-        %li.center= f.text_field :comment, :placeholder => 'комент #тэг @человек'
-        %li.center
-          %span.checkbox{:style => 'margin: 0 5px -8px 0;'}= f.check_box :clothes,{},false,true
-          %span Кстати, это не одежда
-        %li.center= f.submit "Закидываем", :class => 'button blue_button', :id => 'add_item_submit'
+= render partial: 'add_item'

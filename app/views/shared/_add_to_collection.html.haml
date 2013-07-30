@@ -1,0 +1,28 @@
+:javascript
+  $(document).ready(function() {
+    // collection
+    $(document).on('ajax:success','#new_collection', function(s,data,x){
+      if(typeof data == 'object'){
+        showErrors(data.errors);
+      }else{
+        $('#select_collecton .collections_list').html(data);
+        $('#select_collecton #new_collection input.new_collection').val('');
+
+        //showNotices(["Комментарий успешно добавлен"]);
+      }
+    }); 
+  })
+.g-hidden{:style => 'display: none'}
+  .box-modal#select_collecton
+    .box-modal_close.arcticmodal-close
+      Закрыть
+    #collection 
+      .current{:id => -1, :item => @item.id} коллекция
+      .collectins{:style => 'display: none'}
+        .collections_list
+          = render partial: 'collections/collections_list'
+        .new_collection{:style => 'display: block'}
+          =form_for @collection,url: "/collection/create", html: {method: :post, id: "new_collection", remote: true} do |f|
+            =f.text_field :title, :placeholder => 'новая коллекция', :class => 'new_collection'
+            =f.submit "ok", :class => 'submit'
+      %span.submit Добавить

@@ -6,25 +6,15 @@ class ItemsController < ApplicationController
 
   def create
     @item = Item.new(params[:item])
-    @collection_name = params[:collection_name]
-
-    # рефакторить
-    unless @collection_name.empty?
-      @collection = Collection.new
-
-      @collection.user = current_user
-      @collection.title = @collection_name
-      if @collection.save
-        @collection
-      end
-    else
-      @collection = Collection.find_by_id(params[:item][:collection_id])
-    end
+    @collection_id = params[:collection_id]
 
     @item.user = current_user
     if @item.save
       current_user.follow(@item)
-      @collection.follow(@item)
+      if @collection_id.to_i != -1
+        @collection = Collection.find_by_id(@collection_id)
+        @collection.follow(@item)
+      end
 
       return render :json => {:success => true}
     else
@@ -39,9 +29,15 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find_by_id(params[:id])
     @user = @item.user
+    @followers = @item.followers_by_type('User').limit(8)
+    @followers_count = @followers.length
     @comment = Comment.new
     @comments = @item.comments.order("created_at DESC")
-    @collections = current_user.collections
+
+    if user_signed_in?
+      @collections = current_user.collections
+      @collection = Collection.new
+    end
   end
 
   def up
@@ -75,5 +71,4 @@ class ItemsController < ApplicationController
       format.any(:html,:xml) {render status:  404}
     end
   end
-
 end

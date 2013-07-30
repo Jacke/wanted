@@ -372,24 +372,24 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 }
 /* edit user info page end */
 /* user page */
-#user #info {display: inline-block;margin-bottom: 20px;}
-#user #info #avatar {float: left;}
-#user #info #user_about {
+#user .info {display: inline-block;margin-bottom: 20px;}
+#user .info #avatar {float: left;}
+#user .info #user_about {
   width: 320px;
   float: left;
   margin-left: 10px;
   font-size: 18px;
   line-height: 24px;
 }
-#user #info #block_buttons {position: absolute;right: 0;width: 300px;}
-#user #info #block_buttons #block {position: relative; width: 128px;height: 50px;background: #e2e2e2;float: left;margin: 0 0 10px 10px;padding: 5px 2px 0 10px;}
-#user #info #block_buttons #block:hover {background: #ededed;}
-#user #info #block_buttons #block #new {position: absolute; top: 5px; right: 8px;text-align: right;color: rgb(39,98,180); font-weight: bold;}
-#user #info #block_buttons #block.follow {font-weight: bold; text-align: center; font-size: 18px; padding: 5px 6px 0 6px;background: #e5b03c;line-height: 43px;}
-#user #info #block_buttons #block.follow:hover {background: #efc15c;}
-#user #info #block_buttons #block.unfollow {font-weight: bold; text-align: center; font-size: 18px; padding: 5px 6px 0 6px;background: #e2e2e2;line-height: 43px;}
-#user #info #block_buttons #block.unfollow:hover {background: #ededed;}
-#user #info #block_buttons #block a{width: 100%;height: 100%;display: block;text-decoration: none;}
+#user .info #block_buttons {position: absolute;right: 0;width: 300px;}
+#user .info #block_buttons #block {position: relative; width: 128px;height: 50px;background: #e2e2e2;float: left;margin: 0 0 10px 10px;padding: 5px 2px 0 10px;}
+#user .info #block_buttons #block:hover {background: #ededed;}
+#user .info #block_buttons #block #new {position: absolute; top: 5px; right: 8px;text-align: right;color: rgb(39,98,180); font-weight: bold;}
+#user .info #block_buttons #block.follow {font-weight: bold; text-align: center; font-size: 18px; padding: 5px 6px 0 6px;background: #e5b03c;line-height: 43px;}
+#user .info #block_buttons #block.follow:hover {background: #efc15c;}
+#user .info #block_buttons #block.unfollow {font-weight: bold; text-align: center; font-size: 18px; padding: 5px 6px 0 6px;background: #e2e2e2;line-height: 43px;}
+#user .info #block_buttons #block.unfollow:hover {background: #ededed;}
+#user .info #block_buttons #block a{width: 100%;height: 100%;display: block;text-decoration: none;}
 #user #nav_panel {display: inline-block;margin: 0 -30px 0 -30px; }
 #user #nav_panel #block {
   width: 263px;
@@ -456,8 +456,9 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 #item #left #buttons .ellow_button {background: #e5b03b;}
 #item #left #buttons .ellow_button:hover {background: #eebc4d;}
 #item #left #buttons #info {width: 160px;margin-left: 40px;display: inline-block;font-size: 30px;line-height: 50px;}
-#item #left #followers {padding: 3px 3px; background: #efefef;margin-bottom: 40px;display: inline-block;height: 28px;}
+#item #left #followers {padding: 3px 3px; background: #efefef;margin-bottom: 10px;display: inline-block;height: 28px;}
 #item #left #followers a {display: inline-block;}
+#item #left #followers_count {margin-bottom: 40px;}
 #item #left #collections {margin-bottom: 20px;}
 #item #left #tags {margin-bottom: 60px;}
 #item #left #follow a {height: 33px;background: url(../images/follow_pointer.png) no-repeat right 0; margin-bottom: 40px;display: inline-block;line-height: 33px;padding: 0 40px 0 30px;color: #000;text-decoration: none;}

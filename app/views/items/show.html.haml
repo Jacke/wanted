@@ -20,7 +20,7 @@
       $('#select_collecton .collectins').slideToggle()
     })
 
-    $('#select_collecton .collectins li').click(function(){
+    $(document).on("click", "#select_collecton .collectins li", function(){
       $(cur_col).text($(this).text())
       $(cur_col).attr('id',$(this).attr('id'))
       $(cur_col).click()
@@ -31,12 +31,8 @@
     #image
       =image_tag(@item.image.url(:big))
     #comments
-      #comment_form
-        %a{:href => "#{user_show_path(current_user)}"}
-          =image_tag current_user.avatar.url(:esmall) 
-        =form_for @comment,url: "/item/#{@item.id}/comment", html: {class: "answer_comnt", method: :post, id: "comment-form", remote: true} do |f|
-          =f.text_area :content, :placeholder => "комментарий, @упоминание, #хэштэг"
-          =f.submit "сказать", :id => 'send_comment', :style => 'display: none;'
+      -if user_signed_in?
+        =render partial: 'shared/comment_form'
       .comnt_list
         = render partial: 'shared/comments'
   #left
@@ -44,7 +40,7 @@
       %a{:href => user_show_path(@user)}
         =image_tag @user.avatar.url(:small)
       =link_to @user.name, user_show_path(@user)
-      добавил эту вещь несколько дней назад.
+      =' добавил эту вещь '+time_ago_in_words(@item.created_at)+' назад.'
     #store
       Магазин: 
       =link_to "www.sitesite.com", "#", class: "ellow"
@@ -60,14 +56,11 @@
           %a.button.ellow_button{:href => "#"}Беру
         #info=@item.prise.to_s+' руб'
     #followers
-      %a{:href => "#"}=image_tag @user.avatar.url(:esmall)
-      %a{:href => "#"}=image_tag @user.avatar.url(:esmall)
-      %a{:href => "#"}=image_tag @user.avatar.url(:esmall)
-      %a{:href => "#"}=image_tag @user.avatar.url(:esmall)
-      %a{:href => "#"}=image_tag @user.avatar.url(:esmall)
-      %a{:href => "#"}=image_tag @user.avatar.url(:esmall)
-      %a{:href => "#"}=image_tag @user.avatar.url(:esmall)
-      %a{:href => "#"}=image_tag @user.avatar.url(:esmall)
+      -unless @followers.empty?
+        - @followers.each do |user|
+          %a{:href => user_show_path(user)}=image_tag user.avatar.url(:esmall)
+    #followers_count
+      =@followers_count.to_s+' '+Russian.p(@followers_count, "человек хочет", "человека тоже хотят :)", "человек тоже хотят :)")+''
     #collections
       Добавленно в коллекции:
       %a{:href => "#"} Вещи на выхожные
@@ -83,19 +76,5 @@
     #follow
       %a{:href => "#"}
         Подписаться
-.g-hidden{:style => 'display: none'}
-  .box-modal#select_collecton
-    .box-modal_close.arcticmodal-close
-      Закрыть
-    #collection 
-      .current{:id => -1, :item => @item.id} коллекция
-      .collectins{:style => 'display: none'}
-        .collections_list
-          %ul
-            -@collections.each do |collection|
-              %li{:id => collection.id}= collection.title
-        .new_collectin{:style => 'display: none'}
-          %form.new_collection
-            %input{:placeholder => 'новая коллекция', :class => 'new_collection'}
-            %input{:value => 'ок', :type => 'submit', :class => 'submit'}
-      %span.submit Добавить
+-if user_signed_in?
+  = render partial: 'shared/add_to_collection'

@@ -1,0 +1,6 @@
+#comment_form
+  %a{:href => "#{user_show_path(current_user)}"}
+    =image_tag current_user.avatar.url(:esmall) 
+  =form_for @comment,url: "/item/#{@item.id}/comment", html: {class: "answer_comnt", method: :post, id: "comment-form", remote: true} do |f|
+    =f.text_area :content, :placeholder => "комментарий, @упоминание, #хэштэг"
+    =f.submit "сказать", :id => 'send_comment', :style => 'display: none;'

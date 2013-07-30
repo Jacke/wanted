@@ -27,6 +27,9 @@ Hochuli::Application.routes.draw do
   post 'item/:id/up'  => 'items#up', as: :like_item
   post 'item/:id/add/:collection_id' => 'items#add'
 
+  #collections
+  post 'collection/create' => 'collections#create'
+
   #comments
   post 'item/:id/comment' => 'comments#create', as: :comment
 
