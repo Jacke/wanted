@@ -21,10 +21,7 @@ class User < ActiveRecord::Base
                                 :default_url => "/images/system/avatars/:style/missing.png",
                                 :url => "/images/system/avatars/:id/:style/:id.:extension"
   else
-    has_attached_file :image, :styles => { :medium => "230x180#",:small => "115x100#",:big => "390x" }, 
-                              #:default_url => "/images/system/items/:style/missing.png",
-                              #:url => "/images/system/items/:id/:style/:id.:extension"
-
+    has_attached_file :avatar, :styles => { :medium => "120x120#",:small => "50x50#",:esmall => "28x28#"},
                               :storage => :dropbox,
                               :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",
                               :dropbox_options => {
