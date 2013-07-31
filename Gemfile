@@ -35,3 +35,7 @@ group :development do
   gem 'localtunnel'
   gem 'debugger'
 end
+
+group :prodaction do
+  gem "paperclip-dropbox"
+end

@@ -1,0 +1,15 @@
+production:
+  app_key: "wz6oki2t6shh4vi"
+  app_secret: "y3iub5xxt6gzd8t"
+  access_token: "rz0bzq76aywlneo"
+  access_token_secret: "h70hepqfl19rrtm"
+  user_id: "76019241"
+  access_type: "dropbox"
+
+development:
+  app_key: "9rcxz6lesowobxv"
+  app_secret: "lvlresaoiqtr6ga"
+  access_token: "iox23x3fh8xyxkw"
+  access_token_secret: "ydpc9tf6ow6mmsm"
+  user_id: "76019241"
+  access_type: "app_folder"
