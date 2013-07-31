@@ -4,7 +4,7 @@
       Закрыть
     #select_collecton
       #collection 
-        .current{:id => -1, :item => @item.id} коллекция
+        .current{:id => -1} коллекция
         .collectins{:style => 'display: none'}
           .collections_list
             = render partial: 'collections/collections_list'
@@ -18,6 +18,7 @@
           %img{:class => "image_preview", :src => "#", :alt => "Изображение товара"}
           = f.file_field :image, :id => 'imgInp', :style => 'display: none;'
           = text_field_tag 'collection_id', -1, id: "collection_id", :style => 'display: none;'
+          = f.text_field :image_url, :id => 'image_by_url', :style => 'display: none;'
         %ul.center.notice-bar{class:"error"}
         %li.center=f.text_field :name, :placeholder => 'название товара'
         %li.center=f.text_field :url, :placeholder => 'адрес товара в интернет магазине'

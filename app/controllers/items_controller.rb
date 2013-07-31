@@ -4,6 +4,15 @@ class ItemsController < ApplicationController
     @items = Item.order("created_at DESC")
   end
 
+  def male
+    @items = Item.where(sex: params[:sex]).order("created_at DESC")
+    render :popular
+  end
+
+  def popular
+    @items = Item.order('cached_votes_total DESC').order('cached_comments DESC')
+  end
+
   def create
     @item = Item.new(params[:item])
     @collection_id = params[:collection_id]
@@ -32,10 +41,6 @@ class ItemsController < ApplicationController
     else
       return render :json => {:success => false, :errors => @item.errors.full_messages}
     end
-  end
-
-  def popular
-    @items = Item.order('cached_votes_total DESC').order('cached_comments DESC')
   end
 
   def show

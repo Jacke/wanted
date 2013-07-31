@@ -201,7 +201,12 @@ $(document).ready(function() {
       var images = $(this.contentDocument).find("img")
       
       var is_dragged;
-      var dragged; 
+      var dragged;
+      var img_prev = $('img.image_preview')
+      var item_url = $('#itemmodal input#item_url')
+      var itemmodal = $('#itemmodal')
+      var image_inp_by_url = $('#itemmodal input#image_by_url')
+      var imgInp = $('#itemmodal input#imgInp')
       
       $(images).mousedown( function() {
         dragged = $(this).clone().css("position", "absolute");
@@ -216,20 +221,38 @@ $(document).ready(function() {
       $(document).mousemove( function(e) {
         if(is_dragged){
           $(dragged).css({"left": e.pageX, "top": e.pageY});
-        }
-      });
 
-      var ifr = $(this);
-      var ifr_body = $(this).find('body');
-      $(this.contentDocument).mousemove( function(e) {
-        if(is_dragged){
-          $(dragged).css({"left": e.pageX + $(ifr).offset().left, "top": e.pageY + $(ifr).offset().top});
+          var ifr = $(this);
+          var ifr_body = $(this).find('body');
+          $(this.contentDocument).mousemove( function(e) {
+            if(is_dragged){
+              $(dragged).css({"left": e.pageX + $(ifr).offset().left, "top": e.pageY + $(ifr).offset().top});
+            }
+          });
         }
       });
       
       $(document).mouseup( function(e) {
-        dragged.remove();
-        is_dragged = false;
+        var ifr = $('#framesite')
+
+        // если эллемент левее фрэйма
+        if(is_dragged && (e.pageX < $(ifr).offset().left)){
+          var img_url = $(dragged).attr('src')                        // получаем урл изображения
+          var frame_url = $(ifr).get(0).contentWindow.location        // получаем текущий адрес фрэйма
+          var cut_url = frame_url.href.split('full_url%5D=')[1];      // 
+          var domen = $(ifr).attr('src').split('=')[1].split('/')[0]  // получаем домен из адреса фрэйма
+          if (cut_url == undefined) {cut_url = ''};                   // если ещё никуда не переходили текущий адрес пустой
+
+          $(item_url).val('http://'+domen+cut_url)                    // подставляем полный урл товара
+          $(image_inp_by_url).val(img_url)                            // подставляем урл картики в инпут
+          $(img_prev).attr('src',img_url)                             // подставляем урл картинки
+          $(itemmodal).arcticmodal();                                 // запускаем диалог добавления товара
+        }
+        // удаляем клон эллемента и останавливаем драг
+        if (is_dragged) {
+          dragged.remove()
+          is_dragged = false
+        };
         $('#pololo').css('display','none');
       });
     });

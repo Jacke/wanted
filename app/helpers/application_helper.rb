@@ -30,7 +30,7 @@ module ApplicationHelper
       "Настройки"
     when "search/index"
       "Серч"
-    when "search/site"
+    when "search/frame"
       "Серч"
     else
       ""

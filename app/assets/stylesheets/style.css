@@ -429,7 +429,7 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 #item a.ellow {color: #966c0f; text-decoration: none;}
 #item a.ellow:hover {text-decoration: underline;}
 #item #right {width: 390px;}
-#item #right #image {margin-bottom: 20px;}
+#item #right #image {margin-bottom: 20px;text-align: center;}
 #item #right #comments #comment_form {position: relative; display: block;margin-bottom: 15px;}
 #item #right #comments #comment_form a{text-decoration: none;display: block;float: left;}
 #item #right #comments #comment_form textarea {overflow:hidden;resize: vertical; height: 21px; width: 330px;font-size: 18px; border: 1px solid #000;padding: 5px 10px;position: relative;right: 0;top:0;display: inline-block;margin-left: 10px;}

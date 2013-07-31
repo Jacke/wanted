@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130731133743) do
+ActiveRecord::Schema.define(:version => 20130731194802) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(:version => 20130731133743) do
     t.integer  "cached_comments",    :default => 0
     t.string   "url"
     t.integer  "shop_id"
+    t.string   "image_url"
   end
 
   add_index "items", ["cached_votes_down"], :name => "index_items_on_cached_votes_down"

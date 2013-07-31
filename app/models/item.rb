@@ -1,17 +1,20 @@
 class Item < ActiveRecord::Base
+  require 'open-uri'
+  before_save :picture_from_url
+
   acts_as_votable
   acts_as_taggable
   acts_as_followable
   
-  attr_accessible :clothes, :comment, :name, :prise, :sex, :tag_list, :shop_id, :url
+  attr_accessible :clothes, :comment, :name, :prise, :sex, :tag_list, :shop_id, :url, :image_url
   #paperclip
   attr_accessible :image
   if not Rails.env.production?
-    has_attached_file :image, :styles => { :medium => "230x180#",:small => "115x100#",:big => "390x" }, 
+    has_attached_file :image, :styles => { :medium => "230x180#",:small => "115x100#",:big => "390>x" }, 
                               :default_url => "/images/system/items/:style/missing.png",
                               :url => "/images/system/items/:id/:style/:id.:extension"
   else
-    has_attached_file :image, :styles => { :medium => "230x180#",:small => "115x100#",:big => "390x" }, 
+    has_attached_file :image, :styles => { :medium => "230x180#",:small => "115x100#",:big => "390>x" }, 
                               #:default_url => "/images/system/items/:style/missing.png",
                               #:url => "/images/system/items/:id/:style/:id.:extension"
 
@@ -31,5 +34,13 @@ class Item < ActiveRecord::Base
   # Validations
   #===============================================================
   #validates :comment, presence: true
+
+  private
+
+  def picture_from_url
+    unless self.image_url.empty?
+      self.image = open(self.image_url)
+    end
+  end
 
 end
