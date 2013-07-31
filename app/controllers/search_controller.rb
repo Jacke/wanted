@@ -26,7 +26,7 @@ class SearchController < ApplicationController
     @page.gsub!('href="/','href="http://www.'+url+'/')
     @page.gsub!('src="/','src="http://www.'+url+'/')
     @page.gsub!('target="_blank"','')
-    @page.gsub!('href="http://www.'+url,'href="/search/site?'+'site%5Burl%5D='+url+'&site%5Bfull_url%5D=')
+    @page.gsub!('<a href="http://www.'+url,'<a href="/search/site?'+'site%5Burl%5D='+url+'&site%5Bfull_url%5D=')
     @page = @page.html_safe
     render :layout => false
   end
