@@ -66,12 +66,4 @@ Hochuli::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
-
-  #paperclip
-  PAPERCLIP_STORAGE_OPTIONS = {:storage => :dropbox,
-                              :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",
-                              :dropbox_options => {
-                                :path => "hochuli/images/system/:attachment/:id/:style/:id.:extension"
-                                }
-                              }
 end

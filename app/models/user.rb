@@ -13,8 +13,24 @@ class User < ActiveRecord::Base
                   :name, :nickname, :login, :sex, :city, :about, :provider, :uid, :url
   #paperclip
   attr_accessible :avatar
-  has_attached_file :avatar,  {:styles => { :medium => "120x120#",:small => "50x50#",:esmall => "28x28#"}, 
-                                :default_url => "/images/system/avatars/:style/missing.png"}.merge(PAPERCLIP_STORAGE_OPTIONS)
+  #has_attached_file :avatar,  :styles => { :medium => "120x120#",:small => "50x50#",:esmall => "28x28#"}, 
+  #                            :default_url => "/images/system/avatars/:style/missing.png",
+  #                            :url => "/images/system/avatars/:id/:style/:id.:extension"
+  if not Rails.env.production?
+    has_attached_file :avatar,  :styles => { :medium => "120x120#",:small => "50x50#",:esmall => "28x28#"}, 
+                                :default_url => "/images/system/avatars/:style/missing.png",
+                                :url => "/images/system/avatars/:id/:style/:id.:extension"
+  else
+    has_attached_file :image, :styles => { :medium => "230x180#",:small => "115x100#",:big => "390x" }, 
+                              #:default_url => "/images/system/items/:style/missing.png",
+                              #:url => "/images/system/items/:id/:style/:id.:extension"
+
+                              :storage => :dropbox,
+                              :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",
+                              :dropbox_options => {
+                                :path => proc { |style| "hochuli/images/system/avatars/#{id}/#{style}/#{avatar.original_filename}" }
+                                }
+  end
   # attr_accessible :title, :body
   
   # Relations

@@ -21,6 +21,7 @@ gem 'therubyracer', :platforms => :ruby
 gem 'jquery-rails'
 gem 'mysql2'
 gem 'thin'
+gem "paperclip-dropbox"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -36,6 +37,6 @@ group :development do
   gem 'debugger'
 end
 
-group :prodaction do
-  gem "paperclip-dropbox"
-end
+#group :prodaction do
+#  gem "paperclip-dropbox"
+#end
