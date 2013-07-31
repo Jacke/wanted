@@ -20,6 +20,7 @@
           = text_field_tag 'collection_id', -1, id: "collection_id", :style => 'display: none;'
         %ul.center.notice-bar{class:"error"}
         %li.center=f.text_field :name, :placeholder => 'название товара'
+        %li.center=f.text_field :url, :placeholder => 'адрес товара в интернет магазине'
         //%li.center=f.select :collection_id, @collections.collect{|p| [ p.title, p.id ] }.insert(0,"новая коллекция"), :include_blank => "без коллекции", :html => {:dir => "rtl"}
         
         %li.center#name_new_collection{:style => 'display: none;'}=text_field_tag 'collection_name', nil, :placeholder => 'название новой коллекции'        
@@ -39,6 +40,7 @@
         %li.center
           %span.button.sex.blue_button{:value => 2} мужчинам
           %span.button.sex.blue_button{:value => 1} женщинам
+          %span.button.sex.blue_button{:value => 3} детям
           %span.button.sex.active{:value => 0} без разницы
           =f.text_field :sex, :style => 'display: none;'
         %li.center= f.text_field :comment, :placeholder => 'комент #тэг @человек'

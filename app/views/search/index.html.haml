@@ -43,6 +43,12 @@
     // Действия при переходе ко второму шагу добавления товара
     $('#done').click(function(){
       var item_name = $('input#item_name').val();
+      var item_url = $('input#item_url').val();
+
+      if (item_url == ''){
+        showErrors(['Введите адрес товара!']);
+        return false
+      }
       if (item_name != ''){
         $('li#item_name').text(item_name);
         $('.first_step').css('display','none');

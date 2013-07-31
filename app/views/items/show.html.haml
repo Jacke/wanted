@@ -41,9 +41,10 @@
         =image_tag @user.avatar.url(:small)
       =link_to @user.name, user_show_path(@user)
       =' добавил эту вещь '+time_ago_in_words(@item.created_at)+' назад.'
-    #store
-      Магазин: 
-      =link_to "www.sitesite.com", "#", class: "ellow"
+    -if not @shop.nil?
+      #store
+        Магазин: 
+        =link_to "www.#{@shop.url}", 'http://'+@shop.url, class: "ellow", target: "_blank"
     #buttons
       #li
         #button
@@ -53,7 +54,7 @@
           %span.big_hart
       #li
         #button
-          %a.button.ellow_button{:href => "#"}Беру
+          = link_to "Беру", @item.url, class: "button ellow_button", target: "_blank"
         #info=@item.prise.to_s+' руб'
     #followers
       -unless @followers.empty?

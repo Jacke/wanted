@@ -7,6 +7,18 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(params[:item])
     @collection_id = params[:collection_id]
+    @url = clean_url(params[:item][:url])
+
+    # привязываем к магазину
+    if not @url.empty?
+      @shop_url = @url.split("/").first
+      @shop = Shop.where(url: @shop_url).first
+
+      if @shop.nil?
+        @shop = Shop.create(url: @shop_url)
+      end
+      @item.shop_id = @shop.id
+    end
 
     @item.user = current_user
     if @item.save
@@ -28,6 +40,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find_by_id(params[:id])
+    @shop = @item.shop
     @user = @item.user
     @followers = @item.followers_by_type('User').limit(8)
     @followers_count = @followers.length
@@ -70,5 +83,11 @@ class ItemsController < ApplicationController
       format.json {render json:  @respond, status:  :ok}
       format.any(:html,:xml) {render status:  404}
     end
+  end
+
+  private
+
+  def clean_url(url)
+    s = url.sub(/^https?\:\/\//, '').sub(/^www./,'')
   end
 end
