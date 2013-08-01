@@ -28,6 +28,27 @@ $(function() {
   }
 });
 
+function adaptive_page(){
+  // +260
+  var page_w = $("html").width()
+  var conteinder = $('#conteiner')        // 960 -> 1220
+  var bd = $('div#bd')                    // 790 -> 1050
+  var g2 = $('div.g2')                    // 550 -> 810
+  var nav_panel = $('#nav_panel #block')  // 263 -> 349
+
+  if (page_w > 1300){
+    $(conteinder).css('width',1220)
+    $(bd).css('width',1050)
+    $(g2).css('width',810)
+    $(nav_panel).css('width', 349)
+  } else {
+    $(conteinder).css('width',960)
+    $(bd).css('width',790)
+    $(g2).css('width',550)
+    $(nav_panel).css('width', 263)
+  }
+}
+
 $(window).resize(function window_resize(){
   var page_w = $("html").width();
   var page_h = $(document).height();
@@ -42,6 +63,8 @@ $(window).resize(function window_resize(){
       box.css('position', 'fixed');
       box.css('top', 85);
   }
+
+  adaptive_page()
 
   frame.css('height',page_h-90);
 
@@ -59,6 +82,7 @@ var showErrors = function(errors){
 }
 
 $(document).ready(function() {
+  adaptive_page()
   /* Checkboxes and radio */
   $(".radio").dgStyle(15);
   $(".checkbox").dgStyle(15);
