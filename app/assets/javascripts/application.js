@@ -29,23 +29,25 @@ $(function() {
 });
 
 function adaptive_page(){
+  var head = $('header#hd')
+  var content = $('div#conteiner')
+
   // +260
   var page_w = $("html").width()
-  var conteinder = $('#conteiner')        // 960 -> 1220
-  var bd = $('div#bd')                    // 790 -> 1050
-  var g2 = $('div.g2')                    // 550 -> 810
-  var nav_panel = $('#nav_panel #block')  // 263 -> 349
+  var nav_panel = $('#nav_panel #block')
 
   if (page_w > 1300){
-    $(conteinder).css('width',1220)
-    $(bd).css('width',1050)
-    $(g2).css('width',810)
-    $(nav_panel).css('width', 349)
+    // header
+    $(head).removeClass('normal')
+    $(head).addClass('large')
+    $(content).removeClass('normal')
+    $(content).addClass('large')
   } else {
-    $(conteinder).css('width',960)
-    $(bd).css('width',790)
-    $(g2).css('width',550)
-    $(nav_panel).css('width', 263)
+    // header
+    $(head).removeClass('large')
+    $(head).addClass('normal')
+    $(content).removeClass('large')
+    $(content).addClass('normal')
   }
 }
 

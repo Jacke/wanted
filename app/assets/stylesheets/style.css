@@ -73,6 +73,31 @@ input[type=text]:focus,input[type=email]:focus,input[type=password]:focus, texta
 }
 /* base end */
 
+/* adaptic */
+header#hd.normal nav a.nav_logo {margin-left: 8px;}
+header#hd.normal nav div.nav_title {width: 611px;}
+header#hd.normal nav ul {right: 42px;}
+div#conteiner.normal {width: 960px;}
+div#conteiner.normal div#bd {width: 790px;}
+div#conteiner.normal div.g2 { width: 550px; }
+div#conteiner.normal #user #nav_panel #block {width: 263px;}
+div#conteiner.normal #user .info #user_about {width: 320px;}
+div#conteiner.normal #item #right {width: 390px;}
+div#conteiner.normal #item #right #comments #comment_form textarea {width: 330px;}
+div#conteiner.normal #item #right .comnt_list ul li #comment {width: 350px;}
+
+header#hd.large nav a.nav_logo {margin-left: -77px;}
+header#hd.large nav div.nav_title {width: 777px;}
+header#hd.large nav ul {right: -20px;}
+div#conteiner.large {width: 1220px;}
+div#conteiner.large div#bd {width: 1050px;}
+div#conteiner.large div.g2 { width: 810px; }
+div#conteiner.large #user #nav_panel #block {width: 349px;}
+div#conteiner.large #user .info #user_about {width: 585px;}
+div#conteiner.large #item #right {width: 645px;}
+div#conteiner.large #item #right #comments #comment_form textarea {width: 585px;}
+div#conteiner.large #item #right .comnt_list ul li #comment {width: 605px;}
+
 /* header */
 header#hd {
   position: fixed;
@@ -108,8 +133,7 @@ header#hd nav a.nav_logo {
   font-size: 18px;
   font-family: Arial, sans-serif;
   color: #fff;
-  text-decoration: none;
-  margin-left: 8px;
+  text-decoration: none;  
 }
 
 header#hd nav a.nav_logo:hover {text-decoration: underline;}
@@ -117,7 +141,6 @@ header#hd nav a.nav_logo span.nav_end_word {color: #ffc23c;}
 
 header#hd nav div.nav_title {
   position: absolute;
-  width: 615px;
   margin-left: 70px;
   text-align: center;
   font-size: 18px;
@@ -132,7 +155,6 @@ header#hd nav div.nav_title span.nav_end_word {color: #ffc23c;}
 header#hd nav ul {
   position: absolute;
   top: 0;
-  right: 42px;
   text-align: right;
 }
 header#hd nav ul li {
@@ -160,7 +182,6 @@ div#conteiner {
   margin: 0 auto;
   z-index: 5;
   top: 35px;
-  width: 960px;
   right: 0;
   display: table;
 }
@@ -224,7 +245,6 @@ div#bd {
   padding: 35px 0 0 0;
   display: block;
   border-left: 1px solid #bbb;
-  width: 790px;
 }
 
 #grid_elemets {display: block;}
@@ -299,7 +319,6 @@ section.collection_element #info a {color: #174f9c;text-decoration: underline;}
 a.blue {color: #174f9c;cursor: pointer;}
 a.ellow {color: #966c0f; text-decoration: none;}
 a.ellow:hover {text-decoration: underline;}
-.g2 { width: 550px; }
 .g3 {margin: 0 -20px 0 -20px;}
 .gi {padding: 0 30px;}
 .con_h {padding-top: 20px;}
@@ -375,7 +394,6 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 #user .info {display: inline-block;margin-bottom: 20px;}
 #user .info #avatar {float: left;}
 #user .info #user_about {
-  width: 320px;
   float: left;
   margin-left: 10px;
   font-size: 18px;
@@ -428,18 +446,17 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 #item a:hover{color: #6992ca;}
 #item a.ellow {color: #966c0f; text-decoration: none;}
 #item a.ellow:hover {text-decoration: underline;}
-#item #right {width: 390px;}
 #item #right #image {margin-bottom: 20px;text-align: center;}
 #item #right #comments #comment_form {position: relative; display: block;margin-bottom: 15px;}
 #item #right #comments #comment_form a{text-decoration: none;display: block;float: left;}
-#item #right #comments #comment_form textarea {overflow:hidden;resize: vertical; height: 21px; width: 330px;font-size: 18px; border: 1px solid #000;padding: 5px 10px;position: relative;right: 0;top:0;display: inline-block;margin-left: 10px;}
+#item #right #comments #comment_form textarea {overflow:hidden;resize: vertical; height: 21px; font-size: 18px; border: 1px solid #000;padding: 5px 10px;position: relative;right: 0;top:0;display: inline-block;margin-left: 10px;}
 #item #right #comments #comment_form textarea:focus {box-shadow: 0 0 6px rgba(255, 176, 37, 0.5);border: 1px solid rgba(255, 176, 37, 0.5);display: inline-block;}
 #item #right #comments #comment_form input[type="submit"] {z-index: 100;padding: 5px 10px; position: absolute;right: 0px;bottom: -28px;height: 32px;font-size: 18px;background: #e5b03b;}
 #item #right #comments #comment_form input[type="submit"]:hover {cursor: pointer; background: #eebc4d;}
 #item #right .comnt_list ul {position: relative; display: block;}
 #item #right .comnt_list ul li {position: relative; display: block;margin-bottom: 15px;}
 #item #right .comnt_list ul li #avatar {display: block;float: left;margin-top: 4px;width: 28px;height: 28px;}
-#item #right .comnt_list ul li #comment {width: 350px;display: inline-block; margin-left: 10px;}
+#item #right .comnt_list ul li #comment {display: inline-block; margin-left: 10px;}
 #item #right .comnt_list ul li #comment #info {color: #aaa;}
 #item #right .comnt_list ul li #comment #info a{color: #aaa;}
 #item #right .comnt_list ul li #comment #info a:hover{color: #777;}

@@ -38,7 +38,7 @@ class Item < ActiveRecord::Base
   private
 
   def picture_from_url
-    unless self.image_url.empty?
+    unless self.image_url.nil? || self.image_url.empty?
       self.image = open(self.image_url)
     end
   end
