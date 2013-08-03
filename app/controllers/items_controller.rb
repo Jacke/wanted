@@ -2,6 +2,7 @@
 class ItemsController < ApplicationController
   def new
     @items = Item.order("created_at DESC")
+    @comments = Comment.limit(20).order("created_at DESC")
   end
 
   def male

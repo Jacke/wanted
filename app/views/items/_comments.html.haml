@@ -1,0 +1,11 @@
+- unless @comments.empty?
+  - @comments.each do |comment|  
+    %section#comment
+      #name
+        = link_to comment.item.name, item_path(comment.item)
+      #info
+        = link_to comment.user.name, user_show_path(comment.user)
+        - unless comment.user.city.blank?
+          ,
+          =link_to comment.user.city, '#'
+      %span.comment=truncate(comment.content, length: 100)
