@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 
   def collections
     @user = User.find_by_id(params[:id]) || current_user
-    @items = @user.items
+    @items = @user.following_by_type('Item')
     @collections = @user.collections
   end
 

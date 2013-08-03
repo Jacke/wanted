@@ -78,6 +78,7 @@ div#conteiner.normal #user .info #user_about {width: 320px;}
 div#conteiner.normal #item #right {width: 390px;}
 div#conteiner.normal #item #right #comments #comment_form textarea {width: 330px;}
 div#conteiner.normal #item #right .comnt_list ul li #comment {width: 350px;}
+div#conteiner.normal #followed_by #nav_panel #block {width: 394px;}
 
 header#hd.large nav a.nav_logo {margin-left: -77px;}
 header#hd.large nav div.nav_title {width: 777px;}
@@ -90,6 +91,7 @@ div#conteiner.large #user .info #user_about {width: 585px;}
 div#conteiner.large #item #right {width: 645px;}
 div#conteiner.large #item #right #comments #comment_form textarea {width: 585px;}
 div#conteiner.large #item #right .comnt_list ul li #comment {width: 605px;}
+div#conteiner.large #followed_by #nav_panel #block {width: 506px;}
 
 /* header */
 header#hd {
@@ -281,6 +283,23 @@ section.collection_element #info {width: 100%;padding-top: 10px;line-height: 18p
 section.collection_element #info a {color: #174f9c;text-decoration: underline;}
 /* конец эллемента коллекции */
 
+/* эллемент подписчика */
+section.follow_element {width: 230px;background: #fff;display: inline-block;float: left;margin: 0 0 30px 30px;}
+section.follow_element #preview {width: 100%;height: 200px;background: #fff;box-shadow: 0 0 8px rgba(0,0,0,0.4);}
+section.follow_element #preview:hover {box-shadow: 0 0 15px rgba(0,0,0,0.5);}
+section.follow_element #preview a {width: 100%;height: 100%;display: block;}
+section.follow_element #preview a #item {width: 105px;height:80px;float: left;display: inline-block;font-size: 14px;padding: 10px 5px;}
+section.follow_element #item .string {line-height: 20px;height: 20px;overflow: hidden;}
+section.follow_element #info {width: 100%;padding-top: 10px;line-height: 18px;text-align: center;}
+section.follow_element #info a {color: #174f9c;text-decoration: underline;}
+/* конец эллемента подписчика */
+/* понель навигации для подписок */
+#followed_by #nav_panel {display: inline-block;margin: 0 -30px 30px -30px; }
+#followed_by #nav_panel #block {height: 60px;float: left;background: url(../images/nav_user_block.png) #bbb repeat-y;line-height: 60px;font-size: 18px;font-weight: bold;}
+#followed_by #nav_panel #block a {width: 100%;height: 100%;display: block;padding-left: 30px;}
+#followed_by #nav_panel #block.active {background: #fff;margin: -1px 0 0 -1px;border-top: 1px solid #bbb;border-left: 1px solid #bbb;border-right: 1px solid #bbb;z-index: 10;}
+/* конец понели навигации для подписок */
+
 /* right comments */
 #right_comments {
   position: absolute;
@@ -312,6 +331,7 @@ section.collection_element #info a {color: #174f9c;text-decoration: underline;}
 /* style classes */
 a.blue {color: #174f9c;cursor: pointer;}
 a.ellow {color: #966c0f; text-decoration: none;}
+span.ellow {color: #E7AF35;}
 a.ellow:hover {text-decoration: underline;}
 .g3 {margin: 0 -20px 0 -20px;}
 .gi {padding: 0 30px;}

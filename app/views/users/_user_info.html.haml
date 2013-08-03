@@ -11,12 +11,12 @@
       Пользователь не написал о себе ничего...
 #block_buttons
   #block
-    %a{href: '#'}
+    %a{href: followers_path(@user)}
       #col.big_arial=@user.count_user_followers
       #new +12
       подписчиков
   #block
-    %a{href: '#'}
+    %a{href: followed_by_path(@user)}
       #col.big_arial=@user.following_users_count
       #new +8
       подписок

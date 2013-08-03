@@ -34,4 +34,9 @@ Hochuli::Application.routes.draw do
   #comments
   post 'item/:id/comment' => 'comments#create', as: :comment
 
+  #tracking
+  get "followers/:user_id" => 'tracking#followers', as: :followers
+  get "followed_by/:user_id" => 'tracking#followed_by', as: :followed_by
+  get "followed_by_shop/:user_id" => 'tracking#followed_by_shop', as: :followed_by_shop
+
 end

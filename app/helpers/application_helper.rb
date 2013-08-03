@@ -44,6 +44,10 @@ module ApplicationHelper
       t = "Серч"
     when "search/frame"
       t = "Серч"
+    when "tracking/followers"
+      t = "Подписчики"
+    when "tracking/followed_by"
+      t = "Подписки"
     end
     t
   end
@@ -79,6 +83,10 @@ module ApplicationHelper
       html = "Сделать <span class='nav_end_word'>серч</span>".html_safe
     when "search/frame"
       html = "Сделать <span class='nav_end_word'>серч</span>".html_safe
+    when "tracking/followers"
+      @user == current_user ? html = "МОИ <span class='nav_end_word'>ПОДПИСЧИКИ</span>".html_safe : html = "#{@user.name} - <span class='nav_end_word'>ПОДПИСЧИКИ</span>".html_safe
+    when "tracking/followed_by"
+      @user == current_user ? html = "МОИ <span class='nav_end_word'>ПОДПИСКИ</span>".html_safe : html = "#{@user.name} - <span class='nav_end_word'>ПОДПИСКИ</span>".html_safe
     end
       html
   end
