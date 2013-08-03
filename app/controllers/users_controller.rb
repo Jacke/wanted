@@ -30,7 +30,13 @@ class UsersController < ApplicationController
 
   def follow
     @user = User.find_by_id(params[:id])
-    current_user.follow(@user)
+
+    unless current_user.following?(@user)
+      current_user.follow(@user)
+      followers_count = @user.followers_new_count + 1
+      @user.update_attribute(:followers_new_count, followers_count)
+    end
+
     redirect_to :back
   end
 

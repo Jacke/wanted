@@ -11,7 +11,7 @@ class Item < ActiveRecord::Base
   attr_accessible :image
   if not Rails.env.production?
     has_attached_file :image, :styles => { :medium => "230x180#",:small => "115x100#",:big => "390>x" }, 
-                              :default_url => "/images/system/items/:style/missing.png",
+                              :default_url => "/images/default/items/:style/missing.png",
                               :url => "/images/system/items/:id/:style/:id.:extension"
   else
     has_attached_file :image, :styles => { :medium => "230x180#",:small => "115x100#",:big => "390>x" }, 

@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :name, :nickname, :login, :sex, :city, :about, :provider, :uid, :url
+                  :name, :nickname, :login, :sex, :city, :about, :provider, :uid, :url, :folowers_new_count, :folowed_by_new_count
   #paperclip
   attr_accessible :avatar
   #has_attached_file :avatar,  :styles => { :medium => "120x120#",:small => "50x50#",:esmall => "28x28#"}, 
@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
   #                            :url => "/images/system/avatars/:id/:style/:id.:extension"
   if not Rails.env.production?
     has_attached_file :avatar,  :styles => { :medium => "120x120#",:small => "50x50#",:esmall => "28x28#"}, 
-                                :default_url => "/images/system/avatars/:style/missing.png",
+                                :default_url => "/images/default/avatars/:style/missing.png",
                                 :url => "/images/system/avatars/:id/:style/:id.:extension"
   else
     has_attached_file :avatar, :styles => { :medium => "120x120#",:small => "50x50#",:esmall => "28x28#"},

@@ -38,9 +38,7 @@
                 = link_to '@' + (current_user.nickname.blank? ? 'I_AM' : current_user.nickname), user_show_path(current_user), class: :big_nav_links
               %li=link_to 'Подписчики', followers_path(current_user), class: 'big_nav_links'
               %li=link_to 'Подписки', followed_by_path(current_user), class: 'big_nav_links'
-              %li
-                %a.big_nav_links{:href => ""}
-                  Лента событий
+              %li=link_to 'Магазины', followed_by_shop_path(current_user), class: 'big_nav_links'
             #search
               =link_to 'Сделать серч', search_path
             %ul.small_nav

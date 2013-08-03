@@ -13,17 +13,19 @@
   #block
     %a{href: followers_path(@user)}
       #col.big_arial=@user.count_user_followers
-      #new +12
+      -if @user.followers_new_count != 0 && @user == current_user
+        #new='+' + @user.followers_new_count.to_s
       подписчиков
   #block
     %a{href: followed_by_path(@user)}
       #col.big_arial=@user.following_users_count
-      #new +8
+      -if @user.followed_by_new_count != 0 && @user == current_user
+        #new='+' + @user.followed_by_new_count.to_s
       подписок
   #block
-    %a{href: '#'}
-      #col.big_arial 4
-      #new  
+    %a{href: followed_by_shop_path(@user)}
+      #col.big_arial 0
+      //#new  
       магазинов
   -if user_signed_in? && current_user != @user
     -unless current_user.following?(@user) 

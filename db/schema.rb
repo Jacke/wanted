@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130731194802) do
+ActiveRecord::Schema.define(:version => 20130803151455) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -120,6 +120,8 @@ ActiveRecord::Schema.define(:version => 20130731194802) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
+    t.integer  "followers_new_count",    :default => 0
+    t.integer  "followed_by_new_count",  :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
