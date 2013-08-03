@@ -28,13 +28,17 @@ $(function() {
   }
 });
 
+function showNotices(msg){
+  var notice = $('#notice')
+  $(notice).text(msg)
+  $(notice).slideDown(600).delay(5000).fadeOut(600)
+}
+
 function adaptive_page(){
   var head = $('header#hd')
   var content = $('div#conteiner')
 
-  // +260
   var page_w = $("html").width()
-  var nav_panel = $('#nav_panel #block')
 
   if (page_w > 1300){
     // header
@@ -55,8 +59,8 @@ $(window).resize(function window_resize(){
   var page_w = $("html").width();
   var page_h = $(document).height();
 
-  var box = $('#left_group'); // float-fixed block
-  var frame = $('iframe#framesite');
+  var box = $('#left_group')              // float-fixed block
+  var frame = $('iframe#framesite')
 
   if(page_w < 981) {
       box.css('position', 'absolute');
@@ -68,8 +72,7 @@ $(window).resize(function window_resize(){
 
   adaptive_page()
 
-  frame.css('height',page_h-90);
-
+  frame.css('height',page_h-90)
 });
 
 var showErrors = function(errors){
@@ -91,7 +94,10 @@ $(document).ready(function() {
 
   var page_h = $(document).height();
   var frame = $('iframe#framesite');
+  var content = $('div#content')
+
   frame.css('height',page_h-90);
+  content.css('min-height', page_h-100)
 
   $("input[checked='checked']").parent('div').attr("style","background-position: 50% -30px; ");
 
@@ -122,9 +128,12 @@ $(document).ready(function() {
   });
   // AJAX запрос для добавления товара
   $("#add_item_submit").click(function(){
+    $('#polo').show()
     $("#new_item").ajaxForm(function(data){
       if (data.success) {
-        return window.location.replace("/user");
+        $.arcticmodal('close')
+        $('#polo').hide()
+        showNotices('Товар успешно добавлен')
       } else {
         return showErrors(data.errors);
       }
@@ -155,6 +164,7 @@ $(document).ready(function() {
     //var id = $(this).prop('id');
     $.post('/item/'+id+'/add/'+collection_id, function(data,status,xhr){
       var ans = data.ans
+      showNotices(data.ans)
       $.arcticmodal('close')
     })
     return false;

@@ -7,15 +7,6 @@
   }
 /* CSS Document */
 /* behavior: url(js/pie.htc); */
-#pololo{
-  position: absolute;
-  left: 0;
-  top: 0;
-  background: rgba(255,255,255,0.3);
-  width: 100%;
-  height: 100%;
-  display: none;
-}
 
 /* base */
 * {
@@ -72,7 +63,9 @@ input[type=text]:focus,input[type=email]:focus,input[type=password]:focus, texta
   border: 1px solid rgba(255, 176, 37, 0.5);
 }
 /* base end */
-
+#pololo{position: absolute;left: 0;top: 0;background: rgba(255,255,255,0.3);width: 100%;height: 100%;display: none;}
+#polo{position: absolute;left: 0;top: 0;background: rgba(255,255,255,0.3);width: 100%;height: 100%;display: none;z-index: 999;}
+#notice {display: none; width: 145px;background: #fff;position: fixed;bottom: 20px;margin-left: -10px; z-index: 1000;box-shadow: 0 0 5px rgba(0,0,0,0.8);padding: 15px 10px;font-weight: bold;}
 /* adaptic */
 header#hd.normal nav a.nav_logo {margin-left: 8px;}
 header#hd.normal nav div.nav_title {width: 611px;}
@@ -264,6 +257,7 @@ section.element #preview {width: 100%;height: 180px;background: #ddd;position: r
 section.element #preview a {width: 100%;height: 100%;display: block;}
 section.element #preview #price {position: absolute; top:0; left: 0; background: url(../images/prise_litle.png) no-repeat #e4b03a; padding: 4px 8px 4px 17px;background-position: 5px 9px;}
 section.element #info {background: #fff;padding: 5px 5px;line-height: 18px;}
+section.element #name {overflow: hidden;height: 18px;}
 section.element #info #user a {color: #9a781a;}
 section.element #info #user a:hover {color: #ddd3b5;text-decoration: underline;}
 section.element #info #links {margin-top: 3px; }

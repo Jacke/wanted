@@ -10,7 +10,7 @@ class ItemsController < ApplicationController
   end
 
   def popular
-    @items = Item.order('cached_votes_total DESC').order('cached_comments DESC')
+    @items = Item.order('cached_comments DESC').order('cached_votes_total DESC')
   end
 
   def create
@@ -37,7 +37,7 @@ class ItemsController < ApplicationController
         @collection.follow(@item)
       end
 
-      return render :json => {:success => true}
+      return render :json => {:success => true, :message => 'Товар успешно добавлен'}
     else
       return render :json => {:success => false, :errors => @item.errors.full_messages}
     end
@@ -79,7 +79,7 @@ class ItemsController < ApplicationController
     if collection_id.to_i != -1
       @collection = Collection.find_by_id(collection_id)
       @collection.follow(@item)
-      @respond = {ans: "Товар успешно добавлен в коллекцию #{@collection.title}"}
+      @respond = {ans: "Добавлено в коллекцию \"#{@collection.title}\""}
     else
       @respond = {ans: "Товар успешно добавлен"}
     end

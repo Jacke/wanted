@@ -1,6 +1,6 @@
 class Item < ActiveRecord::Base
   require 'open-uri'
-  before_save :picture_from_url
+  before_create :picture_from_url
 
   acts_as_votable
   acts_as_taggable
@@ -38,7 +38,7 @@ class Item < ActiveRecord::Base
   private
 
   def picture_from_url
-    unless self.image_url.nil? || self.image_url.empty?
+    unless self.image_url.blank?
       self.image = open(self.image_url)
     end
   end

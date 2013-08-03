@@ -1,7 +1,9 @@
 class UsersController < ApplicationController
+
+  # страница пользователя
   def show
     @user = User.find_by_id(params[:id]) || current_user
-    @items = @user.following_by_type('Item')
+    @items = @user.following_by_type('Item').order("created_at DESC")
     @collections = @user.collections
 
     respond_to do |format|
@@ -12,13 +14,13 @@ class UsersController < ApplicationController
   def collections
     @user = User.find_by_id(params[:id]) || current_user
     @items = @user.items
-    @collections = @user.collections.all
+    @collections = @user.collections
   end
 
   def collection
     @user = User.find_by_id(params[:id]) || current_user
     @collection = Collection.find_by_id(params[:collection_id])
-    @items = @collection.following_by_type('Item')
+    @items = @collection.following_by_type('Item').order("created_at DESC")
   end
 
   def avatar

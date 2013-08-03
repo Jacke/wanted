@@ -13,31 +13,53 @@ module ApplicationHelper
   end
 
   def title
+    t = ""
+    # вывод товаров по полу
+    case "#{controller.controller_name}/#{controller.action_name}/#{params[:sex]}"
+    when "items/male/1"
+      t = "Женское"
+    when "items/male/2"
+      t = "Мужское"
+    when "items/male/3"
+      t = "Детское"
+    end
+
+    # остальное
     case "#{controller.controller_name}/#{controller.action_name}"
     when "items/new"
-      "Новое"
+      t = "Новое"
     when "items/popular"
-      "Популярное"
+      t = "Популярное"
     when "users/show"
-      @user.name
+      t = @user.name
     when "users/collections"
-      @user.name+' - Коллекци '
+      t = @user.name+' - Коллекци '
     when "users/collection"
-      @user.name+' - '+@collection.title
+      t = @user.name+' - '+@collection.title
     when "items/show"
-      @item.name
+      t = @item.name
     when "registrations/edit"
-      "Настройки"
+      t = "Настройки"
     when "search/index"
-      "Серч"
+      t = "Серч"
     when "search/frame"
-      "Серч"
-    else
-      ""
+      t = "Серч"
     end
+    t
   end
 
   def nav_title
+    html = ""
+    # вывод товаров по полу
+    case "#{controller.controller_name}/#{controller.action_name}/#{params[:sex]}"
+    when "items/male/1"
+      html = "ЖЕНСК<span class='nav_end_word'>ОЕ</span>".html_safe
+    when "items/male/2"
+      html = "МУЖСК<span class='nav_end_word'>ОЕ</span>".html_safe
+    when "items/male/3"
+      html = "ДЕТСК<span class='nav_end_word'>ОЕ</span>".html_safe
+    end
+    
     case "#{controller.controller_name}/#{controller.action_name}"
     when "items/new"
       html = "НОВ<span class='nav_end_word'>ОЕ</span>".html_safe
@@ -57,9 +79,8 @@ module ApplicationHelper
       html = "Сделать <span class='nav_end_word'>серч</span>".html_safe
     when "search/frame"
       html = "Сделать <span class='nav_end_word'>серч</span>".html_safe
-    else
-      ""
     end
+      html
   end
 
   private

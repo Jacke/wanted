@@ -21,10 +21,11 @@ class CommentsController < ApplicationController
 
   def update_cached_comments(item)
     if item.cached_comments == 0
-      count = item.comments.count
+      item.cached_comments = item.comments.count
     else
-      count = item.cached_comments + 1
+      item.cached_comments = item.cached_comments + 1
     end
-    item.update_attribute(:cached_comments, count)
+
+    item.update_attributes params[:cached_comments]
   end
 end
