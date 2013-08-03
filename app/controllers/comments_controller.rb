@@ -44,8 +44,6 @@ class CommentsController < ApplicationController
           new_mention.user_id = user.id
           new_mention.comment_id = comment.id
           if new_mention.save
-            include ActionView::Helpers::TextHelper
-            comment.content = strip_tags(comment.content)
             linked_comment = comment.content.sub('@'+user.nickname,'<a href="'+user_show_path(user)+'">@'+user.nickname+'</a>')
             comment.update_attribute(:content, linked_comment)
           end
