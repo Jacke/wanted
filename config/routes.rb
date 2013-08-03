@@ -12,6 +12,7 @@ Hochuli::Application.routes.draw do
   get '/popular'          => 'items#popular', as: :popular
   get '/user/:id'         => 'users#show', as: :user_show
   get '/collections/:id'  => 'users#collections', as: :user_collections
+  get 'mentions/:id'      => 'users#mentions', as: :mentions
   get '/collection/:id/:collection_id' => 'users#collection', as: :user_collection
   get '/user'             => 'users#show'
   get '/follow/:id'       => 'users#follow', as: :follow

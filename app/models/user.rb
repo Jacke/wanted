@@ -36,12 +36,11 @@ class User < ActiveRecord::Base
   has_many  :items
   has_many  :collections
   has_many  :comments
+  has_many  :mentions
 
   # Validations
   #===============================================================
   validates_presence_of :name
-
-  #after_create :send_welcome_email
 
   #== Class Methods ==============================================
   class << self

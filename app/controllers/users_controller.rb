@@ -5,10 +5,6 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id]) || current_user
     @items = @user.following_by_type('Item').order("created_at DESC")
     @collections = @user.collections
-
-    respond_to do |format|
-      format.html
-    end
   end
 
   def collections
@@ -17,11 +13,19 @@ class UsersController < ApplicationController
     @collections = @user.collections
   end
 
+  def mentions
+    @user = User.find_by_id(params[:id]) || current_user
+    @items = @user.following_by_type('Item')
+    @collections = @user.collections
+    @mentions = @user.mentions.order("created_at DESC")
+  end
+
   def collection
     @user = User.find_by_id(params[:id]) || current_user
     @collection = Collection.find_by_id(params[:collection_id])
     @items = @collection.following_by_type('Item').order("created_at DESC")
   end
+
 
   def avatar
     @avatar = User.find(params[:id]).avatar.first
@@ -31,6 +35,7 @@ class UsersController < ApplicationController
   def follow
     @user = User.find_by_id(params[:id])
 
+    # увеличение счетчика новых подписчиков
     unless current_user.following?(@user)
       current_user.follow(@user)
       followers_count = @user.followers_new_count + 1
@@ -41,8 +46,15 @@ class UsersController < ApplicationController
   end
 
   def unfollow
-    @user = User.find_by_id(params[:id])
-    current_user.stop_following(@user)
+    @unfollow_user = User.find_by_id(params[:id])
+
+    # уменьшение счетчика новых подписчиков
+    follow_link = current_user.follow(@unfollow_user)
+    if @unfollow_user.updated_at == follow_link.created_at
+      follow_count = @unfollow_user.followers_new_count - 1
+      @unfollow_user.update_attribute(:followers_new_count, follow_count)
+    end
+    current_user.stop_following(@unfollow_user)
     redirect_to :back
   end
 end

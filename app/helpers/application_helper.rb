@@ -38,6 +38,8 @@ module ApplicationHelper
       t = @user.name+' - '+@collection.title
     when "items/show"
       t = @item.name
+    when "users/mentions"
+      t = "Упоминания"
     when "registrations/edit"
       t = "Настройки"
     when "search/index"
@@ -47,6 +49,8 @@ module ApplicationHelper
     when "tracking/followers"
       t = "Подписчики"
     when "tracking/followed_by"
+      t = "Подписки"
+    when "tracking/followed_by_shop"
       t = "Подписки"
     end
     t
@@ -77,6 +81,8 @@ module ApplicationHelper
       html = blur_last_word(@user.name).html_safe+' - '+@collection.title
     when "items/show"
       html = blur_last_word(@item.name).html_safe
+    when "users/mentions"
+      html = "УПОМИНА<span class='nav_end_word'>НИЯ</span>".html_safe
     when "registrations/edit"
       html = "НАСТРОЙКИ <span class='nav_end_word'>ПРОФИЛЯ</span>".html_safe
     when "search/index"
@@ -86,6 +92,8 @@ module ApplicationHelper
     when "tracking/followers"
       @user == current_user ? html = "МОИ <span class='nav_end_word'>ПОДПИСЧИКИ</span>".html_safe : html = "#{@user.name} - <span class='nav_end_word'>ПОДПИСЧИКИ</span>".html_safe
     when "tracking/followed_by"
+      @user == current_user ? html = "МОИ <span class='nav_end_word'>ПОДПИСКИ</span>".html_safe : html = "#{@user.name} - <span class='nav_end_word'>ПОДПИСКИ</span>".html_safe
+    when "tracking/followed_by_shop"
       @user == current_user ? html = "МОИ <span class='nav_end_word'>ПОДПИСКИ</span>".html_safe : html = "#{@user.name} - <span class='nav_end_word'>ПОДПИСКИ</span>".html_safe
     end
       html

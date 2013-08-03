@@ -6,10 +6,10 @@
           =image_tag comment.user.avatar.url(:esmall)
         #comment
           #info
-            = link_to comment.user.name, user_show_path(comment.user)
+            = link_to comment.user.name, user_show_path(comment.user), :title => '@'+comment.user.nickname
             = ', '+time_ago_in_words(comment.created_at)+' назад'
           #text
-            =comment.content
+            =simple_format(comment.content)
   -else
     %li
       #comment

@@ -1,0 +1,30 @@
+#user.gi
+  .info
+    =render partial: "user_info"
+  #nav_panel
+    #block
+      %a{:href => user_show_path(@user)}
+        %span.big_arial=@items.length
+        Вещей
+    #block
+      %a{:href => user_collections_path(@user)}
+        %span.big_arial=@collections.length
+        Коллекций
+    #block.active
+      %a{:href => mentions_path(@user)}
+        %span.big_arial
+          0
+        Упоминаний
+  -unless @mentions.empty?
+    %ul.mentions_list   
+      -@mentions.each do |mention|
+        %li
+          #info
+            =link_to mention.comment.user.name, user_show_path(mention.comment.user)
+            =', ' + time_ago_in_words(mention.comment.created_at) + ' назад, в комментарии к товару '
+            =link_to mention.comment.item.name, item_path(mention.comment.item)
+          #comment=simple_format(mention.comment.content)
+  -else
+    .con_h
+      %h2
+        Вас никто не упоминал в комментариях

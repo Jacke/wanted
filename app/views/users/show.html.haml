@@ -11,9 +11,9 @@
         %span.big_arial=@collections.length
         Коллекций
     #block
-      %a{:href => '#'}
+      %a{:href => mentions_path(@user)}
         %span.big_arial
-          10
+          0
         Упоминаний
   -unless @items.empty?      
     #grid_elements
