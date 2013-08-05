@@ -54,7 +54,6 @@ class User < ActiveRecord::Base
         case auth.provider.to_sym
           when :vkontakte
             params  = { name:auth.info.name,
-                        nickname:auth.info.nickname || auth.extra.raw_info.domain,
                         provider:auth.provider,
                         uid:auth.uid,
                         email:auth.extra.raw_info.uid.to_s+'@vk.com',
