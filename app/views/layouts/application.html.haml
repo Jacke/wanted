@@ -39,7 +39,8 @@
               %li=link_to 'Подписчики', followers_path(current_user), class: 'big_nav_links'
               %li=link_to 'Подписки', followed_by_path(current_user), class: 'big_nav_links'
               %li=link_to 'Магазины', followed_by_shop_path(current_user), class: 'big_nav_links'
-              %li=link_to 'Лента событий', "#", class: 'big_nav_links'
+              -if user_signed_in? 
+                %li=link_to 'Лента событий', tape_path, class: 'big_nav_links'
             #search
               =link_to 'Сделать серч', search_path
             %ul.small_nav

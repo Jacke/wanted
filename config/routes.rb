@@ -1,5 +1,7 @@
 Hochuli::Application.routes.draw do
 
+  get "tape/index" => "tape#index", as: :tape
+
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks",
                                     registrations: 'registrations',
                                     sessions: 'sessions'

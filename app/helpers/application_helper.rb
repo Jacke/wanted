@@ -52,6 +52,8 @@ module ApplicationHelper
       t = "Подписки"
     when "tracking/followed_by_shop"
       t = "Подписки"
+    when "tape/index"
+      t = "Лента событий"
     end
     t
   end
@@ -86,15 +88,17 @@ module ApplicationHelper
     when "registrations/edit"
       html = "НАСТРОЙКИ <span class='nav_end_word'>ПРОФИЛЯ</span>".html_safe
     when "search/index"
-      html = "Сделать <span class='nav_end_word'>серч</span>".html_safe
+      html = "СДЕЛАТЬ <span class='nav_end_word'>СЕРЧ</span>".html_safe
     when "search/frame"
-      html = "Сделать <span class='nav_end_word'>серч</span>".html_safe
+      html = "СДЕЛАТЬ <span class='nav_end_word'>СЕРЧ</span>".html_safe
     when "tracking/followers"
       @user == current_user ? html = "МОИ <span class='nav_end_word'>ПОДПИСЧИКИ</span>".html_safe : html = "#{@user.name} - <span class='nav_end_word'>ПОДПИСЧИКИ</span>".html_safe
     when "tracking/followed_by"
       @user == current_user ? html = "МОИ <span class='nav_end_word'>ПОДПИСКИ</span>".html_safe : html = "#{@user.name} - <span class='nav_end_word'>ПОДПИСКИ</span>".html_safe
     when "tracking/followed_by_shop"
       @user == current_user ? html = "МОИ <span class='nav_end_word'>ПОДПИСКИ</span>".html_safe : html = "#{@user.name} - <span class='nav_end_word'>ПОДПИСКИ</span>".html_safe
+    when "tape/index"
+      html = "ЛЕНТА <span class='nav_end_word'>СОБЫТИЙ</span>".html_safe
     end
       html
   end
