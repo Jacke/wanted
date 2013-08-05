@@ -53,8 +53,9 @@ class User < ActiveRecord::Base
       unless user
         case auth.provider.to_sym
           when :vkontakte
+            nickname = auth.info.name.gsub(' ', '')
             params  = { name:auth.info.name,
-                        nickname:auth.info.name,
+                        nickname:nickname.downcase,
                         provider:auth.provider,
                         uid:auth.uid,
                         email:auth.extra.raw_info.uid.to_s+'@vk.com',
