@@ -12,8 +12,7 @@
         Коллекций
     #block
       %a{:href => mentions_path(@user)}
-        %span.big_arial
-          0
+        %span.big_arial=@mentions.length
         Упоминаний
   -unless @collections.empty?
     #grid_elements

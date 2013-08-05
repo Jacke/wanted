@@ -4,9 +4,11 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     resource.password_confirmation = resource.password
+    resource.nickname = resource.name
     
     if resource.save
       if resource.active_for_authentication?
+        resource.update_attribute(:nickname, resource.id)
         set_flash_message :notice, :signed_up if is_navigational_format?
 
         sign_up(resource_name, resource)
@@ -28,6 +30,10 @@ class RegistrationsController < Devise::RegistrationsController
     if change_surrogat_email?(@user, params)
       params[:user][:email] = @user.email
     end
+
+    params[:user][:nickname].gsub!(' ', '')
+    params[:user][:nickname] = params[:user][:nickname].downcase
+
 
     successfully_updated = if needs_password?(@user, params)
       @user.update_with_password(params[:user])

@@ -1,5 +1,7 @@
 #grid_elemets.g2
   -unless @items.empty?
     =render partial: "users/items_grid"
+  - else
+    %h2.gi Нет ни одного товара
 #right_comments
   = render partial: 'comments'

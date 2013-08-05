@@ -7,6 +7,7 @@
         #comment
           #info
             = link_to comment.user.name, user_show_path(comment.user), :title => '@'+comment.user.nickname
+            %span.litllnickname= ' (@'+(comment.user.nickname.blank? || comment.user.nickname == comment.user.id.to_s ? 'I_AM' : comment.user.nickname)+')'
             = ', '+time_ago_in_words(comment.created_at)+' назад'
           #text
             =simple_format(comment.content)

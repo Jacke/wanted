@@ -8,6 +8,7 @@ class CommentsController < ApplicationController
       @comment = Comment.new(params[:comment])
       @comment.user_id = current_user.id
       @comment.item_id = @item.id
+      @comment.content = @comment.content.strip_tags
 
       if @comment.save
         mentions(@comment)

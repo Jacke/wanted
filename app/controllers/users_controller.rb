@@ -5,12 +5,14 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id]) || current_user
     @items = @user.following_by_type('Item').order("created_at DESC")
     @collections = @user.collections
+    @mentions = @user.mentions
   end
 
   def collections
     @user = User.find_by_id(params[:id]) || current_user
     @items = @user.following_by_type('Item')
     @collections = @user.collections
+    @mentions = @user.mentions
   end
 
   def mentions

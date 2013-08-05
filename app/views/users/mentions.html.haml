@@ -12,18 +12,22 @@
         Коллекций
     #block.active
       %a{:href => mentions_path(@user)}
-        %span.big_arial
-          0
+        %span.big_arial=@mentions.length
         Упоминаний
   -unless @mentions.empty?
     %ul.mentions_list   
       -@mentions.each do |mention|
-        %li
-          #info
-            =link_to mention.comment.user.name, user_show_path(mention.comment.user)
-            =', ' + time_ago_in_words(mention.comment.created_at) + ' назад, в комментарии к товару '
-            =link_to mention.comment.item.name, item_path(mention.comment.item)
-          #comment=simple_format(mention.comment.content)
+        %li.comnt_list
+          %a{:href => "#{user_show_path(mention.comment.user)}", :id => "avatar"}
+            =image_tag mention.comment.user.avatar.url(:esmall)
+          #comment
+            #info
+              = link_to mention.comment.user.name, user_show_path(mention.comment.user), :title => '@'+mention.comment.user.nickname
+              %span.litllnickname= ' (@'+(mention.comment.user.nickname.blank? || mention.comment.user.nickname == mention.comment.user.id.to_s ? 'I_AM' : mention.comment.user.nickname)+')'
+              = ', '+time_ago_in_words(mention.comment.created_at)+' назад, в комментариях к товару '
+              =link_to mention.comment.item.name, item_path(mention.comment.item), style: "text-decoration: underline;"
+            #text
+              =simple_format(mention.comment.content)
   -else
     .con_h
       %h2

@@ -8,4 +8,4 @@
         - unless comment.user.city.blank?
           ,
           =link_to comment.user.city, '#'
-      %span.comment=truncate(comment.content, length: 100)
+      %span.comment=truncate(simple_format(comment.content), length: 100)
