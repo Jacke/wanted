@@ -54,6 +54,7 @@ class User < ActiveRecord::Base
         case auth.provider.to_sym
           when :vkontakte
             params  = { name:auth.info.name,
+                        nickname:auth.info.name,
                         provider:auth.provider,
                         uid:auth.uid,
                         email:auth.extra.raw_info.uid.to_s+'@vk.com',
@@ -74,11 +75,4 @@ class User < ActiveRecord::Base
       user
     end
   end
-
-  private
-
-  def send_welcome_email
-    UserMailer.welcome_email(self).deliver
-  end
-
 end
