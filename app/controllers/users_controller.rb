@@ -26,6 +26,7 @@ class UsersController < ApplicationController
     @user = User.find_by_id(params[:id]) || current_user
     @collection = Collection.find_by_id(params[:collection_id])
     @items = @collection.following_by_type('Item').order("created_at DESC")
+    @mentions = @user.mentions
   end
 
 
