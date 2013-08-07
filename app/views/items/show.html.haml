@@ -70,11 +70,11 @@
       %a{:href => "#"} В отпуск
       ,
       %a{:href => "#"} Моему
-    #tags
-      Отмечено тэгами:
-      %a{:href => "#"} #мужское
-      %a{:href => "#"} #черное
-      %a{:href => "#"} #круто
+    - unless @tags.empty?
+      #tags
+        Отмечено тэгами:
+        - @tags.each do |tag|
+          =link_to '#'+tag.name, '#' 
     #follow
       %a{:href => "#"}
         Подписаться

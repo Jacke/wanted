@@ -38,6 +38,9 @@ class ItemsController < ApplicationController
         @collection.follow(@item)
       end
 
+      tags(@item.comment,@item)
+      #mentions(@item.comment, @item, 'comment')
+
       return render :json => {:success => true, :message => 'Товар успешно добавлен'}
     else
       return render :json => {:success => false, :errors => @item.errors.full_messages}
@@ -52,6 +55,7 @@ class ItemsController < ApplicationController
     @followers_count = @followers.length
     @comment = Comment.new
     @comments = @item.comments.order("created_at DESC")
+    @tags = @item.tags
 
     if user_signed_in?
       @collections = current_user.collections

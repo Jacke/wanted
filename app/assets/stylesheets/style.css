@@ -145,6 +145,8 @@ header#hd nav div.nav_title {
   color: #fff;
   text-decoration: none;
   display: inline-block;
+  overflow: hidden;
+  height: 50px;
 }
 
 header#hd nav div.nav_title span.nav_end_word {color: #ffc23c;}

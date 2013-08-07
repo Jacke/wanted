@@ -43,14 +43,11 @@
                 %li=link_to 'Лента событий', tape_path, class: 'big_nav_links'
             #search
               =link_to 'Сделать серч', search_path
-            %ul.small_nav
-              %li Популярные хэш-тэги
-              %li
-                %a.small_nav_links{:href => "#"} #футболки
-              %li
-                %a.small_nav_links{:href => "#"} #носки
-              %li
-                %a.small_nav_links{:href => "#"} #лето
+            - unless @pop_tags.blank?
+              %ul.small_nav
+                %li Популярные хэш-тэги
+                - @pop_tags.each do |tag|
+                  %li=link_to '#'+tag.name, '#', class: 'small_nav_links'
         #bd
           #content
             = yield

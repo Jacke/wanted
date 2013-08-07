@@ -11,7 +11,8 @@ class CommentsController < ApplicationController
       @comment.content = @comment.content.strip_tags
 
       if @comment.save
-        mentions(@comment)
+        mentions(@comment.content, @comment, 'content')
+        tags(@comment.content, @item)
         update_cached_comments(@item)
         render partial: "shared/comments"
       else
@@ -30,26 +31,5 @@ class CommentsController < ApplicationController
     end
 
     item.update_attributes params[:cached_comments]
-  end
-
-  # упоминания
-  def mentions(comment)
-    mentions_arr = comment.content.split
-    mentions_arr.each do |mention|
-      if mention[0] == '@'
-        mention.sub!(/^@/, '')
-        user = User.where(nickname: mention).first
-
-        unless user.blank?
-          new_mention = Mention.new
-          new_mention.user_id = user.id
-          new_mention.comment_id = comment.id
-          if new_mention.save
-            linked_comment = comment.content.sub('@'+user.nickname,'<a href="'+user_show_path(user)+'">@'+user.nickname+'</a>')
-            comment.update_attribute(:content, linked_comment)
-          end
-        end
-      end
-    end
   end
 end
