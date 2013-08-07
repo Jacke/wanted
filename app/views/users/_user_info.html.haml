@@ -15,18 +15,18 @@
       #col.big_arial=@user.count_user_followers
       -if @user.followers_new_count != 0 && @user == current_user
         #new='+' + @user.followers_new_count.to_s
-      подписчиков
+      = Russian.p(@user.count_user_followers, " подписчик", " подписчика", " подписчиков")
   #block
     %a{href: followed_by_path(@user)}
       #col.big_arial=@user.following_users_count
       -if @user.followed_by_new_count != 0 && @user == current_user
         #new='+' + @user.followed_by_new_count.to_s
-      подписок
+      = Russian.p(@user.following_users_count, " подписка", " подписки", " подписок")
   #block
     %a{href: followed_by_shop_path(@user)}
       #col.big_arial 0
       //#new  
-      магазинов
+      = Russian.p(0, " магазин", " магазина", " магазинов")
   -if user_signed_in? && current_user != @user
     -unless current_user.following?(@user) 
       #block.follow

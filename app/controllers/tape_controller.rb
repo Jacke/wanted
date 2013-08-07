@@ -9,7 +9,7 @@ class TapeController < ApplicationController
       @events += follower.follows.order("created_at DESC")
     end
 
-    @events.sort_by { |hsh| hsh[:created_at] }
+    @events.sort_by { |hsh| hsh[:id] }
     @events.each do |event|
       case event.followable_type
       when "User"

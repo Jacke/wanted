@@ -1,0 +1,12 @@
+#block{:class => "#{'active' if params[:controller] == 'users' && params[:action] == 'show'}"}
+  %a{:href => user_show_path(@user)}
+    %span.big_arial=@items.length.to_s
+    = Russian.p(@items.length, " вещь:", " вещи:", " вещей:")
+#block{:class => "#{'active' if (params[:controller] == 'users' && params[:action] == 'collections') || (params[:controller] == 'users' && params[:action] == 'collection')}"}
+  %a{:href => user_collections_path(@user)}
+    %span.big_arial=@collections.length.to_s
+    = Russian.p(@collections.length, " коллецкия:", " коллекции:", " коллекций:")
+#block{:class => "#{'active' if params[:controller] == 'users' && params[:action] == 'mentions'}"}
+  %a{:href => mentions_path(@user)}
+    %span.big_arial=@mentions.length.to_s
+    = Russian.p(@mentions.length, " упоминание:", " упоминания:", " упоминаний:")

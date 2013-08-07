@@ -10,7 +10,10 @@
                 %span.gray=time_ago_in_words(event_object[:time])+' назад'
                 %span
                   =link_to event_object[:eventer][:nickname], user_show_path(event_object[:eventer])
-                  =' подписался на '
+                  - if event_object[:eventer][:sex] == 1
+                    =' подписалась на '
+                  - else
+                    =' подписался на '
                   =link_to event_object[:event][:nickname], user_show_path(event_object[:event])
             .grid_elements
               -event_object[:event].following_by_type('Item').limit(6).order("created_at DESC").each do |item|
@@ -37,7 +40,11 @@
                 %span.gray=time_ago_in_words(event_object[:time])+' назад'
                 %span
                   =link_to event_object[:eventer][:nickname], user_show_path(event_object[:eventer])
-                  =' добавил '+event_object[:event].length.to_s + Russian.p(event_object[:event].length, " вещь:", " вещи:", " вещей:")
+                  - if event_object[:eventer][:sex] == 1
+                    =' добавилa '+event_object[:event].length.to_s
+                  -else
+                    =' добавил '+event_object[:event].length.to_s
+                  =Russian.p(event_object[:event].length, " вещь:", " вещи:", " вещей:")
             .grid_elements
               -event_object[:event].each do |item|
                 %section.element{:id => "#{item.id}"}
@@ -56,3 +63,5 @@
                       #comments
                         %a{:href => "#"} &nbsp
                         %span= item.cached_comments
+    - else
+      %h2 Лента новостей пуста

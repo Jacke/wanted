@@ -2,18 +2,7 @@
   .info
     =render partial: "user_info"
   #nav_panel
-    #block.active
-      %a{:href => user_show_path(@user)}
-        %span.big_arial=@items.length
-        Вещей
-    #block
-      %a{:href => user_collections_path(@user)}
-        %span.big_arial=@collections.length
-        Коллекций
-    #block
-      %a{:href => mentions_path(@user)}
-        %span.big_arial=@mentions.length
-        Упоминаний
+    =render partial: "nav_panel"
   -unless @items.empty?      
     #grid_elements
       =render partial: "items_grid"
