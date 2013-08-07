@@ -35,7 +35,7 @@ module ApplicationHelper
     when "users/collections"
       t = @user.name+' - Коллекци '
     when "users/collection"
-      t = @user.name+' - '+@collection.title
+      t = @user.name+' - '+@collection.title.to_s
     when "items/show"
       t = @item.name
     when "users/mentions"
@@ -80,7 +80,7 @@ module ApplicationHelper
     when "users/collections"
       html = blur_last_word(@user.name).html_safe
     when "users/collection"
-      html = blur_last_word(@user.name).html_safe+' - '+@collection.title
+      html = blur_last_word(@user.name).html_safe+' - '+@collection.title.to_s
     when "items/show"
       html = blur_last_word(@item.name).html_safe
     when "users/mentions"

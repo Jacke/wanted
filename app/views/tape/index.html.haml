@@ -5,9 +5,13 @@
         %li
           -if event_object[:event].class.name == 'User'
             .event_head
-              =link_to event_object[:eventer][:name], user_show_path(event_object[:eventer])
-              =' подписался на '
-              =link_to event_object[:event][:name], user_show_path(event_object[:event])
+              .avatar=image_tag event_object[:eventer].avatar.url(:medium)
+              .info
+                %span.gray=time_ago_in_words(event_object[:time])+' назад'
+                %span
+                  =link_to event_object[:eventer][:nickname], user_show_path(event_object[:eventer])
+                  =' подписался на '
+                  =link_to event_object[:event][:nickname], user_show_path(event_object[:event])
             .grid_elements
               -event_object[:event].following_by_type('Item').limit(6).order("created_at DESC").each do |item|
                 %section.element{:id => "#{item.id}"}
@@ -26,5 +30,29 @@
                       #comments
                         %a{:href => "#"} &nbsp
                         %span= item.cached_comments
-          -if event_object[:event].class.name == 'Item'
-            =event_object[:eventer][:name]+' добавил '+event_object[:event][:name]
+          -if event_object[:event_name] == 'add_items'
+            .event_head
+              .avatar=image_tag event_object[:eventer].avatar.url(:medium)
+              .info
+                %span.gray=time_ago_in_words(event_object[:time])+' назад'
+                %span
+                  =link_to event_object[:eventer][:nickname], user_show_path(event_object[:eventer])
+                  =' добавил '+event_object[:event].length.to_s + Russian.p(event_object[:event].length, " вещь:", " вещи:", " вещей:")
+            .grid_elements
+              -event_object[:event].each do |item|
+                %section.element{:id => "#{item.id}"}
+                  #preview
+                    %a{:href => item_path(item), :style => "background: url(#{item.image.url(:medium)})"}
+                    -if(item.prise && item.prise != 0)
+                      #price=item.prise.to_s+' Р'
+                  #info
+                    #name=item.name
+                    #user
+                      =link_to item.user.name, user_show_path(item.user.id)
+                    #links
+                      #like
+                        =link_to "", like_item_path(item), method: :post, id: item.id
+                        %span=item.cached_votes_total
+                      #comments
+                        %a{:href => "#"} &nbsp
+                        %span= item.cached_comments

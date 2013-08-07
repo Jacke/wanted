@@ -60,7 +60,7 @@
     #followers
       -unless @followers.empty?
         - @followers.each do |user|
-          %a{:href => user_show_path(user)}=image_tag user.avatar.url(:esmall)
+          %a{:href => user_show_path(user)}=image_tag user.avatar.url(:esmall), :title => user.name
     #followers_count
       =@followers_count.to_s+' '+Russian.p(@followers_count, "человек хочет", "человека тоже хотят :)", "человек тоже хотят :)")+''
     #collections

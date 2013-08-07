@@ -336,6 +336,7 @@ section.follow_element #info a {color: #174f9c;text-decoration: underline;}
 a.blue {color: #174f9c;cursor: pointer;}
 a.ellow {color: #966c0f; text-decoration: none;}
 span.ellow {color: #E7AF35;}
+span.gray {color: #aaa;}
 a.ellow:hover {text-decoration: underline;}
 .g3 {margin: 0 -20px 0 -20px;}
 .gi {padding: 0 30px;}
@@ -517,7 +518,13 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 
 /* tape */
 #tape {font-size: 18px;}
-#tape .grid_elements {display: inline-block;margin: 30px -30px 0 -30px;}
+#tape .event_head {display: inline-block;width: 100%;}
+#tape .event_head a{color: #376eba;text-decoration: underline;}
+#tape .event_head a:hover{color: #6992ca;}
+#tape .grid_elements {display: inline-block; margin: 30px -30px 10px -30px;}
+#tape .avatar {float: left;margin: 0 10px 0 0;display: inline-block;}
+#tape .info {width: 600px;display: inline-block;}
+#tape .info span {width: 100%;display: inline-block;}
 
 /* checkbox */
 .checkbox, .radio {
