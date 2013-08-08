@@ -97,7 +97,7 @@ $(document).ready(function() {
   var content = $('div#content')
 
   frame.css('height',page_h-90);
-  content.css('min-height', page_h-100)
+  content.css('min-height', page_h-80)
 
   $("input[checked='checked']").parent('div').attr("style","background-position: 50% -30px; ");
 
@@ -207,7 +207,7 @@ $(document).ready(function() {
   });
   // конец формы для добавления товара
   // поставить лайк
-  $('section.element #like a').click(function(e){
+  /*$('section.element #like a').click(function(e){
     e.preventDefault();
     var item = $(this).parent('#like').children('span');
     var id = $(this).prop('id');
@@ -216,7 +216,7 @@ $(document).ready(function() {
       $(item).text(rating);
     })
     return false;
-  });
+  });*/
 
   //dragg and drop
   $('section.element').draggable({

@@ -1,5 +1,5 @@
 -@items.each do |item|
-  %section.element{:id => "#{item.id}"}
+  %section.element.ui-draggable{:id => "#{item.id}", :page => 1}
     #preview
       %a{:href => item_path(item), :style => "background: url(#{item.image.url(:medium)})"}
       -if(item.prise && item.prise != 0)
@@ -11,7 +11,7 @@
       #links
         #like
           =link_to "", like_item_path(item), method: :post, id: item.id
-          %span=item.cached_votes_total
+          %span=item.followers_count_cache
         #comments
           %a{:href => "#"} &nbsp
           %span= item.cached_comments

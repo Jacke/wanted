@@ -1,8 +1,14 @@
 #encoding: utf-8
 class ItemsController < ApplicationController
   def new
-    @items = Item.order("created_at DESC")
-    @comments = Comment.limit(20).order("created_at DESC")
+    if params[:position]
+      #@items = Item.where("id < #{params[:position].to_i}").order("created_at DESC").limit(6)
+      @items = Item.paginate(:page => params[:position], :per_page => 6).order('id DESC')
+      render partial: "users/items_grid"
+    else
+      @items = Item.order("created_at DESC").limit(6)
+    end
+    @comments = Comment.order("created_at DESC").limit(8)
   end
 
   def male
@@ -11,7 +17,13 @@ class ItemsController < ApplicationController
   end
 
   def popular
-    @items = Item.order('cached_comments DESC').order('cached_votes_total DESC')
+    if params[:position]
+      #@items = Item.where("id < #{params[:position].to_i}").order("created_at DESC").limit(6)
+      @items = Item.paginate(:page => params[:position], :per_page => 6).order('followers_count_cache DESC').order('cached_comments DESC')
+      render partial: "users/items_grid"
+    else
+      @items = Item.order('followers_count_cache DESC').order('cached_comments DESC').limit(6)
+    end
   end
 
   def tags
@@ -41,6 +53,7 @@ class ItemsController < ApplicationController
     @item.user = current_user
     if @item.save
       current_user.follow(@item)
+
       if @collection_id.to_i != -1
         @collection = Collection.find_by_id(@collection_id)
         @collection.follow(@item)
@@ -60,7 +73,6 @@ class ItemsController < ApplicationController
     @shop = @item.shop
     @user = @item.user
     @followers = @item.followers_by_type('User').limit(8)
-    @followers_count = @followers.length
     @comment = Comment.new
     @comments = @item.comments.order("created_at DESC")
     @tags = @item.tags
@@ -89,6 +101,7 @@ class ItemsController < ApplicationController
     @item = Item.find_by_id(item_id)
 
     current_user.follow(@item)
+    up_followers_cache(@item)
 
     if collection_id.to_i != -1
       @collection = Collection.find_by_id(collection_id)
@@ -108,5 +121,13 @@ class ItemsController < ApplicationController
 
   def clean_url(url)
     s = url.sub(/^https?\:\/\//, '').sub(/^www./,'')
+  end
+
+  def up_followers_cache(item)
+    if item.followers_count_cache == 0
+      item.update_attribute(:followers_count_cache, item.count_user_followers - 1)
+    else
+      item.update_attribute(:followers_count_cache, item.followers_count_cache + 1)
+    end
   end
 end

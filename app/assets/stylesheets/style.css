@@ -505,7 +505,7 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 #item #left #buttons {margin-bottom: 40px;}
 #item #left #buttons #li {display: inline-block;margin-bottom: 10px;}
 #item #left #buttons #li #button {display: inline-block;float:left;}
-#item #left #buttons .button {font-weight: normal; width: 130px;display: inline-block;height: 55px;text-align: center;color: #fff;font-size: 30px;text-decoration: none;line-height: 50px;}
+#item #left #buttons .button {font-weight: normal; width: 130px;display: inline-block;height: 55px;text-align: center;color: #fff;font-size: 30px;text-decoration: none;line-height: 55px;}
 #item #left #buttons .ellow_button {background: #e5b03b;}
 #item #left #buttons .ellow_button:hover {background: #eebc4d;}
 #item #left #buttons #info {width: 160px;margin-left: 40px;display: inline-block;font-size: 30px;line-height: 50px;}
@@ -520,7 +520,7 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 
 /* tape */
 #tape {font-size: 18px;}
-#tape .event_head {display: inline-block;width: 100%;background: #fdf7e7;margin: 0 -30px 30px -30px;padding: 0 30px;}
+#tape .event_head {display: inline-block;width: 100%;background: #fcf9e8;margin: 0 -30px 30px -30px;padding: 0 30px;}
 #tape .event_head a{color: #376eba;text-decoration: underline;}
 #tape .event_head a:hover{color: #6992ca;}
 #tape .grid_elements {display: inline-block; margin: 0 -30px 10px -30px;}

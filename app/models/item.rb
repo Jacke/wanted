@@ -2,11 +2,11 @@ class Item < ActiveRecord::Base
   require 'open-uri'
   before_create :picture_from_url
 
-  acts_as_votable
+  #acts_as_votable
   acts_as_taggable
   acts_as_followable
   
-  attr_accessible :clothes, :comment, :name, :prise, :sex, :tag_list, :shop_id, :url, :image_url
+  attr_accessible :clothes, :comment, :name, :prise, :sex, :tag_list, :shop_id, :url, :image_url, :count_user_followers
   #paperclip
   attr_accessible :image
   if not Rails.env.production?

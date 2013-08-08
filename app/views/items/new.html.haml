@@ -1,4 +1,23 @@
-#grid_elemets.g2
+:javascript
+  function loadMore(){
+  var page = $('#grid_elemets').attr('page')
+  page = parseInt(page) + 1
+  $.post('/items/new/'+page, function(data,status,xhr){
+      $("#grid_elemets").append(data);
+      $(window).bind('scroll', bindScroll);
+      $('#grid_elemets').attr('page',page)
+    })
+  }
+
+  function bindScroll(){
+    if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+      $(window).unbind('scroll');
+      loadMore();
+    }
+  }
+
+  $(window).scroll(bindScroll)
+#grid_elemets.g2{:page => 1}
   -unless @items.empty?
     =render partial: "users/items_grid"
   - else

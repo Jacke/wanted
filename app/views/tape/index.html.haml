@@ -10,6 +10,17 @@
                 .info
                   %span.gray=time_ago_in_words(event_object[:time])+' назад'
                   %span
+                    - if event_object[:eventer][:sex] == 1
+                      ='на ваши обновления подписалась '
+                    - else
+                      ='на ваши обновления подписался '
+                    =link_to event_object[:eventer][:nickname]+':', user_show_path(event_object[:eventer])
+            -else
+              .event_head
+                .avatar=image_tag event_object[:eventer].avatar.url(:medium)
+                .info
+                  %span.gray=time_ago_in_words(event_object[:time])+' назад'
+                  %span
                     =link_to event_object[:eventer][:nickname], user_show_path(event_object[:eventer])
                     - if event_object[:eventer][:sex] == 1
                       =' подписалась на '
@@ -30,21 +41,10 @@
                       #links
                         #like
                           =link_to "", like_item_path(item), method: :post, id: item.id
-                          %span=item.cached_votes_total
+                          %span=item.followers_count_cache
                         #comments
                           %a{:href => "#"} &nbsp
                           %span= item.cached_comments
-            -else
-              .event_head
-                .avatar=image_tag event_object[:eventer].avatar.url(:medium)
-                .info
-                  %span.gray=time_ago_in_words(event_object[:time])+' назад'
-                  %span
-                    =link_to event_object[:eventer][:nickname], user_show_path(event_object[:eventer])
-                    - if event_object[:eventer][:sex] == 1
-                      =' подписалась на ваши обновления:'
-                    - else
-                      =' подписался на ваши обновления:'
           -if event_object[:event_name] == 'add_items'
             .event_head
               .avatar=image_tag event_object[:eventer].avatar.url(:medium)
@@ -71,7 +71,7 @@
                     #links
                       #like
                         =link_to "", like_item_path(item), method: :post, id: item.id
-                        %span=item.cached_votes_total
+                        %span=item.followers_count_cache
                       #comments
                         %a{:href => "#"} &nbsp
                         %span= item.cached_comments

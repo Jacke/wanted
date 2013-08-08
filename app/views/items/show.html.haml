@@ -57,18 +57,19 @@
         #button
           %a.button.blue_button{:href => "#", :onclick => '$(\'#select_collecton\').arcticmodal()'}Хочу
         #info
-          =@item.cached_votes_total
+          =@item.followers_count_cache
           %span.big_hart
       #li
         #button
           = link_to "Беру", @item.url, class: "button ellow_button", target: "_blank"
         #info=@item.prise.to_s+' руб'
-    #followers
-      -unless @followers.empty?
+    -if @followers.length > 1
+      #followers
         - @followers.each do |user|
-          %a{:href => user_show_path(user)}=image_tag user.avatar.url(:esmall), :title => user.name
+          - if not user == @user
+            %a{:href => user_show_path(user)}=image_tag user.avatar.url(:esmall), :title => user.name
     #followers_count
-      =@followers_count.to_s+' '+Russian.p(@followers_count, "человек хочет", "человека тоже хотят :)", "человек тоже хотят :)")+''
+      =@item.followers_count_cache.to_s+' '+Russian.p(@item.followers_count_cache, "человек хочет", "человека тоже хотят :)", "человек тоже хотят :)")+''
     -unless @foll_collections.empty?
       #collections
         Добавленно в коллекции:

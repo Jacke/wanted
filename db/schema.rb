@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130805144743) do
+ActiveRecord::Schema.define(:version => 20130808182525) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -42,32 +42,24 @@ ActiveRecord::Schema.define(:version => 20130805144743) do
   add_index "follows", ["follower_id", "follower_type"], :name => "fk_follows"
 
   create_table "items", :force => true do |t|
-    t.string   "name",               :default => "",    :null => false
-    t.integer  "sex",                :default => 0
+    t.string   "name",                  :default => "",    :null => false
+    t.integer  "sex",                   :default => 0
     t.integer  "prise"
     t.text     "comment"
-    t.boolean  "clothes",            :default => false
-    t.datetime "created_at",                            :null => false
-    t.datetime "updated_at",                            :null => false
+    t.boolean  "clothes",               :default => false
+    t.datetime "created_at",                               :null => false
+    t.datetime "updated_at",                               :null => false
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "user_id"
-    t.integer  "cached_votes_total", :default => 0
-    t.integer  "cached_votes_score", :default => 0
-    t.integer  "cached_votes_up",    :default => 0
-    t.integer  "cached_votes_down",  :default => 0
-    t.integer  "cached_comments",    :default => 0
+    t.integer  "cached_comments",       :default => 0
     t.string   "url"
     t.integer  "shop_id"
     t.string   "image_url"
+    t.integer  "followers_count_cache", :default => 0
   end
-
-  add_index "items", ["cached_votes_down"], :name => "index_items_on_cached_votes_down"
-  add_index "items", ["cached_votes_score"], :name => "index_items_on_cached_votes_score"
-  add_index "items", ["cached_votes_total"], :name => "index_items_on_cached_votes_total"
-  add_index "items", ["cached_votes_up"], :name => "index_items_on_cached_votes_up"
 
   create_table "mentions", :force => true do |t|
     t.integer  "comment_id"
