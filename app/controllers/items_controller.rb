@@ -14,6 +14,14 @@ class ItemsController < ApplicationController
     @items = Item.order('cached_comments DESC').order('cached_votes_total DESC')
   end
 
+  def tags
+    if params[:tag]
+      @items = Item.tagged_with(params[:tag])
+    else
+      @items = Item.all
+    end
+  end
+
   def create
     @item = Item.new(params[:item])
     @collection_id = params[:collection_id]
@@ -56,6 +64,7 @@ class ItemsController < ApplicationController
     @comment = Comment.new
     @comments = @item.comments.order("created_at DESC")
     @tags = @item.tags
+    @foll_collections = @item.followers_by_type('Collection')
 
     if user_signed_in?
       @collections = current_user.collections

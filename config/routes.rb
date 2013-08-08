@@ -28,6 +28,7 @@ Hochuli::Application.routes.draw do
   #item
   resources :items
   get 'male/:sex' => 'items#male', as: :items_by_sex
+  get 'tag/:tag'  => 'items#tags', as: :tags
   post 'item/:id/up'  => 'items#up', as: :like_item
   post 'item/:id/add/:collection_id' => 'items#add'
 

@@ -1,8 +1,10 @@
 class ApplicationController < ActionController::Base
-
   protect_from_forgery
+  before_filter :pop_tags
 
-  @pop_tags = Item.tag_counts(:limit => 5, :order => "count desc")
+  def pop_tags
+    @pop_tags = Item.tag_counts.order("count desc").limit(5)
+  end
 
   def not_found
     raise ActionController::RoutingError.new('Not Found')

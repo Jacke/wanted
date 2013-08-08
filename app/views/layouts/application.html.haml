@@ -47,7 +47,7 @@
               %ul.small_nav
                 %li Популярные хэш-тэги
                 - @pop_tags.each do |tag|
-                  %li=link_to '#'+tag.name, '#', class: 'small_nav_links'
+                  %li=link_to '#'+tag.name, tags_path(tag.name), class: 'small_nav_links'
         #bd
           #content
             = yield

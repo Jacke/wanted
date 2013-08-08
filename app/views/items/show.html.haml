@@ -63,18 +63,16 @@
           %a{:href => user_show_path(user)}=image_tag user.avatar.url(:esmall), :title => user.name
     #followers_count
       =@followers_count.to_s+' '+Russian.p(@followers_count, "человек хочет", "человека тоже хотят :)", "человек тоже хотят :)")+''
-    #collections
-      Добавленно в коллекции:
-      %a{:href => "#"} Вещи на выхожные
-      ,
-      %a{:href => "#"} В отпуск
-      ,
-      %a{:href => "#"} Моему
+    -unless @foll_collections.empty?
+      #collections
+        Добавленно в коллекции:
+        -@foll_collections.each do |collection|
+          =link_to collection.title, user_collection_path(@user,collection)
     - unless @tags.empty?
       #tags
         Отмечено тэгами:
         - @tags.each do |tag|
-          =link_to '#'+tag.name, '#' 
+          =link_to '#'+tag.name, tags_path(tag.name)
     #follow
       %a{:href => "#"}
         Подписаться

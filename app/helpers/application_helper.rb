@@ -38,6 +38,8 @@ module ApplicationHelper
       t = @user.name+' - '+@collection.title.to_s
     when "items/show"
       t = @item.name
+    when "items/tags"
+      t = params[:tag]
     when "users/mentions"
       t = "Упоминания"
     when "registrations/edit"
@@ -83,6 +85,8 @@ module ApplicationHelper
       html = blur_last_word(@user.name).html_safe+' - '+@collection.title.to_s
     when "items/show"
       html = blur_last_word(@item.name).html_safe
+    when "items/tags"
+      html = blur_last_word(params[:tag].mb_chars.upcase!).html_safe
     when "users/mentions"
       html = "УПОМИНА<span class='nav_end_word'>НИЯ</span>".html_safe
     when "registrations/edit"
