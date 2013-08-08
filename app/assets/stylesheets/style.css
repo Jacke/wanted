@@ -498,10 +498,10 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 #item #right .comnt_list ul li #comment #info a:hover{color: #777;}
 
 #item #left {position: absolute;top: 35px;right: 0;width: 340px;}
-#item #left #user {display: inline-block;margin-bottom: 40px;}
+#item #left #user {display: inline-block;margin-bottom: 10px;}
 #item #left #user img {padding: 0 10px 5px 0;}
 #item #left #user a {display: inline-block;float: left;padding-right: 5px;}
-#item #left #store {margin-bottom: 50px;}
+#item #left #store {margin-bottom: 50px;margin-top: 30px;}
 #item #left #buttons {margin-bottom: 40px;}
 #item #left #buttons #li {display: inline-block;margin-bottom: 10px;}
 #item #left #buttons #li #button {display: inline-block;float:left;}
@@ -514,16 +514,16 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 #item #left #followers_count {margin-bottom: 40px;}
 #item #left #collections {margin-bottom: 20px;}
 #item #left #tags {margin-bottom: 60px;}
-#item #left #follow a {height: 33px;background: url(../images/follow_pointer.png) no-repeat right 0; margin-bottom: 40px;display: inline-block;line-height: 33px;padding: 0 40px 0 30px;color: #000;text-decoration: none;}
+#item #left #follow a {height: 33px;background: url(../images/follow_pointer.png) no-repeat right 0; margin-bottom: 10px;display: inline-block;line-height: 33px;padding: 0 40px 0 30px;color: #000;text-decoration: none;}
 #item #left #follow a:hover {text-decoration: underline;}
 /* end item page */
 
 /* tape */
 #tape {font-size: 18px;}
-#tape .event_head {display: inline-block;width: 100%;}
+#tape .event_head {display: inline-block;width: 100%;background: #fdf7e7;margin: 0 -30px 30px -30px;padding: 0 30px;}
 #tape .event_head a{color: #376eba;text-decoration: underline;}
 #tape .event_head a:hover{color: #6992ca;}
-#tape .grid_elements {display: inline-block; margin: 30px -30px 10px -30px;}
+#tape .grid_elements {display: inline-block; margin: 0 -30px 10px -30px;}
 #tape .avatar {float: left;margin: 0 10px 0 0;display: inline-block;}
 #tape .info {width: 600px;display: inline-block;}
 #tape .info span {width: 100%;display: inline-block;}

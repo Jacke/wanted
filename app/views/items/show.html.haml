@@ -42,6 +42,12 @@
       =link_to @user.name, user_show_path(@user)
       %span.litllnickname=' (@'+(@user.nickname.blank? || @user.nickname == @user.id.to_s ? 'I_AM' : @user.nickname)+')'
       =' добавил эту вещь '+time_ago_in_words(@item.created_at)+' назад.'
+    - unless @user == current_user
+      #follow
+        -unless current_user.following?(@user) 
+          =link_to "подписаться", follow_path(@user)
+        -else
+          =link_to "отписаться", unfollow_path(@user)
     -if not @shop.nil?
       #store
         Магазин: 
@@ -73,8 +79,5 @@
         Отмечено тэгами:
         - @tags.each do |tag|
           =link_to '#'+tag.name, tags_path(tag.name)
-    #follow
-      %a{:href => "#"}
-        Подписаться
 -if user_signed_in?
   = render partial: 'shared/add_to_collection'
