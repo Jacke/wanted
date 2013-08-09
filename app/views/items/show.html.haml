@@ -42,7 +42,7 @@
       =link_to @user.name, user_show_path(@user)
       %span.litllnickname=' (@'+(@user.nickname.blank? || @user.nickname == @user.id.to_s ? 'I_AM' : @user.nickname)+')'
       =' добавил эту вещь '+time_ago_in_words(@item.created_at)+' назад.'
-    - unless @user == current_user
+    - if user_signed_in? && @user != current_user
       #follow
         -unless current_user.following?(@user) 
           =link_to "подписаться", follow_path(@user)

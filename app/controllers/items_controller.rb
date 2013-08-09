@@ -3,10 +3,10 @@ class ItemsController < ApplicationController
   def new
     if params[:position]
       #@items = Item.where("id < #{params[:position].to_i}").order("created_at DESC").limit(6)
-      @items = Item.paginate(:page => params[:position], :per_page => 6).order('id DESC')
+      @items = Item.paginate(:page => params[:position], :per_page => 20).order('id DESC')
       render partial: "users/items_grid"
     else
-      @items = Item.order("created_at DESC").limit(6)
+      @items = Item.order("created_at DESC").limit(20)
     end
     @comments = Comment.order("created_at DESC").limit(8)
   end
@@ -18,11 +18,10 @@ class ItemsController < ApplicationController
 
   def popular
     if params[:position]
-      #@items = Item.where("id < #{params[:position].to_i}").order("created_at DESC").limit(6)
-      @items = Item.paginate(:page => params[:position], :per_page => 6).order('followers_count_cache DESC').order('cached_comments DESC')
+      @items = Item.paginate(:page => params[:position], :per_page => 20).order('followers_count_cache DESC').order('cached_comments DESC')
       render partial: "users/items_grid"
     else
-      @items = Item.order('followers_count_cache DESC').order('cached_comments DESC').limit(6)
+      @items = Item.order('followers_count_cache DESC').order('cached_comments DESC').limit(20)
     end
   end
 
