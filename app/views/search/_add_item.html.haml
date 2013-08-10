@@ -47,6 +47,6 @@
           =f.text_field :sex, :style => 'display: none;'
         %li.center= f.text_field :comment, :placeholder => 'комент #тэг @человек'
         %li.center
-          %span.checkbox{:style => 'margin: 0 5px -8px 0;'}= f.check_box :clothes,{},false,true
+          %span.checkbox{:style => 'margin: 0 5px -8px 0;'}= f.check_box :clothes
           %span Кстати, это не одежда
         %li.center= f.submit "Закидываем", :class => 'button blue_button', :id => 'add_item_submit'

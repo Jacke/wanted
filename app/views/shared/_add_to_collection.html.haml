@@ -5,15 +5,15 @@
       if(typeof data == 'object'){
         showErrors(data.errors);
       }else{
-        $('#select_collecton .collections_list').html(data);
-        $('#select_collecton #new_collection input.new_collection').val('');
+        $('#select_collecton_modal .collections_list').html(data);
+        $('#select_collecton_modal #new_collection input.new_collection').val('');
 
         //showNotices(["Комментарий успешно добавлен"]);
       }
     }); 
   })
 .g-hidden{:style => 'display: none'}
-  .box-modal#select_collecton
+  .box-modal#select_collecton_modal
     .box-modal_close.arcticmodal-close
       Закрыть
     #collection 
@@ -25,4 +25,4 @@
           =form_for @collection,url: "/collection/create", html: {method: :post, id: "new_collection", remote: true} do |f|
             =f.text_field :title, :placeholder => 'новая коллекция', :class => 'new_collection'
             =f.submit "ok", :class => 'submit'
-      %span.submit Добавить
+      %span.submit.button.blue_button#create_collection Добавить

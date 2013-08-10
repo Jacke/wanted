@@ -37,7 +37,6 @@
           $(comments).attr('page','stop')
         }else{
           $(comments).append(data)
-          $(window).bind('scroll', bindScroll)
           $(comments).attr('page',page)
           if ($("section.element").last().offset().top > $('#right_comments').height()){ loadComments() }
         }

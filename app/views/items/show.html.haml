@@ -14,13 +14,13 @@
     })
 
     // select collection
-    var cur_col = $('#select_collecton .current')
+    var cur_col = $('#select_collecton_modal .current')
 
     $(cur_col).click(function(){
-      $('#select_collecton .collectins').slideToggle()
+      $('#select_collecton_modal .collectins').slideToggle(200)
     })
 
-    $(document).on("click", "#select_collecton .collectins li", function(){
+    $(document).on("click", "#select_collecton_modal .collectins li", function(){
       $(cur_col).text($(this).text())
       $(cur_col).attr('id',$(this).attr('id'))
       $(cur_col).click()
@@ -55,7 +55,7 @@
     #buttons
       #li
         #button
-          %a.button.blue_button{:href => "#", :onclick => '$(\'#select_collecton\').arcticmodal()'}Хочу
+          %a.button.blue_button{:href => "#", :onclick => "$('#select_collecton_modal').arcticmodal({beforeClose: function(data, el) {$('#select_collecton_modal .collectins').slideUp(200)}})"} Хочу
         #info
           =@item.followers_count_cache
           %span.big_hart

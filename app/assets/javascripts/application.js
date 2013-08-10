@@ -31,7 +31,7 @@ $(function() {
 function showNotices(msg){
   var notice = $('#notice')
   $(notice).text(msg)
-  $(notice).slideDown(600).delay(5000).fadeOut(600)
+  $(notice).fadeIn(600).animate({ bottom: '20px' }).delay(5000).animate({ bottom: '-100px' }).fadeOut(600)
 }
 
 function adaptive_page(){
@@ -85,7 +85,6 @@ var showErrors = function(errors){
   })
   a.slideUp();
 }
-
 $(document).ready(function() {
   adaptive_page()
   /* Checkboxes and radio */
@@ -156,19 +155,15 @@ $(document).ready(function() {
       $('#comments .comnt_list').html(data);
       $('#comments textarea').val('');
       $('#comment-form #send_comment').fadeOut()
-
-      showNotices(["Комментарий успешно добавлен"]);
     }
   });
 
   // follow item
-  $('#select_collecton span.submit').click(function(e){
+  $('#select_collecton_modal span.submit').click(function(e){
     e.preventDefault();
 
-    var collection_id = $('#select_collecton .current').attr('id')
-    var id = $('#select_collecton .current').attr('item')
-    //var item = $(this).parent('#like').children('span');
-    //var id = $(this).prop('id');
+    var collection_id = $('#select_collecton_modal .current').attr('id')
+    var id = $('#select_collecton_modal .current').attr('item')
     $.post('/item/'+id+'/add/'+collection_id, function(data,status,xhr){
       var ans = data.ans
       showNotices(data.ans)
@@ -196,7 +191,6 @@ $(document).ready(function() {
     if ($('#shopcheck input').first().attr("checked") == 'checked'){
       $('input#user_phone').slideDown()
     } else {
-      $('input#user_phone').val('')
       $('input#user_phone').slideUp()
     }
   })
