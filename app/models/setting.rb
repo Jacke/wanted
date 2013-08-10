@@ -11,7 +11,7 @@ class Setting < ActiveRecord::Base
         site_name:                  'Хочули',
         site_description:           '',
         items_per_page:             20,
-        comments_per_page:          10,
+        comments_per_page:          3,
       }
     end
 

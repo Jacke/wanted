@@ -194,7 +194,6 @@ $(document).ready(function() {
   // для магазинов
   $('#shopcheck').click(function (){
     if ($('#shopcheck input').first().attr("checked") == 'checked'){
-      $('input#user_phone').val('')
       $('input#user_phone').slideDown()
     } else {
       $('input#user_phone').val('')
