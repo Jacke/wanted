@@ -9,12 +9,12 @@ class TrackingController < ApplicationController
 
   def followed_by
     @user = User.find_by_id(params[:user_id])
-    @followings = @user.following_by_type('User').order("created_at DESC")
+    @followings = @user.following_by_type('User').order("created_at DESC").where(shop: 0)
   end
 
   def followed_by_shop
     @user = User.find_by_id(params[:user_id])
-    @followings = @user.following_by_type('User').order("created_at DESC")
+    @followings = @user.following_by_type('User').order("created_at DESC").where(shop: 1)
   end
 
   def unfollow

@@ -1,11 +1,12 @@
 :javascript
   function loadMore(){
     var ajaxloader = $('#ajax-loader')
+    var sex = $('#grid_elemets').attr('sex')
     var page = $('#grid_elemets').attr('page')
     page = parseInt(page) + 1
 
     $(ajaxloader).show()
-    $.post('/items/popular/'+page, function(data,status,xhr){
+    $.post('/male/'+sex+'/'+page, function(data,status,xhr){
         if (data.status == 0){
           $('#grid_elemets').attr('page','stop')
         }else{
@@ -26,6 +27,6 @@
   }
 
   $(window).scroll(bindScroll)
-#grid_elemets{:page => 1}
+#grid_elemets{:page => 1, :sex => params[:sex]}
   -unless @items.empty?
     =render partial: "users/items_grid"

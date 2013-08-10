@@ -5,6 +5,7 @@ class TapeController < ApplicationController
     @events = []
     @new_events = []
 
+    # получаем время последнего действия
     @followers.each do |follower|
       follow = follower.follows.order("created_at DESC").first
       unless follow.blank?
@@ -17,16 +18,17 @@ class TapeController < ApplicationController
 
   def by_time
     @followers = current_user.following_by_type('User')
-
-    @events = []
-    @new_events = []
     from_time = get_next_time(params[:time].to_datetime)
 
+    # создаем массив подписок за последние сутки с полученной даты
+    @events = []
     @followers.each do |follower|
       @events += follower.follows.where{(created_at > from_time - 24.hours - Time.now.hour - 5.hours) & (created_at <= from_time)}
     end
-
     @events = @events.sort_by { |hsh| -hsh[:id] }
+
+    # создаем массив действий
+    @new_events = []
     @events.each do |event|
       case event.followable_type
       when "User"
@@ -46,6 +48,7 @@ class TapeController < ApplicationController
 
   private
 
+  #получаем время следующего действия
   def get_next_time(from_time)
     @followers = current_user.following_by_type('User')
 

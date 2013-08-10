@@ -434,6 +434,7 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 #user .info #block_buttons #block #new {position: absolute; top: 5px; right: 8px;text-align: right;color: rgb(39,98,180); font-weight: bold;}
 #user .info #block_buttons #block.follow {font-weight: bold; text-align: center; font-size: 18px; padding: 5px 6px 0 6px;background: #e5b03c;line-height: 43px;}
 #user .info #block_buttons #block.follow:hover {background: #efc15c;}
+#user .info #block_buttons #block.shop {width: 275px;}
 #user .info #block_buttons #block.unfollow {font-weight: bold; text-align: center; font-size: 18px; padding: 5px 6px 0 6px;background: #e2e2e2;line-height: 43px;}
 #user .info #block_buttons #block.unfollow:hover {background: #ededed;}
 #user .info #block_buttons #block a{width: 100%;height: 100%;display: block;text-decoration: none;}

@@ -16,6 +16,11 @@
   color: #00458B;
   font-weight: bold;
 }
+#loginModal #shop {
+  height: 50px;
+  display: inline-block;
+  width: 200px;
+}
 
 #loginModal ul#social {margin: 20px 0;}
 #loginModal ul#social li {
@@ -26,6 +31,8 @@
   margin: 0 30px;
   content: "";
 }
+#loginModal #login_button {color: #F68735;}
+#loginModal #login_button:hover {color: #FFA665;}
 #loginModal ul#social li a {
   content: "";
   width: 100%;
@@ -59,4 +66,9 @@
 }
 .pointer {
   cursor: pointer;
+}
+#loginModal #sign_up_form .checkbox input {
+  width: 30px;
+  height: 30px;
+  display: none;
 }

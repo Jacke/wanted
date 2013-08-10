@@ -10,29 +10,40 @@
     -else
       Пользователь не написал о себе ничего...
 #block_buttons
-  #block
-    %a{href: followers_path(@user)}
-      #col.big_arial=@user.count_user_followers
-      -if @user.followers_new_count != 0 && @user == current_user
-        #new='+' + @user.followers_new_count.to_s
-      = Russian.p(@user.count_user_followers, " подписчик", " подписчика", " подписчиков")
-  #block
-    %a{href: followed_by_path(@user)}
-      #col.big_arial=@user.following_users_count
-      -if @user.followed_by_new_count != 0 && @user == current_user
-        #new='+' + @user.followed_by_new_count.to_s
-      = Russian.p(@user.following_users_count, " подписка", " подписки", " подписок")
-  #block
-    %a{href: followed_by_shop_path(@user)}
-      #col.big_arial 0
-      //#new  
-      = Russian.p(0, " магазин", " магазина", " магазинов")
-  -if user_signed_in? && current_user != @user
-    -unless current_user.following?(@user) 
-      #block.follow
-        =link_to "подписаться", follow_path(@user)
-    -else
-      #block.unfollow
-        =link_to "отписаться", unfollow_path(@user)
-  -else
+  -unless @user.shop
     #block
+      %a{href: followers_path(@user)}
+        #col.big_arial=@user.count_user_followers
+        -if @user.followers_new_count != 0 && @user == current_user
+          #new='+' + @user.followers_new_count.to_s
+        = Russian.p(@user.count_user_followers, " подписчик", " подписчика", " подписчиков")
+    #block
+      %a{href: followed_by_path(@user)}
+        #col.big_arial=@foll_users_count
+        -if @user.followed_by_new_count != 0 && @user == current_user
+          #new='+' + @user.followed_by_new_count.to_s
+        = Russian.p(@foll_users_count, " подписка", " подписки", " подписок")
+    #block
+      %a{href: followed_by_shop_path(@user)}
+        #col.big_arial=@foll_shop_count
+        //#new  
+        = Russian.p(@foll_shop_count, " магазин", " магазина", " магазинов")
+    -if user_signed_in? && current_user != @user
+      -unless current_user.following?(@user) 
+        #block.follow
+          =link_to "подписаться", follow_path(@user)
+      -else
+        #block.unfollow
+          =link_to "отписаться", unfollow_path(@user)
+    -else
+      #block
+  -else
+    -if user_signed_in? && current_user != @user
+      -unless current_user.following?(@user) 
+        #block.follow.shop
+          =link_to "подписаться", follow_path(@user)
+      -else
+        #block.unfollow.shop
+          =link_to "отписаться", unfollow_path(@user)
+    -else
+      #block.shop

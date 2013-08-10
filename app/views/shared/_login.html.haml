@@ -19,8 +19,14 @@
       = f.email_field :email, :placeholder => 'почта'
       = f.text_field :name, :placeholder => 'имя'
       = f.password_field :password, :placeholder => 'пароль', :autocomplete => "off"
-      = f.submit "хочу", :class => 'button'
-      %span#login_button.pointer Вход
+      = f.text_field :phone, :placeholder => 'телефон', :autocomplete => "off", :style => 'display: none'
+      = f.submit "хочу", :class => 'button', id: 'inp_sign_up_button'
+      %li
+        #shop
+          %span.checkbox#shopcheck{:style => 'margin: 0 5px -8px 0;'}= f.check_box :shop
+          %span Я магазин
+          ='|'
+          %span#login_button.pointer Вход
     = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:id => 'login_form', :style => 'display: none;'}, :format => :json, :remote => true) do |f|
       = devise_error_messages!
       = f.email_field :email, :placeholder => 'почта'

@@ -91,6 +91,13 @@ $(document).ready(function() {
   /* Checkboxes and radio */
   $(".radio").dgStyle(15);
   $(".checkbox").dgStyle(15);
+  $(".checkbox").click(function(){
+    if ($(".checkbox input").first().attr('checked') == 'checked'){
+      $(".checkbox input").last().prop('checked', true);
+    } else {
+      $(".checkbox input").last().prop('checked', false);
+    }
+  })
 
   var page_h = $(document).height();
   var frame = $('iframe#framesite');
@@ -183,6 +190,17 @@ $(document).ready(function() {
     lf.slideUp();
     sf.slideDown();
   });
+
+  // для магазинов
+  $('#shopcheck').click(function (){
+    if ($('#shopcheck input').first().attr("checked") == 'checked'){
+      $('input#user_phone').val('')
+      $('input#user_phone').slideDown()
+    } else {
+      $('input#user_phone').val('')
+      $('input#user_phone').slideUp()
+    }
+  })
 
   // форма для смены пароля
   $("#edit_pass_button").click(function(){

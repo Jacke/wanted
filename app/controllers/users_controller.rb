@@ -1,29 +1,25 @@
 class UsersController < ApplicationController
-
+  before_filter :get_foll_counts, only: [:show, :collections, :mentions, :collection]
   # страница пользователя
   def show
-    @user = User.find_by_id(params[:id]) || current_user
     @items = @user.following_by_type('Item').order("created_at DESC")
     @collections = @user.collections
     @mentions = @user.mentions
   end
 
   def collections
-    @user = User.find_by_id(params[:id]) || current_user
     @items = @user.following_by_type('Item')
-    @collections = @user.collections
+    @collections = @user.collections.order("created_at DESC")
     @mentions = @user.mentions
   end
 
   def mentions
-    @user = User.find_by_id(params[:id]) || current_user
     @items = @user.following_by_type('Item')
     @collections = @user.collections
     @mentions = @user.mentions.order("created_at DESC")
   end
 
   def collection
-    @user = User.find_by_id(params[:id]) || current_user
     @collection = Collection.find_by_id(params[:collection_id])
     @items = @collection.following_by_type('Item').order("created_at DESC")
     @collections = @user.collections
@@ -60,5 +56,13 @@ class UsersController < ApplicationController
     end
     current_user.stop_following(@unfollow_user)
     redirect_to :back
+  end
+
+  private
+
+  def get_foll_counts
+    @user = User.find_by_id(params[:id]) || current_user
+    @foll_users_count = @user.following_by_type('User').where(shop: 0).count
+    @foll_shop_count = @user.following_by_type('User').where(shop: 1).count
   end
 end

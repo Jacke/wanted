@@ -14,6 +14,8 @@
       %li Профиль
       %li= f.email_field :email, placeholder: 'Email', class: :input, :value => (surrogat_email?(resource) ? '' : resource.email)
       %li= f.text_field :name, placeholder: 'Имя', class: :input
+      - if current_user.shop?
+        %li= f.text_field :phone, placeholder: 'Номер телефона', class: :input
       %li.m_left
         #left_title @
         = f.text_field :nickname, placeholder: 'логин', class: :input

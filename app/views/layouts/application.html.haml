@@ -53,4 +53,5 @@
             = yield
         #notice
       #footer
-      = render partial: "shared/login"
+      - if not user_signed_in?
+        = render partial: "shared/login"

@@ -10,7 +10,9 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :name, :nickname, :login, :sex, :city, :about, :provider, :uid, :url, :folowers_new_count, :folowed_by_new_count
+                  :name, :nickname, :login, :sex, :city, :about, :provider, 
+                  :uid, :url, :folowers_new_count, :folowed_by_new_count,
+                  :phone, :shop
   #paperclip
   attr_accessible :avatar
   #has_attached_file :avatar,  :styles => { :medium => "120x120#",:small => "50x50#",:esmall => "28x28#"}, 
@@ -42,6 +44,7 @@ class User < ActiveRecord::Base
   #===============================================================
   validates_presence_of :name
   validates_presence_of :nickname
+  validates_presence_of :phone
   validates :nickname, :uniqueness => true
 
   #== Class Methods ==============================================

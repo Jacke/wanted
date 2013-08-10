@@ -1,6 +1,7 @@
 #encoding: utf-8
 class ItemsController < ApplicationController
   def new
+    # товары
     if params[:position]
       #@items = Item.where("id < #{params[:position].to_i}").order("created_at DESC").limit(6)
       @items = Item.paginate(:page => params[:position], :per_page => Setting.items_per_page).order('id DESC')
@@ -13,6 +14,7 @@ class ItemsController < ApplicationController
       @items = Item.order("created_at DESC").limit(Setting.items_per_page)
     end
 
+    # комментарии
     if params[:get_comments]
       @comments = Comment.paginate(:page => params[:get_comments], :per_page => Setting.comments_per_page).order('id DESC')
       if @comments.empty?
@@ -26,16 +28,28 @@ class ItemsController < ApplicationController
   end
 
   def male
-    @items = Item.where(sex: params[:sex]).order("created_at DESC")
-    render :popular
+    if params[:position]
+      @items = Item.where(sex: params[:sex]).paginate(:page => params[:position], :per_page => Setting.items_per_page).order('created_at DESC')
+      if @items.empty?
+        return render :json => {:status => 0}
+      else
+        render partial: "users/items_grid"
+      end
+    else
+      @items = Item.where(sex: params[:sex]).order('created_at DESC').limit(Setting.items_per_page)
+    end
   end
 
   def popular
     if params[:position]
-      @items = Item.paginate(:page => params[:position], :per_page => 20).order('followers_count_cache DESC').order('cached_comments DESC')
-      render partial: "users/items_grid"
+      @items = Item.paginate(:page => params[:position], :per_page => Setting.items_per_page).order('followers_count_cache DESC').order('cached_comments DESC')
+      if @items.empty?
+        return render :json => {:status => 0}
+      else
+        render partial: "users/items_grid"
+      end
     else
-      @items = Item.order('followers_count_cache DESC').order('cached_comments DESC').limit(20)
+      @items = Item.order('followers_count_cache DESC').order('cached_comments DESC').limit(Setting.items_per_page)
     end
   end
 
