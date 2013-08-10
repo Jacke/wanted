@@ -10,7 +10,8 @@ class Setting < ActiveRecord::Base
         mailto_email:               Rails.env == 'production' ? 'test@mail.com' : 'sergej.shvecov@gmail.com', 
         site_name:                  'Хочули',
         site_description:           '',
-
+        items_per_page:             20,
+        comments_per_page:          10,
       }
     end
 

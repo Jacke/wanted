@@ -1,79 +1,43 @@
+:javascript
+  function loadMore(){
+    var ajaxloader = $('#ajax-loader')
+    var time = $('.tape_list li').last().attr('time')
+
+    $(ajaxloader).show()
+    $.post('/tape/'+time, function(data,status,xhr){
+        $(".tape_list").append(data)
+        $(window).bind('scroll', bindScroll)
+      }).always(function() { ajaxloader.hide() })
+  }
+
+  function bindScroll(){
+    if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+      $(window).unbind('scroll')
+      loadMore()
+    }
+  }
+
+  $(window).scroll(bindScroll)
+
+  function preload(){
+    var time = $('.tape_list li').last().attr('time')
+    var ajaxloader = $('#ajax-loader')
+
+    $(ajaxloader).show()
+    $.post('/tape/'+time, function(data,status,xhr){
+          if (data.status == 0){
+            $('#grid_elemets').attr('page','stop')
+          }else{
+            $(".tape_list").append(data)
+            if ($('#tape').height() < $(window).height()){ preload() }
+          }
+      }).always(function() { ajaxloader.hide() })
+  }
+
+  $(document).ready(function() {
+    preload();
+  })
 #tape.gi
-  %ul
-    - unless @events.empty?
-      - @new_events.each do |event_object|
-        %li
-          -if event_object[:event].class.name == 'User'
-            - if event_object[:event] == current_user
-              .event_head
-                .avatar=image_tag event_object[:eventer].avatar.url(:medium)
-                .info
-                  %span.gray=time_ago_in_words(event_object[:time])+' назад'
-                  %span
-                    - if event_object[:eventer][:sex] == 1
-                      ='на ваши обновления подписалась '
-                    - else
-                      ='на ваши обновления подписался '
-                    =link_to event_object[:eventer][:nickname]+':', user_show_path(event_object[:eventer])
-            -else
-              .event_head
-                .avatar=image_tag event_object[:eventer].avatar.url(:medium)
-                .info
-                  %span.gray=time_ago_in_words(event_object[:time])+' назад'
-                  %span
-                    =link_to event_object[:eventer][:nickname], user_show_path(event_object[:eventer])
-                    - if event_object[:eventer][:sex] == 1
-                      =' подписалась на '
-                    - else
-                      =' подписался на '
-                    =link_to event_object[:event][:nickname]+':', user_show_path(event_object[:event])
-              .grid_elements
-                -event_object[:event].following_by_type('Item').limit(6).order("created_at DESC").each do |item|
-                  %section.element{:id => "#{item.id}"}
-                    #preview
-                      %a{:href => item_path(item), :style => "background: url(#{item.image.url(:medium)})"}
-                      -if(item.prise && item.prise != 0)
-                        #price=item.prise.to_s+' Р'
-                    #info
-                      #name=item.name
-                      #user
-                        =link_to item.user.name, user_show_path(item.user.id)
-                      #links
-                        #like
-                          =link_to "", like_item_path(item), method: :post, id: item.id
-                          %span=item.followers_count_cache
-                        #comments
-                          %a{:href => "#"} &nbsp
-                          %span= item.cached_comments
-          -if event_object[:event_name] == 'add_items'
-            .event_head
-              .avatar=image_tag event_object[:eventer].avatar.url(:medium)
-              .info
-                %span.gray=time_ago_in_words(event_object[:time])+' назад'
-                %span
-                  =link_to event_object[:eventer][:nickname], user_show_path(event_object[:eventer])
-                  - if event_object[:eventer][:sex] == 1
-                    =' захотела '+event_object[:event].length.to_s
-                  -else
-                    =' захотел '+event_object[:event].length.to_s
-                  =Russian.p(event_object[:event].length, " вещь:", " вещи:", " вещей:")
-            .grid_elements
-              -event_object[:event].each do |item|
-                %section.element{:id => "#{item.id}"}
-                  #preview
-                    %a{:href => item_path(item), :style => "background: url(#{item.image.url(:medium)})"}
-                    -if(item.prise && item.prise != 0)
-                      #price=item.prise.to_s+' Р'
-                  #info
-                    #name=item.name
-                    #user
-                      =link_to item.user.name, user_show_path(item.user.id)
-                    #links
-                      #like
-                        =link_to "", like_item_path(item), method: :post, id: item.id
-                        %span=item.followers_count_cache
-                      #comments
-                        %a{:href => "#"} &nbsp
-                        %span= item.cached_comments
-    - else
-      %h2 Лента новостей пуста
+  %ul.tape_list
+    %li{:time => @from_time}
+  #ajax-loader{:style => "display: none;"}

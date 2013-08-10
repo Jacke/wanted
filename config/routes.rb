@@ -1,7 +1,4 @@
 Hochuli::Application.routes.draw do
-
-  get "tape/index" => "tape#index", as: :tape
-
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks",
                                     registrations: 'registrations',
                                     sessions: 'sessions'
@@ -12,6 +9,7 @@ Hochuli::Application.routes.draw do
   
   root :to => 'items#new'
   post '/items/new/:position' => 'items#new'
+  post '/items/new/comments/:get_comments' => 'items#new'
   post '/items/popular/:position' => 'items#popular'
   get '/popular'          => 'items#popular', as: :popular
   get '/user/:id'         => 'users#show', as: :user_show
@@ -45,5 +43,9 @@ Hochuli::Application.routes.draw do
   get "followed_by/:user_id" => 'tracking#followed_by', as: :followed_by
   get "followed_by_shop/:user_id" => 'tracking#followed_by_shop', as: :followed_by_shop
   post "tracking/unfollow/:id" => "tracking#unfollow"
+
+  #tape
+  get "tape" => "tape#index", as: :tape
+  post "tape/:time" => "tape#by_time"
 
 end

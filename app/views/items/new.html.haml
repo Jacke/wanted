@@ -1,19 +1,46 @@
 :javascript
   function loadMore(){
-  var page = $('#grid_elemets').attr('page')
-  page = parseInt(page) + 1
-  $.post('/items/new/'+page, function(data,status,xhr){
-      $("#grid_elemets").append(data);
-      $(window).bind('scroll', bindScroll);
-      $('#grid_elemets').attr('page',page)
-    })
+    var ajaxloader = $('#ajax-loader')
+    var page = $('#grid_elemets').attr('page')
+    page = parseInt(page) + 1
+
+    $(ajaxloader).show()
+    $.post('/items/new/'+page, function(data,status,xhr){
+        if (data.status == 0){
+          $('#grid_elemets').attr('page','stop')
+        }else{
+          $("#grid_elemets").append(data)
+          $(window).bind('scroll', bindScroll)
+          $('#grid_elemets').attr('page',page)
+        }
+        if ($("section.element").last().offset().top > $('#right_comments').height()){ loadComments() }
+    }).always(function() { ajaxloader.hide() })
   }
 
   function bindScroll(){
     if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
-      $(window).unbind('scroll');
-      loadMore();
+      if ($('#grid_elemets').attr('page') != 'stop') {
+        $(window).unbind('scroll');
+        loadMore();
+      }
     }
+  }
+
+  function loadComments(){
+    var comments = $('#right_comments')
+    var page = $(comments).attr('page')
+    page = parseInt(page) + 1
+
+    $.post('/items/new/comments/'+page, function(data,status,xhr){
+        if (data.status == 0){
+          $(comments).attr('page','stop')
+        }else{
+          $(comments).append(data)
+          $(window).bind('scroll', bindScroll)
+          $(comments).attr('page',page)
+          if ($("section.element").last().offset().top > $('#right_comments').height()){ loadComments() }
+        }
+    })
   }
 
   $(window).scroll(bindScroll)
@@ -22,5 +49,6 @@
     =render partial: "users/items_grid"
   - else
     %h2.gi Нет ни одного товара
-#right_comments
+#right_comments{:page => 1}
   = render partial: 'comments'
+#ajax-loader{:style => "display: none;"}

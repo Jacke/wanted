@@ -3,12 +3,26 @@ class ItemsController < ApplicationController
   def new
     if params[:position]
       #@items = Item.where("id < #{params[:position].to_i}").order("created_at DESC").limit(6)
-      @items = Item.paginate(:page => params[:position], :per_page => 20).order('id DESC')
-      render partial: "users/items_grid"
+      @items = Item.paginate(:page => params[:position], :per_page => Setting.items_per_page).order('id DESC')
+      if @items.empty?
+        return render :json => {:status => 0}
+      else
+        render partial: "users/items_grid"
+      end
     else
-      @items = Item.order("created_at DESC").limit(20)
+      @items = Item.order("created_at DESC").limit(Setting.items_per_page)
     end
-    @comments = Comment.order("created_at DESC").limit(8)
+
+    if params[:get_comments]
+      @comments = Comment.paginate(:page => params[:get_comments], :per_page => Setting.comments_per_page).order('id DESC')
+      if @comments.empty?
+        return render :json => {:status => 0}
+      else
+        render partial: "comments"
+      end
+    else
+      @comments = Comment.order("created_at DESC").limit(Setting.comments_per_page)
+    end
   end
 
   def male
