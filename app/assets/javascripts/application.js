@@ -34,6 +34,16 @@ function showNotices(msg){
   $(notice).fadeIn(600).animate({ bottom: '20px' }).delay(5000).animate({ bottom: '-100px' }).fadeOut(600)
 }
 
+function add_draggable(){
+  $('section.element').draggable({
+    start: function( event, ui ) {$('#drug_hart').addClass('onHover')},
+    stop: function( event, ui ) {$('#drug_hart').removeClass('onHover')},
+    helper: "clone",
+    opacity : 0.5,
+    zIndex: 100}
+  );
+}
+
 function adaptive_page(){
   var head = $('header#hd')
   var content = $('div#conteiner')
@@ -87,6 +97,7 @@ var showErrors = function(errors){
 }
 $(document).ready(function() {
   adaptive_page()
+  add_draggable()
   /* Checkboxes and radio */
   $(".radio").dgStyle(15);
   $(".checkbox").dgStyle(15);
@@ -229,20 +240,30 @@ $(document).ready(function() {
     return false;
   });*/
 
-  //dragg and drop
-  $('section.element').draggable({
-    helper: "clone",
-    opacity : 0.5,
-    zIndex: 100
-  });
-
   $('#drug_box').droppable({
+        over: function( event, ui ) {$('#drug_hart').addClass('onOver')},
+        out: function( event, ui ) {$('#drug_hart').removeClass('onOver')},
         iframeFix: true,
         drop : function(event, ui) {
-                var x = ui.draggable.attr('id');
-                alert('id:='+x);
+                var item_id = ui.draggable.attr('id');
+                $('#drug_hart').removeClass('onOver')
+                $('#select_collecton_modal .current').attr('item',item_id)
+                $('#select_collecton_modal').arcticmodal({beforeClose: function(data, el) {$('#select_collecton_modal .collectins').slideUp(200)}})
         }
   });
+
+  // добавление в коллекцию
+  var cur_col = $('#select_collecton_modal .current')
+
+  $(cur_col).click(function(){
+    $('#select_collecton_modal .collectins').slideToggle(200)
+  })
+
+  $(document).on("click", "#select_collecton_modal .collectins li", function(){
+    $(cur_col).text($(this).text())
+    $(cur_col).attr('id',$(this).attr('id'))
+    $(cur_col).click()
+  })
 
   $('#framesite').load( function() {
       var images = $(this.contentDocument).find("img")

@@ -55,3 +55,5 @@
       #footer
       - if not user_signed_in?
         = render partial: "shared/login"
+      - else
+        = render partial: 'shared/add_to_collection'

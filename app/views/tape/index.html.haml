@@ -6,6 +6,7 @@
     $(ajaxloader).show()
     $.post('/tape/'+time, function(data,status,xhr){
         $(".tape_list").append(data)
+        add_draggable()
         $(window).bind('scroll', bindScroll)
       }).always(function() { ajaxloader.hide() })
   }
@@ -29,6 +30,7 @@
             $('#grid_elemets').attr('page','stop')
           }else{
             $(".tape_list").append(data)
+            add_draggable()
             if ($('#tape').height() < $(window).height()){ preload() }
           }
       }).always(function() { ajaxloader.hide() })

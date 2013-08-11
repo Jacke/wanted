@@ -1,9 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  before_filter :pop_tags
+  before_filter :pop_tags, :collections_list
 
   def pop_tags
     @pop_tags = Item.tag_counts.order("count desc").limit(5)
+  end
+
+  def collections_list
+    if user_signed_in?
+      @collections = current_user.collections
+      @collection = Collection.new
+    end
   end
 
   def not_found

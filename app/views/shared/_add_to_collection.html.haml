@@ -17,7 +17,7 @@
     .box-modal_close.arcticmodal-close
       Закрыть
     #collection 
-      .current{:id => -1, :item => @item.id} коллекция
+      .current{:id => -1, :item => @item.try(:id)} коллекция
       .collectins{:style => 'display: none'}
         .collections_list
           = render partial: 'collections/collections_list'

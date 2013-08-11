@@ -12,19 +12,6 @@
         $(submit).fadeIn()
       }
     })
-
-    // select collection
-    var cur_col = $('#select_collecton_modal .current')
-
-    $(cur_col).click(function(){
-      $('#select_collecton_modal .collectins').slideToggle(200)
-    })
-
-    $(document).on("click", "#select_collecton_modal .collectins li", function(){
-      $(cur_col).text($(this).text())
-      $(cur_col).attr('id',$(this).attr('id'))
-      $(cur_col).click()
-    })
   })
 #item.gi
   #right
@@ -80,5 +67,3 @@
         Отмечено тэгами:
         - @tags.each do |tag|
           =link_to '#'+tag.name, tags_path(tag.name)
--if user_signed_in?
-  = render partial: 'shared/add_to_collection'
