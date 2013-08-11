@@ -220,12 +220,12 @@ div#left_group div#drug_box {
   width: 66px;
   height: 54px;
   margin: 10px 0 0 6px;
-  background: url(../images/drug_hart2.png) no-repeat;
+  background: url(../images/drug_hart.png) no-repeat;
   background-position: 0 4px;
   display: block;  content: "";
 }
-#drug_hart:hover,#drug_hart.onHover {background: url(../images/drug_hart2.png) no-repeat; cursor: pointer; background-position: 0 -50px;}
-#drug_hart.onOver {background: url(../images/drug_hart2.png) no-repeat; cursor: pointer; background-position: 0 -105px;}
+#drug_hart:hover,#drug_hart.onHover {background: url(../images/drug_hart.png) no-repeat; cursor: pointer; background-position: 0 -50px;}
+#drug_hart.onOver {background: url(../images/drug_hart.png) no-repeat; cursor: pointer; background-position: 0 -105px;}
 
 div#left_group #search {
   background: url(../images/search_pointer.png) no-repeat right 0px;

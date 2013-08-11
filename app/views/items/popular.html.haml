@@ -10,6 +10,7 @@
           $('#grid_elemets').attr('page','stop')
         }else{
           $("#grid_elemets").append(data)
+          add_draggable()
           $(window).bind('scroll', bindScroll)
           $('#grid_elemets').attr('page',page)
         }
