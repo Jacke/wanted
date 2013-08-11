@@ -31,9 +31,8 @@ class RegistrationsController < Devise::RegistrationsController
   def update
     @user = User.find(current_user.id)
 
-    if change_surrogat_email?(@user, params)
-      params[:user][:email] = @user.email
-    end
+    params[:user][:email]   = @user.email if change_surrogat_email?(@user, params)
+    resource.phone          = '89201234567' unless resource.shop
 
     params[:user][:nickname].gsub!(' ', '')
     params[:user][:nickname] = params[:user][:nickname].downcase
