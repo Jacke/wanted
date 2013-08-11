@@ -10,8 +10,8 @@
         =link_to item.user.name, user_show_path(item.user.id)
       #links
         #like
-          =link_to "", like_item_path(item), method: :post, id: item.id
+          %span.ico{id: item.id}
           %span=item.followers_count_cache
         #comments
-          %a{:href => "#"} &nbsp
+          %span.ico
           %span= item.cached_comments

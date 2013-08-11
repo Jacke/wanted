@@ -9,6 +9,8 @@
 }
 .box-modal_close { position: absolute; right: 10px; top: 6px; font-size: 11px; line-height: 15px; color: #999; cursor: pointer; }
 .box-modal_close:hover { color: #666; }
+#box-modal_prev { position: absolute; left: 10px; top: 6px; font-size: 11px; line-height: 15px; color: #999; cursor: pointer; }
+#box-modal_prev:hover { color: #666; }
 
 /* Dialog window */
 #loginModal #title {

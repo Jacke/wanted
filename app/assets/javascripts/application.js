@@ -152,7 +152,8 @@ $(document).ready(function() {
         $('#polo').hide()
         showNotices('Товар успешно добавлен')
       } else {
-        return showErrors(data.errors);
+        $('#polo').hide()
+        return showErrors(data.errors)
       }
     }).submit();
     return false;

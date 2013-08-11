@@ -281,12 +281,12 @@ section.element #info #user a {color: #9a781a;}
 section.element #info #user a:hover {color: #ddd3b5;text-decoration: underline;}
 section.element #info #links {margin-top: 3px; }
 section.element #info #links #like {height: 20px;display: inline-block;}
-section.element #info #links #like a {height: 16px; width: 16px;display: inline-block;background: url(../images/hart.png) no-repeat;}
-section.element #info #links #like a:hover {text-decoration: none;}
+section.element #info #links #like .ico {height: 16px; width: 16px;display: inline-block;background: url(../images/hart.png) no-repeat;}
+section.element #info #links #like .ico:hover {text-decoration: none;}
 section.element #info #links #like span {line-height: 14px;margin: 0 0 0 2px;position: relative;}
 section.element #info #links #comments {height: 20px;display: inline-block;margin-left: 4px;}
-section.element #info #links #comments a {height: 16px; width: 16px;display: inline-block;background: url(../images/comments.png) no-repeat;}
-section.element #info #links #comments a:hover {text-decoration: none;}
+section.element #info #links #comments .ico {height: 16px; width: 16px;display: inline-block;background: url(../images/comments.png) no-repeat;}
+section.element #info #links #comments .ico:hover {text-decoration: none;}
 section.element #info #links #comments span {line-height: 14px;margin: 0 0 0 2px;position: relative;}
 /* bd end*/
 

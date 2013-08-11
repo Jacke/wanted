@@ -1,8 +1,7 @@
 .g-hidden{:style => 'display: none'}
   .box-modal#itemmodal
     #polo
-    .box-modal_close.arcticmodal-close
-      Закрыть
+    .box-modal_close.arcticmodal-close Закрыть
     #select_collecton
       #collection 
         .current{:id => -1} коллекция
@@ -29,6 +28,7 @@
         %li.center
           %span.button.blue_button#done Done!
       %ul.second_step{:style => 'display: none;'}
+        #box-modal_prev Назад
         %li.image
           %img{:class => "image_preview", :src => "#", :alt => "Изображение товара"}
           .right

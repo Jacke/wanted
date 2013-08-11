@@ -34,6 +34,9 @@ class Item < ActiveRecord::Base
   # Validations
   #===============================================================
   #validates :comment, presence: true
+  validates_attachment :image, 
+                      :content_type => { :content_type => /image/ },
+                      :size => { :in => 0..1000.kilobytes }
 
   private
 

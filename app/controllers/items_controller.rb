@@ -154,7 +154,7 @@ class ItemsController < ApplicationController
     if item.followers_count_cache == 0
       item.update_attribute(:followers_count_cache, item.count_user_followers - 1)
     else
-      item.update_attribute(:followers_count_cache, item.followers_count_cache + 1)
+      item.update_attribute(:followers_count_cache, item.followers_count_cache + 1) unless current_user.following?(item)
     end
   end
 end
