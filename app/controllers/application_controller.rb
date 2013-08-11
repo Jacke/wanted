@@ -19,6 +19,7 @@ class ApplicationController < ActionController::Base
 
   # упоминания
   def mentions(comment,item,column)
+    linked_comment = comment
     mentions_arr = comment.split
     mentions_arr.each do |mention|
       if mention[0] == '@'
@@ -31,7 +32,7 @@ class ApplicationController < ActionController::Base
           new_mention.user_id = user.id
           new_mention.comment_id = item.id
           if new_mention.save
-            linked_comment = comment.sub('@'+user.nickname,'<a href="'+user_show_path(user)+'">@'+user.nickname+'</a>')
+            linked_comment = linked_comment.gsub('@'+user.nickname,'<a href="'+user_show_path(user)+'">@'+user.nickname+'</a>')
             item.update_attribute(column, linked_comment)
           end
         end
@@ -40,20 +41,23 @@ class ApplicationController < ActionController::Base
   end
 
   # тэги
-  def tags(comment, item)
-    tag_list = []
+  def tags(comment , item , taggable)
+    @tag_list = []
     comment.gsub!(',', ', ')
+    @linked_comment = comment
     words_arr = comment.split
     words_arr.each do |word|
       if word[0] == '#'
         word.sub!(/^#/, '').sub!(/,$/, '')
-        tag_list << word
+        @linked_comment = @linked_comment.sub(' #'+word,' <a href="/tag/'+word+'">#'+word+'</a>')
+        @tag_list << word
       end
+    end
 
-      unless tag_list.empty?
-        tag_list << item.tag_list
-        item.update_attribute(:tag_list, tag_list)
-      end
+    unless @tag_list.empty?
+      @tag_list << taggable.tag_list
+      taggable.update_attribute(:tag_list, @tag_list)
+      item.update_attribute(:content, @linked_comment)
     end
   end
 end

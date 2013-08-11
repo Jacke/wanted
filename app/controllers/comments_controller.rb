@@ -12,7 +12,7 @@ class CommentsController < ApplicationController
 
       if @comment.save
         mentions(@comment.content, @comment, 'content')
-        tags(@comment.content, @item)
+        tags(@comment.content,@comment, @item)
         update_cached_comments(@item)
         render partial: "shared/comments"
       else
