@@ -26,6 +26,13 @@ class UsersController < ApplicationController
     @mentions = @user.mentions
   end
 
+  def shops
+    @people = User.order('items_count DESC').where(shop: 1)
+  end
+
+  def people
+    @people = User.order('followers_counter DESC').where(shop: 0)
+  end
 
   def avatar
     @avatar = User.find(params[:id]).avatar.first
@@ -40,6 +47,11 @@ class UsersController < ApplicationController
       current_user.follow(@user)
       followers_count = @user.followers_new_count + 1
       @user.update_attribute(:followers_new_count, followers_count)
+      if @user.followers_counter == 0
+        @user.update_attribute(:followers_counter, @user.count_user_followers)
+      else
+        @user.update_attribute(:followers_counter, @user.followers_counter + 1)
+      end
     end
 
     redirect_to :back
@@ -55,6 +67,7 @@ class UsersController < ApplicationController
       @unfollow_user.update_attribute(:followers_new_count, follow_count)
     end
     current_user.stop_following(@unfollow_user)
+    @unfollow_user.update_attribute(:followers_counter, @unfollow_user.followers_counter - 1) unless @unfollow_user.followers_counter == 0
     redirect_to :back
   end
 

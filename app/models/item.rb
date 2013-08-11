@@ -6,7 +6,7 @@ class Item < ActiveRecord::Base
   acts_as_taggable
   acts_as_followable
   
-  attr_accessible :clothes, :comment, :name, :prise, :sex, :tag_list, :shop_id, :url, :image_url, :count_user_followers
+  attr_accessible :clothes, :comment, :name, :prise, :sex, :tag_list, :shop_id, :url, :image_url, :count_user_followers, :raiting
   #paperclip
   attr_accessible :image
   if not Rails.env.production?
@@ -27,7 +27,7 @@ class Item < ActiveRecord::Base
 
   # Relations
   #===============================================================
-  belongs_to  :user
+  belongs_to  :user, :counter_cache => true 
   belongs_to  :shop
   has_many    :comments
 

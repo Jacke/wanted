@@ -42,14 +42,14 @@ class ItemsController < ApplicationController
 
   def popular
     if params[:position]
-      @items = Item.paginate(:page => params[:position], :per_page => Setting.items_per_page).order('followers_count_cache DESC').order('cached_comments DESC')
+      @items = Item.paginate(:page => params[:position], :per_page => Setting.items_per_page).order('raiting DESC')
       if @items.empty?
         return render :json => {:status => 0}
       else
         render partial: "users/items_grid"
       end
     else
-      @items = Item.order('followers_count_cache DESC').order('cached_comments DESC').limit(Setting.items_per_page)
+      @items = Item.order('raiting DESC').limit(Setting.items_per_page)
     end
   end
 
@@ -111,16 +111,16 @@ class ItemsController < ApplicationController
     end
   end
 
-  def up
-    @item = Item.find_by_id(params[:id])
-    @item.liked_by current_user
-    @respond = {item:{rating: @item.cached_votes_total}}
-
-    respond_to do |format|
-      format.json {render json:  @respond, status:  :ok}
-      format.any(:html,:xml) {render status:  404}
-    end
-  end
+  #def up
+  #  @item = Item.find_by_id(params[:id])
+  #  @item.liked_by current_user
+  #  @respond = {item:{rating: @item.cached_votes_total}}
+  #
+  #  respond_to do |format|
+  #    format.json {render json:  @respond, status:  :ok}
+  #    format.any(:html,:xml) {render status:  404}
+  #  end
+  #end
 
   def add
     item_id = params[:id]
@@ -129,6 +129,7 @@ class ItemsController < ApplicationController
 
     current_user.follow(@item)
     up_followers_cache(@item)
+    update_raiting(@item)
 
     if collection_id.to_i != -1
       @collection = Collection.find_by_id(collection_id)

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130810135436) do
+ActiveRecord::Schema.define(:version => 20130811225049) do
 
   create_table "collections", :force => true do |t|
     t.string   "title"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20130810135436) do
     t.integer  "shop_id"
     t.string   "image_url"
     t.integer  "followers_count_cache", :default => 0
+    t.integer  "raiting",               :default => 0
   end
 
   create_table "mentions", :force => true do |t|
@@ -124,6 +125,8 @@ ActiveRecord::Schema.define(:version => 20130810135436) do
     t.integer  "mentions_new_count",     :default => 0
     t.string   "phone"
     t.boolean  "shop",                   :default => false
+    t.integer  "followers_counter",      :default => 0
+    t.integer  "items_count",            :default => 0
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

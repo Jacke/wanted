@@ -36,9 +36,8 @@
             %ul.big_nav
               %li
                 = link_to '@' + (current_user.nickname.blank? || current_user.nickname == current_user.id.to_s ? 'I_AM' : current_user.nickname), user_show_path(current_user), class: :big_nav_links
-              %li=link_to 'Подписчики', followers_path(current_user), class: 'big_nav_links'
-              %li=link_to 'Подписки', followed_by_path(current_user), class: 'big_nav_links'
-              %li=link_to 'Магазины', followed_by_shop_path(current_user), class: 'big_nav_links'
+              %li=link_to 'Магазины', shops_path, class: 'big_nav_links'
+              %li=link_to 'Люди', people_path, class: 'big_nav_links'
               -if user_signed_in? 
                 %li=link_to 'Лента событий', tape_path, class: 'big_nav_links'
             #search

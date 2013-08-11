@@ -16,17 +16,15 @@ class SearchController < ApplicationController
     require 'open-uri'
     # очищаем url
     url = clean_url(params[:site][:url])
-    unless params[:site][:full_url] == nil
-      full_url = clean_url(params[:site][:full_url])
-      @page = open('http://www.'+url+URI::encode(full_url)).read
-    else
-      @page = open('http://www.'+url).read
-    end
+    host = URI.parse( 'http://www.'+url ).host
 
-    @page.gsub!('href="/','href="http://www.'+url+'/')
-    @page.gsub!('src="/','src="http://www.'+url+'/')
+    @page = open('http://www.'+url).read
+
+    @page.gsub!('href="/','href="http://'+host+'/')
+    @page.gsub!('href="./','href="http://'+host+'/./')
+    @page.gsub!('href="?','href="http://'+host+'/?')
+    @page.gsub!('src="/','src="http://'+host+'/')
     @page.gsub!('target="_blank"','')
-    @page.gsub!('<a href="http://www.'+url,'<a href="/search/site?'+'site%5Burl%5D='+url+'&site%5Bfull_url%5D=')
     @page = @page.html_safe
     render :layout => false
   end
@@ -35,6 +33,7 @@ class SearchController < ApplicationController
 
   def clean_url(url)
     s = url.sub(/^https?\:\/\//, '').sub(/^www./,'')
+    s = URI.escape(s)
   end
 
   def parse

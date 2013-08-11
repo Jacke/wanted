@@ -42,6 +42,10 @@ module ApplicationHelper
       t = params[:tag]
     when "users/mentions"
       t = "Упоминания"
+    when "users/people"
+      t = "Люди"
+    when "users/shops"
+      t = "Магазины"
     when "registrations/edit"
       t = "Настройки"
     when "search/index"
@@ -89,6 +93,10 @@ module ApplicationHelper
       html = blur_last_word(params[:tag].mb_chars.upcase!).html_safe
     when "users/mentions"
       html = "УПОМИНА<span class='nav_end_word'>НИЯ</span>".html_safe
+    when "users/people"
+      html = "ЛЮ<span class='nav_end_word'>ДИ</span>".html_safe
+    when "users/shops"
+      html = "МАГАЗИ<span class='nav_end_word'>НЫ</span>".html_safe
     when "registrations/edit"
       html = "НАСТРОЙКИ <span class='nav_end_word'>ПРОФИЛЯ</span>".html_safe
     when "search/index"

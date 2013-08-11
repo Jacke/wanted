@@ -14,6 +14,7 @@ class CommentsController < ApplicationController
         mentions(@comment.content, @comment, 'content')
         tags(@comment.content,@comment, @item)
         update_cached_comments(@item)
+        update_raiting(@item)
         render partial: "shared/comments"
       else
         not_found

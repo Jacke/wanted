@@ -16,6 +16,8 @@ Hochuli::Application.routes.draw do
   get '/user'             => 'users#show'
   get '/follow/:id'       => 'users#follow', as: :follow
   get '/unfollow/:id'     => 'users#unfollow', as: :unfollow
+  get '/shops'            => 'users#shops',     as: :shops
+  get '/people'            => 'users#people',     as: :people
 
   #search
   get "search"      => 'search#index', as: :search

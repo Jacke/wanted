@@ -1,0 +1,21 @@
+.grid_elemets
+  - unless @people.empty?
+    #grid_elements
+      -@people.each do |follower|
+        %section.follow_element
+          #preview
+            %a{:href => "#{user_show_path(follower)}"}
+              #item{:style => "background: url(#{follower.avatar.url(:medium)});background-position: -2px -10px;"}
+              #item{:style => ""}
+                .string
+                  %span.ellow= follower.name
+                .string= follower.count_user_followers.to_s+' подписчиков'
+                .string= follower.following_items_count.to_s+' вещей'
+                .string= follower.collections.count.to_s+' коллекций'
+              -items = follower.following_by_type('Item').limit(2).order("created_at DESC")
+              -unless items.empty?
+                -items.each do |item|
+                  #item{:style => "background: url(#{item.image.url(:small)})"}
+  - else
+    .gi
+      %h2 Пока нет ни одного человека

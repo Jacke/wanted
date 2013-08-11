@@ -43,13 +43,13 @@ class ApplicationController < ActionController::Base
   # тэги
   def tags(comment , item , taggable)
     @tag_list = []
-    comment.gsub!(',', ', ')
     @linked_comment = comment
+    comment.gsub!(',', ', ')
     words_arr = comment.split
     words_arr.each do |word|
       if word[0] == '#'
         word.sub!(/^#/, '').sub!(/,$/, '')
-        @linked_comment = @linked_comment.sub(' #'+word,' <a href="/tag/'+word+'">#'+word+'</a>')
+        @linked_comment = @linked_comment.gsub('#'+word,'<a href="/tag/'+word+'">#'+word+'</a>')
         @tag_list << word
       end
     end
@@ -59,5 +59,9 @@ class ApplicationController < ActionController::Base
       taggable.update_attribute(:tag_list, @tag_list)
       item.update_attribute(:content, @linked_comment)
     end
+  end
+
+  def update_raiting(item)
+    item.update_attribute(:raiting, (item.followers_count_cache + 1)*3 + item.cached_comments)
   end
 end

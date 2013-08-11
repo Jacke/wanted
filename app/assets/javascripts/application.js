@@ -268,6 +268,7 @@ $(document).ready(function() {
 
   $('#framesite').load( function() {
       var images = $(this.contentDocument).find("img")
+      var links = $(this.contentDocument).find("a")
       
       var is_dragged;
       var dragged;
@@ -276,6 +277,10 @@ $(document).ready(function() {
       var itemmodal = $('#itemmodal')
       var image_inp_by_url = $('#itemmodal input#image_by_url')
       var imgInp = $('#itemmodal input#imgInp')
+
+      $(links).click(function(){
+        window.location.href = '/frame/site?site[url]='+$(this).attr('href')
+      })
       
       $(images).mousedown( function() {
         dragged = $(this).clone().css("position", "absolute");
@@ -306,13 +311,11 @@ $(document).ready(function() {
 
         // если эллемент левее фрэйма
         if(is_dragged && (e.pageX < $(ifr).offset().left)){
-          var img_url = $(dragged).attr('src')                        // получаем урл изображения
-          var frame_url = $(ifr).get(0).contentWindow.location        // получаем текущий адрес фрэйма
-          var cut_url = frame_url.href.split('full_url%5D=')[1];      // 
-          var domen = $(ifr).attr('src').split('=')[1].split('/')[0]  // получаем домен из адреса фрэйма
-          if (cut_url == undefined) {cut_url = ''};                   // если ещё никуда не переходили текущий адрес пустой
+          var img_url = $(dragged).attr('src')
+          var full_url = $(ifr).attr('src').split('=')[1]
+          //var domen = full_url.split('/')[0] 
 
-          $(item_url).val('http://'+domen+cut_url)                    // подставляем полный урл товара
+          $(item_url).val('http://'+full_url)                         // подставляем полный урл товара
           $(image_inp_by_url).val(img_url)                            // подставляем урл картики в инпут
           $(img_prev).attr('src',img_url)                             // подставляем урл картинки
           $(itemmodal).arcticmodal();                                 // запускаем диалог добавления товара
