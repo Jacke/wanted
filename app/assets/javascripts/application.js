@@ -241,7 +241,7 @@ $(document).ready(function() {
     return false;
   });*/
 
-  $('#drug_box').droppable({
+  $('#left_group').droppable({
         over: function( event, ui ) {$('#drug_hart').addClass('onOver')},
         out: function( event, ui ) {$('#drug_hart').removeClass('onOver')},
         iframeFix: true,
@@ -303,6 +303,13 @@ $(document).ready(function() {
               $(dragged).css({"left": e.pageX + $(ifr).offset().left, "top": e.pageY + $(ifr).offset().top});
             }
           });
+
+          var ifr = $('#framesite')
+          if(is_dragged && (e.pageX < $(ifr).offset().left)){
+            $('#drug_hart').addClass('onOver')
+          } else {
+            $('#drug_hart').removeClass('onOver')
+          }
         }
       });
       
@@ -319,6 +326,7 @@ $(document).ready(function() {
           $(image_inp_by_url).val(img_url)                            // подставляем урл картики в инпут
           $(img_prev).attr('src',img_url)                             // подставляем урл картинки
           $(itemmodal).arcticmodal();                                 // запускаем диалог добавления товара
+          $('#drug_hart').removeClass('onOver')
         }
         // удаляем клон эллемента и останавливаем драг
         if (is_dragged) {
