@@ -1,0 +1,9 @@
+-@collections.each do |collection|
+  %section.collection_element{:id => "#{collection.id}"}
+    #preview
+      %a{:href => user_collection_path(collection.user_id,collection)}
+        -unless collection.following_by_type('Item').limit(4).order("created_at DESC").empty?
+          -collection.following_by_type('Item').limit(4).order("created_at DESC").each do |item|
+            #item{:style => "background: url(#{item.image.url(:small)})"}
+    #info
+      =link_to collection.title, user_collection_path(collection.user_id,collection)

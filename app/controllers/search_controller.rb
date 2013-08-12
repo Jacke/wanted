@@ -28,6 +28,42 @@ class SearchController < ApplicationController
     @page = @page.html_safe
     render :layout => false
   end
+
+  def results
+    @query = params[:search][:q]
+
+    @items = Item.search @query, :page => 1, :per_page => 10, :order => 'raiting DESC'
+    @items_count = Item.search_count @query
+
+    @shops = User.search @query, :page => 1, :per_page => 10, :order => 'items_count DESC', :conditions => { :shop => 1 }
+    @shops_count = User.search_count @query, :conditions => { :shop => 1 }
+
+    @users = User.search @query, :page => 1, :per_page => 10, :order => 'followers_counter DESC', :conditions => { :shop => 0 }
+    @users_count = User.search_count @query, :conditions => { :shop => 0 }
+
+    @collections = Collection.search @query, :page => 1, :per_page => 10
+    @collections_count = Collection.search_count @query
+  end
+
+  def items
+    @query = params[:query]
+    @items = Item.search @query, :page => 1, :per_page => 20, :order => 'raiting DESC'
+  end
+
+  def shops
+    @query = params[:query]
+    @shops = User.search @query, :page => 1, :per_page => 20, :order => 'items_count DESC', :conditions => { :shop => 1 }
+  end
+
+  def people
+    @query = params[:query]
+    @users = User.search @query, :page => 1, :per_page => 20, :order => 'followers_counter DESC', :conditions => { :shop => 0 }
+  end
+
+  def collections
+    @query = params[:query]
+    @collections = Collection.search @query, :page => 1, :per_page => 10
+  end
   
   private
 

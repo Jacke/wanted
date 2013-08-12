@@ -13,7 +13,7 @@
                 -collection.following_by_type('Item').limit(4).order("created_at DESC").each do |item|
                   #item{:style => "background: url(#{item.image.url(:small)})"}
           #info
-            =link_to collection.title, '#'
+            =link_to collection.title, user_collection_path(collection.user_id,collection)
   -else
     .con_h
       %h2

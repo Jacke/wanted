@@ -1,0 +1,49 @@
+#search.gi
+  %ul
+    - unless @items.empty? && @shops.empty? && @collections.empty? && @users.empty?
+      -unless @items.empty?
+        %li
+          .event_head
+            Товары
+            =link_to 'Смотреть все', search_items_path(@query), :class => 'all_results' if @items_count > 10
+          .grid_elements
+            =render partial: "users/items_grid"
+      //-else
+      //  %li
+      //    .event_head Не найдено ни одного товара :(
+      -unless @shops.empty?
+        %li
+          .event_head
+            Магазины
+            =link_to 'Смотреть все', search_shops_path(@query), :class => 'all_results' if @shops_count > 10
+          .grid_elements
+            =render partial: "shops_list"
+      //- else
+      //  %li
+      //    .event_head Не найдено ни одного магазина :(
+      -unless @collections.empty?
+        %li
+          .event_head
+            Коллекции
+            =link_to 'Смотреть все', search_collections_path(@query), :class => 'all_results' if @collections_count > 10
+          #grid_elements.grid_elements
+            =render partial: "collections_list"
+      //- else
+      //  %li
+      //    .event_head Не найдено ни одной коллекции :(
+      -unless @users.empty?
+        %li
+          .event_head
+            Люди
+            =link_to 'Смотреть все', search_people_path(@query), :class => 'all_results' if @users_count > 10
+          .grid_elements
+            =render partial: "people_list"
+      //- else
+      //  %li
+      //    .event_head Не найдено ни одного человека :(
+    - else
+      %li
+        .event_head 
+          Поиск не дал результатов :(
+          =link_to 'Попробуйте', search_path, :class => 'blue'
+          найти что то другое.

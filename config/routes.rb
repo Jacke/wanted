@@ -23,6 +23,11 @@ Hochuli::Application.routes.draw do
   get "search"      => 'search#index', as: :search
   get "search/site" => 'search#site', as: :site
   get "frame/site"  => 'search#frame', as: :frame
+  get "results"  => 'search#results'
+  get "results/items/:query" => 'search#items', as: :search_items
+  get "results/shops/:query" => 'search#shops', as: :search_shops
+  get "results/collections/:query" => 'search#collections', as: :search_collections
+  get "results/people/:query" => 'search#people', as: :search_people
 
   #item
   resources :items

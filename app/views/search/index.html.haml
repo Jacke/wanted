@@ -8,9 +8,9 @@
     %li
       %span Либо
     %li
-      %form{:'accept-charset'=>"UTF-8", :action=>"/search/site", :class=>"search_form"}
-        %input{placeholder: 'Ищем по названию товара, магазина или коллекции на сайте (не раб!)', :id => 'site_url', :name => 'site_url'}
-        %input{:id => 'site_button',:type => 'submit', :value=>"OK"}
+      =form_tag({controller: "search", action: "results"}, method: "get", class: "search_form") do
+        =text_field :search,:q ,placeholder: 'Ищем по названию товара, магазина или коллекции на сайте'
+        =submit_tag("OK")
     %li
       %span Либо  
     %li.search_form

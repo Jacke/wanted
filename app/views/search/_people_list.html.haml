@@ -1,0 +1,17 @@
+- unless @users.empty?
+  #grid_elements
+    -@users.each do |user|
+      %section.follow_element
+        #preview
+          %a{:href => "#{user_show_path(user)}"}
+            #item{:style => "background: url(#{user.avatar.url(:medium)});background-position: -2px -10px;"}
+            #item{:style => ""}
+              .string
+                %span.ellow= user.name
+              .string= user.count_user_followers.to_s+' подписчиков'
+              .string= user.following_items_count.to_s+' вещей'
+              .string= user.collections.count.to_s+' коллекций'
+            -items = user.following_by_type('Item').limit(2).order("created_at DESC")
+            -unless items.empty?
+              -items.each do |item|
+                #item{:style => "background: url(#{item.image.url(:small)})"}

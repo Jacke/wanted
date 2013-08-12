@@ -52,6 +52,16 @@ module ApplicationHelper
       t = "Серч"
     when "search/frame"
       t = "Серч"
+    when "search/results"
+      t = "Серч - " + @query
+    when "search/items"
+      t = "Серч - " + @query
+    when "search/people"
+      t = "Серч - " + @query
+    when "search/collections"
+      t = "Серч - " + @query
+    when "search/shops"
+      t = "Серч - " + @query
     when "tracking/followers"
       t = "Подписчики"
     when "tracking/followed_by"
@@ -103,6 +113,16 @@ module ApplicationHelper
       html = "СДЕЛАТЬ <span class='nav_end_word'>СЕРЧ</span>".html_safe
     when "search/frame"
       html = "СДЕЛАТЬ <span class='nav_end_word'>СЕРЧ</span>".html_safe
+    when "search/results"
+      html = "СЕРЧ - <span class='nav_end_word'>#{@query.mb_chars.upcase}</span>".html_safe
+    when "search/items"
+      html = "ТОВАРЫ - <span class='nav_end_word'>#{@query.mb_chars.upcase}</span>".html_safe
+    when "search/people"
+      html = "ЛЮДИ - <span class='nav_end_word'>#{@query.mb_chars.upcase}</span>".html_safe
+    when "search/collections"
+      html = "КОЛЛЕКЦИИ - <span class='nav_end_word'>#{@query.mb_chars.upcase}</span>".html_safe
+    when "search/shops"
+      html = "МАГАЗИНЫ - <span class='nav_end_word'>#{@query.mb_chars.upcase}</span>".html_safe
     when "tracking/followers"
       @user == current_user ? html = "МОИ <span class='nav_end_word'>ПОДПИСЧИКИ</span>".html_safe : html = "#{@user.name} - <span class='nav_end_word'>ПОДПИСЧИКИ</span>".html_safe
     when "tracking/followed_by"
