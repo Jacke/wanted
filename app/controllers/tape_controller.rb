@@ -6,14 +6,17 @@ class TapeController < ApplicationController
     @new_events = []
 
     # получаем время последнего действия
-    @followers.each do |follower|
-      follow = follower.follows.order("created_at DESC").first
-      unless follow.blank?
-        @from_time = follow.created_at if @from_time.blank? || @from_time < follow.created_at
+    unless @followers.empty?
+      @followers.each do |follower|
+        follow = follower.follows.order("created_at DESC").first
+        unless follow.blank?
+          @from_time = follow.created_at if @from_time.blank? || @from_time < follow.created_at
+        end
       end
+      @from_time += 1.minutes
+    else
+      @from_time = 'stop'
     end
-
-    @from_time += 1.minutes
   end
 
   def by_time
@@ -38,7 +41,7 @@ class TapeController < ApplicationController
           @new_events.last[:event] << Item.find_by_id(event.followable_id)
           @new_events.last[:time] = event.created_at
         else
-          @new_events << {event_name: 'add_items', eventer: User.find_by_id(event.follower_id),event: [Item.find_by_id(event.followable_id)],time: event.created_at}
+          @new_events << {event_name: 'add_items', eventer: User.find_by_id(event.follower_id),event: [Item.find_by_id(event.followable_id)],time: event.created_at,last_time: event.created_at}
         end
       end
     end

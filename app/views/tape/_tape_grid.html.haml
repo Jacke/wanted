@@ -47,7 +47,7 @@
         .event_head
           .avatar=image_tag event_object[:eventer].avatar.url(:medium)
           .info
-            %span.gray=time_ago_in_words(event_object[:time])+' назад'
+            %span.gray=time_ago_in_words(event_object[:last_time])+' назад'
             %span
               =link_to event_object[:eventer][:nickname], user_show_path(event_object[:eventer])
               - if event_object[:eventer][:shop]

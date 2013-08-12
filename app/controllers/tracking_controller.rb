@@ -28,7 +28,7 @@ class TrackingController < ApplicationController
     current_user.stop_following(@unfollow_user)
 
     @user = current_user
-    @followings = current_user.following_by_type('User')
+    @followings = current_user.following_by_type('User').where(shop: 0)
 
     render partial: 'follow_elements'
   end
