@@ -21,6 +21,7 @@ gem 'therubyracer', :platforms => :ruby
 gem 'jquery-rails'
 gem 'mysql2', '~> 0.3.12b5'
 gem 'thin'
+gem "paperclip-dropbox"
 gem 'thinking-sphinx', '3.0.0'
 
 group :assets do
@@ -37,7 +38,6 @@ group :development do
   gem 'debugger'
 end
 
-group :prodaction do
+#group :prodaction do
 #  gem "paperclip-dropbox"
-  gem "paperclip-dropbox"
-end
+#end
