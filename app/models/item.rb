@@ -9,21 +9,9 @@ class Item < ActiveRecord::Base
   attr_accessible :clothes, :comment, :name, :prise, :sex, :tag_list, :shop_id, :url, :image_url, :count_user_followers, :raiting
   #paperclip
   attr_accessible :image
-  if not Rails.env.production?
-    has_attached_file :image, :styles => { :medium => "230x180#",:mediump => "120x120#",:small => "115x100#",:big => "390>x" }, 
-                              :default_url => "/images/default/items/:style/missing.png",
-                              :url => "/images/system/items/:id/:style/:id.:extension"
-  else
-    has_attached_file :image, :styles => { :medium => "230x180#",:mediump => "120x120#",:small => "115x100#",:big => "390>x" }, 
-                              :default_url => "/images/default/items/:style/missing.png",
-                              #:url => "/images/system/items/:id/:style/:id.:extension"
-
-                              :storage => :dropbox,
-                              :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",
-                              :dropbox_options => {
-                                :path => proc { |style| "hochuli/images/system/items/#{id}/#{style}/#{image.original_filename}" }
-                                }
-  end
+  has_attached_file :image, :styles => { :medium => "230x180#",:mediump => "120x120#",:small => "115x100#",:big => "390>x" }, 
+                            :default_url => "/images/default/items/:style/missing.png",
+                            :url => "/images/system/items/:id/:style/:id.:extension"
 
   # Relations
   #===============================================================

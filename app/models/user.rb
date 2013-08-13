@@ -18,19 +18,9 @@ class User < ActiveRecord::Base
   #has_attached_file :avatar,  :styles => { :medium => "120x120#",:small => "50x50#",:esmall => "28x28#"}, 
   #                            :default_url => "/images/system/avatars/:style/missing.png",
   #                            :url => "/images/system/avatars/:id/:style/:id.:extension"
-  if not Rails.env.production?
-    has_attached_file :avatar,  :styles => { :medium => "120x120#",:small => "50x50#",:esmall => "28x28#"}, 
-                                :default_url => "/images/default/avatars/:style/missing.png",
-                                :url => "/images/system/avatars/:id/:style/:id.:extension"
-  else
-    has_attached_file :avatar, :styles => { :medium => "120x120#",:small => "50x50#",:esmall => "28x28#"},
+  has_attached_file :avatar,  :styles => { :medium => "120x120#",:small => "50x50#",:esmall => "28x28#"}, 
                               :default_url => "/images/default/avatars/:style/missing.png",
-                              :storage => :dropbox,
-                              :dropbox_credentials => "#{Rails.root}/config/dropbox.yml",
-                              :dropbox_options => {
-                                :path => proc { |style| "hochuli/images/system/avatars/#{id}/#{style}/#{avatar.original_filename}" }
-                                }
-  end
+                              :url => "/images/system/avatars/:id/:style/:id.:extension"
   # attr_accessible :title, :body
   
   # Relations
