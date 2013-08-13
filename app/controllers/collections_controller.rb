@@ -1,3 +1,4 @@
+#encoding: utf-8
 class CollectionsController < ApplicationController
   def create
     #@item = Item.find_by_id(params[:id])
@@ -10,6 +11,18 @@ class CollectionsController < ApplicationController
       render partial: "collections/collections_list"
     else
       not_found
+    end
+  end
+
+  def remove
+    collection_id = params[:collection_id]
+    if Collection.find_by_id(collection_id).destroy
+      @respond = {ans: "Коллекция удалена"}
+    end
+
+    respond_to do |format|
+      format.json {render json:  @respond, status:  :ok}
+      format.any(:html,:xml) {render status:  404}
     end
   end
 end

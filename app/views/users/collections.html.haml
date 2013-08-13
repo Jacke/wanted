@@ -1,3 +1,23 @@
+:javascript
+  $(document).ready(function() {
+    // удаление коллекции
+    // иконка
+    $('#user .collection_element #preview').hover(
+      function(){$(this).children('.remove').show()},
+      function(){$(this).children('.remove').hide()}
+    )
+
+    $(document).on("click", "#user .collection_element #preview span.remove", function(){
+      var id = $(this).attr('id')
+      var collection = $(this).parents('section.collection_element')
+
+      $.post('/collection/remove/'+id, function(data,status,xhr){
+        showNotices(data.ans)
+        collection.remove()
+      })
+      return false
+    })
+  })
 #user.gi
   .info
     =render partial: "user_info"
@@ -8,7 +28,7 @@
       -@collections.each do |collection|
         %section.collection_element{:id => "#{collection.id}"}
           #preview
-            //%span.remove Удалить
+            %span.remove{:id => "#{collection.id}"}
             %a{:href => user_collection_path(@user,collection)}
               -unless collection.following_by_type('Item').limit(4).order("created_at DESC").empty?
                 -collection.following_by_type('Item').limit(4).order("created_at DESC").each do |item|

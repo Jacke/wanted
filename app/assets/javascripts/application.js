@@ -128,12 +128,6 @@ $(document).ready(function() {
       return false;
   });
 
-  // удаление коллекции
-  $('#user .collection_element #preview').hover(
-    function(){$(this).children('.remove').show()},
-    function(){$(this).children('.remove').hide()}
-  )
-
   // AJAX запрос для регистрации и авторизации
   $("#sign_up_form").bind("ajax:success", function(e, data, status, xhr) {
     if (data.success) {
