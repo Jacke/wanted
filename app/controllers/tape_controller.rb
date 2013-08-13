@@ -21,6 +21,9 @@ class TapeController < ApplicationController
 
   def by_time
     @followers = current_user.following_by_type('User')
+    if params[:time] == 'stop'
+      return false
+    end
     from_time = get_next_time(params[:time].to_datetime)
 
     # создаем массив подписок за последние сутки с полученной даты
