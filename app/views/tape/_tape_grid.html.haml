@@ -1,4 +1,4 @@
-- unless @events.empty?
+- unless @events.blank?
   - @new_events.each do |event_object|
     %li{:time => event_object[:time]}
       -if event_object[:event].class.name == 'User'
@@ -76,3 +76,5 @@
                   #comments
                     %span.ico
                     %span= item.cached_comments
+- else 
+  %h2 Лента событий ещё пуста
