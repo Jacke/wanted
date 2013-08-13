@@ -55,8 +55,8 @@ class User < ActiveRecord::Base
                         email:auth.extra.raw_info.uid.to_s+'@vk.com',
                         password:Devise.friendly_token[0,20],
                         url:auth.extra.raw_info.photo,
-                        sex:auth.extra.raw_info.sex }
-                        phone:phone
+                        sex:auth.extra.raw_info.sex,
+                        phone:phone }
           when :mailru
             params  = { name:auth.info.name,
                         nickname:auth.info.nickname,
