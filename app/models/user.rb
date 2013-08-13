@@ -47,6 +47,7 @@ class User < ActiveRecord::Base
         case auth.provider.to_sym
           when :vkontakte
             nickname = auth.info.name.gsub(' ', '')
+            phone = '89012345678'
             params  = { name:auth.info.name,
                         nickname:nickname.downcase,
                         provider:auth.provider,
@@ -55,6 +56,7 @@ class User < ActiveRecord::Base
                         password:Devise.friendly_token[0,20],
                         url:auth.extra.raw_info.photo,
                         sex:auth.extra.raw_info.sex }
+                        phone:phone
           when :mailru
             params  = { name:auth.info.name,
                         nickname:auth.info.nickname,

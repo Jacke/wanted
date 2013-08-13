@@ -19,7 +19,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to root_path
     else
       session["devise.#{request.env["omniauth.auth"].provider}_data"] = request.env["omniauth.auth"]
-      redirect_to new_user_registration_url
+      redirect_to root_path
     end
   end
 
