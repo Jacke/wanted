@@ -104,6 +104,7 @@ class ItemsController < ApplicationController
     @comments = @item.comments.order("created_at DESC")
     @tags = @item.tags
     @foll_collections = @item.followers_by_type('Collection')
+    @foll_items = @user.following_by_type('Item').limit(6).order("raiting DESC")
 
     if user_signed_in?
       @collections = current_user.collections

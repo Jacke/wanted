@@ -237,7 +237,9 @@ div#left_group #search {
   margin: 30px 0 40px -6px;
   display: inline-block;
 }
-div#left_group #search a { text-decoration: none;}
+div#left_group #search a {
+  text-decoration: none;
+  }
 div#left_group #search a:hover { color: #fff; text-shadow: 0 0 2px rgba(0,0,0,0.6);}
 /* left group end */
 
@@ -526,9 +528,16 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 #item #left #followers a {display: inline-block;}
 #item #left #followers_count {margin-bottom: 40px;}
 #item #left #collections {margin-bottom: 20px;}
-#item #left #tags {margin-bottom: 60px;}
+#item #left #tags {margin-bottom: 40px;}
 #item #left #follow a {height: 33px;background: url(../images/follow_pointer.png) no-repeat right 0; margin-bottom: 10px;display: inline-block;line-height: 33px;padding: 0 40px 0 30px;color: #000;text-decoration: none;}
 #item #left #follow a:hover {text-decoration: underline;}
+#item #user_items h2 {margin-bottom: 20px;}
+#item #user_items .item { box-shadow: 0 0 20px rgba(0,0,0,0.4); width: 120px;height: 120px;background: #777; display: inline-block; float: left;margin: 0 25px 25px 0;
+  -webkit-transition: box-shadow 0.10s ease-in-out;
+  -moz-transition: box-shadow 0.10s ease-in-out;
+  -ms-transition: box-shadow 0.10s ease-in-out;
+  -o-transition: box-shadow 0.10s ease-in-out;}
+#item #user_items .item:hover { box-shadow: 0 0 20px rgba(0,0,0,0.7);}
 /* end item page */
 
 /* tape */

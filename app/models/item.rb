@@ -10,11 +10,11 @@ class Item < ActiveRecord::Base
   #paperclip
   attr_accessible :image
   if not Rails.env.production?
-    has_attached_file :image, :styles => { :medium => "230x180#",:small => "115x100#",:big => "390>x" }, 
+    has_attached_file :image, :styles => { :medium => "230x180#",:mediump => "120x120#",:small => "115x100#",:big => "390>x" }, 
                               :default_url => "/images/default/items/:style/missing.png",
                               :url => "/images/system/items/:id/:style/:id.:extension"
   else
-    has_attached_file :image, :styles => { :medium => "230x180#",:small => "115x100#",:big => "390>x" }, 
+    has_attached_file :image, :styles => { :medium => "230x180#",:mediump => "120x120#",:small => "115x100#",:big => "390>x" }, 
                               :default_url => "/images/default/items/:style/missing.png",
                               #:url => "/images/system/items/:id/:style/:id.:extension"
 

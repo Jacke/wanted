@@ -67,3 +67,7 @@
         Отмечено тэгами:
         - @tags.each do |tag|
           =link_to '#'+tag.name, tags_path(tag.name)
+    - unless @foll_items.empty?
+      #user_items
+        - @foll_items.each do |item|
+          %a{:class => 'item', :href => item_path(item), :style => "background: url(#{item.image.url(:mediump)})"}
