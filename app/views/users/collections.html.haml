@@ -28,7 +28,8 @@
       -@collections.each do |collection|
         %section.collection_element{:id => "#{collection.id}"}
           #preview
-            %span.remove{:id => "#{collection.id}"}
+            - if current_user == @user
+              %span.remove{:id => "#{collection.id}"}
             %a{:href => user_collection_path(@user,collection)}
               -unless collection.following_by_type('Item').limit(4).order("created_at DESC").empty?
                 -collection.following_by_type('Item').limit(4).order("created_at DESC").each do |item|
