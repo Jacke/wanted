@@ -3,4 +3,8 @@ development:
   port: 9312
 production:
   port: 9312
+<<<<<<< HEAD
   min_infix_len: 3
+=======
+  min_infix_len: 3
+>>>>>>> 88215f010992b6530f98125e9cdad02749ff72e3

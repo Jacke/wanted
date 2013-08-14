@@ -109,7 +109,7 @@ GEM
     mime-types (1.23)
     multi_json (1.7.9)
     multipart-post (1.2.0)
-    mysql2 (0.3.12b5)
+    mysql2 (0.3.12b4)
     net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
@@ -238,7 +238,7 @@ DEPENDENCIES
   jquery-rails
   letter_opener
   localtunnel
-  mysql2 (= 0.3.12b5)
+  mysql2 (= 0.3.12b4)
   omniauth
   omniauth-mailru
   omniauth-oauth2
@@ -253,6 +253,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   therubyracer
   thin
-  thinking-sphinx (~> 3.0.2)
+  thinking-sphinx (~> 3.0.0)
   uglifier (>= 1.0.3)
   will_paginate
