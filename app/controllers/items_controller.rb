@@ -128,8 +128,8 @@ class ItemsController < ApplicationController
     collection_id = params[:collection_id]
     @item = Item.find_by_id(item_id)
 
-    up_followers_cache(@item)
     current_user.follow(@item)
+    up_followers_cache(@item)
     update_raiting(@item)
 
     if collection_id.to_i != -1
