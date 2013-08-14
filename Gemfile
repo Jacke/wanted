@@ -19,9 +19,8 @@ gem 'acts-as-taggable-on'
 
 gem 'therubyracer', :platforms => :ruby
 gem 'jquery-rails'
-gem 'mysql2', '~> 0.3.12b5'
+gem 'mysql2', '0.3.12b4'
 gem 'thin'
-gem "paperclip-dropbox"
 gem 'thinking-sphinx', '3.0.0'
 
 group :assets do
