@@ -22,7 +22,7 @@ gem 'jquery-rails'
 gem 'mysql2', '~> 0.3.12b5'
 gem 'thin'
 gem "paperclip-dropbox"
-gem 'thinking-sphinx'
+gem 'thinking-sphinx', '3.0.0'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
