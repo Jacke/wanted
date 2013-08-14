@@ -4,4 +4,3 @@ development:
 production:
   port: 9312
   min_infix_len: 3
-  morphology: stem_ru
