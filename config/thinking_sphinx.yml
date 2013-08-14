@@ -1,4 +1,7 @@
 development:
+  min_infix_len: 3
   port: 9312
 production:
+  sql_query_pre: SET NAMES utf8
   port: 9312
+  min_infix_len: 3
