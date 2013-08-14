@@ -109,7 +109,7 @@ GEM
       treetop (~> 1.4.8)
     middleware (0.1.0)
     mime-types (1.23)
-    multi_json (1.7.7)
+    multi_json (1.7.9)
     multipart-post (1.2.0)
     mysql2 (0.3.13)
     net-scp (1.1.2)
@@ -209,12 +209,12 @@ GEM
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
-    thinking-sphinx (3.0.0)
+    thinking-sphinx (3.0.4)
       activerecord (>= 3.1.0)
       builder (>= 2.1.2)
       innertube (>= 1.0.2)
       middleware (>= 0.1.0)
-      riddle (>= 1.5.4)
+      riddle (>= 1.5.7)
     thor (0.18.1)
     tilt (1.4.1)
     treetop (1.4.14)
@@ -259,6 +259,6 @@ DEPENDENCIES
   sass-rails (~> 3.2.3)
   therubyracer
   thin
-  thinking-sphinx (= 3.0.0)
+  thinking-sphinx
   uglifier (>= 1.0.3)
   will_paginate
