@@ -57,7 +57,7 @@ class ApplicationController < ActionController::Base
     unless @tag_list.empty?
       @tag_list << taggable.tag_list
       taggable.update_attribute(:tag_list, @tag_list)
-      item.update_attribute(:content, @linked_comment)
+      # item.update_attribute(:content, @linked_comment)
     end
   end
 
