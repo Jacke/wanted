@@ -12,6 +12,9 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
+/log/*.pid
+/public/assets
+/db/sphinx
 /tmp
 /config/database.yml
 /vendor/bundle
