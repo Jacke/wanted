@@ -86,7 +86,7 @@ class ItemsController < ApplicationController
         @collection.follow(@item)
       end
 
-      tags(@item.comment,@item) if not @item.comment.empty?
+      apply_tags(@item.comment,@item) if not @item.comment.empty?
       #mentions(@item.comment, @item, 'comment')
 
       return render :json => {:success => true, :message => 'Товар успешно добавлен'}

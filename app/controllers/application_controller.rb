@@ -41,7 +41,7 @@ class ApplicationController < ActionController::Base
   end
 
   # тэги
-  def tags(comment , item , taggable)
+  def apply_tags(comment , item , taggable)
     @tag_list = []
     @linked_comment = comment
     comment.gsub!(',', ', ')
