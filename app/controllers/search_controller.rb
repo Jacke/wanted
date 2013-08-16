@@ -19,7 +19,9 @@ class SearchController < ApplicationController
     host = URI.parse( 'http://www.'+url ).host
 
     @page = open('http://www.'+url).read
-#    @page = encode?(@page)    
+    logger.info "=>>>>>>>>>>>>>>>> #{@page.encoding} <<<<<<"    
+    @page = encode?(@page, url)    
+    logger.info "=>>>>>>>>>>>>>>>> #{@page.encoding}"
     @page.gsub!('href="/','href="http://'+host+'/')
     @page.gsub!('href="./','href="http://'+host+'/./')
     @page.gsub!('href="?','href="http://'+host+'/?')
@@ -72,13 +74,21 @@ class SearchController < ApplicationController
     s = URI.escape(s)
   end
   
-  def encode?(object)
-    
-    regxp = object.scan /(?<=(\<meta charset\="))(.+?)(?=".+?\>)/
-    if regxp[1] == "windows-1251"
-      object = open('http://www.'+url, "r:cp1251").read
-    end
-    object
+  def encode?(object, url)
+    logger.info "#{object.encoding} true?"
+      logger.info "............................"
+      begin 
+      cleaned = object.dup.force_encoding('UTF-8') 
+      unless cleaned.valid_encoding? 
+      cleaned = object.encode( 'UTF-8', 'Windows-1251' ) 
+      end 
+      object = cleaned 
+      rescue EncodingError 
+      object.encode!( 'UTF-8', invalid: :replace, undef: :replace )       
+      end 
+      #object.sub!(/(?<=(\<meta charset\="))(.+?)(?=".+?\>)/, 'utf-8')
+      logger.info "puuuuuuuuuul"
+    object 
   end
 
   def parse
