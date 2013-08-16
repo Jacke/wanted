@@ -19,7 +19,7 @@ class SearchController < ApplicationController
     host = URI.parse( 'http://www.'+url ).host
 
     @page = open('http://www.'+url).read
-    @page = encode?(@page)    
+#    @page = encode?(@page)    
     @page.gsub!('href="/','href="http://'+host+'/')
     @page.gsub!('href="./','href="http://'+host+'/./')
     @page.gsub!('href="?','href="http://'+host+'/?')
@@ -73,8 +73,10 @@ class SearchController < ApplicationController
   end
   
   def encode?(object)
-    if object.encoding.name == "ASCII-8BIT"
-      object.force_encoding("cp1251").encode("utf-8", undef: :replace)
+    
+    regxp = object.scan /(?<=(\<meta charset\="))(.+?)(?=".+?\>)/
+    if regxp[1] == "windows-1251"
+      object = open('http://www.'+url, "r:cp1251").read
     end
     object
   end
