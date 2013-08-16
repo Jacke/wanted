@@ -19,7 +19,7 @@ class SearchController < ApplicationController
     host = URI.parse( 'http://www.'+url ).host
 
     @page = open('http://www.'+url).read
-
+    @page = encode?(@page)    
     @page.gsub!('href="/','href="http://'+host+'/')
     @page.gsub!('href="./','href="http://'+host+'/./')
     @page.gsub!('href="?','href="http://'+host+'/?')
@@ -70,6 +70,13 @@ class SearchController < ApplicationController
   def clean_url(url)
     s = url.sub(/^https?\:\/\//, '').sub(/^www./,'')
     s = URI.escape(s)
+  end
+  
+  def encode?(object)
+    if object.encoding.name == "ASCII-8BIT"
+      object.force_encoding("cp1251").encode("utf-8", undef: :replace)
+    end
+    object
   end
 
   def parse
