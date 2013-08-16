@@ -18,14 +18,21 @@ class SearchController < ApplicationController
     url = clean_url(params[:site][:url])
     host = URI.parse( 'http://www.'+url ).host
 
+    if url == 'wildberries.ru'
+    @page = open( 'http://wildberries.ru', "r:ascii-8bit").read
+    logger.info "BAAAAAAND =>>>>>>"
+    else
     @page = open('http://www.'+url).read
-    logger.info "=>>>>>>>>>>>>>>>> #{@page.encoding} <<<<<<"    
+    end
     @page = encode?(@page, url)    
-    logger.info "=>>>>>>>>>>>>>>>> #{@page.encoding}"
+
+    # if ...
+    @page.gsub!('href="//', 'href="http://')
+    @page.gsub!('src="//', 'src="http://')
     @page.gsub!('href="/','href="http://'+host+'/')
+    @page.gsub!('src="/','src="http://'+host+'/')
     @page.gsub!('href="./','href="http://'+host+'/./')
     @page.gsub!('href="?','href="http://'+host+'/?')
-    @page.gsub!('src="/','src="http://'+host+'/')
     @page.gsub!('target="_blank"','')
     @page = @page.html_safe
     render :layout => false
