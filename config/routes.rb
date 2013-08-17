@@ -46,7 +46,7 @@ Hochuli::Application.routes.draw do
   post 'item/remove/:item_id' => 'items#remove'
   #comments
   post 'item/:id/comment' => 'comments#create', as: :comment
-
+  post 'comment/remove/:id' => 'comments#remove'
   #tracking
   get "followers/:user_id" => 'tracking#followers', as: :followers
   get "followed_by/:user_id" => 'tracking#followed_by', as: :followed_by

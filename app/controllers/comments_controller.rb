@@ -21,6 +21,18 @@ class CommentsController < ApplicationController
       end
     end
   end
+  
+  def remove
+    comment_id = params[:comment_id]
+    if Comment.find_by_id(comment_id).destroy
+      @respond = {ans: "Комментарий удален"}
+    end
+
+    respond_to do |format|
+      format.json {render json:  @respond, status:  :ok}
+      format.any(:html,:xml) {render status:  404}
+    end
+  end
 
   private
 

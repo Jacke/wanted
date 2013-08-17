@@ -1,0 +1,14 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: hochuli
+  username: root
+  password: paddingleft
+  host: localhost
+production:
+  adapter: mysql2
+  encoding: utf8
+  database: hochuli
+  username: root
+  password: paddingleft
+  host: localhost

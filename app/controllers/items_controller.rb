@@ -149,7 +149,7 @@ class ItemsController < ApplicationController
   def remove
     item_id = params[:item_id]
     if Item.find_by_id(item_id).destroy # NSFW
-      @respond = {ans: "Коллекция удалена"}
+      @respond = {ans: "Товар удален"}
     end
 
     respond_to do |format|
