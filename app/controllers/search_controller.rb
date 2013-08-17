@@ -24,7 +24,7 @@ class SearchController < ApplicationController
     else
     @page = open('http://www.'+url).read
     end
-    @page = encode?(@page, url)    
+    @page = encode?(@page, url) unless host == 'img1.wildberries.ru'    
 
     # if ...
     @page.gsub!('href="//', 'href="http://')
@@ -34,7 +34,9 @@ class SearchController < ApplicationController
     @page.gsub!('href="./','href="http://'+host+'/./')
     @page.gsub!('href="?','href="http://'+host+'/?')
     @page.gsub!('target="_blank"','')
+
     @page = @page.html_safe
+
     render :layout => false
   end
 
