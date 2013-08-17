@@ -43,7 +43,7 @@ Hochuli::Application.routes.draw do
   #collections
   post 'collection/create' => 'collections#create'
   post 'collection/remove/:collection_id' => 'collections#remove'
-
+  post 'item/remove/:item_id' => 'items#remove'
   #comments
   post 'item/:id/comment' => 'comments#create', as: :comment
 
