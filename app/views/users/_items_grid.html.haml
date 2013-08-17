@@ -1,3 +1,23 @@
+:javascript
+  $(document).ready(function() {
+    // удаление item
+    // иконка
+    $('#user #grid_elements .element #preview').hover(
+      function(){$(this).children('.remove').show()},
+      function(){$(this).children('.remove').hide()}
+    )
+
+    $(document).on("click", #user #grid_elements .element #preview span.remove", function(){
+      var id = $(this).attr('id')
+      var collection = $(this).parents('#grid_elements .element')
+
+      $.post('/item/remove/'+id, function(data,status,xhr){
+        showNotices(data.ans)
+        collection.remove()
+      })
+      return false
+    })
+  })
 -@items.each do |item|
   %section.element.ui-draggable{:id => "#{item.id}", :page => 1}
     #preview
