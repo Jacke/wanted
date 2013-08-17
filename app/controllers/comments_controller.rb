@@ -23,7 +23,7 @@ class CommentsController < ApplicationController
   end
   
   def remove
-    comment_id = params[:comment_id]
+    comment_id = params[:id]
     if Comment.find_by_id(comment_id).destroy
       @respond = {ans: "Комментарий удален"}
     end

@@ -1,3 +1,24 @@
+:javascript
+  $(document).ready(function() {
+    // Remove comment
+
+    $('.comnt_list #comment').hover(
+      function(){$(this).children('#info .remove').show()},
+      function(){$(this).children('#info .remove').hide()}
+    )
+
+    $(document).on("click", ".comnt_list #comment #info span.remove", function(){
+      var id = $(this).attr('id')
+      var comment = $(this).parents('.comnt_list')
+
+      $.post('/comment/remove/'+id, function(data,status,xhr){
+        showNotices(data.ans)
+        comment.remove()
+      })
+      return false
+    })
+  })
+
 %ul
   -unless @comments.empty?
     -@comments.each do |comment|     
@@ -6,6 +27,8 @@
           =image_tag comment.user.avatar.url(:esmall)
         #comment
           #info
+            - if current_user == comment.user || current_user.admin
+              %span.remove{:id => "#{comment.id}"} x
             = link_to comment.user.name, user_show_path(comment.user), :title => '@'+comment.user.nickname
             %span.litllnickname= ' (@'+(comment.user.nickname.blank? || comment.user.nickname == comment.user.id.to_s ? 'I_AM' : comment.user.nickname)+')'
             = ', '+time_ago_in_words(comment.created_at)+' назад'

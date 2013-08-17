@@ -16,7 +16,7 @@ class CollectionsController < ApplicationController
 
   def remove
     collection_id = params[:collection_id]
-    if Collection.find_by_id(collection_id).destroy
+    if Collection.find_by_id(collection_id).destroy #NSFW
       @respond = {ans: "Коллекция удалена"}
     end
 
