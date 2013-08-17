@@ -43,7 +43,8 @@
     $('#done').click(function(){
       var item_name = $('input#item_name').val();
       var item_url = $('input#item_url').val();
-
+      var collection_id = $('#select_collecton #collection .current').attr('id');
+ 
       if (item_url == ''){
         showErrors(['Введите адрес товара!']);
         return false
@@ -55,6 +56,10 @@
         $('.second_step').css('display','block');
       } else {
         showErrors(['Введите название товара!']);
+      }
+      if (collection_id == -1){
+        showErrors(['Выберите коллекцию для товара!']);
+        return false
       }
     });
 
