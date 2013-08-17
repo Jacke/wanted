@@ -145,6 +145,18 @@ class ItemsController < ApplicationController
       format.any(:html,:xml) {render status:  404}
     end
   end
+  
+  def remove
+    item_id = params[:item_id]
+    if Item.find_by_id(item_id).destroy # NSFW
+      @respond = {ans: "Коллекция удалена"}
+    end
+
+    respond_to do |format|
+      format.json {render json:  @respond, status:  :ok}
+      format.any(:html,:xml) {render status:  404}
+    end
+  end
 
   private
 
