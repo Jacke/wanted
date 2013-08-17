@@ -484,6 +484,9 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
   z-index: 10;
 }
 #user #grid_elements {margin: 30px -30px 30px -30px;}
+/* remove element display:none for script /
+#grid_elements .element #preview span.remove { width: 25px; height: 25px; background: url(../images/trash.png) no-repeat;position: absolute;right: 5px; top: 5px;cursor: pointer;}
+#grid_elements .element #preview span.remove:hover {background: url(../images/trash.png) no-repeat 0 -25px;}
 
 .big_arial {
   font-size: 24px;

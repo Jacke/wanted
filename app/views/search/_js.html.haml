@@ -49,6 +49,10 @@
         showErrors(['Введите адрес товара!']);
         return false
       }
+      if (collection_id == -1 && item_name != ''){
+        showErrors(['Выберите коллекцию для товара!']);
+        return false
+      }
       if (item_name != ''){
         $('li#item_name').text(item_name);
         $('.first_step').css('display','none');
@@ -56,10 +60,6 @@
         $('.second_step').css('display','block');
       } else {
         showErrors(['Введите название товара!']);
-      }
-      if (collection_id == -1){
-        showErrors(['Выберите коллекцию для товара!']);
-        return false
       }
     });
 
