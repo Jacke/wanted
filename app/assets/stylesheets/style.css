@@ -513,6 +513,7 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 #item #right .comnt_list ul li #avatar {display: block;float: left;margin-top: 4px;width: 28px;height: 28px;}
 #item #right .comnt_list ul li #comment {display: inline-block; margin-left: 10px;}
 
+#item #right .comnt_list ul li #comment #info span.remove {color: rgb(255, 0, 0);font-size: 18px;float: right;cursor: pointer;}
 #item #right .comnt_list ul li #comment #info {color: #aaa;}
 #item #right .comnt_list ul li #comment #info a{color: #aaa;}
 #item #right .comnt_list ul li #comment #info a:hover{color: #777;}
