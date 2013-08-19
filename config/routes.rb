@@ -39,6 +39,7 @@ Hochuli::Application.routes.draw do
   get 'tag/:tag'  => 'items#tags', as: :tags
   post 'item/:id/up'  => 'items#up', as: :like_item
   post 'item/:id/add/:collection_id' => 'items#add'
+  post 'item/:id/change_url' => 'items#change_url'
 
   #collections
   post 'collection/create' => 'collections#create'

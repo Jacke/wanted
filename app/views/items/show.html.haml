@@ -1,3 +1,13 @@
+- if current_user.admin?
+  :javascript
+    $(document).ready(function() {
+      $(document).on("click", ".change_url span.change", function(){
+        var id = "#{params[:id]}"
+        var new_url = $('.change_url input').val()
+        $.post('/item/'+id+'/change_url', { url: new_url })
+      })
+    })
+
 :javascript
   $(document).ready(function() {
 
@@ -39,6 +49,10 @@
       #store
         Магазин: 
         =link_to "www.#{@shop.url}", 'http://'+@shop.url, class: "ellow", target: "_blank"
+        - if current_user.admin?
+          .change_url
+            %input{:type => "url", :value => "#{@item.url}"}
+            %span.change Изменить
     #buttons
       #li
         #button

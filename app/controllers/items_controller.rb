@@ -158,6 +158,18 @@ class ItemsController < ApplicationController
     end
   end
 
+  def change_url
+    item_id = params[:id]
+    if Item.find_by_id(item_id).update_attribute :url, params[:url]
+      @respond = {ans: "Адрес изменен"}
+    end
+    
+    respond_to do |format|
+      format.json {render json:  @respond, status:  :ok}
+      format.any(:html,:xml) {render status:  404}
+    end
+ end
+
   private
 
   def clean_url(url)

@@ -523,6 +523,8 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 #item #left #user img {padding: 0 10px 5px 0;}
 #item #left #user a {display: inline-block;float: left;padding-right: 5px;}
 #item #left #store {margin-bottom: 50px;margin-top: 30px;}
+#item #left #store .change_url span {color: green; cursor: pointer; font-size: 12px;}
+#item #left #store .change_url input[type="url"]:focus {width: 300px;}
 #item #left #buttons {margin-bottom: 40px;}
 #item #left #buttons #li {display: inline-block;margin-bottom: 10px;}
 #item #left #buttons #li #button {display: inline-block;float:left;}
