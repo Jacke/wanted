@@ -9,7 +9,7 @@
 
     $(document).on("click", ".comnt_list #comment #info span.remove", function(){
       var id = $(this).attr('id')
-      var comment = $(this).parents('.comnt_list')
+      var comment = $(this).parents('.comnt_list').first()
 
       $.post('/comment/remove/'+id, function(data,status,xhr){
         showNotices(data.ans)
