@@ -4,7 +4,7 @@
       #name
         = link_to comment.item.name, item_path(comment.item)
       #info
-        - if current_user == comment.user || current_user.admin
+        - if current_user == comment.user || current_user.admin?
           %span.remove{:id => "#{comment.id}"}
         = link_to comment.user.name, user_show_path(comment.user)
         - unless comment.user.city.blank?
