@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :pop_tags, :collections_list
-
+#  after_filter :set_access_control_headers
   def pop_tags
     @pop_tags = Item.tag_counts.order("count desc").limit(5)
   end
@@ -64,4 +64,11 @@ class ApplicationController < ActionController::Base
   def update_raiting(item)
     item.update_attribute(:raiting, (item.followers_count_cache + 1)*3 + item.cached_comments)
   end
+
+
+def set_access_control_headers 
+  headers['Access-Control-Allow-Origin'] = 'http://192.241.189.137/' 
+  headers['Access-Control-Request-Method'] = '*' 
+end
+
 end

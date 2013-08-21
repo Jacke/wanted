@@ -33,7 +33,7 @@
   display: block;
 }
 #search_forms li span {
-  margin-left: 20px;
+  margin-left: 3px;
 }
 
 /* форма для добавления товара */
@@ -122,3 +122,8 @@
 #itemmodal #select_collecton #collection span.submit {background: #ddd;width: 300px;padding: 5px 15px;text-align: center;display: block;margin-top: 10px;cursor: pointer;border: 1px #000 solid;}
 #itemmodal #select_collecton #collection span.submit:hover {background: #e2e2e2;}
 /* конец. форма для добавления товара */
+
+
+/* Movie page */
+#bd .movie {margin-left: 30px; margin-top: 20px;}
+#bd .movie p {margin-bottom: 12px; font-size: 16px;}

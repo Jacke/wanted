@@ -17,14 +17,18 @@ class SearchController < ApplicationController
     # очищаем url
     url = clean_url(params[:site][:url])
     host = URI.parse( 'http://www.'+url ).host
-
+    logger.info host
     if url == 'wildberries.ru'
     @page = open( 'http://wildberries.ru', "r:ascii-8bit").read
     logger.info "BAAAAAAND =>>>>>>"
+    elsif host == 'www.adidas.ru'
+      @page = open('http://www.'+url).read
+      @page.gsub!(' = "/', ' = "http://'+host+'/on/')
+      @page.gsub!('/swatch/', '/pdp/')
     else
-    @page = open('http://www.'+url).read
+      @page = open('http://www.'+url).read
     end
-    @page = encode?(@page, url) unless host == 'img1.wildberries.ru'    
+      @page = encode?(@page, url) unless host == 'img1.wildberries.ru'    
 
     # if ...
     @page.gsub!('href="//', 'href="http://')
