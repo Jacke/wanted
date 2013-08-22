@@ -1,4 +1,4 @@
-- if current_user.admin?
+- if current_user.try(:admin?)
   :javascript
     $(document).ready(function() {
       $(document).on("click", ".change_url span.change", function(){
@@ -49,7 +49,7 @@
       #store
         Магазин: 
         =link_to "www.#{@shop.url}", 'http://'+@shop.url, class: "ellow", target: "_blank"
-        - if current_user.admin?
+        - if current_user.try(:admin?)
           .change_url
             %input{:type => "url", :value => "#{@item.url}"}
             %span.change Изменить

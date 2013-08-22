@@ -25,6 +25,12 @@ class SearchController < ApplicationController
       @page = open('http://www.'+url).read
       @page.gsub!(' = "/', ' = "http://'+host+'/on/')
       @page.gsub!('/swatch/', '/pdp/')
+    elsif host == 'www.lamoda.ru'
+      @page = open('http://www.'+url).read
+      @page.gsub!('overlay_all ', '')
+      @page.gsub!(/overlay_all_var\d/, 'none')
+      @page.gsub!(' class="veil" id="veilpop"', '')
+      @page.gsub!(' class="full-veil"', '')
     else
       @page = open('http://www.'+url).read
     end
