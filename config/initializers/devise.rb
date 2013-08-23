@@ -11,6 +11,7 @@ Devise.setup do |config|
   config.password_length = 8..128
   config.reset_password_within = 6.hours
   config.sign_out_via = :delete
+  config.allow_unconfirmed_access_for = 7.days
 
   config.http_authenticatable_on_xhr = false
   config.navigational_formats = ["*/*", :html, :json]
