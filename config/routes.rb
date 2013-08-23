@@ -5,6 +5,7 @@ Hochuli::Application.routes.draw do
                                   }
   devise_scope :user do
     match '/registrations/update_avatar' => "registrations#update_avatar", :as => :update_avatar  
+    match '/confirm/:confirmation_token', :to => "devise/confirmations#show", :as => "user_confirm", :only_path => false
   end                  
   
   root :to => 'items#new'

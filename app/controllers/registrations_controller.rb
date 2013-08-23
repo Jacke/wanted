@@ -7,7 +7,7 @@ class RegistrationsController < Devise::RegistrationsController
     resource.name.empty? ? resource.nickname = '847596548895' : resource.nickname = resource.name
 
     unless resource.shop
-      resource.phone = '89201234567'
+      resource.phone = params[:user][:phone]
     end
     
     if resource.save
@@ -32,7 +32,7 @@ class RegistrationsController < Devise::RegistrationsController
     @user = User.find(current_user.id)
 
     params[:user][:email]   = @user.email if change_surrogat_email?(@user, params)
-    resource.phone          = '89201234567' unless resource.shop
+    resource.phone          = params[:user][:phone] unless resource.shop
 
     params[:user][:nickname].gsub!(' ', '')
     params[:user][:nickname] = params[:user][:nickname].downcase
