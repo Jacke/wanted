@@ -25,6 +25,11 @@ class SearchController < ApplicationController
       @page = open('http://www.'+url).read
       @page.gsub!(' = "/', ' = "http://'+host+'/on/')
       @page.gsub!('/swatch/', '/pdp/')
+     elsif host == 'www.adidas.com'
+      @page = open('http://www.'+url).read
+      @page.gsub!(' = "/', ' = "http://'+host+'/on/')
+      @page.gsub!('/swatch/', '/pdp/')
+      @page.gsub('(/us/cms_content', '(http://'+host+'/us/cms-content')
     elsif host == 'www.wildberries.ru'
       @page = open('http://www.'+url).read
       @page.gsub!('<script type="text/javascript"> if', '<script type="text/javascript"> var img = $("#photo a img").first();$("#photo").prepend(img); if')

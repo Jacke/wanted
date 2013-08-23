@@ -176,11 +176,18 @@ $(document).ready(function() {
 
     var collection_id = $('#select_collecton_modal .current').attr('id')
     var id = $('#select_collecton_modal .current').attr('item')
+    
+    if (collection_id == '-1'){
+        alert(['Выберите коллекцию!']);
+        return false
+      }
+    else {
     $.post('/item/'+id+'/add/'+collection_id, function(data,status,xhr){
       var ans = data.ans
       showNotices(data.ans)
       $.arcticmodal('close')
     })
+        }
     return false;
   });
 
