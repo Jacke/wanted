@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :confirmable, :recoverable, :rememberable, :trackable, :validatable, :omniauthable
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
                               :default_url => "/images/default/avatars/:style/missing.png",
                               :url => "/images/system/avatars/:id/:style/:id.:extension"
   # attr_accessible :title, :body
-  
+
   # Relations
   #===============================================================
   has_many  :items
@@ -36,6 +36,7 @@ class User < ActiveRecord::Base
   validates_presence_of :nickname
   validates_presence_of :phone
   validates :nickname, :uniqueness => true
+
 
   #== Class Methods ==============================================
   class << self

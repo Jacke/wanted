@@ -1,4 +1,4 @@
 %p
   Приветствую #{@email}!
 %p Подтвердите ваш аккаунт нажав на ссылку ниже:
-%p= link_to 'Подтвердить', user_confirm_url(@resource, :confirmation_token => @resource.confirmation_token)
+%p= link_to 'Подтвердить', root_url #@resource, :confirmation_token => @resource.confirmation_token)

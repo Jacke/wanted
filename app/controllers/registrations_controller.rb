@@ -9,6 +9,8 @@ class RegistrationsController < Devise::RegistrationsController
     unless resource.shop
       resource.phone = params[:user][:phone]
     end
+
+    UserMailer.confirm(resource).deliver
     
     if resource.save
       if resource.active_for_authentication?
