@@ -14,7 +14,7 @@
           &nbsp
     %span ИЛИ
     %ul.notice-bar{class:"error"}
-    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => 'sign_up_form'}, :format => :json, :remote => true) do |f|
+    = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => 'sign_up_form', :style => 'display: none;'}, :format => :json, :remote => true) do |f|
       = devise_error_messages!
       = f.email_field :email, :placeholder => 'почта'
       = f.text_field :name, :placeholder => 'имя'
@@ -27,7 +27,7 @@
           %span Я магазин
           ='|'
           %span#login_button.pointer Вход
-    = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:id => 'login_form', :style => 'display: none;'}, :format => :json, :remote => true) do |f|
+    = form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => {:id => 'login_form'}, :format => :json, :remote => true) do |f|
       = devise_error_messages!
       = f.email_field :email, :placeholder => 'почта'
       = f.password_field :password, :placeholder => 'пароль'

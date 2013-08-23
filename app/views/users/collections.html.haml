@@ -10,11 +10,14 @@
     $(document).on("click", "#user .collection_element #preview span.remove", function(){
       var id = $(this).attr('id')
       var collection = $(this).parents('section.collection_element')
-
-      $.post('/collection/remove/'+id, function(data,status,xhr){
+      if (confirm("Удалить?")) {
+        $.post('/collection/remove/'+id, function(data,status,xhr){
         showNotices(data.ans)
         collection.remove()
       })
+      } else {
+      return false
+      }
       return false
     })
   })

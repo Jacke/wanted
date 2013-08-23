@@ -2,24 +2,25 @@
 .gi
   %ul#search_forms
     %li
-      %span А здесь мы добавляем товары, сделать это можно разными способами
+      %span А здесь мы добавляем товары. Это можно делать разными способами.
     %li
-      %span Из любого интернет магазина
+      %span Из любого Интернет-магазина:
     %li
       =form_tag({controller: "search", action: "frame"}, method: "get", class: "search_form") do
         =text_field :site, :url, placeholder: 'Вводим интернет адрес Интернет-магазина (alpha!)'
         =submit_tag("выбрать")
     %li
-      %span Ищем по названию товара в интернет-магазине
+      %span Со своего компа:
+    %li.search_form
+      %input{placeholder: 'Загружаем картинку товара с компа', :id => 'input_load_image'}
+      %input{:id => 'load_image',:type => 'submit', :value=>"Загрузить"}
+    %li
+      %span Или ищем по названию товара или магазина:
     %li
       =form_tag({controller: "search", action: "results"}, method: "get", class: "search_form") do
         =text_field :search,:q ,placeholder: 'Ищем по названию товара, магазина или коллекции на сайте'
         =submit_tag("OK")
-    %li
-      %span Или загружаем с компа
-    %li.search_form
-      %input{placeholder: 'Загружаем картинку товара с компа', :id => 'input_load_image'}
-      %input{:id => 'load_image',:type => 'submit', :value=>"Загрузить"}
+
 = render partial: 'add_item'
 
 .movie

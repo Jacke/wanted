@@ -11,14 +11,17 @@
       var id = $(this).attr('id')
       var item = $(this).parents('#grid_elements .element')
       var count = $('#user .active span.big_arial') 
-     
-      $.post('/item/remove/'+id, function(data,status,xhr){
+      if (confirm("Удалить?")) {
+        $.post('/item/remove/'+id, function(data,status,xhr){
         showNotices(data.ans)
         item.remove()
         count.text(function(i, oldNum) {
           return oldNum - 1;
         });
       })
+      } else {
+      return false
+      }
       return false
     })
   })
