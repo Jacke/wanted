@@ -15,7 +15,7 @@ gem 'omniauth-odnoklassniki'
 gem 'devise'
 gem 'rocket_tag'
 gem 'haml-rails'
-gem 'acts_as_votable', '~> 0.5.0'
+gem 'acts_as_votable', '~> 0.7.1'
 gem "acts_as_follower", :git => 'https://github.com/rafael/acts_as_follower.git'
 gem 'acts-as-taggable-on'
 
