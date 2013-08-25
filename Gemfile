@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.0.0'
 gem 'rails_db_dump'
+gem 'protected_attributes'
 gem 'russian'
 gem 'ru_propisju'
 gem 'paperclip'
@@ -15,7 +16,7 @@ gem 'devise'
 gem 'rocket_tag'
 gem 'haml-rails'
 gem 'acts_as_votable', '~> 0.5.0'
-gem "acts_as_follower"
+gem "acts_as_follower", :git => 'https://github.com/rafael/acts_as_follower.git'
 gem 'acts-as-taggable-on'
 
 gem 'therubyracer', :platforms => :ruby
