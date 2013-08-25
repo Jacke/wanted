@@ -204,12 +204,12 @@ GEM
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
-    thinking-sphinx (3.0.0)
+    thinking-sphinx (3.0.4)
       activerecord (>= 3.1.0)
       builder (>= 2.1.2)
       innertube (>= 1.0.2)
       middleware (>= 0.1.0)
-      riddle (>= 1.5.4)
+      riddle (>= 1.5.7)
     thor (0.18.1)
     thread_safe (0.1.2)
       atomic
@@ -257,6 +257,6 @@ DEPENDENCIES
   sass-rails
   therubyracer
   thin
-  thinking-sphinx (= 3.0.0)
+  thinking-sphinx
   uglifier (>= 1.0.3)
   will_paginate

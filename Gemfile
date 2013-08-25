@@ -23,7 +23,7 @@ gem 'therubyracer', :platforms => :ruby
 gem 'jquery-rails'
 gem 'mysql2',          '0.3.12b4'
 gem 'thin'
-gem 'thinking-sphinx', '3.0.0'
+gem 'thinking-sphinx'
 
 group :assets do
   gem 'sass-rails'
