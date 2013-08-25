@@ -163,6 +163,7 @@ GEM
       activesupport (= 3.2.13)
       bundler (~> 1.0)
       railties (= 3.2.13)
+    rails_db_dump (0.1.1)
     railties (3.2.13)
       actionpack (= 3.2.13)
       activesupport (= 3.2.13)
@@ -246,6 +247,7 @@ DEPENDENCIES
   omniauth-vkontakte
   paperclip
   rails (= 3.2.13)
+  rails_db_dump
   rocket_tag
   ru_propisju
   russian

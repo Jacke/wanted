@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.13'
+gem 'rails_db_dump'
 gem 'russian'
 gem 'ru_propisju'
 gem 'paperclip'
