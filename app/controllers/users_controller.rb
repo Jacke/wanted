@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def collection
-    @collection = Collection.find_by_id(params[:collection_id])
+    @collection = Collection.find(params[:collection_id])
     @items = @collection.following_by_type('Item').order("created_at DESC")
     @collections = @user.collections
     @mentions = @user.mentions
@@ -40,7 +40,7 @@ class UsersController < ApplicationController
   end
 
   def follow
-    @user = User.find_by_id(params[:id])
+    @user = User.find(params[:id])
 
     # увеличение счетчика новых подписчиков
     unless current_user.following?(@user)
@@ -58,7 +58,7 @@ class UsersController < ApplicationController
   end
 
   def unfollow
-    @unfollow_user = User.find_by_id(params[:id])
+    @unfollow_user = User.find(params[:id])
 
     # уменьшение счетчика новых подписчиков
     follow_link = current_user.follow(@unfollow_user)
@@ -74,7 +74,7 @@ class UsersController < ApplicationController
   private
 
   def get_foll_counts
-    @user = User.find_by_id(params[:id]) || current_user
+    @user = User.find(params[:id]) || current_user
     @foll_users_count = @user.following_by_type('User').where(shop: 0).count
     @foll_shop_count = @user.following_by_type('User').where(shop: 1).count
   end

@@ -82,7 +82,7 @@ class ItemsController < ApplicationController
       current_user.follow(@item)
 
       if @collection_id.to_i != -1
-        @collection = Collection.find_by_id(@collection_id)
+        @collection = Collection.find(@collection_id)
         @collection.follow(@item)
       end
 
@@ -96,7 +96,7 @@ class ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find_by_id(params[:id])
+    @item = Item.find(params[:id])
     @shop = @item.shop
     @user = @item.user
     @followers = @item.followers_by_type('User').limit(8)
@@ -113,7 +113,7 @@ class ItemsController < ApplicationController
   end
 
   #def up
-  #  @item = Item.find_by_id(params[:id])
+  #  @item = Item.find(params[:id])
   #  @item.liked_by current_user
   #  @respond = {item:{rating: @item.cached_votes_total}}
   #
@@ -126,14 +126,14 @@ class ItemsController < ApplicationController
   def add
     item_id = params[:id]
     collection_id = params[:collection_id]
-    @item = Item.find_by_id(item_id)
+    @item = Item.find(item_id)
 
     current_user.follow(@item)
     up_followers_cache(@item)
     update_raiting(@item)
 
     if collection_id.to_i != -1
-      @collection = Collection.find_by_id(collection_id)
+      @collection = Collection.find(collection_id)
       @collection.follow(@item)
       @respond = {ans: "Добавлено в коллекцию \"#{@collection.title}\""}
     else
@@ -148,7 +148,7 @@ class ItemsController < ApplicationController
   
   def remove
     item_id = params[:item_id]
-    if Item.find_by_id(item_id).destroy # NSFW
+    if Item.find(item_id).destroy # NSFW
       @respond = {ans: "Товар удален"}
     end
 
@@ -160,7 +160,7 @@ class ItemsController < ApplicationController
 
   def change_url
     item_id = params[:id]
-    if Item.find_by_id(item_id).update_attribute :url, params[:url]
+    if Item.find(item_id).update_attribute :url, params[:url]
       @respond = {ans: "Адрес изменен"}
     end
     

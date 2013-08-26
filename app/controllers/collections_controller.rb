@@ -1,7 +1,7 @@
 #encoding: utf-8
 class CollectionsController < ApplicationController
   def create
-    #@item = Item.find_by_id(params[:id])
+    #@item = Item.find(params[:id])
     @collections = current_user.collections
 
     @collection = Collection.new(params[:collection])
@@ -16,7 +16,7 @@ class CollectionsController < ApplicationController
 
   def remove
     collection_id = params[:collection_id]
-    if Collection.find_by_id(collection_id).destroy #NSFW
+    if Collection.find(collection_id).destroy #NSFW
       @respond = {ans: "Коллекция удалена"}
     end
 

@@ -2,7 +2,7 @@
 class CommentsController < ApplicationController
   def create
     if user_signed_in?
-      @item = Item.find_by_id(params[:id])
+      @item = Item.find(params[:id])
       @comments = @item.comments.order("created_at DESC")
 
       @comment = Comment.new(params[:comment])
@@ -24,7 +24,7 @@ class CommentsController < ApplicationController
   
   def remove
     comment_id = params[:id]
-    if Comment.find_by_id(comment_id).destroy
+    if Comment.find(comment_id).destroy
       @respond = {ans: "Комментарий удален"}
     end
 
