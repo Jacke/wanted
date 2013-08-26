@@ -1,3 +1,17 @@
+:javascript
+  $(document).ready(function() {
+    // collection
+    $(document).on('ajax:success','.new_collection', function(s,data,x){
+      if(typeof data == 'object'){
+        showErrors(data.errors);
+      }else{
+        //$('#select_collecton .collections_list').html(data);
+        //$('#select_collecton .new_collection input.new_collection').val('');
+        $('#select_collecton .collections_list li').last().click()
+        $('#collection .collectins').slideUp()
+      }
+    }); 
+  })
 .g-hidden{:style => 'display: none'}
   .box-modal#itemmodal
     #polo

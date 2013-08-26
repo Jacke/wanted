@@ -17,14 +17,15 @@
     var cur_col = $('#select_collecton .current')
 
     $(cur_col).click(function(){
-      $('#select_collecton .collectins').slideToggle()
+      $('#select_collecton .collectins').slideDown()
     })
 
     $(document).on("click", "#select_collecton .collectins li", function(){
       $('#itemmodal #new_item #collection_id').val($(this).attr('id'))
       $(cur_col).text($(this).text())
       $(cur_col).attr('id',$(this).attr('id'))
-      $(cur_col).click()
+      //$(cur_col).click()
+      $('#select_collecton .collectins').slideUp()
     })
 
     //add new collection

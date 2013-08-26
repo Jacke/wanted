@@ -39,6 +39,7 @@
 /* форма для добавления товара */
 #itemmodal .first_step .image_preview {height: 200px;}
 #itemmodal .second_step .image_preview {height: 111px;}
+#itemmodal .collections_list ul {overflow-y: scroll;height: 168px;}
 #itemmodal .center {text-align: center;}
 #itemmodal input[type="text"], #select_collecton_modal input[type="text"] {
   font-size: 18px;
