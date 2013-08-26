@@ -1,6 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :pop_tags, :collections_list
+  
 #  after_filter :set_access_control_headers
   def pop_tags
     @pop_tags = Item.tag_counts.order("count desc").limit(5)

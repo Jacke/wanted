@@ -28,7 +28,7 @@
 -@items.each do |item|
   %section.element.ui-draggable{:id => "#{item.id}", :page => 1}
     #preview
-      - if current_user == @user || current_user.admin?
+      - if current_user == @user || current_user.try(:admin?)
         %span.remove{:id => "#{item.id}"}
       %a{:href => item_path(item), :style => "background: url(#{item.image.url(:medium)})"}
       -if(item.prise && item.prise != 0)

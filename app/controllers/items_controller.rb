@@ -177,10 +177,16 @@ class ItemsController < ApplicationController
   end
 
   def up_followers_cache(item)
+    logger.info "...............>"
+    logger.info "followers_count_cache #{item.followers_count_cache}"
     if item.followers_count_cache == 0
+      logger.info "-1"
       item.update_attribute(:followers_count_cache, item.count_user_followers - 1)
     else
-      item.update_attribute(:followers_count_cache, item.followers_count_cache + 1) unless current_user.following?(item)
+      logger.info "+1"
+      logger.info "current_user.following?(item) #{current_user.following?(item)}"
+      logger.info "item.followers_count_cache #{item.followers_count_cache} +1 #{item.followers_count_cache + 1}"
+      item.update_attribute(:followers_count_cache, (item.followers_count_cache + 1)) # (!) unless current_user.following?(item)
     end
   end
 end

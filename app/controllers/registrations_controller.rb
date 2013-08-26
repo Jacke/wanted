@@ -1,10 +1,11 @@
 #encoding: utf-8
 class RegistrationsController < Devise::RegistrationsController
- 
+  before_filter :configure_permitted_parameters
+
   def create
     build_resource(sign_up_params)
     resource.password_confirmation = resource.password
-    resource.name.empty? ? resource.nickname = '847596548895' : resource.nickname = resource.name
+    resource.name.empty? ? resource.nickname = params[:user][:email] : resource.nickname = resource.name
 
     unless resource.shop
       resource.phone = params[:user][:phone]
@@ -92,7 +93,7 @@ class RegistrationsController < Devise::RegistrationsController
   end
 
   private
-
+  
   # check if we need password to update user data
   # ie if password or email was changed
   # extend this as needed
@@ -107,5 +108,16 @@ class RegistrationsController < Devise::RegistrationsController
       params[:user][:email].empty? && user.provider == 'vkontakte'
     end
   end
+  
+    protected
  
+  # my custom fields are :name, :heard_how
+  def configure_permitted_parameters
+    devise_parameter_sanitizer.for(:sign_up) do |u|
+      u.permit(:name, :nickname, :email, :password, :password_confirmation, :phone, :shop)
+    end
+    devise_parameter_sanitizer.for(:account_update) do |u|
+      u.permit(:name, :nickname, :email, :password, :password_confirmation, :current_password, :phone, :shop)
+    end
+  end
 end
