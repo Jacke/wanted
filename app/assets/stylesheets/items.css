@@ -3,6 +3,7 @@
 #select_collecton_modal .collectins {line-height: 30px;width: 410px;border: 1px #000 solid;border-top: 0; margin-top: 0px;position: absolute; top: 50;background: #fff;}
 #select_collecton_modal .collectins li {margin: 0; height: 30px; line-height: 30px;text-align: center;padding: 5px 15px;cursor: pointer;background: #fff;margin-bottom: 1px;}
 #select_collecton_modal .collectins li:hover {text-align: center;background: #ddd;}
+#select_collecton_modal .collectins ul {overflow-y: scroll;height: 168px;}
 #select_collecton_modal .new_collection input.new_collection {font-size: 18px;float: left;width: 320px;padding: 5px 10px;background: #ddd; border: 0}
 #select_collecton_modal .new_collection input.submit {height: 40px; line-height: 30px; width: 70px; background: #e5b03b;font-size: 18px;padding: 6px 20px;}
 #select_collecton_modal .new_collection input.submit:hover {background: #eebc4d;cursor: pointer;}
