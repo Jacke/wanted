@@ -98,6 +98,7 @@ var showErrors = function(errors){
 $(document).ready(function() {
   adaptive_page()
   add_draggable()
+
   /* Checkboxes and radio */
   $(".radio").dgStyle(15);
   $(".checkbox").dgStyle(15);
@@ -259,6 +260,14 @@ $(document).ready(function() {
                 $('#select_collecton_modal').arcticmodal({beforeClose: function(data, el) {$('#select_collecton_modal .collectins').slideUp(200)}})
         }
   });
+  // draggable arctic modal windows
+  $.arcticmodal('setDefault', {
+    beforeOpen: function(data, el) {
+	  $('.arcticmodal-container_i2').draggable({
+        handle: "#itemmodal"
+      });
+    }
+  });  
 
   // добавление в коллекцию
   var cur_col = $('#select_collecton_modal .current')
@@ -342,6 +351,7 @@ $(document).ready(function() {
         };
         $('#pololo').css('display','none');
       });
+
     });
 
 });

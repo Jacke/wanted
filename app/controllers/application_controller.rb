@@ -67,7 +67,7 @@ class ApplicationController < ActionController::Base
 
 
 def set_access_control_headers 
-  headers['Access-Control-Allow-Origin'] = 'http://192.241.189.137/' 
+  headers['Access-Control-Allow-Origin'] = 'http://88.198.200.85/' 
   headers['Access-Control-Request-Method'] = '*' 
 end
 
