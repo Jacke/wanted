@@ -56,10 +56,10 @@ set :scm,             :git
 # Подробнее о создании репозитория читайте в нашем блоге
 # http://locum.ru/blog/hosting/git-on-locum
 
-#set :repository,      "ssh://#{user}@#{deploy_server}/home/#{user}/git/#{application}.git"
+set :repository,      "ssh://#{user}@#{deploy_server}/home/#{user}/git/#{application}.git"
 
 ## Если ваш репозиторий в GitHub, используйте такую конфигурацию
- set :repository,    "https://Jacke@github.com/Jacke/wanted.git"
+# set :repository,    "ssh://Jacke@github.com/Jacke/wanted.git"
 
 ## --- Ниже этого места ничего менять скорее всего не нужно ---
 
