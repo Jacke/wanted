@@ -8,7 +8,10 @@ after "deploy:update_code", :copy_database_config
  task :copy_database_config, roles => :app do
    db_config = "#{shared_path}/database.yml"
    run "cp #{db_config} #{release_path}/config/database.yml"
+   system "rsync -avz public/images/system/ hosting_ilia80@#{deploy_server}:/home/#{user}/projects/#{application}/shared/system"
  end
+ 
+set :shared_children, shared_children + %w{public/images/system}
 
 load 'deploy/assets'
 
