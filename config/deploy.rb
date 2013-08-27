@@ -15,12 +15,6 @@ set :shared_children, shared_children + %w{public/images/system}
 
 load 'deploy/assets'
 
-# Для удобства работы мы рекомендуем вам настроить авторизацию
-# SSH по ключу. При работе capistrano будет использоваться
-# ssh-agent, который предоставляет возможность пробрасывать
-# авторизацию на другие хосты.
-# Если вы не используете авторизацию SSH по ключам И ssh-agent,
-# закомментируйте эту опцию.
 ssh_options[:forward_agent] = true
 #default_run_options[:pty] = true 
 
@@ -50,43 +44,19 @@ set :rvm_ruby_string, "2.0.0"
 set :rake,            "rvm use #{rvm_ruby_string} do bundle exec rake" 
 set :bundle_cmd,      "rvm use #{rvm_ruby_string} do bundle"
 
-# Настройка системы контроля версий и репозитария,
-# по умолчанию - git, если используется иная система версий,
-# нужно изменить значение scm.
 set :scm,             :git
-
-# Предполагается, что вы размещаете репозиторий Git в вашем
-# домашнем каталоге в подкаталоге git/<имя проекта>.git.
-# Подробнее о создании репозитория читайте в нашем блоге
 # http://locum.ru/blog/hosting/git-on-locum
-
 set :repository,      "ssh://#{user}@#{deploy_server}/home/#{user}/git/#{application}.git"
-
 ## Если ваш репозиторий в GitHub, используйте такую конфигурацию
 # set :repository,    "ssh://Jacke@github.com/Jacke/wanted.git"
 
 ## --- Ниже этого места ничего менять скорее всего не нужно ---
-before 'deploy:update_code', 'thinking_sphinx:stop'
-after  'deploy:update_code', 'thinking_sphinx:start'
-
-namespace :sphinx do
-  desc "Symlink Sphinx indexes"
-  task :symlink_indexes, :roles => [:app] do
-    run "ln -nfs #{shared_path}/db/sphinx #{release_path}/db/sphinx"
-  end
-end
-
-after 'deploy:finalize_update', 'sphinx:symlink_indexes'
-
 before 'deploy:finalize_update', 'set_current_release'
 task :set_current_release, :roles => :app do
     set :current_release, latest_release
 end
 
-  set :unicorn_start_cmd, "(cd #{deploy_to}/current; rvm use #{rvm_ruby_string} do bundle exec unicorn_rails -Dc #{unicorn_conf})"
-
-
-
+set :unicorn_start_cmd, "(cd #{deploy_to}/current; rvm use #{rvm_ruby_string} do bundle exec unicorn_rails -Dc #{unicorn_conf})"
 # - for unicorn - #
 
 namespace :deploy do
