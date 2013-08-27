@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :pop_tags, :collections_list
-  
+
 #  after_filter :set_access_control_headers
   def pop_tags
     @pop_tags = Item.tag_counts.order("count desc").limit(5)
@@ -19,26 +19,27 @@ class ApplicationController < ActionController::Base
   end
 
   # упоминания
-  def mentions(comment,item,column)
+  def new_item_comment(comment,item)
     linked_comment = comment
-    mentions_arr = comment.split
-    mentions_arr.each do |mention|
-      if mention[0] == '@'
-        mention.sub!(/^@/, '').sub!(/,$/, '')
-
-        user = User.where(nickname: mention).first
-
-        unless user.blank?
-          new_mention = Mention.new
-          new_mention.user_id = user.id
-          new_mention.comment_id = item.id
-          if new_mention.save
-            linked_comment = linked_comment.gsub('@'+user.nickname,'<a href="'+user_show_path(user)+'">@'+user.nickname+'</a>')
-            item.update_attribute(column, linked_comment)
-          end
+    item_comment = comment.split
+    comment_arr = []
+    item_comment.each do |comment_pars|
+      if comment_pars.match(/^#/).blank?
+        if comment_pars.match(/^@/).present?
+          user = User.find_by(name: comment_pars.gsub('@', ''))
+          if user.present?
+            Mention.new(user_id: user.id, comment_id: item.id).save
+            lkd_comment = comment_pars.gsub('@'+user.name,'<a href="'+user_show_path(user)+'">@'+user.name+'</a>')
+            comment_arr << lkd_comment
+          else 
+          comment_arr << comment_pars 
+          end  
+        else
+          comment_arr << comment_pars   
         end
       end
     end
+   Comment.new(content: comment_arr.join(' '), user_id: item.user_id, item_id: item.id).save unless comment_arr.blank?
   end
 
   # тэги

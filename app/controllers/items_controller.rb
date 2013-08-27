@@ -87,8 +87,7 @@ class ItemsController < ApplicationController
       end
 
       apply_tags(@item.comment,@item, @item) if not @item.comment.empty?
-      #mentions(@item.comment, @item, 'comment')
-
+      new_item_comment(@item.comment, @item)
       return render :json => {:success => true, :message => 'Товар успешно добавлен'}
     else
       return render :json => {:success => false, :errors => @item.errors.full_messages}
