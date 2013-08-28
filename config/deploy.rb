@@ -10,7 +10,6 @@ after "deploy:update_code", :copy_database_config
    run "cp #{db_config} #{release_path}/config/database.yml"
    system "rsync -avz public/images/system/ hosting_ilia80@#{deploy_server}:/home/#{user}/projects/#{application}/shared/system"
  end
- 
 set :shared_children, shared_children + %w{public/images/system}
 
 load 'deploy/assets'
@@ -58,7 +57,6 @@ end
 
 set :unicorn_start_cmd, "(cd #{deploy_to}/current; rvm use #{rvm_ruby_string} do bundle exec unicorn_rails -Dc #{unicorn_conf})"
 # - for unicorn - #
-
 namespace :deploy do
   desc "Start application"
   task :start, :roles => :app do
@@ -74,4 +72,19 @@ namespace :deploy do
   task :restart, :roles => :app do
     run "[ -f #{unicorn_pid} ] && kill -USR2 `cat #{unicorn_pid}` || #{unicorn_start_cmd}"
   end
+  
+  desc "Link up Sphinx's indexes."
+  task :symlink_sphinx_indexes, :roles => [:app] do
+    run "ln -nfs #{shared_path}/db/sphinx #{release_path}/db/sphinx"
+  end
+
+  task :activate_sphinx, :roles => [:app] do
+    symlink_sphinx_indexes
+    thinking_sphinx.configure
+    thinking_sphinx.start
+  end
+
+  before 'deploy:update_code', 'thinking_sphinx:stop'
+  after 'deploy:update_code', 'deploy:activate_sphinx'
+
 end

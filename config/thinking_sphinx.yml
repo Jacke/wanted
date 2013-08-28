@@ -2,5 +2,5 @@ development:
   mysql41: 9312
 production:
   mysql41: 9312
-  pid_file: /var/run/sphinx/searchd.pid
+  pid_file: /home/hosting_ilia80/projects/hochuli/shared/pids/searchd.pid
   searchd_file_path: /home/hosting_ilia80/projects/hochuli/shared/db/sphinx
