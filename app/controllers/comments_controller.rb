@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       @comment.user_id = current_user.id
       @comment.item_id = @item.id
       repl_comm = item_comment(@comment.content.strip_tags, @item)
-      if repl_comm.nil? then repl_comm.so_s end
+      if repl_comm.nil? then repl_comm = "" end
 
       @comment.content = repl_comm + ' ' + comment_tag(@comment.content)
       if @comment.save
