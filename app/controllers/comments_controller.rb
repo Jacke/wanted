@@ -9,9 +9,8 @@ class CommentsController < ApplicationController
       @comment.user_id = current_user.id
       @comment.item_id = @item.id
       @comment.content = @comment.content.strip_tags
-
+      @comment.content = item_comment(@comment.content, @item)
       if @comment.save
-        mentions(@comment.content, @comment, 'content')
         apply_tags(@comment.content,@comment, @item)
         update_cached_comments(@item)
         update_raiting(@item)

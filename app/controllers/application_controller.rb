@@ -41,6 +41,29 @@ class ApplicationController < ActionController::Base
     end
    Comment.new(content: comment_arr.join(' '), user_id: item.user_id, item_id: item.id).save unless comment_arr.blank?
   end
+ 
+  def item_comment(comment,item)
+    linked_comment = comment
+    item_comment = comment.split
+    comment_arr = []
+    item_comment.each do |comment_pars|
+      if comment_pars.match(/^#/).blank?
+        if comment_pars.match(/^@/).present?
+          user = User.find_by(name: comment_pars.gsub('@', ''))
+          if user.present?
+            Mention.new(user_id: user.id, comment_id: item.id).save
+            lkd_comment = comment_pars.gsub('@'+user.name,'<a href="'+user_show_path(user)+'">@'+user.name+'</a>')
+            comment_arr << lkd_comment
+          else 
+          comment_arr << comment_pars 
+          end  
+        else
+          comment_arr << comment_pars   
+        end
+      end
+    end
+   comment_arr.join(' ') unless comment_arr.blank?
+  end
 
   # тэги
   def apply_tags(comment , item , taggable)
