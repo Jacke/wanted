@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
       @comment.user_id = current_user.id
       @comment.item_id = @item.id
       hash_strip = @comment.content.strip_tags
-      @comment.content = item_comment(hash_strip, @item) + comment_tag(@comment.content)
+      @comment.content = item_comment(hash_strip, @item) + ' ' + comment_tag(@comment.content)
       logger.info "@comment.content #{@comment.content}"
       if @comment.save
         apply_tags(params[:comment][:content], @comment, @item)
