@@ -9,9 +9,11 @@ class CommentsController < ApplicationController
       @comment.user_id = current_user.id
       @comment.item_id = @item.id
       repl_comm = item_comment(@comment.content.strip_tags, @item)
-      if repl_comm.nil? then repl_comm = "" end
+      tag_comm  = comment_tag(@comment.content)
+        if repl_comm.nil? then repl_comm = "" end
+        if tag_comm.nil? then tag_comm = "" end
+      @comment.content = repl_comm + ' ' + tag_comm
 
-      @comment.content = repl_comm + ' ' + comment_tag(@comment.content)
       if @comment.save
         apply_tags(params[:comment][:content], @comment, @item)
         update_cached_comments(@item)
