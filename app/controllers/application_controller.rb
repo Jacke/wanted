@@ -83,13 +83,14 @@ class ApplicationController < ActionController::Base
    comment_arr.join(' ') unless comment_arr.blank?
   end
   def comment_tag(comment)
-    @linked_comment = comment
     comment.gsub!(',', ', ')
     comment_arr = []
     words_arr = comment.split
     words_arr.each do |word|
       if word.match(/^#/).present?
-        comment_arr << word.gsub('#'+word,'<a href="/tag/'+word+'">#'+word+'</a>')
+        tag = word.gsub('#'+word,'<a href="/tag/'+word+'">#'+word+'</a>')
+        comment_arr << tag
+        logger.info "..TAG #{tag}"
       end
     end
     comment_arr.join(' ') unless comment_arr.blank?
