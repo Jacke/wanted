@@ -1,4 +1,5 @@
 class SearchController < ApplicationController
+  include ShopParser
   def index
     @item = Item.new
     @collections = current_user.collections
@@ -17,42 +18,11 @@ class SearchController < ApplicationController
     # очищаем url
     url = clean_url(params[:site][:url])
     host = URI.parse( 'http://www.'+url ).host
-    logger.info host
-    if url == 'wildberries.ru'
-    @page = open( 'http://wildberries.ru', "r:ascii-8bit").read
-    logger.info "BAAAAAAND =>>>>>>"
-    elsif host == 'www.adidas.ru'
-      @page = open('http://www.'+url).read
-      @page.gsub!(' = "/', ' = "http://'+host+'/on/')
-      @page.gsub!('/swatch/', '/pdp/')
-     elsif host == 'www.adidas.com'
-      @page = open('http://www.'+url).read
-      @page.gsub!(' = "/', ' = "http://'+host+'/on/')
-      @page.gsub!('/swatch/', '/pdp/')
-      @page.gsub('(/us/cms_content', '(http://'+host+'/us/cms-content')
-    elsif host == 'www.wildberries.ru'
-      @page = open('http://www.'+url).read
-      @page.gsub!('<script type="text/javascript"> if', '<script type="text/javascript"> var img = $("#photo a img").first();$("#photo").prepend(img); if')
-    elsif host == 'www.lamoda.ru'
-      @page = open('http://www.'+url).read
-      @page.gsub!('overlay_all ', '')
-      @page.gsub!(/overlay_all_var\d/, 'none')
-      @page.gsub!(' class="veil" id="veilpop"', '')
-      @page.gsub!(' class="full-veil"', '')
-    else
-      @page = open('http://www.'+url).read
+    unless url.present?
+      redirect_to search_url
     end
-      @page = encode?(@page, url) unless host == 'img1.wildberries.ru'    
 
-    # if ...
-    @page.gsub!('href="//', 'href="http://')
-    @page.gsub!('src="//', 'src="http://')
-    @page.gsub!('href="/','href="http://'+host+'/')
-    @page.gsub!('src="/','src="http://'+host+'/')
-    @page.gsub!('href="./','href="http://'+host+'/./')
-    @page.gsub!('href="?','href="http://'+host+'/?')
-    @page.gsub!('target="_blank"','')
-
+    shop_fetch(url, host)
     @page = @page.html_safe
 
     render :layout => false
@@ -94,31 +64,5 @@ class SearchController < ApplicationController
     @collections = Collection.search @query, :page => 1, :per_page => 10
   end
   
-  private
-
-  def clean_url(url)
-    s = url.sub(/^https?\:\/\//, '').sub(/^www./,'')
-    s = URI.escape(s)
-  end
-  
-  def encode?(object, url)
-    logger.info "#{object.encoding} true?"
-      logger.info "............................"
-      begin 
-      cleaned = object.dup.force_encoding('UTF-8') 
-      unless cleaned.valid_encoding? 
-      cleaned = object.encode( 'UTF-8', 'Windows-1251' ) 
-      end 
-      object = cleaned 
-      rescue EncodingError 
-      object.encode!( 'UTF-8', invalid: :replace, undef: :replace )       
-      end 
-      #object.sub!(/(?<=(\<meta charset\="))(.+?)(?=".+?\>)/, 'utf-8')
-      logger.info "puuuuuuuuuul"
-    object 
-  end
-
-  def parse
-    
-  end
+ 
 end
