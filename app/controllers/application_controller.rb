@@ -26,10 +26,10 @@ class ApplicationController < ActionController::Base
     item_comment.each do |comment_pars|
       if comment_pars.match(/^#/).blank?
         if comment_pars.match(/^@/).present?
-          user = User.find_by(name: comment_pars.gsub('@', ''))
+          user = User.find_by(nickname: comment_pars.gsub('@', ''))
           if user.present?
             Mention.new(user_id: user.id, comment_id: item.id).save
-            lkd_comment = comment_pars.gsub('@'+user.name,'<a href="'+user_show_path(user)+'">@'+user.name+'</a>')
+            lkd_comment = comment_pars.gsub('@'+user.nickname,'<a href="'+user_show_path(user)+'">@'+user.nickname+'</a>')
             comment_arr << lkd_comment
           else 
           comment_arr << comment_pars 
@@ -49,10 +49,10 @@ class ApplicationController < ActionController::Base
     item_comment.each do |comment_pars|
       if comment_pars.match(/^#/).blank?
         if comment_pars.match(/^@/).present?
-          user = User.find_by(name: comment_pars.gsub('@', ''))
+          user = User.find_by(nickname: comment_pars.gsub('@', ''))
           if user.present?
             Mention.new(user_id: user.id, comment_id: item.id).save
-            lkd_comment = comment_pars.gsub('@'+user.name,'<a href="'+user_show_path(user)+'">@'+user.name+'</a>')
+            lkd_comment = comment_pars.gsub('@'+user.nickname,'<a href="'+user_show_path(user)+'">@'+user.nickname+'</a>')
             comment_arr << lkd_comment
           else 
           comment_arr << comment_pars 
