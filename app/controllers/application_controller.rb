@@ -41,7 +41,25 @@ class ApplicationController < ActionController::Base
     end
    Comment.new(content: comment_arr.join(' '), user_id: item.user_id, item_id: item.id).save unless comment_arr.blank?
   end
- 
+  def apply_tags(comment, item, taggable)
+    @tag_list = []
+    @linked_comment = comment
+    comment.gsub!(',', ', ')
+    words_arr = comment.split
+    words_arr.each do |word|
+      if word[0] == '#'
+        word.sub!(/^#/, '').sub!(/,$/, '')
+        @linked_comment = @linked_comment.gsub('#'+word,'<a href="/tag/'+word+'">#'+word+'</a>')
+        @tag_list << word
+      end
+    end
+
+    unless @tag_list.empty?
+      @tag_list << taggable.tag_list
+      taggable.update_attribute(:tag_list, @tag_list)
+    end
+  end
+
   def item_comment(comment,item)
     linked_comment = comment
     item_comment = comment.split
@@ -64,26 +82,17 @@ class ApplicationController < ActionController::Base
     end
    comment_arr.join(' ') unless comment_arr.blank?
   end
-
-  # тэги
-  def apply_tags(comment , item , taggable)
-    @tag_list = []
+  def comment_tag(comment)
     @linked_comment = comment
     comment.gsub!(',', ', ')
+    comment_arr = []
     words_arr = comment.split
     words_arr.each do |word|
-      if word[0] == '#'
-        word.sub!(/^#/, '').sub!(/,$/, '')
-        @linked_comment = @linked_comment.gsub('#'+word,'<a href="/tag/'+word+'">#'+word+'</a>')
-        @tag_list << word
+      if word.match(/^#/).present?
+        comment_arr << word.gsub('#'+word,'<a href="/tag/'+word+'">#'+word+'</a>')
       end
     end
-
-    unless @tag_list.empty?
-      @tag_list << taggable.tag_list
-      taggable.update_attribute(:tag_list, @tag_list)
-      # item.update_attribute(:content, @linked_comment)
-    end
+    comment_arr.join(' ') unless comment_arr.blank?
   end
 
   def update_raiting(item)
@@ -92,7 +101,7 @@ class ApplicationController < ActionController::Base
 
 
 def set_access_control_headers 
-  headers['Access-Control-Allow-Origin'] = 'http://88.198.200.85/' 
+  headers['Access-Control-Allow-Origin'] = 'http://hochuli.ru/' 
   headers['Access-Control-Request-Method'] = '*' 
 end
 

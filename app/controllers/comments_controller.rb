@@ -8,10 +8,11 @@ class CommentsController < ApplicationController
       @comment = Comment.new(params[:comment])
       @comment.user_id = current_user.id
       @comment.item_id = @item.id
-      comment_content = @comment.content
-      @comment.content = item_comment(@comment.content.strip_tags, @item)
+      hash_strip = @comment.content.strip_tags
+      @comment.content = item_comment(hash_strip, @item) + comment_tag(@comment.content)
+      logger.info "@comment.content #{@comment.content}"
       if @comment.save
-        apply_tags(@comment.content,@comment, @item)
+        apply_tags(params[:comment][:content], @comment, @item)
         update_cached_comments(@item)
         update_raiting(@item)
         render partial: "shared/comments"
