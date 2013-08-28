@@ -18,7 +18,7 @@ class Item < ActiveRecord::Base
   #===============================================================
   belongs_to  :user, :counter_cache => true 
   belongs_to  :shop
-  has_many    :comments
+  has_many    :comments, dependent: :delete_all
 
   # Validations
   #===============================================================

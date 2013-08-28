@@ -25,10 +25,10 @@ class User < ActiveRecord::Base
 
   # Relations
   #===============================================================
-  has_many  :items
-  has_many  :collections
-  has_many  :comments
-  has_many  :mentions
+  has_many  :items,       dependent: :delete_all
+  has_many  :collections, dependent: :delete_all
+  has_many  :comments,    dependent: :delete_all
+  has_many  :mentions,    dependent: :delete_all
 
   # Validations
   #===============================================================
