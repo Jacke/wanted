@@ -1,5 +1,6 @@
 module ShopParser
   extend ActiveSupport::Concern
+  require 'open-uri'
 
  private
   def shop_fetch(url, host)
@@ -45,11 +46,11 @@ def clean_url(url)
 end
 
 def encode?(object, url)
-  logger.info "#{object.encoding} true?"
     begin 
     cleaned = object.dup.force_encoding('UTF-8') 
     unless cleaned.valid_encoding? 
-    cleaned = object.encode( 'UTF-8', 'Windows-1251' ) 
+      cleaned = object.encode( 'UTF-8', 'Windows-1251' ) if object.index('windows-1251').present?
+      cleaned = object.encode( 'UTF-8', 'ISO-8859-5' )   if object.index('charset=ISO-8859-5').present?
     end 
     object = cleaned 
     rescue EncodingError 

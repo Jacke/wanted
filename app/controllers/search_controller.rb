@@ -14,8 +14,6 @@ class SearchController < ApplicationController
   end
 
   def site
-    require 'open-uri'
-    # очищаем url
     url = clean_url(params[:site][:url])
     host = URI.parse( 'http://www.'+url ).host
     unless url.present?
