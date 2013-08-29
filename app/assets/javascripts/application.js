@@ -295,7 +295,7 @@ $(document).ready(function() {
       var imgInp = $('#itemmodal input#imgInp')
 
       $(links).click(function(){
-        window.location.href = '/frame/site?site[url]='+$(this).attr('href')
+        window.location.href = 'http://hochuli.ru/frame/site?site[url]='+$(this).attr('href')
       })
       
       $(images).mousedown( function() {
