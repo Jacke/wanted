@@ -40,7 +40,7 @@ module ShopParser
     @page.gsub!('<a class="ref_goods_n_p" href="/', '<a class="ref_goods_n_p" href="http://wildberries.ru/')
     @page.gsub!('target="_blank"','')
     @page.gsub!('id="catalogPagerTemplate" type="text/x-jquery-tmpl"', 'id="" type=""')
-    @page.gsub!('script src="http://static.wildberries.ru/j/jsdata.js?2.4"', 'script src=""')
+    @page.gsub!('<script src="http://static.wildberries.ru/j/jsdata.js?2.4.1"', '')
     @page.gsub!('<noscript><img class="thumbnail"', '<img class="thumbnail"')
 
 end
