@@ -42,5 +42,9 @@
             =link_to collection.title, user_collection_path(collection.user_id,collection)
   -else
     .con_h
-      %h2
-        Пока нет ни одной коллекции
+      - if current_user == @user
+        %h2
+          Пока нет ни одной коллекции
+      - else
+        %h2
+          Пользователь не создан ни одной коллекции

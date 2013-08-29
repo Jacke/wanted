@@ -8,6 +8,10 @@
       =render partial: "items_grid"
   -else
     .con_h
-      %h2
-        У вас нет ни одного товара. Для того чтобы добавить новый товар, сделай
-        =link_to "серч...", search_path, class: "ellow"
+      - if current_user == @user
+        %h2
+          У вас нет ни одного товара. Для того чтобы добавить новый товар, сделай
+          =link_to "серч...", search_path, class: "ellow"
+      - else
+        %h2
+          Пользователь еще не нашел свои товары
