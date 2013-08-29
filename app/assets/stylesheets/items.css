@@ -1,6 +1,6 @@
 #select_collecton_modal {width: 410px; padding: 50px 50px;}
 #select_collecton_modal .current {background: #fff; height: 30px; line-height: 30px; font-size: 18px;color: #000;padding: 5px 15px;width: 380px;border: 1px #000 solid;display: inline-block;text-align: center;margin: 0;cursor: pointer;}
-#select_collecton_modal .collectins {line-height: 30px;width: 410px;border: 1px #000 solid;border-top: 0; margin-top: 0px;position: absolute; top: 50;background: #fff;}
+#select_collecton_modal .collectins {line-height: 30px;width: 410px;border: 1px #000 solid;border-top: 0; margin-top: 0px;position: absolute;background: #fff;}
 #select_collecton_modal .collectins li {margin: 0; height: 30px; line-height: 30px;text-align: center;padding: 5px 15px;cursor: pointer;background: #fff;margin-bottom: 1px;}
 #select_collecton_modal .collectins li:hover {text-align: center;background: #ddd;}
 #select_collecton_modal .collectins ul {overflow-y: scroll;height: 168px;}
