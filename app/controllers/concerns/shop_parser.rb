@@ -42,7 +42,13 @@ module ShopParser
     @page.gsub!('id="catalogPagerTemplate" type="text/x-jquery-tmpl"', 'id="" type=""')
     @page.gsub!('<script src="http://static.wildberries.ru/j/jsdata.js?2.4.1"', '')
     @page.gsub!('<noscript><img class="thumbnail"', '<img class="thumbnail"')
+    @page.gsub!('<img src="https://vk.com/rtrg?', '<img')
     @page.gsub!('var _mTrack = _mTrack || [];', '')
+    @page.gsub!("_mTrack.push(['trackPage']);", "")
+    @page.gsub!("var mt = document.createElement('script'); mt.type = 'text/javascript'; mt.async = true;", "")
+    @page.gsub!("mt.src = mProto + mHost + '/tracker/async/' + mClientId + '.js';", "")
+    @page.gsub!("var fscr = document.getElementsByTagName('script')[0]; fscr.parentNode.insertBefore(mt, fscr);", "")
+    
 
 end
 
