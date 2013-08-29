@@ -42,6 +42,7 @@ module ShopParser
     @page.gsub!('id="catalogPagerTemplate" type="text/x-jquery-tmpl"', 'id="" type=""')
     @page.gsub!('<script src="http://static.wildberries.ru/j/jsdata.js?2.4.1"', '')
     @page.gsub!('<noscript><img class="thumbnail"', '<img class="thumbnail"')
+    @page.gsub!('<img src="https://vk.com/rtrg?', '<img ')
 
 end
 
