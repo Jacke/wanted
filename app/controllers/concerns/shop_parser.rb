@@ -48,7 +48,8 @@ module ShopParser
     @page.gsub!("var mt = document.createElement('script'); mt.type = 'text/javascript'; mt.async = true;", "")
     @page.gsub!("mt.src = mProto + mHost + '/tracker/async/' + mClientId + '.js';", "")
     @page.gsub!("var fscr = document.getElementsByTagName('script')[0]; fscr.parentNode.insertBefore(mt, fscr);", "")
-    
+    @page.gsub!('MagicZoomPlus', '')
+    @page.gsub!('ui-magnifier', '')
 
 end
 
