@@ -264,7 +264,7 @@ $(document).ready(function() {
   $.arcticmodal('setDefault', {
     beforeOpen: function(data, el) {
 	  $('.arcticmodal-container_i2').draggable({
-        handle: "#itemmodal"
+        handle: "span.draggable"
       });
     }
   });  

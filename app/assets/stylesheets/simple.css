@@ -7,6 +7,8 @@
   font-size: 18px;
   font-weight: bold;
 }
+.box-modal span.draggable {background: url('../images/draggable.png');position: absolute;right: 50%;top: 2px;font-size: 11px;line-height: 15px;color: rgb(153, 153, 153);cursor: pointer;width: 26px;height: 26px;background-size: cover;opacity: 0.6;text-indent: -9999px;}
+.box-modal span.draggable:hover {opacity: 1;}
 .box-modal_close { position: absolute; right: 10px; top: 6px; font-size: 11px; line-height: 15px; color: #999; cursor: pointer; }
 .box-modal_close:hover { color: #666; }
 #box-modal_prev { position: absolute; left: 10px; top: 6px; font-size: 11px; line-height: 15px; color: #999; cursor: pointer; }
