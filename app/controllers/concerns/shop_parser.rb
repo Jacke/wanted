@@ -42,6 +42,8 @@ module ShopParser
     @page.gsub!('script id="catalogPagerTemplate"', 'noscript id="catalogPagerTemplate"')
     @page.gsub!('script src="http://static.wildberries.ru/j/jsdata.js?2.4"', 'script src=""')
     @page.gsub!('<noscript><img class="thumbnail"', '<img class="thumbnail"')
+    @page.gsub!('<noscript>', '')
+    @page.gsub!('</noscript>', '')
 end
 
 def clean_url(url)
