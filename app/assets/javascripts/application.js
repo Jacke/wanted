@@ -293,7 +293,7 @@ $(document).ready(function() {
       var itemmodal = $('#itemmodal')
       var image_inp_by_url = $('#itemmodal input#image_by_url')
       var imgInp = $('#itemmodal input#imgInp')
-
+      var apphost = 
       $(links).click(function(){
         window.location.href = 'http://hochuli.ru/frame/site?site[url]='+$(this).attr('href')
       })
