@@ -39,6 +39,8 @@ module ShopParser
     @page.gsub!('href="?','href="http://'+host+'/?')
     @page.gsub!('<a class="ref_goods_n_p" href="/', '<a class="ref_goods_n_p" href="http://wildberries.ru/')
     @page.gsub!('target="_blank"','')
+    @page.gsub!('script id="catalogPagerTemplate"', 'noscript id="catalogPagerTemplate"')
+    @page.gsub!('script src="http://static.wildberries.ru/j/jsdata.js?2.4"', 'script src=""')
 end
 
 def clean_url(url)
