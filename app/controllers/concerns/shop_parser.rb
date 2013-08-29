@@ -7,7 +7,6 @@ module ShopParser
 
     if url == 'wildberries.ru'
     @page = open( 'http://wildberries.ru', "r:ascii-8bit").read
-    @page.gsub!('href="/', 'href="http://wildberries.ru/')
     elsif host == 'www.adidas.ru'
       @page = open('http://www.'+url).read
       @page.gsub!(' = "/', ' = "http://'+host+'/on/')
@@ -38,6 +37,7 @@ module ShopParser
     @page.gsub!('src="/','src="http://'+host+'/')
     @page.gsub!('href="./','href="http://'+host+'/./')
     @page.gsub!('href="?','href="http://'+host+'/?')
+    @page.gsub!('<a class="ref_goods_n_p" href="/', '<a class="ref_goods_n_p" href="http://wildberries.ru/')
     @page.gsub!('target="_blank"','')
 end
 
