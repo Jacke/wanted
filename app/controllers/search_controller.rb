@@ -16,7 +16,7 @@ class SearchController < ApplicationController
   def site
     url = clean_url(params[:site][:url])
     host = URI.parse( 'http://www.'+url ).host
-    unless url.present?
+    unless url.present? || params[:site].blank?
       redirect_to search_url
     end
 

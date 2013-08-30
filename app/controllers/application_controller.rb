@@ -89,7 +89,7 @@ class ApplicationController < ActionController::Base
     words_arr.each do |word|
       if word.match(/^#/).present?
         word.sub!(/^#/, '').sub!(/,$/, '')
-        tag = word.gsub(word,'<a href="/tag/'+word+'">'+word+'</a>')
+        tag = word.gsub(word,'<a href="/tag/'+word+'">#'+word+'</a>')
         comment_arr << tag
       end
     end
