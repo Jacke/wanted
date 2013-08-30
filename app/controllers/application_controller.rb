@@ -88,9 +88,9 @@ class ApplicationController < ActionController::Base
     words_arr = comment.split
     words_arr.each do |word|
       if word.match(/^#/).present?
+        word.sub!(/^#/, '').sub!(/,$/, '')
         tag = word.gsub(word,'<a href="/tag/'+word+'">'+word+'</a>')
         comment_arr << tag
-        logger.info "..TAG #{tag}"
       end
     end
     comment_arr.join(' ') unless comment_arr.blank?
