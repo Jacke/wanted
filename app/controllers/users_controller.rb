@@ -31,7 +31,11 @@ class UsersController < ApplicationController
   end
 
   def people
-    @people = User.order('followers_counter DESC').where(shop: 0)
+    if params[:city].present?
+      @people = User.order('followers_counter DESC').where(shop: 0, city: params[:city])
+    else
+      @people = User.order('followers_counter DESC').where(shop: 0)
+    end
   end
 
   def avatar

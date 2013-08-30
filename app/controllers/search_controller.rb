@@ -28,7 +28,7 @@ class SearchController < ApplicationController
 
   def results
     @query = params[:search][:q]
-
+    redirect_to search_url if @query.blank?
     @items = Item.search @query, :page => 1, :per_page => 10, :order => 'raiting DESC'
     @items_count = Item.search_count @query
 

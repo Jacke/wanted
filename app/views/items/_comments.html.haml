@@ -9,5 +9,5 @@
         = link_to comment.user.name, user_show_path(comment.user)
         - unless comment.user.city.blank?
           ,
-          =link_to comment.user.city, '#'
+          =link_to comment.user.city, people_path(city: comment.user.city)
       %span.comment=simple_format(comment.content)
