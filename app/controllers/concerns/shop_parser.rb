@@ -36,10 +36,8 @@ module ShopParser
     @page.gsub!('href="/','href="http://'+host+'/')
     @page.gsub!("href='/","href='http://"+host+"/")
     @page.gsub!('url=/"', 'url="http://'+host+'/')
-    
     @page.gsub!('<a url="/', '<a url="http://'+host+'/')
-
-    @page.gsub!('<a class="b-multi-top__item-link url="/', '<a class="b-multi-top__item-link url="http://'+host+'/')
+    @page.gsub!('<a class="b-multi-top__item-link" url="/', '<a class="b-multi-top__item-link url="http://'+host+'/')
     @page.gsub!('data-link="/','data-link="http://'+host+'/')
     @page.gsub!("data-link='/","data-link='http://"+host+"/")
     @page.gsub!('src="/','src="http://'+host+'/')
