@@ -41,6 +41,9 @@ module ShopParser
     @page.gsub!('"url": "/', '"url": "http://'+host+'/')
     @page.gsub!('"category_url": "/', '"category_url": "http://'+host+'/')
     @page.gsub!('data-producturl="/', 'data-producturl="http://'+host+'/')
+    # bay.ru
+    @page.gsub!('<div style="display: block; cursor: pointer;" class="reveal-modal-bg">', '<div>')
+    @page.gsub!('id="fast_registration_modal" style="', 'id="fast_registration_modal" style="display: none;')
     @page.gsub!('<a class="b-multi-top__item-link" url="/', '<a class="b-multi-top__item-link url="http://'+host+'/')
     @page.gsub!('<a class="b-multi__item-link" url="/','<a class="b-multi__item-link" url="http://'+host+'/')
     @page.gsub!('data-link="/','data-link="http://'+host+'/')
