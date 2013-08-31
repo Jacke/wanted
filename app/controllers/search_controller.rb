@@ -16,14 +16,13 @@ class SearchController < ApplicationController
   def site
     url = clean_url(params[:site][:url])
     host = URI.parse( 'http://www.'+url ).host
-    if url.blank? || params[:site].blank? || params[:site][:url] == "undefined"
+    if url_good?(url)
+      shop_fetch(url, host)
+      @page = @page.html_safe
+      render :layout => false
+    else
       redirect_to search_url
     end
-
-    shop_fetch(url, host)
-    @page = @page.html_safe
-
-    render :layout => false
   end
 
   def results
@@ -62,5 +61,19 @@ class SearchController < ApplicationController
     @collections = Collection.search @query, :page => 1, :per_page => 10
   end
   
+  private
+
+  def url_good?(url)
+  if params[:site][:url] == "undefined"
+    flash[:error] = "Введите адрес магазина"
+    return false
+  end
+
+  if url.blank? || params[:site].blank?
+    flash[:error] = "Введите адрес магазина"
+    return false
+  end
+    return true
+  end
  
 end
