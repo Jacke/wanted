@@ -47,7 +47,8 @@ module ShopParser
     @page.gsub!("id='fast_registration_modal'", "id='fast_registration_modal' style='display: none !important;")
     @page.gsub!("new Ajax.Request('/", "new Ajax.Request('http://"+host+"/")
     @page.gsub!("$jq(function(){$jq('#fast_registration_modal').reveal();});", "")
-
+    # otto.ru
+    @page.gsub!("mousetrap","")
     @page.gsub!('<a class="b-multi-top__item-link" url="/', '<a class="b-multi-top__item-link url="http://'+host+'/')
     @page.gsub!('<a class="b-multi__item-link" url="/','<a class="b-multi__item-link" url="http://'+host+'/')
     @page.gsub!('data-link="/','data-link="http://'+host+'/')
