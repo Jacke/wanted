@@ -95,6 +95,11 @@ div#conteiner.large #item #right .comnt_list ul li #comment {width: 605px;}
 div#conteiner.large #user ul.mentions_list li #comment {width: 950px;}
 div#conteiner.large #followed_by #nav_panel #block {width: 506px;}
 
+/* Not logged */
+#conteiner.guest {width: 1400px !important;}
+#conteiner.guest #bd {width: 1328px !important;}
+#conteiner.guest div.g2 {width: 1065px !important;}
+
 /* header */
 header#hd {
   position: fixed;

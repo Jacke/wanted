@@ -13,6 +13,8 @@
       $(document).ready(function() {
         if (true != false) {
           $('body').on('click', 'a', function(){ event.preventDefault(); $('#loginModal').arcticmodal(); })
+          $('#conteiner').addClass('guest');
+          $('#left_group').hide();
         };
       });
   %body
