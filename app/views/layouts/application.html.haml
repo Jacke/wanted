@@ -11,7 +11,7 @@
         User: {"logged": #{current_user.present?}}
       };
       $(document).ready(function() {
-        if (true != false) {
+        if (true != Ð#{current_user.present?}) {
           $('body').on('click', 'a', function(){ event.preventDefault(); $('#loginModal').arcticmodal(); })
           $('#conteiner').addClass('guest');
           $('#left_group').hide();
