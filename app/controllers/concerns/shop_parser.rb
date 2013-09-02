@@ -49,6 +49,7 @@ module ShopParser
     @page.gsub!("$jq(function(){$jq('#fast_registration_modal').reveal();});", "")
     # otto.ru
     @page.gsub!("mousetrap","")
+    @page.gsub!('<div class="ADSLeftDef">','<style>#mousetrap {display:none;}</style><div class="ADSLeftDef">')
 #    @page.gsub!('dv_image_zoom cloud-zoom noHeight', '')
 #    @page.gsub!('imageZoomLink', '')   
  
