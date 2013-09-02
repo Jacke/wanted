@@ -64,7 +64,7 @@ class SearchController < ApplicationController
   private
 
   def url_good?(url)
-  if params[:site][:url] == "undefined"
+  if params[:site][:url] == "undefined" || params[:site][:url] == "javascript:void(0);"
     flash[:error] = "Введите адрес магазина"
     return false
   end

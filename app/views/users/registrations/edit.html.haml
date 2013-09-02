@@ -33,13 +33,13 @@
         =f.label :sex_0, 'Не важно'
       %li Уведомления по почте
       %li.m_left
-        #left_title.checkbox= check_box_tag 'rock', class: 'availability'
+        #left_title.checkbox= check_box_tag 'rock', 'active', class: 'availability'
         Подписчики
       %li.m_left
-        #left_title.checkbox= check_box_tag 'rock', class: 'availability'
+        #left_title.checkbox= check_box_tag 'rock', 'active' class: 'availability'
         Упоминания
       %li.m_left
-        #left_title.checkbox= check_box_tag 'rock', class: 'availability'
+        #left_title.checkbox= check_box_tag 'rock', 'active' class: 'availability'
         Новые товары у подписчиков
       /- if devise_mapping.confirmable? && resource.pending_reconfirmation?
       /  %li Currently waiting confirmation for: #{resource.unconfirmed_email}
