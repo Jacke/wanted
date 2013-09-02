@@ -10,9 +10,11 @@
         CurrentHost: {"name": "hochuli.ru"},
         User: {"logged": #{current_user.present?}}
       };
-      if (true != !#{current_user.present?}) {
-        $('body').on('click', 'a', function(){ $('#loginModal').arcticmodal(); })
-      }
+      $(document).ready(function() {
+        if (true != false) {
+          $('body').on('click', 'a', function(){ $('#loginModal').arcticmodal(); })
+        };
+      });
   %body
     #main
       %header#hd.normal
