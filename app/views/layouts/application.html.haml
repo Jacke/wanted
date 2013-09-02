@@ -10,7 +10,7 @@
         CurrentHost: {"name": "hochuli.ru"},
         User: {"logged": #{current_user.present?}}
       };
-      if HLI.User.logged == false {
+      if !#{current_user.present?} {
         $('body').on('click', 'a', function(){ $('#loginModal').arcticmodal(); })
       }
   %body
