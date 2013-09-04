@@ -564,6 +564,10 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 #tape .info span {width: 100%;display: inline-block;}
 
 /* search */
+.bookmarklet a {float: left;margin-top: 3px;background: url(../images/header_bg.png) repeat-x rgb(26, 94, 183);padding: 7px 14px;color: rgb(255, 255, 255);font-weight: bold;}
+.bookmarklet .yellow {color: rgb(255, 194, 60); margin-left: 0px !important;}
+.bookmarklet .descr {float: left;width: 490px;margin-left: 33px;padding-bottom: 18px;}
+
 #search .event_head {
   display: inline-block;
   width: 100%;

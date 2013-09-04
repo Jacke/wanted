@@ -4,8 +4,10 @@
     %li
       %span А здесь мы добавляем товары. Это можно делать разными способами.
     %li 
-      %div
-        %a{:href => "javascript:location.href='http://hochuli.ru/frame/site?site[url]='+encodeURIComponent(location.href)"} Xo4y eto
+      %div.bookmarklet
+        %a{:href => "javascript:location.href='http://hochuli.ru/frame/site?site[url]='+encodeURIComponent(location.href)"} Xo<span class="yellow">4</span>y
+        %p.descr
+          Перетащите эту кнопку в панель закладок(тулбар) и кликайте ее, когда находитесь в каком-нибудь Интернет магазине и выбираете товар.
     %li
       %span Из любого Интернет-магазина:
     %li
@@ -27,5 +29,5 @@
 = render partial: 'add_item'
 
 .movie
-  %p Если вы чего-то не поняли, посмотрите видео :)
+  %p Если вы чего-то не поняли, посмотрите видео :) По всем вопросам пишите на <a href="mailto:emband@mail.ru">emband@mail.ru</a>
   %iframe{:allowfullscreen => "", :frameborder => "0", :height => "380", :src => "//www.youtube.com/embed/Vp8aTLhR8hU", :width => "653"}
