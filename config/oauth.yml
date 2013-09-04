@@ -3,8 +3,8 @@ development: &defaults
     app_id: 3765867
     app_secret: zS6vzGYXyXivZCkBe4dr
   mailru:
-    app_id: 3765867
-    app_secret: zS6vzGYXyXivZCkBe4dr
+    app_id: 709827
+    app_secret: cb8815a3cdb1f43fb07418cb86e3354b
   odnoklassniki:
     app_id: 3765867
     app_secret: zS6vzGYXyXivZCkBe4dr
