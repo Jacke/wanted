@@ -12,7 +12,7 @@
       };
       $(document).ready(function() {
         if (true != #{current_user.present?}) {
-          $('body').on('click', 'a', function(){ event.preventDefault(); $('#loginModal').arcticmodal(); })
+          $('#conteiner').on('click', 'a', function(){ event.preventDefault(); $('#loginModal').arcticmodal(); })
           $('#conteiner').addClass('guest');
           $('#left_group').hide();
         };

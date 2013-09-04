@@ -7,11 +7,9 @@
       %li.vk
         = link_to '&nbsp'.html_safe, user_omniauth_authorize_path(:vkontakte)
       %li.od
-        %a{:href => '#'}
-          &nbsp
+        = link_to '&nbsp'.html_safe, user_omniauth_authorize_path(:odnoklassniki)
       %li.ma
-        %a{:href => '#'}
-          &nbsp
+        = link_to '&nbsp'.html_safe, user_omniauth_authorize_path(:mailru)
     %span ИЛИ
     %ul.notice-bar{class:"error"}
     = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:id => 'sign_up_form', :style => 'display: none;'}, :format => :json, :remote => true) do |f|

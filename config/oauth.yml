@@ -2,6 +2,12 @@ development: &defaults
   vkontakte:
     app_id: 3765867
     app_secret: zS6vzGYXyXivZCkBe4dr
+  mailru:
+    app_id: 3765867
+    app_secret: zS6vzGYXyXivZCkBe4dr
+  odnoklassniki:
+    app_id: 3765867
+    app_secret: zS6vzGYXyXivZCkBe4dr
 
 production:
   <<: *defaults
