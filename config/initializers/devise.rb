@@ -16,7 +16,7 @@ Devise.setup do |config|
   config.http_authenticatable_on_xhr = false
   config.navigational_formats = ["*/*", :html, :json]
   config.omniauth :vkontakte, OAUTH['vkontakte']['app_id'], OAUTH['vkontakte']['app_secret']
-  config.omniauth :ondoklassniki, OAUTH['ondoklassniki']['app_id'], OAUTH['ondoklassniki']['app_secret']
+  config.omniauth :odnoklassniki, OAUTH['odnoklassniki']['app_id'], OAUTH['odnoklassniki']['app_secret']
   config.omniauth :mailru, OAUTH['mailru']['app_id'], OAUTH['mailru']['app_secret']
   config.scoped_views = true
 end
