@@ -28,7 +28,7 @@ class UserMailer < ActionMailer::Base
     @item.user.followers.each do |follower|
       if follower.new_item_notice
         @follower = follower
-        mail(to: follower.email, subject: "#{item.user.name} добавил товар")
+        mail(to: follower.email, subject: "#{@item.user.name} добавил #{@item.name}")
       end
     end
   end

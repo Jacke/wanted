@@ -1,7 +1,8 @@
 %p
-  Здравствуйте. Пользователь 
+  Здравствуйте? ) Пользователь 
   = link_to @item.user.name, user_show_url(@item.user)
-  добавил товар
+  на которго вы подписаны, добавил товар
   = link_to @item.name, item_url(@item)
+
 = link_to 'Хочули', root_url 
 
