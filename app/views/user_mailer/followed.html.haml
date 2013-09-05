@@ -1,6 +1,6 @@
 %p
   Здравствуйте. Вас зафолофил
-  = link_to '#{@follow.follower.name}', user_path(@follow.follower)
+  = link_to @follow.follower.name, user_path(@follow.follower)
   на сайте 
 = link_to 'Хочули', root_url 
 

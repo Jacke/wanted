@@ -1,6 +1,6 @@
 %p
   Здравствуйте. Пользователь 
-  = link_to '#{@mention.comment.user.name}', user_path(@mention.comment.user)
+  = link_to @mention.comment.user.name, user_path(@mention.comment.user)
   упомянул вас в комментарии
   %span= @mention.comment.content
 = link_to 'Хочули', root_url 
