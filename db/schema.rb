@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130823000040) do
+ActiveRecord::Schema.define(version: 20130905133508) do
 
   create_table "collections", force: true do |t|
     t.string   "title"
@@ -128,6 +128,9 @@ ActiveRecord::Schema.define(version: 20130823000040) do
     t.integer  "followers_counter",      default: 0
     t.integer  "items_count",            default: 0
     t.boolean  "admin"
+    t.boolean  "follow_notice",          default: true
+    t.boolean  "reply_notice",           default: true
+    t.boolean  "new_item_notice",        default: true
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree

@@ -26,13 +26,17 @@ class Item < ActiveRecord::Base
   validates_attachment :image, 
                       :content_type => { :content_type => /image/ },
                       :size => { :in => 0..1000.kilobytes }
-
+  after_save :new_item_notice
   private
 
   def picture_from_url
     unless self.image_url.blank?
       self.image = open(self.image_url)
     end
+  end
+
+  def new_item_notice
+    UserMailer.item_notice(self).deliver
   end
 
 end

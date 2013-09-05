@@ -1,0 +1,7 @@
+%p
+  Здравствуйте. Пользователь 
+  = link_to '#{@item.user.name}', user_path(@item.user)
+  добавил товар
+  = @item.name
+= link_to 'Хочули', root_url 
+

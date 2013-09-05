@@ -10,6 +10,7 @@ class Comment < ActiveRecord::Base
   # Validations
   #===============================================================
   validates :content, presence: true
+
   # упоминания
   def new_item_comment(item)
     item_comment = self.split
@@ -45,7 +46,9 @@ class Comment < ActiveRecord::Base
 
   def make_mentions
     logger.info "mentions #{@mentions}"
-    @mentions.each {|id| Mention.new(user_id: id, comment_id: self.id).save; } if @mentions.present?
+    @mentions.each do |id| 
+      Mention.new(user_id: id, comment_id: self.id).save
+    end if @mentions.present?
   end 
 
 

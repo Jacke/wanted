@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :name, :nickname, :login, :sex, :city, :about, :provider, 
                   :uid, :url, :folowers_new_count, :folowed_by_new_count,
-                  :phone, :shop, :followers_counter
+                  :phone, :shop, :followers_counter, :follow_notice, :reply_notice, :new_item_notice
   #paperclip
   attr_accessible :avatar
   #has_attached_file :avatar,  :styles => { :medium => "120x120#",:small => "50x50#",:esmall => "28x28#"}, 
