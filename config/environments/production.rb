@@ -52,7 +52,9 @@ Hochuli::Application.configure do
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :sendmail
   config.action_mailer.default_url_options = { :host => 'hochuli.ru' }
-
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.sendmail_settings = { :arguments => "-i" }
+  config.action_mailer.default_options = {from: 'no-replay@hochuli.ru'}
   # Enable threaded mode
   # config.threadsafe!
 
