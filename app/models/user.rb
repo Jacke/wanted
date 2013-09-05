@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   #===============================================================
   validates_presence_of :name
   validates_presence_of :nickname
-  validates_presence_of :phone
+  #validates_presence_of :phone
   validates :nickname, :uniqueness => true
 
 
@@ -48,7 +48,7 @@ class User < ActiveRecord::Base
         case auth.provider.to_sym
           when :vkontakte
             nickname = auth.info.name.gsub(' ', '')
-            phone = '89012345678'
+            phone = ''
             params  = { name:auth.info.name,
                         nickname:nickname.downcase,
                         provider:auth.provider,
