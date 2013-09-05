@@ -1,8 +1,8 @@
 %p
   Здравствуйте. Пользователь 
-  = link_to @mention.comment.user.name, user_url(@mention.comment.user)
+  = link_to @mention.comment.user.name, user_show_url(@mention.comment.user, host: 'hochuli.ru')
   упомянул вас в комментарии
   %span= @mention.comment.content.gsub!(/<(a|A) (\w*="\w*"){0,5}( )?(href|HREF)( )?=( )?(["'])?[a-zA-Z0-9\/\.-_ ]*(["'])?(( )?(\w*( )?=( )?["|']\w*["'])){0,10}>([\w -\[\]\<\>\_\. ]*<\/(a|A)>)?/, '')
-  %span= link_to 'Перейти', item_url(@mention.comment.item, host: 'hochuli.ru')
+  %span= link_to 'Перейти', item_url(@mention.comment.item)
 = link_to 'Хочули', root_url 
 

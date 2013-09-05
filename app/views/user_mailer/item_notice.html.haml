@@ -1,6 +1,6 @@
 %p
   Здравствуйте. Пользователь 
-  = link_to @item.user.name, user_url(@item.user)
+  = link_to @item.user.name, user_show_url(@item.user)
   добавил товар
   = link_to @item.name, item_url(@item)
 = link_to 'Хочули', root_url 
