@@ -4,6 +4,7 @@ Hochuli::Application.routes.draw do
                                     sessions: 'sessions'
                                   }
   devise_scope :user do
+    put '/registrations/update_avatar' => "registrations#update_avatar", :as => :update_avatar 
     get '/registrations/update_avatar' => "registrations#update_avatar", :as => :update_avatar  
     get '/confirm/:confirmation_token', :to => "devise/confirmations#show", :as => "user_confirm", :only_path => false
   end                  
