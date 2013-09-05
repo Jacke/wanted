@@ -18,29 +18,7 @@ class ApplicationController < ActionController::Base
     raise ActionController::RoutingError.new('Not Found')
   end
 
-  # упоминания
-  def new_item_comment(comment,item)
-    linked_comment = comment
-    item_comment = comment.split
-    comment_arr = []
-    item_comment.each do |comment_pars|
-      if comment_pars.match(/^#/).blank?
-        if comment_pars.match(/^@/).present?
-          user = User.find_by(nickname: comment_pars.gsub('@', ''))
-          if user.present?
-            Mention.new(user_id: user.id, comment_id: item.id).save
-            lkd_comment = comment_pars.gsub('@'+user.nickname,'<a href="'+user_show_path(user)+'">@'+user.nickname+'</a>')
-            comment_arr << lkd_comment
-          else 
-          comment_arr << comment_pars 
-          end  
-        else
-          comment_arr << comment_pars   
-        end
-      end
-    end
-   Comment.new(content: comment_arr.join(' '), user_id: item.user_id, item_id: item.id).save unless comment_arr.blank?
-  end
+
   def apply_tags(comment, item, taggable)
     @tag_list = []
     @linked_comment = comment
@@ -53,57 +31,19 @@ class ApplicationController < ActionController::Base
         @tag_list << word
       end
     end
-
     unless @tag_list.empty?
       @tag_list << taggable.tag_list
       taggable.update_attribute(:tag_list, @tag_list)
     end
   end
 
-  def item_comment(comment,item)
-    linked_comment = comment
-    item_comment = comment.split
-    comment_arr = []
-    item_comment.each do |comment_pars|
-      if comment_pars.match(/^#/).blank?
-        if comment_pars.match(/^@/).present?
-          user = User.find_by(nickname: comment_pars.gsub('@', ''))
-          if user.present?
-            Mention.new(user_id: user.id, comment_id: item.id).save
-            lkd_comment = comment_pars.gsub('@'+user.nickname,'<a href="'+user_show_path(user)+'">@'+user.nickname+'</a>')
-            comment_arr << lkd_comment
-          else 
-          comment_arr << comment_pars 
-          end  
-        else
-          comment_arr << comment_pars   
-        end
-      end
-    end
-   comment_arr.join(' ') unless comment_arr.blank?
-  end
-  def comment_tag(comment)
-    comment.gsub!(',', ', ')
-    comment_arr = []
-    words_arr = comment.split
-    words_arr.each do |word|
-      if word.match(/^#/).present?
-        word.sub!(/^#/, '').sub!(/,$/, '')
-        tag = word.gsub(word,'<a href="/tag/'+word+'">#'+word+'</a>')
-        comment_arr << tag
-      end
-    end
-    comment_arr.join(' ') unless comment_arr.blank?
-  end
-
   def update_raiting(item)
     item.update_attribute(:raiting, (item.followers_count_cache + 1)*3 + item.cached_comments)
   end
 
-
-def set_access_control_headers 
-  headers['Access-Control-Allow-Origin'] = 'http://hochuli.ru/' 
-  headers['Access-Control-Request-Method'] = '*' 
-end
+  def set_access_control_headers 
+    headers['Access-Control-Allow-Origin'] = 'http://hochuli.ru/' 
+    headers['Access-Control-Request-Method'] = '*' 
+  end
 
 end
