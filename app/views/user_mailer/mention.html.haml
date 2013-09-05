@@ -2,6 +2,6 @@
   Здравствуйте. Пользователь 
   = link_to @mention.comment.user.name, user_path(@mention.comment.user)
   упомянул вас в комментарии
-  %span= @mention.comment.content
+  %span= @mention.comment.content.gsub!(/<(a|A) (\w*="\w*"){0,5}( )?(href|HREF)( )?=( )?(["'])?[a-zA-Z0-9\/\.-_ ]*(["'])?(( )?(\w*( )?=( )?["|']\w*["'])){0,10}>([\w -\[\]\<\>\_\. ]*<\/(a|A)>)?/, '')
 = link_to 'Хочули', root_url 
 
