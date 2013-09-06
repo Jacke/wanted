@@ -603,3 +603,4 @@ span.big_hart {background: url(../images/hart_big.png);width: 25px;height: 23px;
 .checkbox input, .radio input {
   display: none;
 }
+#user_phone {display: none;}
