@@ -14,8 +14,8 @@ class Follow < ActiveRecord::Base
 
   private
   def follower_notice
-     
-   if self.followable.follow_notice && !(self.kind_of? Item)
+   # Item
+   if self.followable.follow_notice && !(Item.last.kind_of? Item)
      UserMailer.followed(self).deliver
    end
   end
