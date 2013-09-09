@@ -1,7 +1,7 @@
 #encoding: utf-8
 
 class UserMailer < ActionMailer::Base
-  default :from => "no-reply@hochuli.com"
+  default :from => "no-reply@hochuli.ru"
 
   def welcome_email(user)
     @user = user
