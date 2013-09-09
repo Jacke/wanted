@@ -21,7 +21,7 @@
         #shop
           %span.checkbox#shopcheck{:style => 'margin: 0 5px -8px 0;'}= f.check_box :shop
           %span Я магазин
-      = f.text_field :phone, :placeholder => 'Ваш моб.телефон', :class => 'phone'
+      = f.text_field :phone, :placeholder => 'Ваш моб.�', :style => 'display: none;' ,:class => 'phone'
       = f.submit "Регистрация", :class => 'button', id: 'inp_sign_up_button'
       %div.registered
         %span#login_button.pointer Вход для зарегистрированных пользователей
