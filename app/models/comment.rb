@@ -13,8 +13,8 @@ class Comment < ActiveRecord::Base
 
   # упоминания
   def new_item_comment(item)
-    item_comment = self.split
-    make_comment(item_comment, true)
+    item_comment = self.content.strip_tags.split
+    make_comment(item_comment, item)
   end
   def item_comment(item)
     comment = self
@@ -37,8 +37,8 @@ class Comment < ActiveRecord::Base
          @comment_arr << comment_pars if comment_pars.match(/^@/).present?
        end
      @comment_arr << comment_pars if comment_pars.match(/^#/).blank? && comment_pars.match(/^@/).blank?
-     if new_item
-       Comment.new(content: @comment_arr.join(' '), user_id: item.user_id, item_id: item.id).save unless @comment_arr.blank?
+     if new_item.present?
+       Comment.new(content: @comment_arr.join(' '), user_id: new_item.user_id, item_id: new_item.id).save unless @comment_arr.blank?
        self.make_mentions
      end
     end 

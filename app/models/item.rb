@@ -27,6 +27,8 @@ class Item < ActiveRecord::Base
                       :content_type => { :content_type => /image/ },
                       :size => { :in => 0..1000.kilobytes }
   after_save :new_item_notice
+
+  
   private
 
   def picture_from_url
