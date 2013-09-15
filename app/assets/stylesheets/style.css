@@ -191,6 +191,7 @@ div#conteiner {
 }
 /* left group */
   div#left_group {
+  overflow-y: auto;
   position: fixed;
   top: 85px;
   margin: 0 0 0 -100px;
