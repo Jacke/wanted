@@ -27,7 +27,7 @@ class Comment < ActiveRecord::Base
     @mentions = []
     @comment_arr = []
     item_comment.each do |comment_pars|
-      user = User.find_by(nickname: comment_pars.gsub('@', '')) if comment_pars.match(/^#/).blank? && comment_pars.match(/^@/).present?
+     user = User.find_by(nickname: comment_pars.gsub('@', '')) if comment_pars.match(/^#/).blank? && comment_pars.match(/^@/).present?
        if user.present?
          @mentions << user.id
          #lkd_comment = comment_pars.gsub('@'+user.nickname, '')
@@ -37,11 +37,11 @@ class Comment < ActiveRecord::Base
          @comment_arr << comment_pars if comment_pars.match(/^@/).present?
        end
      @comment_arr << comment_pars if comment_pars.match(/^#/).blank? && comment_pars.match(/^@/).blank?
-     if new_item.present?
-       Comment.new(content: @comment_arr.join(' '), user_id: new_item.user_id, item_id: new_item.id).save unless @comment_arr.blank?
-       self.make_mentions
-     end
-    end 
+    end
+    if new_item.present?
+      Comment.new(content: @comment_arr.join(' '), user_id: new_item.user_id, item_id: new_item.id).save unless @comment_arr.blank?
+      self.make_mentions
+    end
   end
 
   def make_mentions
