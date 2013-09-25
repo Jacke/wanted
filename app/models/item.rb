@@ -29,7 +29,12 @@ class Item < ActiveRecord::Base
                       :size => { :in => 0..1000.kilobytes }
 #  after_save :new_item_notice
 
-  
+  def self.raiting_flush
+    self.all.each do |item|
+      item.update_attribute(:raiting, 0)
+    end  
+  end  
+
   private
 
   def picture_from_url
