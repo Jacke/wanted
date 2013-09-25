@@ -1,6 +1,6 @@
 #encoding: utf-8
 class ItemsController < ApplicationController
-  impressionist :actions=>[:show]
+#  impressionist :actions=>[:show]
   def new
     # товары
     if params[:position]

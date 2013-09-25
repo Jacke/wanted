@@ -100,9 +100,9 @@ GEM
     httpauth (0.2.0)
     httpclient (2.3.4.1)
     i18n (0.6.5)
-    impressionist (1.4.9)
+    impressionist (1.2.0)
       httpclient (~> 2.2)
-      nokogiri (~> 1.6.0)
+      nokogiri (~> 1.5)
     innertube (1.1.0)
     jquery-rails (3.0.4)
       railties (>= 3.0, < 5.0)
@@ -257,7 +257,7 @@ DEPENDENCIES
   debugger
   devise
   haml-rails
-  impressionist
+  impressionist (= 1.2.0)
   jquery-rails
   letter_opener
   localtunnel

@@ -72,7 +72,7 @@
     #followers_count
       =@item.followers_count_cache == 0 ? 'Никто больше не хочет (:' : @item.followers_count_cache.to_s+' '+Russian.p(@item.followers_count_cache, "человек хочет", "человека тоже хотят :)", "человек тоже хотят :)")+''
     #hit_count
-      =@hit == 0 ? 'Просмотры отсутствуют' : @hit.to_s+' просмотров'
+      =@hit == 0 ? 'Просмотры отсутствуют' : @hit.to_s+' чел. просмотрели'
     -unless @foll_collections.empty?
       #collections
         Добавленно в коллекции:
