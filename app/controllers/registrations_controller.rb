@@ -5,7 +5,7 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     resource.password_confirmation = resource.password
-    resource.name.empty? ? resource.nickname = params[:user][:email] : resource.nickname = resource.name
+    resource.name.empty? ? resource.nickname = params[:user][:nickname] : resource.nickname = resource.name
 
     unless resource.shop
       resource.phone = params[:user][:phone]
