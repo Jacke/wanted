@@ -46,4 +46,21 @@ class ApplicationController < ActionController::Base
     headers['Access-Control-Request-Method'] = '*' 
   end
 
+  def follow_admin(user)
+    @admins = User.where(admin: true)
+    @admins.each do |admin|
+    # увеличение счетчика новых подписчиков
+    unless user.following?(admin)
+      user.follow(admin)
+      followers_count = admin.followers_new_count + 1
+      admin.update_attribute(:followers_new_count, followers_count)
+      if admin.followers_counter == 0
+        admin.update_attribute(:followers_counter, admin.count_user_followers)
+      else
+        admin.update_attribute(:followers_counter, admin.followers_counter + 1)
+      end
+    end
+    end
+  end
+
 end

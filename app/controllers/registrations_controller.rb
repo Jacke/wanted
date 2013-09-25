@@ -18,6 +18,8 @@ class RegistrationsController < Devise::RegistrationsController
         resource.update_attribute(:nickname, resource.id)
         set_flash_message :notice, :signed_up if is_navigational_format?
 
+        follow_admin(resource) # follow all admin
+
         sign_up(resource_name, resource)
         return render :json => {:success => true}
       else
@@ -55,6 +57,7 @@ class RegistrationsController < Devise::RegistrationsController
       # Sign in the user bypassing validation in case his password changed
       sign_in @user, :bypass => true
 
+      
       redirect_to edit_user_registration_path
       #redirect_to after_update_path_for(@user)
       #render "edit", :layout => false
