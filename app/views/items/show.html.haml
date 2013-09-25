@@ -71,6 +71,8 @@
             %a{:href => user_show_path(user)}=image_tag user.avatar.url(:esmall), :title => user.name
     #followers_count
       =@item.followers_count_cache == 0 ? 'Никто больше не хочет (:' : @item.followers_count_cache.to_s+' '+Russian.p(@item.followers_count_cache, "человек хочет", "человека тоже хотят :)", "человек тоже хотят :)")+''
+    #hit_count
+      =@hit == 0 ? 'Просмотры отсутствуют' : @hit.to_s+' просмотров'
     -unless @foll_collections.empty?
       #collections
         Добавленно в коллекции:

@@ -1,5 +1,6 @@
 #encoding: utf-8
 class ItemsController < ApplicationController
+  impressionist :actions=>[:show]
   def new
     # товары
     if params[:position]
@@ -104,10 +105,11 @@ class ItemsController < ApplicationController
     @tags = @item.tags
     @foll_collections = @item.followers_by_type('Collection')
     @foll_items = @user.following_by_type('Item').limit(6).order("raiting DESC")
-
+    @hit = @item.impressionist_count(:filter=>:all)
     if user_signed_in?
       @collections = current_user.collections
       @collection = Collection.new
+      impressionist(@item)
     end
   end
 

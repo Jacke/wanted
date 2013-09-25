@@ -5,6 +5,7 @@ class Item < ActiveRecord::Base
   #acts_as_votable
   acts_as_taggable
   acts_as_followable
+  is_impressionable
   
   attr_accessible :followable_id, :followable_type, :followers_count_cache
   attr_accessible :clothes, :comment, :name, :prise, :sex, :tag_list, :shop_id, :url, :image_url, :count_user_followers, :raiting

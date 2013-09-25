@@ -38,7 +38,7 @@ class ApplicationController < ActionController::Base
   end
 
   def update_raiting(item)
-    item.update_attribute(:raiting, (item.followers_count_cache + 1)*3 + item.cached_comments)
+    item.update_attribute(:raiting, (item.followers_count_cache + 1)*2 + item.cached_comments + item.impressionist_count(:filter=>:all))
   end
 
   def set_access_control_headers 

@@ -9,6 +9,7 @@ gem 'paperclip'
 gem 'capistrano'
 gem 'unicorn'
 gem 'will_paginate'
+gem 'impressionist' # View count
 gem 'omniauth'
 gem 'omniauth-oauth2'
 gem 'omniauth-vkontakte'
