@@ -11,6 +11,9 @@ module ApplicationHelper
   def devise_mapping
     @devise_mapping ||= Devise.mappings[:user]
   end
+  def mail_set(user)
+    user.present? && !(user.email.present?) 
+  end
 
   def title
     t = ""

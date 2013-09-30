@@ -27,6 +27,10 @@
           %ul.nav_user
             %li
               - if user_signed_in?
+                - if mail_set(current_user)
+                  %h4
+                    Пожалуйста заполните поле 
+                    %a{href: 'users/edit'} email
                 = link_to current_user.name, edit_user_registration_path, class: :nav_user_profile
                 = link_to 'выход', destroy_user_session_path, method: :delete
               - else
