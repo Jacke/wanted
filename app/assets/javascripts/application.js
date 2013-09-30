@@ -19,7 +19,7 @@ $(function() {
   var page_w = $("html").width();
   var box = $('#left_group'); // float-fixed block
 
-  if(page_w < 981) {
+  if(page_w < 960) {
       box.css('position', 'absolute');
       box.css('top', 0);
   } else {
