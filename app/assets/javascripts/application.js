@@ -72,7 +72,7 @@ $(window).resize(function window_resize(){
   var box = $('#left_group')              // float-fixed block
   var frame = $('iframe#framesite')
 
-  if(page_w < 981) {
+  if(page_w < 961) {
       box.css('position', 'absolute');
       box.css('top', 0);
   } else {
