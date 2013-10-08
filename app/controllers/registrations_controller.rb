@@ -5,13 +5,13 @@ class RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     resource.password_confirmation = resource.password
-    resource.name.empty? ? resource.nickname = params[:user][:nickname] : resource.nickname = resource.name
-
+    #resource.name.empty? ? resource.nickname = params[:user][:nickname] : resource.nickname = resource.name
+    resource.nickname = params[:user][:nickname] 
     unless resource.shop
       resource.phone = params[:user][:phone]
     end
 
-    UserMailer.confirm(resource).deliver
+    
     
     if resource.save
       if resource.active_for_authentication?
@@ -19,7 +19,7 @@ class RegistrationsController < Devise::RegistrationsController
         set_flash_message :notice, :signed_up if is_navigational_format?
 
         follow_admin(resource) # follow all admin
-
+        UserMailer.confirm(resource).deliver
         sign_up(resource_name, resource)
         return render :json => {:success => true}
       else
