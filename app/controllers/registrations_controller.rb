@@ -17,7 +17,7 @@ class RegistrationsController < Devise::RegistrationsController
     
     if resource.save
       if resource.active_for_authentication?
-        resource.update_attribute(:nickname, resource.id)
+        ###resource.update_attribute(:nickname, resource.id)
         set_flash_message :notice, :signed_up if is_navigational_format?
 
         follow_admin(resource) # follow all admin
