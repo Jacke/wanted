@@ -6,7 +6,9 @@ class RegistrationsController < Devise::RegistrationsController
     build_resource(sign_up_params)
     resource.password_confirmation = resource.password
     #resource.name.empty? ? resource.nickname = params[:user][:nickname] : resource.nickname = resource.name
-    resource.nickname = params[:user][:nickname] 
+    resource.nickname = params[:user][:nickname]
+    logger.info(params[:user][:nickname])
+    logger.info(resource.nickname)
     unless resource.shop
       resource.phone = params[:user][:phone]
     end
