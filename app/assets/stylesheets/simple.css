@@ -47,7 +47,18 @@
 #loginModal ul#social li.vk {background: url('../images/vk_big.png') no-repeat;}
 #loginModal ul#social li.od {background: url('../images/od_big.png') no-repeat;}
 #loginModal ul#social li.ma {background: url('../images/ma_big.png') no-repeat;}
-
+#loginModal #sign_up_form:before{
+ content: "@";
+ color: black;
+ position: absolute;
+ top: 133px;
+ left:180px;
+ 
+ 
+}
+#loginModal #sign_up_form {
+    position: relative;
+}
 #loginModal #sign_up_form,#loginModal #login_form {margin: 20px 0;}
 #loginModal #sign_up_form input,#loginModal #login_form input {
   height: 40px;
