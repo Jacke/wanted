@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   #===============================================================
   validates_presence_of :name
   validates_presence_of :nickname
-  validates :nickname, :format => { :with => /\A[a-z_\-\[\]\\^{}|`][a-z0-9_\-\[\]\\^{}|`]*\z/, :message => "должен набран латинскими буквами" }
+  validates :nickname, :format => { :with => /\A[a-z_\-\[\]\\^{}|`][a-z0-9_\-\[\]\\^{}|`]*\z/, :message => "должен быть набран латинскими буквами" }
 
   #validates_presence_of :phone
   validates :nickname, :uniqueness => true

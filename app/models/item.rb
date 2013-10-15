@@ -27,7 +27,7 @@ class Item < ActiveRecord::Base
   validates_attachment :image, 
                       :content_type => { :content_type => /image/ },
                       :size => { :in => 0..1000.kilobytes }
-#  after_save :new_item_notice
+ after_save :new_item_notice
 
   def self.raiting_flush
     self.all.each do |item|
