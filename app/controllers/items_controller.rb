@@ -1,6 +1,7 @@
 #encoding: utf-8
 class ItemsController < ApplicationController
 #  impressionist :actions=>[:show]
+
   def new
     # товары
     if params[:position]
@@ -13,6 +14,7 @@ class ItemsController < ApplicationController
       end
     else
       @items = Item.order("created_at DESC").limit(Setting.items_per_page)
+      @respond = {ans: "Почта подтверждена"} if params[:confirmed].present?
     end
 
     # комментарии
@@ -110,6 +112,7 @@ class ItemsController < ApplicationController
       @collections = current_user.collections
       @collection = Collection.new
       impressionist(@item)
+      @item.update_attribute(:raiting, (@item.raiting + 1))
     end
   end
 

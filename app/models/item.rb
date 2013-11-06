@@ -20,7 +20,7 @@ class Item < ActiveRecord::Base
   belongs_to  :user, :counter_cache => true 
   belongs_to  :shop
   has_many    :comments, dependent: :delete_all
-
+  has_many  :mail_letters, dependent: :delete_all
   # Validations
   #===============================================================
   #validates :comment, presence: true
@@ -30,7 +30,7 @@ class Item < ActiveRecord::Base
  after_save :new_item_notice
 
   def self.raiting_flush
-    self.all.each do |item|
+    Item.all.each do |item|
       item.update_attribute(:raiting, 0)
     end  
   end  
@@ -44,7 +44,12 @@ class Item < ActiveRecord::Base
   end
 
   def new_item_notice
-    UserMailer.item_notice(self).deliver
+   #UserMailer.item_notice(self).deliver if self.present?
+    self.user.followers.each do |follower|
+      if follower.present? && follower.new_item_notice       
+    MailLetter.new(item_id: self.id, user_id: follower.id, sended: false).save 
+    end
+    end
   end
 
 end

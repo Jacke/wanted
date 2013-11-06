@@ -26,7 +26,7 @@ gem 'therubyracer', :platforms => :ruby
 gem 'jquery-rails'
 gem 'mysql2', '0.3.12b4'
 gem 'thin'
-gem 'thinking-sphinx', '~> 3.0.4', :git => 'https://github.com/pat/thinking-sphinx.git', :branch => 'master', :ref => '0c404e756d'
+gem 'thinking-sphinx' #, '~> 3.0.4', :git => 'https://github.com/pat/thinking-sphinx.git', :branch => 'master', :ref => '0c404e756d'
 
 group :assets do
   gem 'sass-rails'

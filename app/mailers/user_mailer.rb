@@ -23,6 +23,13 @@ class UserMailer < ActionMailer::Base
     # follow.followable follow.follower
     mail(to: @follow.followable.email, subject: "Вас зафоловил пользователь #{@follow.follower.name}")
   end
+
+  def sender(items, user)
+  @items = items #  MailLetter for 
+  @user = user   #  that user
+  mail(to: @user.email, subject: "Хочули | Пользователи на которых вы подписались, добавили новые товары").deliver  
+  end
+  
   def item_notice(item)
     @item = item
     @item.user.followers.each do |follower|

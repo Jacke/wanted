@@ -1,0 +1,13 @@
+%p Здравствуйте? ) Пользователи на которых вы подписались
+- @items.each do |item|
+  %p
+    %span= link_to "#{item.item.user.name}", user_path(item.item.user)  
+%span добавили товары
+- @items.each do |item|
+  %p= link_to "#{item.item.name}", item_url(item.item)
+%p 
+  Чтобы отписаться от этих уведомлений, зайдите на страницы пользователей  и отпишитесь. Вы также можете управлять своей подпиской на этой 
+  = link_to "странице", user_path(@user) 
+%br
+= link_to 'Хочули', root_url 
+

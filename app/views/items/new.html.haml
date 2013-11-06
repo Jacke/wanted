@@ -45,6 +45,10 @@
   }
 
   $(window).scroll(bindScroll)
+- if @respond.present? 
+  %div.confirm
+    %b Почта подтверждена
+
 #grid_elemets.g2{:page => 1}
   -unless @items.empty?
     =render partial: "users/items_grid"

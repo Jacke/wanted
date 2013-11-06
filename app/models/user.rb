@@ -29,7 +29,7 @@ class User < ActiveRecord::Base
   has_many  :collections, dependent: :delete_all
   has_many  :comments,    dependent: :delete_all
   has_many  :mentions,    dependent: :delete_all
-
+  has_many  :mail_letters, dependent: :delete_all
   # Validations
   #===============================================================
   validates_presence_of :name

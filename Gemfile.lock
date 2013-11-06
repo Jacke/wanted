@@ -1,17 +1,4 @@
 GIT
-  remote: https://github.com/pat/thinking-sphinx.git
-  revision: 0c404e756d037daeae579736b4248e963fa3ef01
-  ref: 0c404e756d
-  branch: master
-  specs:
-    thinking-sphinx (3.0.4)
-      activerecord (>= 3.1.0)
-      builder (>= 2.1.2)
-      innertube (>= 1.0.2)
-      middleware (>= 0.1.0)
-      riddle (>= 1.5.7)
-
-GIT
   remote: https://github.com/rafael/acts_as_follower.git
   revision: 6d22a0a77bb696f071d03fcfeb49dc3b230d38be
   specs:
@@ -192,7 +179,7 @@ GEM
     raindrops (0.11.0)
     rake (10.1.0)
     ref (1.0.5)
-    riddle (1.5.8)
+    riddle (1.5.9)
     rocket_tag (0.3.1)
       activerecord (>= 3.2.0)
       squeel
@@ -226,6 +213,12 @@ GEM
       daemons (>= 1.0.9)
       eventmachine (>= 0.12.6)
       rack (>= 1.0.0)
+    thinking-sphinx (3.0.6)
+      activerecord (>= 3.1.0)
+      builder (>= 2.1.2)
+      innertube (>= 1.0.2)
+      middleware (>= 0.1.0)
+      riddle (>= 1.5.9)
     thor (0.18.1)
     thread_safe (0.1.2)
       atomic
@@ -278,7 +271,7 @@ DEPENDENCIES
   sass-rails
   therubyracer
   thin
-  thinking-sphinx (~> 3.0.4)!
+  thinking-sphinx
   uglifier (>= 1.0.3)
   unicorn
   will_paginate

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130925060830) do
+ActiveRecord::Schema.define(version: 20131030033251) do
 
   create_table "collections", force: true do |t|
     t.string   "title"
@@ -85,6 +85,14 @@ ActiveRecord::Schema.define(version: 20130925060830) do
     t.string   "image_url"
     t.integer  "followers_count_cache", default: 0
     t.integer  "raiting",               default: 0
+  end
+
+  create_table "mail_letters", force: true do |t|
+    t.integer  "user_id"
+    t.integer  "item_id"
+    t.boolean  "sended"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "mentions", force: true do |t|
