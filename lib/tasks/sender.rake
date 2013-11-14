@@ -5,7 +5,7 @@ namespace :sender do
     @subscribers = @creators.map(&:followers).flatten.uniq if @creators.present?
 
     @subscribers.each do |subscriber|
-        if @items.where(user_id: subscriber.follows.uniq.present?
+        if @items.where(user_id: subscriber.follows.uniq.present? && subscriber.present?
           UserMailer.sender(@items.where(user_id: subscriber.all_following.uniq), subscriber)
         end
       puts @items.where(user_id: subscriber.all_following.uniq)
