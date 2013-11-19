@@ -1,4 +1,6 @@
 Hochuli::Application.routes.draw do
+  get "temp_users/init"
+  get "temp_users/update"
   devise_for :users, controllers: { omniauth_callbacks: "omniauth_callbacks",
                                     registrations: 'registrations',
                                     sessions: 'sessions'
@@ -8,8 +10,12 @@ Hochuli::Application.routes.draw do
     #get '/registrations/update_avatar' => "registrations#update_avatar", :as => :update_avatar  
     get '/confirm/:confirmation_token', :to => "devise/confirmations#show", :as => "user_confirm", :only_path => false
   end                  
-  
-  root :to => 'items#new'
+  authenticated :user do
+    root :to => 'items#new', :as => "authenticated_root"
+  end
+ root :to => "temp_users#index", as: :root
+
+  post '/temp_login'      => 'temp_users#search', as: :temp_search
   get '/popular'          => 'items#popular', as: :popular
   get '/user/:id'         => 'users#show', as: :user_show
   get '/collections/:id'  => 'users#collections', as: :user_collections
