@@ -109,7 +109,14 @@ $(document).ready(function() {
       $(".checkbox input").last().prop('checked', false);
     }
   })
-
+  var temp = HLI.User.temp;
+  if (temp == true) {
+   $('.big_nav').css("visibility", "hidden");
+   $('.small_nav').css("visibility", "hidden");
+   $('.nav_user_profile').css("visibility", "hidden");
+   $('#search').css("visibility", "hidden");
+   $('div#left_group').css("overflow-y", "initial"); 
+  }
   var page_h = $(document).height();
   var frame = $('iframe#framesite');
   var content = $('div#content')

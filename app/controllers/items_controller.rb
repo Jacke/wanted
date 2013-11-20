@@ -4,6 +4,9 @@ class ItemsController < ApplicationController
 
   def new
     # товары
+    if current_user.temp?
+     redirect_to edit_user_registration_path(temp: true)
+    end
     if params[:position]
       #@items = Item.where("id < #{params[:position].to_i}").order("created_at DESC").limit(6)
       @items = Item.paginate(:page => params[:position], :per_page => Setting.items_per_page).order('id DESC')

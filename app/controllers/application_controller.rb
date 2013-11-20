@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
+  allow_forgery_protection = false
   before_filter :pop_tags, :collections_list
 
 #  after_filter :set_access_control_headers

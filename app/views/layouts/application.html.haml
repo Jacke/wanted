@@ -9,7 +9,7 @@
     :javascript
       var HLI = {
         CurrentHost: {"name": "hochuli.ru"},
-        User: {"logged": #{current_user.present?}}
+        User: {"logged": #{current_user.present?}, "temp": #{current_user.temp?}}
       };
       $(document).ready(function() {
         if (true != #{current_user.present?}) {
