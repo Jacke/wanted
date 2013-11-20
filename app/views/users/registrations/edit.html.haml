@@ -12,15 +12,22 @@
     = devise_error_messages!
     %ul
       %li Профиль
-      %li= f.email_field :email, placeholder: 'Email', class: :input, :value => (surrogat_email?(resource) ? '' : resource.email)
-      //%li= f.text_field :phone, placeholder: 'Телефон', class: :input, :value => resource.phone
-      %li= f.text_field :name, placeholder: 'Имя', class: :input
-      - if current_user.shop?
-        %li= f.text_field :phone, placeholder: 'Номер телефона', class: :input
-      %li.m_left
-        #left_title @
-        = f.text_field :nickname, placeholder: 'логин', class: :input
-      %li= f.text_field :city, placeholder: 'Город', class: :input
+      - if params[:temp]
+        %li= f.email_field :email, placeholder: 'Email', class: :input, :value => ""
+        %li= f.text_field :name, placeholder: 'Имя', class: :input, :value => ""
+        %li.m_left
+          #left_title @
+          = f.text_field :nickname, placeholder: 'логин', class: :input, :value => ""
+      - else
+        %li= f.email_field :email, placeholder: 'Email', class: :input, :value => (surrogat_email?(resource) ? '' : resource.email)
+        //%li= f.text_field :phone, placeholder: 'Телефон', class: :input, :value => resource.phone
+        %li= f.text_field :name, placeholder: 'Имя', class: :input
+        - if current_user.shop?
+          %li= f.text_field :phone, placeholder: 'Номер телефона', class: :input
+        %li.m_left
+          #left_title @
+          = f.text_field :nickname, placeholder: 'логин', class: :input
+        %li= f.text_field :city, placeholder: 'Город', class: :input
       = f.text_area :about, class: :input, rows: 5, maxlength: 140, placeholder: 'Немного о себе'
       %li.m_left
         #left_title.radio=f.radio_button :sex, 2, :checked => current_user.sex==2 || nil, class: 'availability'
