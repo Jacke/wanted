@@ -1,0 +1,246 @@
+
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+.container {
+    margin-top: 20px;
+}
+
+.top-menu ul {
+    padding-left: 0;
+}
+.top-menu li {
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 15px;
+}
+.top-menu li:last-child {
+    margin-right: 0;
+}
+
+
+nav ul {
+    padding-left: 0;
+}
+nav li {
+    list-style-type: none;
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 1.3em;
+}
+nav li:last-child {
+    margin-right: 0;
+}
+
+.basket {
+    border: 1px solid #959595;
+    padding: 10px 10px 10px 70px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    background: url("../img/basket.gif") no-repeat 10px 5px;
+}
+
+.breadcrumb > li + li:before {
+    color: #CCCCCC;
+    content: "→ ";
+    padding: 0 5px;
+}
+
+.script-link {
+    display: inline-block;
+    border-bottom: 1px dashed #000;
+}
+.r-column {
+    padding: 0 20px;
+    font-weight: bold;
+    color: #1d60ab;
+}
+.read-more, .read-less {
+    display: block;
+}
+
+.book-detail {
+    margin-bottom: 30px;
+}
+.book-detail h2 {
+    margin-top: 0;
+}
+.book-detail__author {
+    margin-bottom: 15px;
+}
+.book-detail__col-r hr {
+    margin-top: 0;
+}
+
+.book-detail__cost {
+    width: 113px;
+    height: 53px;
+    padding: 3px 0 0 20px;
+    background: url("../img/cost_bg.gif") no-repeat;
+}
+.book-detail__cost-current {
+    color: red;
+    font-weight: bold;
+    font-size: 1.3em;
+}
+.book-detail__cost-current-b {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+.book-detail__cost-prev {
+    text-decoration: line-through;
+    margin-top: -3px;
+}
+.book-detail__is-available {
+    color: #0fae43;
+    font-weight: bold;
+}
+.book-detail h4 {
+    margin-top: 50px;
+}
+
+nav {
+    margin-top: 15px;
+}
+
+
+.slider {
+    margin-bottom: 30px;
+}
+.slider__title {
+    font-size: 1.3em;
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.slider__title-bold {
+    color: #f2283a;
+    font-size: 1.2em;
+}
+.slider__inside {
+    border: 10px solid #ffec00;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    padding: 10px;
+    width: 88%;
+    margin: 0 auto;
+}
+.slider-cost {
+    
+}
+.slider-cost__current {
+    
+}
+.slider-cost__prev {
+    text-decoration: line-through;
+}
+.slider__big-font {
+    font-size: 3em;
+    font-weight: bold;
+    margin-top: 25px;
+}
+.slider__arrow-l {
+    float: left;
+    margin-top: 100px;
+}
+.slider__arrow-r {
+    float: right;
+    margin-top: 100px;
+}
+
+
+.slider-cost2 {
+    margin-top: 35px;
+}
+.slider-cost2__current {
+    font-size: 2em;
+    font-weight: bold;
+    color: #f2283a;
+}
+.slider-cost2__prev {
+    text-decoration: line-through;    
+    font-size: 1.3em;
+    margin-top: -10px;
+}
+
+
+.slider2 {
+    margin-bottom: 30px;
+}
+.slider2__title {
+    font-size: 1.3em;
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.slider2__title-bold {
+    color: #f2283a;
+    font-size: 1.2em;
+}
+.slider2__arrow-l {
+    float: left;
+    margin-top: 100px;
+}
+.slider2__arrow-r {
+    float: right;
+    margin-top: 100px;
+}
+.slider2__items {
+    margin: 0 auto;
+    width: 88%;
+}
+.slider2__item-title {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #0078ff;
+    margin-top: 10px;
+}
+.slider2__item-auth {
+    font-size: 1.1em;
+}
+.slider2__item-desc {
+    color: #808080;
+}
+.slider2-cost {
+    margin-bottom: 5px;
+}
+.slider2-cost__current {
+    font-weight: bold;
+}
+.slider2__item-buy {
+    color: #acacac;
+    border: 1px solid #acacac;
+    padding: 7px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    font-size: 1.2em;
+}
+
+
+.features {
+    background-color: #f8f8f8;
+    border-top: 1px solid #dbdbdb;
+    border-bottom: 1px solid #dbdbdb;
+    padding: 10px;
+    margin-bottom: 30px;
+}
+.features .breadcrumb li {
+    
+}
+.features .breadcrumb > li + li:before {
+    color: #333333;
+    content: ">";
+    padding: 0 5px;
+}
+
+.author {
+    margin-bottom: 30px;
+}
+
+footer {
+    text-align: center;
+}

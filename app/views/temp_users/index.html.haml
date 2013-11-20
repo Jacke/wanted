@@ -1,0 +1,6 @@
+.try-this.container
+  %img.convinient-way-img{src: "img/convinient_way.gif"}/
+  = form_for :search, :url => temp_search_path, html: { class: 'form-inline', :"data-role" => "form"} do |f|
+    .col-sm-6.col-sm-offset-2
+      = f.text_field(:query, class: "form-control", id: "input1", placeholder: "http://www.adidas.ru/g69146_320/G69146_320.html")
+    = f.submit "Попробывать", :class => "btn btn-primary"

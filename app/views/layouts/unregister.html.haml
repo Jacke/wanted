@@ -1,0 +1,85 @@
+!!!
+%html
+  %head
+    %title= title + ' - ' + Setting.site_name
+    %meta{:content => "b89c4ae01a", :name => "verify-admitad"}/
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    %link{href: "css/bootstrap.min.css", rel: "stylesheet"}/
+    %link{href: "css/bootstrap-theme.min.css", rel: "stylesheet"}/
+    %link{href: "css/main.css", rel: "stylesheet"}/   
+    = csrf_meta_tags
+    :javascript
+      var HLI = {
+        CurrentHost: {"name": "hochuli.ru"},
+        User: {"logged": #{current_user.present?}}
+      };
+      $(document).ready(function() {
+        if (true != #{current_user.present?}) {
+          $('#conteiner').on('click', 'a', function(){ event.preventDefault(); $('#loginModal').arcticmodal(); })
+          $('#conteiner').addClass('guest');
+          $('#left_group').hide();
+        };
+      });
+  %body
+    #main
+      %header#hd.normal
+        %nav.gr
+          = link_to 'ХОЧУ<span class=\'nav_end_word\'>ЛИ</span>'.html_safe, root_path, class: :nav_logo
+          .nav_title= nav_title
+          %ul.nav_user
+            %li
+              - if user_signed_in?
+                - if mail_set(current_user)
+                  %h4
+                    Пожалуйста заполните поле 
+                    %a{href: 'users/edit'} email
+                = link_to current_user.name, edit_user_registration_path, class: :nav_user_profile
+                = link_to 'выход', destroy_user_session_path, method: :delete
+              - else
+                = link_to 'Вход', '#', :onclick => '$(\'#loginModal\').arcticmodal()', :href => '#'
+          .nav_pointer
+      = yield      
+      //     
+      %footer.navbar.navbar-inverse.navbar-fixed-bottom
+        .container
+          .col-sm-3.text-center.col-sm-offset-5
+            %p.navbar-text
+              Hochuli.ru (c) 2013
+              %br/
+              emband@mail.ru
+        #notice
+      #footer
+      - if not user_signed_in?
+        = render partial: "shared/login"
+      - else
+        = render partial: 'shared/add_to_collection'
+
+      / /Yandex.Metrika informer
+      / Yandex.Metrika counter
+      :javascript
+        (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+        try {
+        w.yaCounter22187150 = new Ya.Metrika({id:22187150,
+        webvisor:true,
+        clickmap:true,
+        trackLinks:true,
+        accurateTrackBounce:true});
+        } catch(e) { }
+        });
+        var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+        
+        if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+        })(document, window, "yandex_metrika_callbacks");
+      %noscript
+        %div
+          %img{:alt => "", :src => "//mc.yandex.ru/watch/22187150", :style => "position:absolute; left:-9999px;"}/
+      / /Yandex.Metrika counter
