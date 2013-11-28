@@ -7,7 +7,7 @@ class TempUsersController < ApplicationController
   end
   def search
     logger.info(params)
-    @user =  User.new(email: "temp@email.com", nickname: "test", password: "test123456", name: "Temp user", temp: true)
+    @user =  User.new(email: "temp_#{rand(1000)}@email.com", nickname: "test_#{rand(1000)}", password: "test123456", name: "Temp user", temp: true)
     @user.save!
     #resource_name = :user
     #resource = warden.authenticate!(:scope => resource_name)
